@@ -3,25 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://daroczig.github.io/whoami/</loc>
+    <loc>https://daroczig.github.io/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/whoami/categories/</loc>
+    <loc>https://daroczig.github.io/categories/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/whoami/talks/</loc>
+    <loc>https://daroczig.github.io/talks/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/whoami/about/</loc>
+    <loc>https://daroczig.github.io/about/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/whoami/tags/</loc>
+    <loc>https://daroczig.github.io/tags/</loc>
     <priority>0</priority>
   </url>
   

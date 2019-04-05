@@ -1,0 +1,39 @@
+body {
+    background-image: url(../img/system1.png);
+    background-size: auto 40px;
+    background-repeat: no-repeat;
+    background-position: left 25px bottom 45px;
+}
+
+/* section.present h2 { */
+/*     padding-top: 30%; */
+/* } */
+/* section.present { */
+/*     background-image: url(../img/satrday la 2019.png); */
+/*     background-repeat: no-repeat; */
+/*     background-position: center center; */
+/*     background-size: auto 35%; */
+/* } */
+
+.noborder {
+    border: 0px !important;
+    box-shadow: none !important;
+}
+
+.reveal pre {
+    width: 100% !important;
+    margin: 0px !important;
+}
+div.sourceCode {
+    margin-left: 5% !important;
+    margin-right: 5% !important;
+}
+code.sourceCode {
+    border: 2px solid !important;
+}
+
+.reveal code {
+    font-family: monospace;
+    background-color: lightgray;
+    padding: 2px 10px;
+}
