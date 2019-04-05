@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>@daroczig</title>
+    <link>https://daroczig.github.io/whoami/</link>
+    <description>Recent content on @daroczig</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    
+	<atom:link href="https://daroczig.github.io/whoami/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gergely Daroczi</title>
+      <link>https://daroczig.github.io/whoami/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/whoami/about/</guid>
+      <description>Former assistant professor in statistics and data analysis, recovering social scientist &amp;ndash; PhD in Sociology but more of a sysadmin/devops, a friend of AWS and a fan of automation, author and maintainer of a dozen of R packages and a book, passionate R developer and advocate, founder of the Hungarian R User Group and a reporting SaaS, organized the first satRday and the second eRum conferences, data engineer and a bit of scientist, open source enthusiast, husband, father of two.</description>
+    </item>
+    
+  </channel>
+</rss>
