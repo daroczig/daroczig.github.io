@@ -209,13 +209,13 @@ metrics <- round_metrics(metrics)
 ## Read more!
  
 <div style="float:left; width:50%;">
-<img src="https://github.com/jennybc/code-smells-and-feels/raw/master/2018-07_user-brisbane-400.jpeg" />
+<img src="https://github.com/jennybc/code-smells-and-feels/raw/master/2018-07_user-brisbane-400.jpeg" style="max-height:500px;" class="noborder" />
 
 *Code Smells and Feels* by Jenny Bryan
 </div>
 
 <div style="float:left; width:50%;">
-<img src="img/book advanced r.png" />
+<img src="img/book advanced r.png" style="max-height:500px;" class="noborder" />
 
 *Advanced R* by Hadley Wickham
 </div>
@@ -225,13 +225,13 @@ metrics <- round_metrics(metrics)
 ## Read even more!
  
 <div style="float:left; width:50%;">
-<img src="img/book clean code.jpg" />
+<img src="img/book clean code.jpg" style="max-height:500px;" class="noborder" />
 
 *Clean Code* by Robert C. Martin
 </div>
 
 <div style="float:left; width:50%;">
-<img src="img/book refactoring.jpg" />
+<img src="img/book refactoring.jpg" style="max-height:500px;" class="noborder" />
 
 *Refactoring* by Martin Fowler et al.
 </div>
