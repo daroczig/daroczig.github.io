@@ -46,7 +46,7 @@ document.getElementById("dummy-slide").remove();
 > - job scheduler
 > - data repository and metadata documentation tool
 > - central logging
-> - and a few other things ...
+- and a few other things ...
 
 ## Every BI consulting firm have developed its own ... {data-transition="none"}
 
@@ -66,23 +66,72 @@ Today we can just pick the right open-source tool, such as
 
 <img src="http://i.imgur.com/9QpNv.gif" width="80%">
 
-Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took">thecodinglove.com</a>
+Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took">When my co-worker wants to simplify code ...</a>
 
-## TODO move version control here
+</section></section>
+<section>
+<section class="titleslide slide level1">
+  <h2>Don't get confused ...</h2>
+  <video width="60%" controls>
+    <source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
+  </video>
+  <img src="img/tweet bird footer.png" width="40%">
 
-not only for r packages ... but scripts ... ad-hoc reports as we;l
+## ... use version control!
+
+<img src="http://i.imgur.com/1JbwryE.gif" width="90%">
+Source: <a href="https://thecodinglove.com/a-junior-vs-a-senior-during-a-huge-system-failure">A junior vs a senior during a huge system failure</a>
+
+## git 101
+
+Start from scratch:
+
+```bash
+git init .
+git add .
+git commit -m "hello world"
+git push origin master
+```
+
+Contribute to an existing project:
+
+```bash
+git clone https://github.com/foo/bar
+git branch -b feature-branch
+git add .; git add -u .
+git commit -m "add my new cool feature"
+git push origin feature-branch
+```
+
+## git 102
+
+Version control all your scripts!
+
+> - R packages
+> - R scripts
+> - Other scripts
+> - Configuration files
+> - `Rmd` reports
+> - Ad-hoc queries
+
+<div class="fragment">
+As you ~~might~~ will need these later!
+</div>
+
+## git 201
+
+<img src="https://happygitwithr.com/img/watch-me-diff-watch-me-rebase-smaller.png" class="noborder" />
+
+Read more at https://happygitwithr.com
 
 </section></section>
 <section>
 <section class="titleslide slide level1">
   <h2>Clean code!</h2>
-  <!-- <video width="80%" controls> -->
-  <!--   <source src="todo" type="video/mp4"> -->
-  <!-- </video> -->
 
-## Code style
+<img src="https://66.media.tumblr.com/b08214bffa07f0a79938697589ed4fe2/tumblr_inline_odd2x9PvYg1raprkq_400.gif" class="noborder" width="50%" />
 
-kid driving the car animgif?
+Source: [Junior dev being awesome](http://devopsreactions.tumblr.com/post/150627947026/junior-dev-being-awesome)
 
 ## Code style
 
@@ -96,9 +145,9 @@ It can be anything ... just be consistent!
 <div class="fragment">
 Extra hints:
 
-- use [EditorConfig](https://editorconfig.org)! [R-bloggers article](https://www.r-bloggers.com/editorconfig-force-unified-coding-style-from-all-your-contributors/)
-- use [`lintr`](https://github.com/jimhester/lintr)
-- use `lintr` in a pull request builder / CI tool
+> - use [EditorConfig](https://editorconfig.org)! [R-bloggers article](https://www.r-bloggers.com/editorconfig-force-unified-coding-style-from-all-your-contributors/)
+> - use [`lintr`](https://github.com/jimhester/lintr)
+> - use `lintr` in a pull request builder / CI tool
 </div>
 
 ## DRY
@@ -149,52 +198,45 @@ metrics <- round_metrics(metrics)
 </div>
 
 <div class="fragment" style="float:left; max-width:50%;">
-- Use `roxygen2`, potentially with markdown
-- Run `R CMD check` frequently to check on your docs
-- Pick a permissive license
-- Build your R package homepage with `pkgdown`
+> - Pick a permissive license!
+> - Use `roxygen2`, potentially with markdown
+> - Write vignettes
+> - Run `R CMD check` frequently to check on your docs
+> - Build your R package homepage with `pkgdown`
 </div>
 <div style="float:none;"></div>
 
-</section></section>
-<section>
-<section class="titleslide slide level1">
-  <h2>Don't get confused ...</h2>
-  <video width="80%" controls>
-    <source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
-  </video>
-  <img src="img/tweet bird footer.png" width="40%">
+## Read more!
+ 
+<div style="float:left; width:50%;">
+<img src="https://github.com/jennybc/coe-smells-and-feels/raw/master/2018-07_user-brisbane-400.jpeg" />
 
-## ... use version control!
+*Code Smells and Feels* by Jenny Bryan
+</div>
 
-<a href="https://twitter.com/daroczig/status/682966258904510464">
-  <!-- <img src="img/tweet bird img.gif" width="80%"> -->
-  <video width="80%" controls>
-    <source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
-  </video>
-  <img src="img/tweet bird footer.png" width="40%">
-</a>
+<div style="float:left; width:50%;">
+<img src="img/book clean code.jpg" />
 
-## git 101
+*Advanced R* by Hadley Wickham
+</div>
 
-Start from scratch:
+<div style="float:none;"></div>
 
-```bash
-git init .
-git add .
-git commit -m "hello world"
-git push origin master
-```
+## Read even more!
+ 
+<div style="float:left; width:50%;">
+<img src="img/book clean code.jpg" />
 
-Contribute to an existing project:
+*Clean Code* by Robert C. Martin
+</div>
 
-```bash
-git clone https://github.com/foo/bar
-git branch -b feature-branch
-git add .; git add -u .
-git commit -m "add my new cool feature"
-git push origin feature-branch
-```
+<div style="float:left; width:50%;">
+<img src="img/book refactoring.jpg" />
+
+*Refactoring* by Martin Fowler et al.
+</div>
+
+<div style="float:none;"></div>
 
 </section></section>
 <section>
@@ -211,14 +253,19 @@ git push origin feature-branch
 
 ```r
 library(logger)
-log_threshold(TRACE)
 log_info('Script starting up...')
 #> INFO [2019-04-04 04:25:17] Script starting up...
 log_info('The mtcars dataset has {nrow(mtcars)} rows!')
 #> INFO [2019-04-04 04:25:17] The mtcars dataset has 32 rows!
-log_eval(nrow(mtcars))
+```
+
+<div class="fragment">
+```r
+log_threshold(TRACE)
+log_eval(nrow(mtcars), level = TRACE)
 #> TRACE [2019-04-04 04:25:17] 'nrow(mtcars)' => '32L'
 ```
+</div>
 
 ----
 
@@ -240,13 +287,13 @@ for (letter in letters) {
 `Rscript demo.R`
 
 ```apache
-INFO [2018-20-11 22:49:37] There are 13433 R packages hosted on CRAN!
-DEBUG [2018-20-11 22:49:38] 6300 R packages including the 'a' letter
-DEBUG [2018-20-11 22:49:38] 6772 R packages including the 'e' letter
-DEBUG [2018-20-11 22:49:38] 5412 R packages including the 'i' letter
-DEBUG [2018-20-11 22:49:38] 7014 R packages including the 'r' letter
-DEBUG [2018-20-11 22:49:38] 6402 R packages including the 's' letter
-DEBUG [2018-20-11 22:49:38] 5864 R packages including the 't' letter
+INFO [2018-11-20 22:49:37] There are 13433 R packages hosted on CRAN!
+DEBUG [2018-11-20 22:49:38] 6300 R packages including the 'a' letter
+DEBUG [2018-11-20 22:49:38] 6772 R packages including the 'e' letter
+DEBUG [2018-11-20 22:49:38] 5412 R packages including the 'i' letter
+DEBUG [2018-11-20 22:49:38] 7014 R packages including the 'r' letter
+DEBUG [2018-11-20 22:49:38] 6402 R packages including the 's' letter
+DEBUG [2018-11-20 22:49:38] 5864 R packages including the 't' letter
 ```
 
 </div>
@@ -331,6 +378,9 @@ log_with_separator(paste(
 #> INFO [2019-03-29 19:00:15] = for our quite nice demo       =
 #> INFO [2019-03-29 19:00:15] = :wow:                         =
 #> INFO [2019-03-29 19:00:15] =================================
+
+appender_slack(channel = "#alerts")
+log_error('We have a problem!')
 ```
 
 https://daroczig.github.io/logger
@@ -357,6 +407,8 @@ dbClearResult(query)
 
 dbDisconnect(con)
 ```
+
+Spot the issues in the above code block!
 
 ## Why secure database credentials?
 
@@ -597,42 +649,728 @@ default:
   shinydemo:
     drv: !expr RMySQL::MySQL()
     host: shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com
-    username: !aws_kms ...
-    password: !aws_kms ...
+    username: !aws_kms |
+      AQICAHiMkU2ZNbL+kRcQoM3wGpuLb8HbIKjM9VcEGt72rZV2SAE6IQVMFPyj9JBP7cEgf9oT
+      AAAAYzBhBgkqhkiG9w0BBwagVDBSAgEAME0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM
+      Q8zMzSSMTX0UzT0dAgEQgCBlwaYQyO29zKbtIBuQtSHBWxqgyu49/lUQKZn8CCwmyQ==
+    password: !aws_kms |
+      AQICAHiMkU2ZNbL+kRcQoM3wGpuLb8HbIKjM9VcEGt72rZV2SAE6IQVMFPyj9JBP7cEgf9oT
+      AAAAYzBhBgkqhkiG9w0BBwagVDBSAgEAME0GCSqGSIb3DQEHATAeBglghkgBZQMEAS4wEQQM
+      Q8zMzSSMTX0UzT0dAgEQgCBlwaYQyO29zKbtIBuQtSHBWxqgyu49/lUQKZn8CCwmyQ==
     dbname: shinydemo
 ```
 
-## TODO
+## Parsing a YAML config with KMS
 
-sss
-
-## Examples
 
 ```r
-todo
+db_config <- function(db, db_config_path = getOption('db_config_path') {
+
+    if (!file.exists(db_config_path)) {
+        stop(paste('DB config file not found at', db_config_path))
+    }
+
+    db_secrets <- yaml.load_file(
+        db_config_path,
+        handlers = list('kms' = function(x) structure(x, class = c('kms'))))
+
+    hasName(db_secrets, db) || stop('Database ', db, ' not found, check ', db_config_path)
+
+    flog.debug('Looking up config for {db}')
+
+    rapply(db_secrets[[db]], kms_decrypt, classes = 'kms', how = 'replace')
+
+})
 ```
 
+## Using a YAML config with KMS
 
+```r
+> options('db_config_path' = ...)
+> db_config('shinydemo')
+$drv
+<MySQLDriver>
+
+$host
+[1] "shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com"
+
+$username
+[1] "guest"
+
+$password
+[1] "guest"
+
+$dbname
+[1] "shinydemo"
+```
+ 
+## Reminder: motivation
+ 
+```r
+## connect to the database
+library(DBI)
+con <- dbConnect(
+    RMySQL::MySQL(),
+    dbname = "shinydemo",
+    host = "shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com",
+    username = "guest",
+    password = "guest")
+
+## run a query
+query <- dbSendQuery(
+    con,
+    "SELECT Continent, COUNT(DISTINCT(Region)) FROM Country GROUP BY Continent")
+res <- dbFetch(query)
+dbClearResult(query)
+
+## say good bye
+dbDisconnect(con)
+```
+
+## Reminder: motivation
+ 
+```r
+## connect to the database
+library(DBI)
+con <- do.call(dbConnect, db_config('shinydemo'))
+
+## run a query
+query <- dbSendQuery(
+    con,
+    "SELECT Continent, COUNT(DISTINCT(Region)) FROM Country GROUP BY Continent")
+res <- dbFetch(query)
+dbClearResult(query)
+
+## say good bye
+dbDisconnect(con)
+```
+ 
+## Reminder: motivation
+ 
+![](img/lazy.png)
+ 
+Source: [xkcd/1205](https://xkcd.com/1205/)
+ 
+## A simple wrapper to connect AND query
+
+```r
+db_query <- function(sql, db) {
+
+    db <- db_connect(db)
+
+    on.exit({
+        db_close(db)
+    })
+    
+    dbGetQuery(db, sql)
+    
+}
+```
+
+## A simple wrapper to connect AND query v2
+
+```r
+db_query <- function(sql, db, ...) {
+
+    if (!is.object(db)) {
+        db <- db_connect(db, ...)
+        on.exit({
+          db_close(db)
+        })
+    }
+
+    assert_attr(db, 'db')
+    assert_string(sql)
+
+    log_info("Executing:**********")
+    log_info(sql)
+    log_info("********************")
+
+    start <- Sys.time()
+    result_set <- dbGetQuery(db, sql)
+    time_to_exec <- Sys.time() - start
+
+    log_info("Finished in %s returning %s rows",
+             format(time_to_exec, digits = 4),
+             nrow(result_set))
+
+    attr(result_set, 'when') <- start
+    attr(result_set, 'db') <- attr(db, 'db')
+    attr(result_set, 'time_to_exec') <- time_to_exec
+    attr(result_set, 'statement') <-  sql
+
+    result_set
+
+}
+```
+ 
+## db_query example
+
+Bundled `db_config.yml` coming with the `dbr` package:
+
+```yaml
+sqlite:
+  drv: !expr RSQLite::SQLite()
+  dbname: !expr tempfile()
+```
+
+<div class="fragment">
+```r
+> db_query('SELECT 42', 'sqlite')
+
+INFO [2018-07-12 02:46:25] Connecting to sqlite 
+INFO [2018-07-12 02:46:25] Executing:**********
+INFO [2018-07-12 02:46:25] SELECT 42
+INFO [2018-07-12 02:46:25] ********************
+INFO [2018-07-12 02:46:25] Finished in 0.001331 secs returning 1 rows
+INFO [2018-07-12 02:46:25] Closing connection to sqlite
+  42
+1 42
+```
+</div>
+ 
+## db_query features: attributes
+
+```r
+> str(db_query('SELECT 42', 'sqlite'))
+
+INFO [2018-07-11 17:07:12] Connecting to sqlite 
+INFO [2018-07-11 17:07:12] Executing:**********
+INFO [2018-07-11 17:07:12] SELECT 42
+INFO [2018-07-11 17:07:12] ********************
+INFO [2018-07-11 17:07:12] Finished in 0.0007429 secs returning 1 rows
+INFO [2018-07-11 17:07:12] Closing connection to sqlite
+
+'data.frame':	1 obs. of  1 variable:
+ $ 42: int 42
+ - attr(*, "when")= POSIXct, format: "2018-07-11 17:07:12"
+ - attr(*, "db")= chr "sqlite"
+ - attr(*, "time_to_exec")=Class 'difftime'  atomic [1:1] 0.000743
+  .. ..- attr(*, "units")= chr "secs"
+ - attr(*, "statement")= chr "SELECT 42"
+```
+
+## db_query features: making use of attributes
+
+```r
+> res <- db_query('SELECT CURRENT_TIMESTAMP AS time, 42 AS everything', 'sqlite')
+INFO [2018-07-12 02:44:57] Connecting to sqlite 
+INFO [2018-07-12 02:44:57] Executing:**********
+INFO [2018-07-12 02:44:57] SELECT CURRENT_TIMESTAMP AS time, 42 AS everything
+INFO [2018-07-12 02:44:57] ********************
+INFO [2018-07-12 02:44:57] Finished in 0.0007801 secs returning 1 rows
+INFO [2018-07-12 02:44:57] Closing connection to sqlite
+
+> res
+                 time everything
+1 2018-07-12 00:44:57         42
+```
+
+<div class="fragment">
+```r
+> db_refresh(res)
+INFO [2018-07-12 02:48:20] Connecting to sqlite 
+INFO [2018-07-12 02:48:20] Executing:**********
+INFO [2018-07-12 02:48:20] SELECT CURRENT_TIMESTAMP AS time, 42 AS everything
+INFO [2018-07-12 02:48:20] ********************
+INFO [2018-07-12 02:48:20] Finished in 0.0005436 secs returning 1 rows
+INFO [2018-07-12 02:48:20] Closing connection to sqlite
+
+time everything
+1 2019-04-06 08:48:20         42
+```
+</div>
+
+## db_query features: connections
+
+```r
+> db_query('SELECT 42', 'sqlite')
+INFO [2018-07-12 02:46:25] Connecting to sqlite 
+INFO [2018-07-12 02:46:25] Executing:**********
+INFO [2018-07-12 02:46:25] SELECT 42
+INFO [2018-07-12 02:46:25] ********************
+INFO [2018-07-12 02:46:25] Finished in 0.001331 secs returning 1 rows
+INFO [2018-07-12 02:46:25] Closing connection to sqlite
+```
+ 
+<div class="fragment">
+Reusing connections:
+
+```r
+> con <- db_connect('sqlite')
+INFO [2018-07-12 02:54:17] Connecting to sqlite 
+> db_query('SELECT 42', con)
+INFO [2018-07-12 02:53:48] Executing:**********
+INFO [2018-07-12 02:53:48] SELECT 42
+INFO [2018-07-12 02:53:48] ********************
+INFO [2018-07-12 02:53:48] Finished in 0.0009012 secs returning 1 rows
+```
+</div>
+
+## db_query features: connections
+
+```r
+> con <- db_connect('sqlite')
+INFO [2018-07-12 02:58:00] Connecting to sqlite 
+> db_query('SELECT 42', 'sqlite')
+INFO [2018-07-12 02:58:07] Connecting to sqlite 
+INFO [2018-07-12 02:58:07] Executing:**********
+INFO [2018-07-12 02:58:07] SELECT 42
+INFO [2018-07-12 02:58:07] ********************
+INFO [2018-07-12 02:58:07] Finished in 0.0007277 secs returning 1 rows
+INFO [2018-07-12 02:58:07] Closing connection to sqlite
+```
+
+<div class="fragment">
+```r
+> con <- db_connect('sqlite', cache = TRUE)
+INFO [2018-07-12 02:59:31] Connecting to sqlite 
+> db_query('SELECT 42', 'sqlite')
+INFO [2018-07-12 02:59:33] Executing:**********
+INFO [2018-07-12 02:59:33] SELECT 42
+INFO [2018-07-12 02:59:33] ********************
+INFO [2018-07-12 02:59:33] Finished in 0.0009344 secs returning 1 rows
+```
+</div>
+
+<div class="fragment">
+```r
+> db_close(db_connect('sqlite', cache = FALSE))
+INFO [2018-07-12 02:59:55] Connecting to sqlite 
+INFO [2018-07-12 02:59:55] Closing connection to sqlite
+```
+</div>
+
+## db_query features: forking
+
+```r
+> system.time(db_config('shinydemo'))
+   user  system elapsed 
+  3.359   0.092   5.236 
+```
+
+<div class="fragment">
+```r
+> system.time(db_config('shinydemo'))
+   user  system elapsed 
+  0.001   0.000   0.001 
+```
+</div>
+
+<div class="fragment">
+It's not caching the connection this time, only the credentials.
+</div>
+
+<div class="fragment">
+```r
+> db_config_invalidate_cache()
+INFO [2018-07-12 03:03:38] Invalidating cache on already loaded DB config(s)
+```
+</div> 
+
+## db_query features: forking
+
+```r
+> parallel::mclapply(1:16, function(i) db_query("SELECT 42", "sqlite"), mc.cores = 8)
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:04] SELECT 42
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] ********************
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:04] Finished in 0.001053 secs returning 1 rows
+INFO [2018-07-12 03:05:04] SELECT 42
+INFO [2018-07-12 03:05:04] Closing connection to sqlite
+INFO [2018-07-12 03:05:04] ********************
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:04] Finished in 0.005117 secs returning 1 rows
+INFO [2018-07-12 03:05:04] SELECT 42
+INFO [2018-07-12 03:05:04] Closing connection to sqlite
+INFO [2018-07-12 03:05:04] ********************
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Finished in 0.003497 secs returning 1 rows
+INFO [2018-07-12 03:05:04] SELECT 42
+INFO [2018-07-12 03:05:04] ********************
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Closing connection to sqlite
+INFO [2018-07-12 03:05:04] SELECT 42
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:04] ********************
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:04] SELECT 42
+INFO [2018-07-12 03:05:04] Finished in 0.0008972 secs returning 1 rows
+INFO [2018-07-12 03:05:04] SELECT 42
+INFO [2018-07-12 03:05:04] Finished in 0.00947 secs returning 1 rows
+INFO [2018-07-12 03:05:04] ********************
+INFO [2018-07-12 03:05:04] ********************
+INFO [2018-07-12 03:05:04] Finished in 0.001237 secs returning 1 rows
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Closing connection to sqlite
+INFO [2018-07-12 03:05:04] Finished in 0.001038 secs returning 1 rows
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Closing connection to sqlite
+INFO [2018-07-12 03:05:04] Closing connection to sqlite
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Connecting to sqlite 
+INFO [2018-07-12 03:05:04] Executing:**********
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] Connecting to sqlite 
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] Finished in 0.0009949 secs returning 1 rows
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] Finished in 0.001511 secs returning 1 rows
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] Connecting to sqlite 
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] Finished in 0.001259 secs returning 1 rows
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] Finished in 0.001187 secs returning 1 rows
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] Finished in 0.03187 secs returning 1 rows
+INFO [2018-07-12 03:05:05] Finished in 0.009078 secs returning 1 rows
+INFO [2018-07-12 03:05:05] Finished in 0.0009627 secs returning 1 rows
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] Connecting to sqlite 
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] Connecting to sqlite 
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] Executing:**********
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] SELECT 42
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] ********************
+INFO [2018-07-12 03:05:05] Finished in 0.0007973 secs returning 1 rows
+INFO [2018-07-12 03:05:05] Finished in 0.0007989 secs returning 1 rows
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+INFO [2018-07-12 03:05:05] Closing connection to sqlite
+```
+ 
+## Extending DBI to be able to use db_query
+
+<img src="img/awr-athena-cran.jpg" width="75%" class="noborder" />
+
+## Extending DBI to be able to use db_query
+ 
+<img src="img/awr-athena-code.png" width="75%" class="noborder" />
+
+## Extending DBI to be able to use db_query
+ 
+<img src="img/awr-snowflake-load.png" width="75%" class="noborder" />
+ 
+## Benchmarking!!!
+ 
+Transaction Processing Performance Council (TPC) Benchmarks ™ 10 TB
+ 
+```sql
+with v1 as(
+  select i_category, i_brand, cc_name, d_year, d_moy,
+        sum(cs_sales_price) sum_sales,
+        avg(sum(cs_sales_price)) over
+          (partition by i_category, i_brand,
+                     cc_name, d_year)
+          avg_monthly_sales,
+        rank() over
+          (partition by i_category, i_brand,
+                     cc_name
+           order by d_year, d_moy) rn
+  from tpcds_sf10tcl.item, tpcds_sf10tcl.catalog_sales, tpcds_sf10tcl.date_dim, tpcds_sf10tcl.call_center
+  where cs_item_sk = i_item_sk and
+       cs_sold_date_sk = d_date_sk and
+       cc_call_center_sk= cs_call_center_sk and
+       (
+         d_year = {year} or
+         ( d_year = {year}-1 and d_moy =12) or
+         ( d_year = {year}+1 and d_moy =1)
+       )
+  group by i_category, i_brand,
+          cc_name , d_year, d_moy),
+v2 as(
+  select v1.i_category ,v1.d_year, v1.d_moy ,v1.avg_monthly_sales
+        ,v1.sum_sales, v1_lag.sum_sales psum, v1_lead.sum_sales nsum
+  from v1, v1 v1_lag, v1 v1_lead
+  where v1.i_category = v1_lag.i_category and
+       v1.i_category = v1_lead.i_category and
+       v1.i_brand = v1_lag.i_brand and
+       v1.i_brand = v1_lead.i_brand and
+       v1.cc_name = v1_lag.cc_name and
+       v1.cc_name = v1_lead.cc_name and
+       v1.rn = v1_lag.rn + 1 and
+       v1.rn = v1_lead.rn - 1)
+select  *
+from v2
+where  d_year = {year} and
+        avg_monthly_sales > 0 and
+        case when avg_monthly_sales > 0 then abs(sum_sales - avg_monthly_sales) / avg_monthly_sales else null end > 0.1
+order by sum_sales - avg_monthly_sales, 3
+limit 100
+```
+ 
+## Benchmarking!!!
+
+```r
+warehouse_type <- 'S'
+warehouses <- 2
+threads <- 4
+
+for (i in 1:4) {
+    assign(glue('con{i}', db_connect('snowflake', warehouse = paste0(warehouse_type, i)))   
+}
+
+mclapply(1:16, function(i, warehouse, threads) {
+    timing <- system.time(db_query(
+        query,
+        db = get(paste0('con', i %% warehouses + 1)),
+        year = 1999))
+    data.table(
+        warehouse = warehouse,
+        threads = threads,
+        time = timing[[3]])
+}, mc.cores = threads, threads = threads)
+
+for (i in 1:4) {
+    db_close(get(paste0('con', i %% 4 + 1)))
+}
+```
+
+## A more complex benchmark
+ 
+<img src="img/snowflake1.png" width="75%" class="noborder" /> 
+ 
+## A more complex benchmark
+ 
+<img src="img/snowflake2.png" width="75%" class="noborder" /> 
+
+## There's more!
+ 
+```yaml
+dbr:
+  shinydemo:
+    countries:
+      count: SELECT COUNT(*) FROM Country
+      europe: |-
+        SELECT Code
+        FROM Country
+        WHERE Continent = 'Europe'
+    cities:
+      europe_large: |-
+        SELECT Name
+        FROM City
+        WHERE
+          Population > 1000000 AND
+          Name IN (
+            {sql_chunk('dbr.shinydemo.cities.europe', indent_after_linebreak = 4)}))
+```
+
+https://github.com/daroczig/dbr/blob/master/inst/example_sql_chunks.yaml
+ 
+## There's more! 
+ 
+ ```r
+sql_chunk('dbr.shinydemo.cities.europe_large')
+#> SELECT Name
+#> FROM City
+#> WHERE
+#>   Population > 1000000 AND
+#>   Name IN (
+#>     SELECT Name
+#>     FROM City
+#>     WHERE CountryCode IN (
+#>       SELECT Code
+#>       FROM Country
+#>       WHERE Continent = 'Europe')))
+```
+
+https://github.com/daroczig/dbr
 
 </section></section>
 <section>
 <section class="titleslide slide level1">
-<h1>Storing secrets</h1>
+<h1>More on the cloud ...</h1>
+ 
+<img src="https://media.giphy.com/media/xDQ3Oql1BN54c/giphy.gif" width="75%" class="noborder" />
 
-todo
+## From Java to Python
+ 
+<img src="img/java.png" width="90%" class="noborder" /> 
 
-## Examples
+## botor: Reticulate wrapper on 'boto3'
+
+Loading the `botor` package might take a while as it will also `import` the `boto3` Python module in the background:
 
 ```r
-todo
+system.time(library(botor))
+#>    user  system elapsed 
+#>   1.131   0.250   1.191
 ```
+ 
+<div class="fragment">
+```r
+iam_whoami()
+#> [1] "gergely-dev"
+```
+</div>
+ 
+<div class="fragment">
+```r
+kms_decrypt("QWERTY...")
+#> [1] "Hi there!"
+```
+</div>
+ 
+## Useful AWS S3 helpers
+ 
+```r
+t <- tempfile()
+s3_download_file('s3://botor/example-data/mtcars.csv', t)
+read.csv(t)
+unlink(t)
+```
+ 
+<div class="fragment">
+```r
+s3_read('s3://botor/example-data/mtcars.csv', read.csv)
+#> DEBUG [2019-04-06 02:08:14] Downloaded 1303 bytes from s3://botor/example-data/mtcars.csv and saved at '/tmp/Rtmpme20BF/filec247798c20d'
+#>     mpg cyl  disp  hp drat    wt  qsec vs am gear carb
+#> 1  21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4
+#> 2  21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4
+#> 3  22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1
+#> 4  21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1
+#> 5  18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2
+#> 6  18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1
+#> 7  14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4
+#> 8  24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2
+#> 9  22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2
+#> 10 19.2   6 167.6 123 3.92 3.440 18.30  1  0    4    4
+#> 11 17.8   6 167.6 123 3.92 3.440 18.90  1  0    4    4
+#> 12 16.4   8 275.8 180 3.07 4.070 17.40  0  0    3    3
+#> 13 17.3   8 275.8 180 3.07 3.730 17.60  0  0    3    3
+#> 14 15.2   8 275.8 180 3.07 3.780 18.00  0  0    3    3
+#> 15 10.4   8 472.0 205 2.93 5.250 17.98  0  0    3    4
+#> 16 10.4   8 460.0 215 3.00 5.424 17.82  0  0    3    4
+#> 17 14.7   8 440.0 230 3.23 5.345 17.42  0  0    3    4
+#> 18 32.4   4  78.7  66 4.08 2.200 19.47  1  1    4    1
+#> 19 30.4   4  75.7  52 4.93 1.615 18.52  1  1    4    2
+#> 20 33.9   4  71.1  65 4.22 1.835 19.90  1  1    4    1
+#> 21 21.5   4 120.1  97 3.70 2.465 20.01  1  0    3    1
+#> 22 15.5   8 318.0 150 2.76 3.520 16.87  0  0    3    2
+#> 23 15.2   8 304.0 150 3.15 3.435 17.30  0  0    3    2
+#> 24 13.3   8 350.0 245 3.73 3.840 15.41  0  0    3    4
+#> 25 19.2   8 400.0 175 3.08 3.845 17.05  0  0    3    2
+#> 26 27.3   4  79.0  66 4.08 1.935 18.90  1  1    4    1
+#> 27 26.0   4 120.3  91 4.43 2.140 16.70  0  1    5    2
+#> 28 30.4   4  95.1 113 3.77 1.513 16.90  1  1    5    2
+#> 29 15.8   8 351.0 264 4.22 3.170 14.50  0  1    5    4
+#> 30 19.7   6 145.0 175 3.62 2.770 15.50  0  1    5    6
+#> 31 15.0   8 301.0 335 3.54 3.570 14.60  0  1    5    8
+#> 32 21.4   4 121.0 109 4.11 2.780 18.60  1  1    4    2
+```
+</div>
+ 
+## Useful AWS S3 helpers
+ 
+```r
+s3_write(mtcars, 's3://botor/example-data/mtcars.csv', fwrite)
+s3_write(mtcars, 's3://botor/example-data/mtcars.RDS', saveRDS)
+library(jsonlite)
+s3_write(mtcars, 's3://botor/example-data/mtcars.RDS', writeJSON, compress = 'gzip')
+```
+ 
+<div class="fragment">
+```r
+s3_ls('s3://botor/example-data')
+#> DEBUG [2019-04-06 06:16:17] Found 8 item(s) in s3://botor/example-data
+#>   bucket_name                         key
+#> 1       botor               example-data/
+#> 2       botor     example-data/mtcars.RDS
+#> 3       botor     example-data/mtcars.csv
+#> 4       botor example-data/mtcars.csv.bz2
+#> 5       botor  example-data/mtcars.csv.gz
+#> 6       botor  example-data/mtcars.csv.xz
+#> 7       botor    example-data/mtcars.csv2
+#> 8       botor    example-data/mtcars.json
+#>                                      uri size    owner           last_modified
+#> 1               s3://botor/example-data/    0 daroczig 2018-09-01 23:04:54 UTC
+#> 2     s3://botor/example-data/mtcars.RDS 1217 daroczig 2018-09-02 22:08:17 UTC
+#> 3     s3://botor/example-data/mtcars.csv 1303 daroczig 2018-09-02 22:07:25 UTC
+#> 4 s3://botor/example-data/mtcars.csv.bz2  553 daroczig 2019-01-14 00:07:17 UTC
+#> 5  s3://botor/example-data/mtcars.csv.gz  567 daroczig 2019-01-14 00:02:59 UTC
+#> 6  s3://botor/example-data/mtcars.csv.xz  596 daroczig 2019-01-14 00:07:20 UTC
+#> 7    s3://botor/example-data/mtcars.csv2 1303 daroczig 2018-09-02 22:11:02 UTC
+#> 8    s3://botor/example-data/mtcars.json 4147 daroczig 2018-09-02 22:07:26 UTC
+```
+</div> 
+ 
+## Useful AWS KMS helpers 
 
+```r
+t <- kms_encrypt(key = 'alias/demo', text = 'hi there')
+kms_decrypt(t)
+#> [1] hi there
+```
+ 
+<div class="fragment">
+Getting secrets from the AWS System Manager's Parameter Store:
+```r
+ssm_get_parameter('/path/to/secret')
+```
+</div> 
+
+<div class="fragment">
+```r
+?kms_generate_data_key
+?kms_encrypt_file
+?kms_decrypt_file
+```
+</div> 
+
+## Missing AWS helpers
+
+```r
+iam <- botor_client('iam', type = 'client')
+iam()$get_user()$User$UserName
+```
+ 
+```r
+ssm_get_parameter
+#> function (path, decrypt = TRUE) 
+#> {
+#>     log_trace("Looking up %s in AWS System Manager's Parameter Store", path)
+#>     trypy(ssm()$get_parameter(Name = path, WithDecryption = decrypt)$Parameter$Value)
+#> }
+#> <bytecode: 0x55d260bf8448>
+#> <environment: namespace:botor>
+```
 
 </section></section>
 <section>
 <section class="titleslide slide level1">
 <h1>Scheduling jobs</h1>
-<img src="img/jenkins rage.png" width="50%" class="noborder">
+<img src="img/jenkins rage.png" width="33%" class="noborder">
 
 ## Installing Jenkins
 
@@ -658,65 +1396,106 @@ sudo netstat -tapen | grep java
     2. Proceed with installing the suggested plugins
     3. Create your first user(s)
 
-## Scheduling jobs via cron
+<div class="fragment">
+More details: https://github.com/daroczig/CEU-R-prod#prepare-to-schedule-r-commands
+</div> 
 
-crontab.guru
+## Scheduling jobs via cron(ish)
+ 
+<img src="img/crontab-guru.png" width="60%" class="noborder" />
 
-H => hash
+Source: [crontab.guru](crontab.guru)
 
 ## Jenkins output
 
-<img src="img/jenkins-binance-prices.png" width="50%" class="noborder">
-
-rotation
-
-sync to cloudwatch
+<img src="img/jenkins-binance-prices.png" width="70%" class="noborder">
 
 ## Jenkins plugins
 
-todo
-
-extended email (edit subject / body, attachement, inline images -- even from docker)
-slack notification
-
+> - Extended email (edit subject & body, attachments, inline images, flexible triggers)
+> - Slack notifications
+> - Write to Cloudwatch logs
+> - Start remote jobs with AWS Batch
+> - Groovy Postbuild to override build status and set custom badges
+> - Jenkins Job DSL Plugin to define jobs in a programmatic way
 
 </section></section>
 <section>
 <section class="titleslide slide level1">
 <h1>Reproducible jobs</h1>
-<img src="img/docker.jpg" class="noborder">
+<img src="img/docker.jpg" width="50%" class="noborder">
 
+## Creating Docker images
 
-1. example dockerfile
-2. MRAN
-2. dockerhub
-3. exeample docker run command
-4. docker-run wrapper
-5. spot instances
+```dockerfile
+FROM rocker/r-base
 
----
+RUN apt-get update && apt-get install -y python-pip
+RUN pip install boto3
 
-https://stackoverflow.com/questions/8175912/load-multiple-packages-at-once/8176099#8176099
+RUN apt-get update && apt-get install -y --allow-downgrades \
+    libcurl4=7.64.0-1 libcurl4-openssl-dev libgit2-dev libssl-dev libssh2-1-dev
+RUN R -e "install.packages(c('reticulate', 'devtools'), repos = 'https://cran.rstudio.com/')"
+RUN R -e "devtools::install_github('daroczig/binancer', upgrade_dependencies = FALSE)"
 
----
-
-<blockquote class="twitter-tweet" data-lang="en" align="center" conversation="none"><p lang="en" dir="ltr">How it feels when you look into a new issue opened for some of your stale <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> projects <a href="https://t.co/CvuED5eB5A">https://t.co/CvuED5eB5A</a> <a href="https://t.co/LGQC76bcOX">pic.twitter.com/LGQC76bcOX</a></p>&mdash; Gergely Daróczi (@daroczig) <a href="https://twitter.com/daroczig/status/675342535267495936?ref_src=twsrc%5Etfw">December 11, 2015</a></blockquote>
-
-## code
-
-```r
-1 + 2
-ggplot(mtcars, aes(3)
+ADD myScript.R /tmp/myScript.R
+CMD ["R"]
 ```
 
-## Later on
+## Creating reproducible Docker images
 
-https://github.com/rajgoel/reveal.js-plugins/tree/master/embed-tweet
+Use `littler`:
 
-https://twitter.com/daroczig/status/675342535267495936
+```bash
+install2.r --error reticulate devtools
+installGithub.r daroczig/binancer
+```
+ 
+<div class="fragment">
+Use MRAN:
 
-https://twitter.com/daroczig/status/682966258904510464
+```bash
+export REPO=https://mran.microsoft.com/snapshot/2019-04-01/
+install2.r --error -r $REPO reticulate devtools
+```
+</div>                       
+
+<div class="fragment">
+Fix GitHub references:
+
+```bash
+installGithub.r daroczig/binancer@master
+installGithub.r daroczig/binancer@v2.0
+installGithub.r daroczig/binancer@lepkeful
+```
+</div>
+
+## Sharing and using Docker images
+                       
+Using Docker Hub:                       
+
+```bash
+docker build -t test .
+docker push daroczig/test
+
+docker pull daroczig/test
+docker run -ti --rm daroczig/test R
+
+docker run --rm -v myScript.R:/tmp/myScript.R daroczig/test Rscript /tmp/myScript.R
+```
+
+<div class="fragment">
+> - Use Jenkins or Travis etc to build (and keep up-to-date) your Docker images
+> - Also check Amazon's Elastic Container Registry (ECR) for private Docker images
+> - Write a wrapper around `docker run --rm ecr.eu-west-1.amazonaws.com/test:latest`
+> - Write a wrapper for starting temporarily cloud instances, run `docker pull` and your Docker runner, then shut down the node after the script finished
+</div>
 
 </section></section>
-
-<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<section>
+<section class="titleslide slide level1">
+  <h2 class="fragment" data-fragment-index="1">Thanks!</h2>
+  <img src="https://66.media.tumblr.com/7f94de2ed3b590dbf59d501041699d94/tumblr_inline_p7tf11SlMX1raprkq_400.gif" width="50%" />
+  <p class="fragment" data-fragment-index="1">Twitter: <a href="https://twitter.com/daroczig">@daroczig</a></p>
+  
+</section></section>
