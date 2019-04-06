@@ -1472,8 +1472,6 @@ installGithub.r daroczig/binancer@lepkeful
 
 ## Sharing and using Docker images
                        
-Using Docker Hub:                       
-
 ```bash
 docker build -t test .
 docker push daroczig/test
@@ -1487,6 +1485,7 @@ docker run --rm -v myScript.R:/tmp/myScript.R daroczig/test Rscript /tmp/myScrip
 <div class="fragment">
 > - Use Jenkins or Travis etc to build (and keep up-to-date) your Docker images
 > - Also check Amazon's Elastic Container Registry (ECR) for private Docker images
+> - Use EC2 or assumed roles in IAM instead of AWS credentials
 > - Write a wrapper around `docker run --rm ecr.eu-west-1.amazonaws.com/test:latest`
 > - Write a wrapper for starting temporarily cloud instances, run `docker pull` and your Docker runner, then shut down the node after the script finished
 </div>
