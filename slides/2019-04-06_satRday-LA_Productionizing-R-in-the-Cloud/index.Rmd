@@ -209,13 +209,13 @@ metrics <- round_metrics(metrics)
 ## Read more!
  
 <div style="float:left; width:50%;">
-<img src="https://github.com/jennybc/coe-smells-and-feels/raw/master/2018-07_user-brisbane-400.jpeg" />
+<img src="https://github.com/jennybc/code-smells-and-feels/raw/master/2018-07_user-brisbane-400.jpeg" />
 
 *Code Smells and Feels* by Jenny Bryan
 </div>
 
 <div style="float:left; width:50%;">
-<img src="img/book clean code.jpg" />
+<img src="img/book advanced r.png" />
 
 *Advanced R* by Hadley Wickham
 </div>
