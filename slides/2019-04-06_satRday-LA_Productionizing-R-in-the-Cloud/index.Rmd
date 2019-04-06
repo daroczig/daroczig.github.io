@@ -35,8 +35,8 @@ document.getElementById("dummy-slide").remove();
 ## Every Data Science project starts with ... ETL
 
 > - Have you ever written an R script to be run in a non-interactive way?
-> - Have you ever scheduled an R script to run without human intervention?
 > - Did it work?
+> - Have you ever scheduled an R script to run without human intervention?
 > - Do you have any R script running in production?
 > - ... with central logging, proper monitoring and alerting?
 > - ... run on cheap spot-instances with real-time performance metrics collected and feeding an AI picking the optimal instance type for the next run?
@@ -64,7 +64,7 @@ Today we can just pick the right open-source tool, such as
 
 ----
 
-<img src="http://i.imgur.com/9QpNv.gif" width="80%">
+<img src="http://i.imgur.com/9QpNv.gif" width="70">
 
 Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took">When my co-worker wants to simplify code ...</a>
 
@@ -1297,7 +1297,7 @@ s3_read('s3://botor/example-data/mtcars.csv', read.csv)
 s3_write(mtcars, 's3://botor/example-data/mtcars.csv', fwrite)
 s3_write(mtcars, 's3://botor/example-data/mtcars.RDS', saveRDS)
 library(jsonlite)
-s3_write(mtcars, 's3://botor/example-data/mtcars.RDS', writeJSON, compress = 'gzip')
+s3_write(mtcars, 's3://botor/example-data/mtcars.json', writeJSON, compress = 'gzip')
 ```
  
 <div class="fragment">
