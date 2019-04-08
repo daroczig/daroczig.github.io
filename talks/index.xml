@@ -30,6 +30,24 @@
     </item>
     
     <item>
+      <title>State of the R (Data Christmas)</title>
+      <link>https://daroczig.github.io/talks/2018-12-19_burn_christmas/</link>
+      <pubDate>Wed, 19 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-12-19_burn_christmas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>My R Journey (RRR: Renitent Rcoholics Reunion)</title>
+      <link>https://daroczig.github.io/talks/2018-12-04_burn_renitent-rcoholics/</link>
+      <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-12-04_burn_renitent-rcoholics/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>A Practical Introduction to Data Science and Engineering with R (workshop)</title>
       <link>https://daroczig.github.io/talks/2018-10-31-crunch-workshop/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
@@ -80,6 +98,15 @@
       <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2018-05-14_erum_welcome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Here we R (Data Christmas)</title>
+      <link>https://daroczig.github.io/talks/2017-12-20_burn_christmas/</link>
+      <pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-12-20_burn_christmas/</guid>
       <description></description>
     </item>
     
