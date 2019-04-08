@@ -13,10 +13,325 @@
     
     <item>
       <title>Productionizing R scripts in the cloud</title>
-      <link>https://daroczig.github.io/talks/productionizing-r-scripts-in-the-cloud/</link>
+      <link>https://daroczig.github.io/talks/2019-04-06_satrday-la_productionizing-r-in-the-cloud/</link>
       <pubDate>Sat, 06 Apr 2019 00:00:00 +0000</pubDate>
       
-      <guid>https://daroczig.github.io/talks/productionizing-r-scripts-in-the-cloud/</guid>
+      <guid>https://daroczig.github.io/talks/2019-04-06_satrday-la_productionizing-r-in-the-cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Szavakba öntött adatelemzés R markdown-nal</title>
+      <link>https://daroczig.github.io/talks/2019-02-18_r-ladies_r-markdown/</link>
+      <pubDate>Mon, 18 Feb 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-02-18_r-ladies_r-markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Practical Introduction to Data Science and Engineering with R (workshop)</title>
+      <link>https://daroczig.github.io/talks/2018-10-31-crunch-workshop/</link>
+      <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-10-31-crunch-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Managing Database Credentials and Connections in R</title>
+      <link>https://daroczig.github.io/talks/2018-07-12_user_dbr/</link>
+      <pubDate>Thu, 12 Jul 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-07-12_user_dbr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analytics databases in a startup environment: beyond MySQL and Spark</title>
+      <link>https://daroczig.github.io/talks/2018-06-14_budapest-data-forum_analytics-databases-in-a-startup-environment-beyond-mysql-and-spark/</link>
+      <pubDate>Thu, 14 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-06-14_budapest-data-forum_analytics-databases-in-a-startup-environment-beyond-mysql-and-spark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Closing Remarks</title>
+      <link>https://daroczig.github.io/talks/2018-05-16_erum_closing-remarks/</link>
+      <pubDate>Wed, 16 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-05-16_erum_closing-remarks/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Conference Opening</title>
+      <link>https://daroczig.github.io/talks/2018-05-15_erum_conference-opening/</link>
+      <pubDate>Tue, 15 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-05-15_erum_conference-opening/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Welcome Reception</title>
+      <link>https://daroczig.github.io/talks/2018-05-14_erum_welcome/</link>
+      <pubDate>Mon, 14 May 2018 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2018-05-14_erum_welcome/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Practical Introduction to Data Science and Engineering with R (workshop)</title>
+      <link>https://daroczig.github.io/talks/2017-10-18_crunch_r-workshop/</link>
+      <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-10-18_crunch_r-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream processing with R and Amazon Kinesis</title>
+      <link>https://daroczig.github.io/talks/2017-07-05_user_kinesis/</link>
+      <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-07-05_user_kinesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream processing with R and Amazon Kinesis</title>
+      <link>https://daroczig.github.io/talks/2017-06-06_earl_stream-processing-with-r-in-aws/</link>
+      <pubDate>Tue, 06 Jun 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-06-06_earl_stream-processing-with-r-in-aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream processing with R and Amazon Kinesis</title>
+      <link>https://daroczig.github.io/talks/2017-04-21_burn_stream-processing-with-r-and-amazon-kinesis/</link>
+      <pubDate>Fri, 21 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-04-21_burn_stream-processing-with-r-and-amazon-kinesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream processing with R in AWS</title>
+      <link>https://daroczig.github.io/talks/2017-04-14_barug_awr/</link>
+      <pubDate>Fri, 14 Apr 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-04-14_barug_awr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream processing with R and Amazon Kinesis</title>
+      <link>https://daroczig.github.io/talks/2017-03-04_la-r-meetup_stream-processing-with-r-in-aws/</link>
+      <pubDate>Sat, 04 Mar 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-03-04_la-r-meetup_stream-processing-with-r-in-aws/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rrrretrospect 2016</title>
+      <link>https://daroczig.github.io/talks/2016-12-19_burn_rrrretrospect-2016/</link>
+      <pubDate>Mon, 19 Dec 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-12-19_burn_rrrretrospect-2016/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introduction to R (workshop)</title>
+      <link>https://daroczig.github.io/talks/2016-10-22_budapest-bi-forum_r-workshop/</link>
+      <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-10-22_budapest-bi-forum_r-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream processing with R and Amazon Kinesis</title>
+      <link>https://daroczig.github.io/talks/2016-09-15_earl_stream-processing-with-r-and-amazon-kinesis/</link>
+      <pubDate>Thu, 15 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-09-15_earl_stream-processing-with-r-and-amazon-kinesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Conference Opening</title>
+      <link>https://daroczig.github.io/talks/2016-09-03_satrday_conference-opening/</link>
+      <pubDate>Sat, 03 Sep 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-09-03_satrday_conference-opening/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream processing with R and Amazon Kinesis</title>
+      <link>https://daroczig.github.io/talks/2016-07-09_big-data-la_stream-processing-with-r-and-amazon-kinesis/</link>
+      <pubDate>Sat, 09 Jul 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-07-09_big-data-la_stream-processing-with-r-and-amazon-kinesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>satRdays (lightning talk)</title>
+      <link>https://daroczig.github.io/talks/2016-06-30_user_satday-lightning-talk/</link>
+      <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-06-30_user_satday-lightning-talk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Stream adatok kezelése Amazon Kinesis és R segítségével</title>
+      <link>https://daroczig.github.io/talks/2016-06-16_budapest-data-forum_stream-processing-with-r-and-amazon-kinesis/</link>
+      <pubDate>Thu, 16 Jun 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-06-16_budapest-data-forum_stream-processing-with-r-and-amazon-kinesis/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Managing and Optimizing Facebook Ad Campaigns with R</title>
+      <link>https://daroczig.github.io/talks/2016-03-09_domino-webinar_managing-and-optimizing-facebook-ad-campaigns-with-r/</link>
+      <pubDate>Wed, 09 Mar 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-03-09_domino-webinar_managing-and-optimizing-facebook-ad-campaigns-with-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analyzing and managing Facebook ads from R</title>
+      <link>https://daroczig.github.io/talks/2015-11-17_la-r-meetup_analyzing-and-managing-facebook-ads-from-r/</link>
+      <pubDate>Tue, 17 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-11-17_la-r-meetup_analyzing-and-managing-facebook-ads-from-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analyzing and managing Facebook ads from R</title>
+      <link>https://daroczig.github.io/talks/2015-11-03_earl_analyzing-and-managing-facebook-ads-from-r/</link>
+      <pubDate>Tue, 03 Nov 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-11-03_earl_analyzing-and-managing-facebook-ads-from-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hatékony online marketing az fbRads csomag segítségével</title>
+      <link>https://daroczig.github.io/talks/2015-09-30_burn_fbrads/</link>
+      <pubDate>Wed, 30 Sep 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-09-30_burn_fbrads/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Analyzing and managing Facebook ads from R</title>
+      <link>https://daroczig.github.io/talks/2015-07-01_user_fbrads/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-07-01_user_fbrads/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R users all around the world (poster)</title>
+      <link>https://daroczig.github.io/talks/2015-07-01_user_r-users-all-around-the-world/</link>
+      <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-07-01_user_r-users-all-around-the-world/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R markdown (workshop)</title>
+      <link>https://daroczig.github.io/talks/2015-06-30_user_r-markdown-tutorial/</link>
+      <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-06-30_user_r-markdown-tutorial/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network analysis of the Hungarian interbank lending market</title>
+      <link>https://daroczig.github.io/talks/2015-05-30_r-in-finance_network-analysis-of-the-hungarian-interbank-lending-market/</link>
+      <pubDate>Sat, 30 May 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-05-30_r-in-finance_network-analysis-of-the-hungarian-interbank-lending-market/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R warm-up talk</title>
+      <link>https://daroczig.github.io/talks/2014-11-26_budapest-bi-forum_r-warmup/</link>
+      <pubDate>Wed, 26 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-11-26_budapest-bi-forum_r-warmup/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Introduction to R (workshop)</title>
+      <link>https://daroczig.github.io/talks/2014-11-25_budapest_bi_forum-r-workshop/</link>
+      <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-11-25_budapest_bi_forum-r-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rapport: a report templating system in R</title>
+      <link>https://daroczig.github.io/talks/2014-07-03_user_rapport-a-report-templating-system-in-r/</link>
+      <pubDate>Thu, 03 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-07-03_user_rapport-a-report-templating-system-in-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R users all around the world (poster)</title>
+      <link>https://daroczig.github.io/talks/2014-07-01_user_r-users-all-around-the-world/</link>
+      <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-07-01_user_r-users-all-around-the-world/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Potential risks in running R on the cloud</title>
+      <link>https://daroczig.github.io/talks/2014-01-13_it-security-meetup_potential-risks-in-running-r-on-the-cloud/</link>
+      <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-01-13_it-security-meetup_potential-risks-in-running-r-on-the-cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pander: A Pandoc writer in R (lightning talk)</title>
+      <link>https://daroczig.github.io/talks/2013-07-11_user-2013_pander-lightning-talk/</link>
+      <pubDate>Thu, 11 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2013-07-11_user-2013_pander-lightning-talk/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A cloud infrastructure for R reports (poster)</title>
+      <link>https://daroczig.github.io/talks/2013-07-10_user-2013_rapporter-poster/</link>
+      <pubDate>Wed, 10 Jul 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2013-07-10_user-2013_rapporter-poster/</guid>
       <description></description>
     </item>
     

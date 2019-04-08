@@ -3,8 +3,183 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://daroczig.github.io/talks/productionizing-r-scripts-in-the-cloud/</loc>
+    <loc>https://daroczig.github.io/talks/2019-04-06_satrday-la_productionizing-r-in-the-cloud/</loc>
     <lastmod>2019-04-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2019-02-18_r-ladies_r-markdown/</loc>
+    <lastmod>2019-02-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2018-10-31-crunch-workshop/</loc>
+    <lastmod>2018-10-31T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2018-07-12_user_dbr/</loc>
+    <lastmod>2018-07-12T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2018-06-14_budapest-data-forum_analytics-databases-in-a-startup-environment-beyond-mysql-and-spark/</loc>
+    <lastmod>2018-06-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2018-05-16_erum_closing-remarks/</loc>
+    <lastmod>2018-05-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2018-05-15_erum_conference-opening/</loc>
+    <lastmod>2018-05-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2018-05-14_erum_welcome/</loc>
+    <lastmod>2018-05-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2017-10-18_crunch_r-workshop/</loc>
+    <lastmod>2017-10-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2017-07-05_user_kinesis/</loc>
+    <lastmod>2017-07-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2017-06-06_earl_stream-processing-with-r-in-aws/</loc>
+    <lastmod>2017-06-06T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2017-04-21_burn_stream-processing-with-r-and-amazon-kinesis/</loc>
+    <lastmod>2017-04-21T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2017-04-14_barug_awr/</loc>
+    <lastmod>2017-04-14T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2017-03-04_la-r-meetup_stream-processing-with-r-in-aws/</loc>
+    <lastmod>2017-03-04T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-12-19_burn_rrrretrospect-2016/</loc>
+    <lastmod>2016-12-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-10-22_budapest-bi-forum_r-workshop/</loc>
+    <lastmod>2016-10-22T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-09-15_earl_stream-processing-with-r-and-amazon-kinesis/</loc>
+    <lastmod>2016-09-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-09-03_satrday_conference-opening/</loc>
+    <lastmod>2016-09-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-07-09_big-data-la_stream-processing-with-r-and-amazon-kinesis/</loc>
+    <lastmod>2016-07-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-06-30_user_satday-lightning-talk/</loc>
+    <lastmod>2016-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-06-16_budapest-data-forum_stream-processing-with-r-and-amazon-kinesis/</loc>
+    <lastmod>2016-06-16T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2016-03-09_domino-webinar_managing-and-optimizing-facebook-ad-campaigns-with-r/</loc>
+    <lastmod>2016-03-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2015-11-17_la-r-meetup_analyzing-and-managing-facebook-ads-from-r/</loc>
+    <lastmod>2015-11-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2015-11-03_earl_analyzing-and-managing-facebook-ads-from-r/</loc>
+    <lastmod>2015-11-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2015-09-30_burn_fbrads/</loc>
+    <lastmod>2015-09-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2015-07-01_user_fbrads/</loc>
+    <lastmod>2015-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2015-07-01_user_r-users-all-around-the-world/</loc>
+    <lastmod>2015-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2015-06-30_user_r-markdown-tutorial/</loc>
+    <lastmod>2015-06-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2015-05-30_r-in-finance_network-analysis-of-the-hungarian-interbank-lending-market/</loc>
+    <lastmod>2015-05-30T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2014-11-26_budapest-bi-forum_r-warmup/</loc>
+    <lastmod>2014-11-26T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2014-11-25_budapest_bi_forum-r-workshop/</loc>
+    <lastmod>2014-11-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2014-07-03_user_rapport-a-report-templating-system-in-r/</loc>
+    <lastmod>2014-07-03T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2014-07-01_user_r-users-all-around-the-world/</loc>
+    <lastmod>2014-07-01T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2014-01-13_it-security-meetup_potential-risks-in-running-r-on-the-cloud/</loc>
+    <lastmod>2014-01-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2013-07-11_user-2013_pander-lightning-talk/</loc>
+    <lastmod>2013-07-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2013-07-10_user-2013_rapporter-poster/</loc>
+    <lastmod>2013-07-10T00:00:00+00:00</lastmod>
   </url>
   
   <url>
