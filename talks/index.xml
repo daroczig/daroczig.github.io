@@ -120,6 +120,15 @@
     </item>
     
     <item>
+      <title>Highlights from the useR! 2017 conference</title>
+      <link>https://daroczig.github.io/talks/2017-07-18_burn_user-retro/</link>
+      <pubDate>Tue, 18 Jul 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-07-18_burn_user-retro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Stream processing with R and Amazon Kinesis</title>
       <link>https://daroczig.github.io/talks/2017-07-05_user_kinesis/</link>
       <pubDate>Thu, 06 Jul 2017 00:00:00 +0000</pubDate>

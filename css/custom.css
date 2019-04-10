@@ -1,0 +1,21 @@
+.list ul li .title:hover, .list ul li .title:focus {
+    color: #212121;
+}
+
+a {
+    font-family: Lato, Helvetica, sans-serif;
+    color: #212121;
+    font-weight: 700 !important;
+}
+
+a:hover, a:focus {
+    color: #d66a00 !important;
+    font-weight: 700 !important;
+    text-decoration: none;
+}
+
+ul li span {
+    font-family: Lato, Helvetica, sans-serif;
+    color: #212121;
+    font-weight: 300;
+}
