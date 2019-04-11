@@ -2,6 +2,12 @@
     color: #212121;
 }
 
+ul li span {
+    font-family: Lato, Helvetica, sans-serif;
+    color: #212121;
+    font-weight: 300;
+}
+
 a {
     font-family: Lato, Helvetica, sans-serif;
     color: #212121;
@@ -14,8 +20,14 @@ a:hover, a:focus {
     text-decoration: none;
 }
 
-ul li span {
-    font-family: Lato, Helvetica, sans-serif;
-    color: #212121;
-    font-weight: 300;
+
+img {
+    -webkit-transition: -webkit-transform .8s ease-in-out;
+    transition:         transform .8s ease-in-out;
+    -webkit-transform: rotate(-6deg);
+    transform: rotate(-6deg);
+}
+img:hover {
+    -webkit-transform: rotate(6deg);
+    transform: rotate(6deg);
 }
