@@ -381,6 +381,15 @@
     </item>
     
     <item>
+      <title>Creating statistical reports in the past, present and future</title>
+      <link>https://daroczig.github.io/talks/2014-06-05_idc_stats-history/</link>
+      <pubDate>Thu, 05 Jun 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-06-05_idc_stats-history/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>A térbeli mobilitás elemzésének optimalizálása R-ben</title>
       <link>https://daroczig.github.io/talks/2014-05-21_burn_terbeli-mobilitas/</link>
       <pubDate>Wed, 21 May 2014 00:00:00 +0000</pubDate>
@@ -408,6 +417,33 @@
     </item>
     
     <item>
+      <title>Creating statistical reports in the past, present and future</title>
+      <link>https://daroczig.github.io/talks/2014-03-24_bucharest_pander/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-03-24_bucharest_pander/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Human impact from a bird’s eye view</title>
+      <link>https://daroczig.github.io/talks/2014-04-03_telecom-italia_big-data-challenge/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-04-03_telecom-italia_big-data-challenge/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The relationship between spatial focusing and migration intensity – Hungarian county level evidence</title>
+      <link>https://daroczig.github.io/talks/2014-06-27_epc_migration/</link>
+      <pubDate>Mon, 24 Mar 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-06-27_epc_migration/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Csomagkészítés és ami vele jár</title>
       <link>https://daroczig.github.io/talks/2014-02-19_burn_csomagkeszites/</link>
       <pubDate>Wed, 19 Feb 2014 00:00:00 +0000</pubDate>
@@ -422,6 +458,15 @@
       <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2014-01-13_it-security-meetup_potential-risks-in-running-r-on-the-cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Felhőtlen statisztika a felhőben</title>
+      <link>https://daroczig.github.io/talks/2013-11-21_mst_rapporter/</link>
+      <pubDate>Thu, 21 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2013-11-21_mst_rapporter/</guid>
       <description></description>
     </item>
     
