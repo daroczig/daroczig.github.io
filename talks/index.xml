@@ -210,6 +210,15 @@
     </item>
     
     <item>
+      <title>Highlights from the useR! 2016 conference</title>
+      <link>https://daroczig.github.io/talks/2016-08-03_burn_user_retro/</link>
+      <pubDate>Wed, 03 Aug 2016 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2016-08-03_burn_user_retro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Stream processing with R and Amazon Kinesis</title>
       <link>https://daroczig.github.io/talks/2016-07-09_big-data-la_stream-processing-with-r-and-amazon-kinesis/</link>
       <pubDate>Sat, 09 Jul 2016 00:00:00 +0000</pubDate>
@@ -282,6 +291,15 @@
     </item>
     
     <item>
+      <title>Highlights from the useR! 2015 conference</title>
+      <link>https://daroczig.github.io/talks/2015-07-13_burn_user-retro/</link>
+      <pubDate>Mon, 13 Jul 2015 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2015-07-13_burn_user-retro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Analyzing and managing Facebook ads from R</title>
       <link>https://daroczig.github.io/talks/2015-07-01_user_fbrads/</link>
       <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
@@ -314,6 +332,15 @@
       <pubDate>Sat, 30 May 2015 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2015-05-30_r-in-finance_network-analysis-of-the-hungarian-interbank-lending-market/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data visualization with R at the Big Data Challenge of Telecom Italia</title>
+      <link>https://daroczig.github.io/talks/2014-11-27_budapest_bi_forum-telecom-italia/</link>
+      <pubDate>Thu, 27 Nov 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-11-27_budapest_bi_forum-telecom-italia/</guid>
       <description></description>
     </item>
     
@@ -354,11 +381,56 @@
     </item>
     
     <item>
+      <title>A térbeli mobilitás elemzésének optimalizálása R-ben</title>
+      <link>https://daroczig.github.io/talks/2014-05-21_burn_terbeli-mobilitas/</link>
+      <pubDate>Wed, 21 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-05-21_burn_terbeli-mobilitas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using R for the Big Data Challenge of Telecom Italia</title>
+      <link>https://daroczig.github.io/talks/2014-05-08_big_data_meetup-telecom-italia/</link>
+      <pubDate>Thu, 08 May 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-05-08_big_data_meetup-telecom-italia/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Transforming R objects to Pandoc’s markdown</title>
+      <link>https://daroczig.github.io/talks/2014-04-13_burn_pander/</link>
+      <pubDate>Sun, 13 Apr 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-04-13_burn_pander/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Csomagkészítés és ami vele jár</title>
+      <link>https://daroczig.github.io/talks/2014-02-19_burn_csomagkeszites/</link>
+      <pubDate>Wed, 19 Feb 2014 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2014-02-19_burn_csomagkeszites/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Potential risks in running R on the cloud</title>
       <link>https://daroczig.github.io/talks/2014-01-13_it-security-meetup_potential-risks-in-running-r-on-the-cloud/</link>
       <pubDate>Mon, 13 Jan 2014 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2014-01-13_it-security-meetup_potential-risks-in-running-r-on-the-cloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dashboard verseny pályázat</title>
+      <link>https://daroczig.github.io/talks/2013-11-07_budapest-bi-forum_dashboard/</link>
+      <pubDate>Thu, 07 Nov 2013 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2013-11-07_budapest-bi-forum_dashboard/</guid>
       <description></description>
     </item>
     
