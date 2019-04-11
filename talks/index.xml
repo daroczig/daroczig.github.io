@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Conference talk materials (upload of past talks in progress) on @daroczig&#39;s personal site</title>
+    <title>Conference talk materials on @daroczig&#39;s personal site</title>
     <link>https://daroczig.github.io/talks/</link>
-    <description>Recent content in Conference talk materials (upload of past talks in progress) on @daroczig&#39;s personal site</description>
+    <description>Recent content in Conference talk materials on @daroczig&#39;s personal site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
@@ -116,6 +116,15 @@
       <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2017-10-18_crunch_r-workshop/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Visual Methods to Teach Multivariate Statistics with R</title>
+      <link>https://daroczig.github.io/talks/2017-09-09_szeged_visual-methods/</link>
+      <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2017-09-09_szeged_visual-methods/</guid>
       <description></description>
     </item>
     
