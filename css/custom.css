@@ -30,7 +30,9 @@ img:hover {
     -webkit-transform: rotate(6deg);
     transform: rotate(6deg);
 }
-
+img.rounded {
+    border-radius: 10%;
+}
 
 /* Contact Form */
 input[type=text], input[type=email], textarea {
