@@ -66,3 +66,13 @@ button[type=submit]:hover {
     background-color: #45a049;
     color: white;
 }
+
+/* Navigation menu */
+.menu-active {
+    text-shadow: 2px 2px 10px gray;
+}
+
+p, li {
+    text-align: justify;
+    text-justify: inter-word;
+}

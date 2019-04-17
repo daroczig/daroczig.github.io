@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Conference talk materials on @daroczig&#39;s personal site</title>
+    <title>Conference talk slides and video recordings on daroczig@127.0.0.1</title>
     <link>https://daroczig.github.io/talks/</link>
-    <description>Recent content in Conference talk materials on @daroczig&#39;s personal site</description>
+    <description>Recent content in Conference talk slides and video recordings on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
@@ -44,15 +44,6 @@
       <pubDate>Tue, 04 Dec 2018 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2018-12-04_burn_renitent-rcoholics/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>A Practical Introduction to Data Science and Engineering with R (workshop)</title>
-      <link>https://daroczig.github.io/talks/2018-10-31-crunch-workshop/</link>
-      <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/talks/2018-10-31-crunch-workshop/</guid>
       <description></description>
     </item>
     
@@ -107,24 +98,6 @@
       <pubDate>Wed, 20 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2017-12-20_burn_christmas/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>A Practical Introduction to Data Science and Engineering with R (workshop)</title>
-      <link>https://daroczig.github.io/talks/2017-10-18_crunch_r-workshop/</link>
-      <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/talks/2017-10-18_crunch_r-workshop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Visual Methods to Teach Multivariate Statistics with R</title>
-      <link>https://daroczig.github.io/talks/2017-09-09_szeged_visual-methods/</link>
-      <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/talks/2017-09-09_szeged_visual-methods/</guid>
       <description></description>
     </item>
     
@@ -192,15 +165,6 @@
     </item>
     
     <item>
-      <title>Introduction to R (workshop)</title>
-      <link>https://daroczig.github.io/talks/2016-10-22_budapest-bi-forum_r-workshop/</link>
-      <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/talks/2016-10-22_budapest-bi-forum_r-workshop/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Stream processing with R and Amazon Kinesis</title>
       <link>https://daroczig.github.io/talks/2016-09-15_earl_stream-processing-with-r-and-amazon-kinesis/</link>
       <pubDate>Thu, 15 Sep 2016 00:00:00 +0000</pubDate>
@@ -237,7 +201,7 @@
     </item>
     
     <item>
-      <title>satRdays (lightning talk)</title>
+      <title>Let&#39;s meet on satRday!</title>
       <link>https://daroczig.github.io/talks/2016-06-30_user_satday-lightning-talk/</link>
       <pubDate>Thu, 30 Jun 2016 00:00:00 +0000</pubDate>
       
@@ -318,20 +282,11 @@
     </item>
     
     <item>
-      <title>R users all around the world (poster)</title>
+      <title>R users all around the world</title>
       <link>https://daroczig.github.io/talks/2015-07-01_user_r-users-all-around-the-world/</link>
       <pubDate>Wed, 01 Jul 2015 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2015-07-01_user_r-users-all-around-the-world/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>R markdown (workshop)</title>
-      <link>https://daroczig.github.io/talks/2015-06-30_user_r-markdown-tutorial/</link>
-      <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/talks/2015-06-30_user_r-markdown-tutorial/</guid>
       <description></description>
     </item>
     
@@ -363,11 +318,11 @@
     </item>
     
     <item>
-      <title>Introduction to R (workshop)</title>
-      <link>https://daroczig.github.io/talks/2014-11-25_budapest_bi_forum-r-workshop/</link>
-      <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
+      <title>Adatvizualizáció R-ben</title>
+      <link>https://daroczig.github.io/talks/2014-07-24_clemclub/</link>
+      <pubDate>Thu, 24 Jul 2014 00:00:00 +0000</pubDate>
       
-      <guid>https://daroczig.github.io/talks/2014-11-25_budapest_bi_forum-r-workshop/</guid>
+      <guid>https://daroczig.github.io/talks/2014-07-24_clemclub/</guid>
       <description></description>
     </item>
     
@@ -381,7 +336,7 @@
     </item>
     
     <item>
-      <title>R users all around the world (poster)</title>
+      <title>R users all around the world</title>
       <link>https://daroczig.github.io/talks/2014-07-01_user_r-users-all-around-the-world/</link>
       <pubDate>Tue, 01 Jul 2014 00:00:00 +0000</pubDate>
       
@@ -489,7 +444,7 @@
     </item>
     
     <item>
-      <title>pander: A Pandoc writer in R (lightning talk)</title>
+      <title>pander: A Pandoc writer in R</title>
       <link>https://daroczig.github.io/talks/2013-07-11_user-2013_pander-lightning-talk/</link>
       <pubDate>Thu, 11 Jul 2013 00:00:00 +0000</pubDate>
       
@@ -498,7 +453,7 @@
     </item>
     
     <item>
-      <title>A cloud infrastructure for R reports (poster)</title>
+      <title>A cloud infrastructure for R reports</title>
       <link>https://daroczig.github.io/talks/2013-07-10_user-2013_rapporter-poster/</link>
       <pubDate>Wed, 10 Jul 2013 00:00:00 +0000</pubDate>
       

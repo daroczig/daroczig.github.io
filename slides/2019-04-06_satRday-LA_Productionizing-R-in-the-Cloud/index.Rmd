@@ -64,7 +64,7 @@ Today we can just pick the right open-source tool, such as
 
 ----
 
-<img src="http://i.imgur.com/9QpNv.gif" width="70">
+<img src="http://i.imgur.com/9QpNv.gif" width="70%">
 
 Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took">When my co-worker wants to simplify code ...</a>
 
