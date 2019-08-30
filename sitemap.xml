@@ -3,8 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://daroczig.github.io/talks/</loc>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/</loc>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2019-09-dsc/</loc>
+    <lastmod>2019-09-18T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/2019-07-user/</loc>
+    <lastmod>2019-07-11T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/teaching/2019-06-egis/</loc>
+    <lastmod>2019-06-13T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://daroczig.github.io/teaching/</loc>
-    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
+    <lastmod>2019-06-13T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -13,19 +38,8 @@
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/</loc>
-    <lastmod>2019-05-08T00:00:00+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://daroczig.github.io/teaching/2018-2-ceu-mastering-r/</loc>
     <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://daroczig.github.io/talks/</loc>
-    <lastmod>2019-04-06T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -569,11 +583,11 @@
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/publications/2012-pecs/</loc>
+    <loc>https://daroczig.github.io/publications/2014-statszemle/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/publications/2014-statszemle/</loc>
+    <loc>https://daroczig.github.io/publications/2012-pecs/</loc>
   </url>
   
   <url>
@@ -586,7 +600,6 @@
   
   <url>
     <loc>https://daroczig.github.io/categories/</loc>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -651,7 +664,6 @@
   
   <url>
     <loc>https://daroczig.github.io/tags/</loc>
-    <priority>0</priority>
   </url>
   
   <url>

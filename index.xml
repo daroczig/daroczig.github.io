@@ -6,10 +6,37 @@
     <description>Recent content on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 08 May 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://daroczig.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Logging and using R in production</title>
+      <link>https://daroczig.github.io/talks/2019-09-dsc/</link>
+      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-09-dsc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The truth about satRdays</title>
+      <link>https://daroczig.github.io/talks/2019-07-user/</link>
+      <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-07-user/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Advanced Analytics: haladó R oktatás</title>
+      <link>https://daroczig.github.io/teaching/2019-06-egis/</link>
+      <pubDate>Thu, 13 Jun 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2019-06-egis/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Use-case Seminars</title>
@@ -1002,20 +1029,20 @@
     </item>
     
     <item>
-      <title>A Pécsről történő elvándorlás térbeli-időbeli mintázatai</title>
-      <link>https://daroczig.github.io/publications/2012-pecs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/publications/2012-pecs/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>A belső vándorlások fókuszáltsága Magyarországon, 1980–2011</title>
       <link>https://daroczig.github.io/publications/2014-statszemle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/publications/2014-statszemle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>A Pécsről történő elvándorlás térbeli-időbeli mintázatai</title>
+      <link>https://daroczig.github.io/publications/2012-pecs/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/publications/2012-pecs/</guid>
       <description></description>
     </item>
     

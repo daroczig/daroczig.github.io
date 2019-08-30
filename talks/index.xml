@@ -6,10 +6,28 @@
     <description>Recent content in Conference talk slides and video recordings on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Sat, 06 Apr 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://daroczig.github.io/talks/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Logging and using R in production</title>
+      <link>https://daroczig.github.io/talks/2019-09-dsc/</link>
+      <pubDate>Wed, 18 Sep 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-09-dsc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>The truth about satRdays</title>
+      <link>https://daroczig.github.io/talks/2019-07-user/</link>
+      <pubDate>Thu, 11 Jul 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-07-user/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Productionizing R scripts in the cloud</title>

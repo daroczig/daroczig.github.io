@@ -76,3 +76,7 @@ p, li {
     text-align: justify;
     text-justify: inter-word;
 }
+
+footer p {
+    text-align: center;    
+}
