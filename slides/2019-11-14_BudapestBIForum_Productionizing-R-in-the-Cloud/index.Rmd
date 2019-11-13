@@ -392,6 +392,8 @@ cat(readLines(t))
 * `appender_telegram`
 * `appender_syslog`
 * `appender_kinesis`
+
+* `appender_async`
 </div>
 </div>
 
