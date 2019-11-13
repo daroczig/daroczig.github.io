@@ -6,10 +6,46 @@
     <description>Recent content on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 18 Sep 2019 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 30 Jan 2020 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://daroczig.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Getting Things Logged</title>
+      <link>https://daroczig.github.io/talks/2020-01-rstudio-conf/</link>
+      <pubDate>Thu, 30 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2020-01-rstudio-conf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Productionizing R scripts in the cloud</title>
+      <link>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-r-in-prod/</link>
+      <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-r-in-prod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Advanced GBM Workshop</title>
+      <link>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-gbm-workshop-summary/</link>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-gbm-workshop-summary/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Using GBMs in Production</title>
+      <link>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-gbm/</link>
+      <pubDate>Tue, 12 Nov 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-gbm/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Monitoring and Logging R Scripts in Production</title>
