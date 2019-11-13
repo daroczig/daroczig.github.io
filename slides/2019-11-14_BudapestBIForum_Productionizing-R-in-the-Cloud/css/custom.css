@@ -37,3 +37,12 @@ code.sourceCode {
     background-color: lightgray;
     padding: 2px 10px;
 }
+
+/* two columns */
+
+.flexcontainer{
+    display: flex;
+}
+.flexcol{
+    flex: 1;
+}
