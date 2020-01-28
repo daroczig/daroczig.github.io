@@ -289,9 +289,7 @@ log_info('Script starting up...')
 log_info('The mtcars dataset has {nrow(mtcars)} rows!')
 #> INFO [2019-04-04 04:25:17] The mtcars dataset has 32 rows!
 ```
-</div>
 
-<div class="fragment">
 ```r
 log_info('Hello, {name}!', name = 'world')
 #> INFO [2019-09-19 04:58:13] Hello, world!
@@ -380,8 +378,7 @@ log_fatal('The last problem')
 <section class="titleslide slide level1">
 <h1>The Anatomy of a Log Request</h1>
 
-<!-- <img src="https://daroczig.github.io/logger/articles/logger_structure.svg" width="90%" class="noborder" /> -->
-<img src="img/logger_structure.png" width="90%" class="noborder" />
+<img src="img/logger structure.svg" width="90%" class="noborder" />
 
 ## The Anatomy of a Log Request
 
@@ -1199,22 +1196,28 @@ Thanks to System1 for the support while working on these packages:
 </section></section>
 <section>
 <section class="titleslide slide level1">
+
   <h2>
     Thanks everyone! 
    <span class="fragment" data-fragment-index="1">Happy logging!</span>
   </h2>
 
-<a href="https://thecodinglove.com/when-i-desperatly-search-in-the-logs-why-the-app" 
-   target="_new" class="fragment" data-fragment-index="1">
-  <video width="75%" controls autoplay muted loop>
-    <source src="https://ljdchost.com/010/ab2UUrD.webm" type="video/webm">
-  </video>
-</a>
-
   <div class="fragment" data-fragment-index="1">
   Follow me on Twitter or GitHub: <a href="https://twitter.com/daroczig">@daroczig</a>
-  </div>
-  
+
+  <a href="https://thecodinglove.com/when-i-desperatly-search-in-the-logs-why-the-app"  target="_new">
+    <video width="67%" controls autoplay muted loop>
+      <source src="https://ljdchost.com/010/ab2UUrD.webm" type="video/webm">
+    </video>
+  </a>
+
+  Source: 
+  <a href="https://thecodinglove.com/when-i-desperatly-search-in-the-logs-why-the-app" target="_new">
+     When I desperatly search in the logs why the app crashed
+  </a>
+ 
+ </div>
+ 
 </section></section>
 
 
