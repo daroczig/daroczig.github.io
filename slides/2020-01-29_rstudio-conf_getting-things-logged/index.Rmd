@@ -31,17 +31,17 @@ document.getElementById("dummy-slide").remove();
 <section class="titleslide slide level1">
 <h1>$ whoami</h1>
 
-<a href="https://system1.com", target="_new">
+<a href="https://system1.com" target="_new">
  <img src="img/system1-kpis.jpg" width="80%" />
 </a>
 
 ## $ whoami
-<a href="https://system1.com/research", target="_new">
+<a href="https://system1.com/research" target="_new">
   <img src="img/system1-research.jpg" width="80%" />
 </a>
 
 ## $ whoami
-<a href="https://system1.com/open-source", target="_new">
+<a href="https://system1.com/open-source" target="_new">
  <img src="img/system1-opensource.jpg" width="80%" />
 </a>
 </section></section>
