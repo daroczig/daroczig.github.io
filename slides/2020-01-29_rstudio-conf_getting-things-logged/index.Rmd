@@ -300,12 +300,14 @@ log_info('Hello, {name}!', name = 'world')
 
 ## logger: a collectiong of helper functions for logging
 
-<div class="fragment">
 ```r
 log_threshold(TRACE)
 log_eval(nrow(mtcars), level = TRACE)
 #> TRACE [2019-04-04 04:25:17] 'nrow(mtcars)' => '32L'
+```
 
+<div class="fragment">
+```r
 log_warnings()
 chisq.test(table(mtcars$gear, mtcars$am))
 #> WARN [2020-01-27 12:32:04] Chi-squared approximation may be incorrect
@@ -653,7 +655,7 @@ attr(my_appender, 'async_writer_process')$is_alive()
 * log record layout
 * log record destination(s)
 
-## A *logger* Definition
+## A *logger* Definition {data-transition="none"}
 
 * log threshold(s)
 * log message formatter(s)
