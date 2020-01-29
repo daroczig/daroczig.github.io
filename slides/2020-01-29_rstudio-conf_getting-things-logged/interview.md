@@ -1,10 +1,10 @@
 ## In 60 seconds or less, please recap the so-what of your rstudio::conf talk. Think of this as an Executive Summary of your talk. 
 
-R was referred to as a programming language written by statisticians for statisticians -- with a heavy focus on interactive use, for example writing R commands in the console while doing ad-hoc data analysis. This might become a reproducible R script as an end result, but the development and debugging still happens in an interactive way.
+R was referred to as a programming language written by statisticians for statisticians -- with a heavy focus on interactive use, for example writing R commands in the console while doing ad-hoc data analysis. This might become a reproducible R script at some point, but the development and debugging still happens in an interactive way.
 
-This works great, and for example RStudio IDE provides some really nice tools for interactive use, but problems arise when that cleaned up, elegant and reproducible R script is to be rerun later (maybe in an automated way), and there are unexpected results or errors.
+This works great, and for example RStudio IDE or Emacs ESS provides really support for interactive use, but problems arise when that cleaned up, elegant and reproducible R script is to be rerun later (maybe in an automated way), and there are unexpected results or errors.
 
-In such case, instead using a development environment for debugging, it's much more efficient to look up the logs in production -- for example what actual SQL query was run with the dynamic parameters, how many rows were returned, how many rows were dropped in a transformation step of the script.
+In such case, instead using a development environment to try to reproduce the problem for debugging, it's much more efficient to look up the logs in production -- for example what actual SQL query was run with the dynamic parameters, how many rows were returned, how many rows were dropped in a transformation step of the script.
 
 My talk introduces a flexible tool to do logging in R. / helping with that.
 

@@ -1185,8 +1185,11 @@ INFO [2018-07-12 03:05:05] Closing connection to sqlite
 <section>
 <section class="titleslide slide level1">
   <h2>References</h2>
+  
+  Slides: https://daroczig.github.io
 
-Thanks to System1 for the support while working on these packages:
+<div class="fragment">
+  Thanks to System1 for the support while working on these packages:
 
 * https://daroczig.github.io/logger
 * https://daroczig.github.io/botor
@@ -1195,6 +1198,7 @@ Thanks to System1 for the support while working on these packages:
 <a href="https://system1.com/open-source" target="_new">
   <img src="img/system1-opensource.jpg" width="40%" />
 </a>
+</div>
 
 </section></section>
 <section>
