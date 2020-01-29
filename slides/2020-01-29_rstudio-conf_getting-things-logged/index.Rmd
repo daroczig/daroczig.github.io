@@ -871,7 +871,12 @@ INFO [2019-07-11 16:59:34] Shiny input change detected on title: title -> sfdsad
 <section class="titleslide slide level1">
   <h2>Using *logger* in R packages</h2>
 
-<img src="https://media.giphy.com/media/xDQ3Oql1BN54c/giphy.gif" width="65%" class="noborder" />
+<img src="https://66.media.tumblr.com/2419c27b09d42f14cca55c8025dd501b/tumblr_nrujo8ew8p1s373hwo1_250.gifv" 
+     width="50%" class="noborder" />
+     
+Source: <a href="https://dbareactions.com/post/125020194064/when-a-client-calls-and-says-they-have-a" target="_new">DBA Reactions</a>
+
+<!-- <img src="https://media.giphy.com/media/xDQ3Oql1BN54c/giphy.gif" width="65%" class="noborder" /> -->
 
 ## Using *logger* in *botor*
 
