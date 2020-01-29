@@ -67,7 +67,7 @@ Using in R in a non-interactive way:
 * R scripts are scheduled to run <b>without manual intervention</b> (eg CRON or upstream job trigger, API request)
 * need for a standard, eg <b>containerized environment</b> (eg R and package versions, OS packages, `.Rprofile` etc)
 * <b>security</b>! (safeguarded production environment, SQL injection, AppArmor, encrypted credentials etc)
-* the output of the jobs are recorded and <b>monitored</b> (eg `error` handler for ErrBit, CloudWatch logs or Splunk etc)
+* the output of the jobs are recorded and <b>monitored</b> (eg `error` handler for ErrBit, CloudWatch logs or Splunk etc), alerts and notifications
 * if an error occurs, usually there is no other way to figure out what happened then looking at the recorded job output, so better <b>log</b> than sorry
 
 </section></section>
@@ -430,7 +430,7 @@ INFO <= TRACE
 
 <div class="fragment">
 ```r
-log_threshold(TRACE)
+log_threshold(INFO)
 
 log_trace('Hello, {name}!')
 log_info('Hello, {name}!')
