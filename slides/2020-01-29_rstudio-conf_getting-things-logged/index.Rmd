@@ -384,7 +384,10 @@ log_fatal('The last problem')
 
 ```r
 library(logger)
-log_threshold(TRACE)
+```
+
+```r
+log_threshold(DEBUG)
 log_formatter(formatter_glue)
 log_layout(layout_simple)
 log_appender(appender_console)
