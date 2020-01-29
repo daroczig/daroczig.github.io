@@ -387,10 +387,12 @@ library(logger)
 ```
 
 ```r
-log_threshold(DEBUG)
-log_formatter(formatter_glue)
-log_layout(layout_simple)
-log_appender(appender_console)
+.onLoad <- function(libname, pkgname) {
+  log_threshold(DEBUG)
+  log_formatter(formatter_glue)
+  log_layout(layout_simple)
+  log_appender(appender_console)
+}
 ```
 
 <div class="fragment">
