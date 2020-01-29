@@ -1208,12 +1208,10 @@ Thanks to System1 for the support while working on these packages:
   <div class="fragment" data-fragment-index="1">
   Follow me on Twitter or GitHub: <a href="https://twitter.com/daroczig">@daroczig</a>
 
-  <a href="https://thecodinglove.com/when-i-desperatly-search-in-the-logs-why-the-app"  target="_new">
-    <video width="67%" controls autoplay muted loop>
-      <source src="https://ljdchost.com/010/ab2UUrD.webm" type="video/webm">
-    </video>
-  </a>
-
+  <video width="67%" controls autoplay muted loop>
+    <source src="https://ljdchost.com/010/ab2UUrD.webm" type="video/webm">
+  </video>
+ 
   Source: 
   <a href="https://thecodinglove.com/when-i-desperatly-search-in-the-logs-why-the-app" target="_new">
      When I desperatly search in the logs why the app crashed
