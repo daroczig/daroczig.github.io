@@ -79,7 +79,7 @@ Using in R in a non-interactive way:
   </video>
   <img src="img/tweet bird footer.png" width="40%">
 
-## Motivation
+## What has just happened?
 
 <div style="font-size: 1.25em;">
 ```r
@@ -102,7 +102,7 @@ Execution halted
 ```
 </div>
 
-## Motivation
+## Poor man's progress bar
 
 <div style="font-size: 1.25em;">
 
@@ -130,7 +130,7 @@ for (i in 1:N) {
 </div>
 
 
-## Motivation
+## Poor man's progress bar
 
 <div style="font-size: 1.25em;">
 
@@ -159,7 +159,7 @@ Execution halted
 </div>
 
 
-## Motivation
+## Logging progress to file
 
 <div style="font-size: 1.1em;">
 
@@ -196,7 +196,7 @@ log <- function(message, logfile = '/var/log/foobar.log') {
 ```
 </div>
 
-## Motivation
+## Failing to log to file
 
 <div style="font-size: 1.25em;">
 ```r

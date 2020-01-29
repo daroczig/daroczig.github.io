@@ -26,6 +26,6 @@ To help mitigate the security risks, we need better tools (like not doing string
     1. What is the challenge?
     2. What solution would you recommend and why?
 
-Just like in the previous question, I think it's important to point out that the users and developers of the data sciencets products are not the same any more, which raises not only security issues, but a lot more as well, for example understanding and improving the user experience.
+Just like in the previous topic, I think it's important to point out that the users and developers of the data sciencets products are not the same any more, which raises not only security issues, but a lot more as well, for example understanding and improving the user experience.
 
-I think we can learn a lot from other programming languages, frameworks, and general guidelines on how developers can interact with the end-users to get feedback -- first, we need to better understand the users requirements and needs, then we should monitor how they use our product, for example by relying on the logging package I'm presenting at the conference :) 
+I think we can learn a lot from other programming languages, frameworks, and general UX guidelines on how developers can interact with the end-users to get feedback -- first, we need to better understand the users requirements and needs, then we should continously monitor how they use our product, for example by relying on the logging package I'm presenting at the conference :) 
