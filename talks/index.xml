@@ -21,6 +21,15 @@
     </item>
     
     <item>
+      <title>Interview at the Pre-Game Show of the RStudio::conf Watch Parties</title>
+      <link>https://daroczig.github.io/talks/2020-01-rstudio-watchparty/</link>
+      <pubDate>Wed, 29 Jan 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2020-01-rstudio-watchparty/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Productionizing R scripts in the cloud</title>
       <link>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-r-in-prod/</link>
       <pubDate>Thu, 14 Nov 2019 00:00:00 +0000</pubDate>
