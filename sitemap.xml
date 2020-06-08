@@ -3,6 +3,110 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://daroczig.github.io/repos/botor/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/ceu-r-lab/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/logger/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/user-2014-tshirt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/erum2018/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/pander/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/ceu-mastering/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/fbrads/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/bkkcrypt/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/rapport/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/satrday2016/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/ceu-r-prod/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/dbr/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/numguess/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/aws-kinesis/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/awr-snowflake/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/binancer/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/ceu-r-skills/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/consular/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/singr/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/ceu-dv2/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/ceu-dv3/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/ceu-use-case-seminars/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/grpc/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/kre/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/conflr/</loc>
+  </url>
+  
+  <url>
     <loc>https://daroczig.github.io/talks/</loc>
     <lastmod>2020-01-29T00:00:00+00:00</lastmod>
   </url>
@@ -634,6 +738,10 @@
   </url>
   
   <url>
+    <loc>https://daroczig.github.io/categories/api-integrations/</loc>
+  </url>
+  
+  <url>
     <loc>https://daroczig.github.io/categories/</loc>
   </url>
   
@@ -650,7 +758,19 @@
   </url>
   
   <url>
+    <loc>https://daroczig.github.io/categories/conferences/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/categories/education/</loc>
+  </url>
+  
+  <url>
     <loc>https://daroczig.github.io/publications/2014-bulletin-of-sociological-methodology/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/</loc>
   </url>
   
   <url>
@@ -663,6 +783,10 @@
   
   <url>
     <loc>https://daroczig.github.io/work/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/categories/fun-projects/</loc>
   </url>
   
   <url>
@@ -691,6 +815,14 @@
   
   <url>
     <loc>https://daroczig.github.io/publications/2016-kozgazdasagi-szemle/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/categories/r-in-production/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/categories/reporting/</loc>
   </url>
   
   <url>
