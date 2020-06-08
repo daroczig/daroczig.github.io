@@ -3,11 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://daroczig.github.io/repos/botor/</loc>
+    <loc>https://daroczig.github.io/repos/ceu-r-lab/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/ceu-r-lab/</loc>
+    <loc>https://daroczig.github.io/repos/fbrads/</loc>
   </url>
   
   <url>
@@ -27,11 +27,11 @@
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/ceu-mastering/</loc>
+    <loc>https://daroczig.github.io/repos/botor/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/fbrads/</loc>
+    <loc>https://daroczig.github.io/repos/ceu-mastering/</loc>
   </url>
   
   <url>
@@ -44,6 +44,10 @@
   
   <url>
     <loc>https://daroczig.github.io/repos/satrday2016/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/binancer/</loc>
   </url>
   
   <url>
@@ -63,23 +67,15 @@
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/awr-snowflake/</loc>
-  </url>
-  
-  <url>
-    <loc>https://daroczig.github.io/repos/binancer/</loc>
-  </url>
-  
-  <url>
     <loc>https://daroczig.github.io/repos/ceu-r-skills/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/consular/</loc>
+    <loc>https://daroczig.github.io/repos/singr/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/singr/</loc>
+    <loc>https://daroczig.github.io/repos/awr-snowflake/</loc>
   </url>
   
   <url>
@@ -92,6 +88,10 @@
   
   <url>
     <loc>https://daroczig.github.io/repos/ceu-use-case-seminars/</loc>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/repos/consular/</loc>
   </url>
   
   <url>

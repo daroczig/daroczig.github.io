@@ -11,20 +11,20 @@
     
     
     <item>
-      <title>daroczig/botor</title>
-      <link>https://daroczig.github.io/repos/botor/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/repos/botor/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>daroczig/CEU-R-lab</title>
       <link>https://daroczig.github.io/repos/ceu-r-lab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/repos/ceu-r-lab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>daroczig/fbRads</title>
+      <link>https://daroczig.github.io/repos/fbrads/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/repos/fbrads/</guid>
       <description></description>
     </item>
     
@@ -65,20 +65,20 @@
     </item>
     
     <item>
+      <title>daroczig/botor</title>
+      <link>https://daroczig.github.io/repos/botor/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/repos/botor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>daroczig/CEU-R-mastering</title>
       <link>https://daroczig.github.io/repos/ceu-mastering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/repos/ceu-mastering/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>daroczig/fbRads</title>
-      <link>https://daroczig.github.io/repos/fbrads/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/repos/fbrads/</guid>
       <description></description>
     </item>
     
@@ -106,6 +106,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/repos/satrday2016/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>daroczig/binancer</title>
+      <link>https://daroczig.github.io/repos/binancer/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/repos/binancer/</guid>
       <description></description>
     </item>
     
@@ -146,24 +155,6 @@
     </item>
     
     <item>
-      <title>daroczig/AWR.Snowflake</title>
-      <link>https://daroczig.github.io/repos/awr-snowflake/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/repos/awr-snowflake/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>daroczig/binancer</title>
-      <link>https://daroczig.github.io/repos/binancer/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/repos/binancer/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>daroczig/CEU-R-skills</title>
       <link>https://daroczig.github.io/repos/ceu-r-skills/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -173,20 +164,20 @@
     </item>
     
     <item>
-      <title>daroczig/consular</title>
-      <link>https://daroczig.github.io/repos/consular/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/repos/consular/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>daroczig/singR</title>
       <link>https://daroczig.github.io/repos/singr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/repos/singr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>daroczig/AWR.Snowflake</title>
+      <link>https://daroczig.github.io/repos/awr-snowflake/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/repos/awr-snowflake/</guid>
       <description></description>
     </item>
     
@@ -214,6 +205,15 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/repos/ceu-use-case-seminars/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>daroczig/consular</title>
+      <link>https://daroczig.github.io/repos/consular/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/repos/consular/</guid>
       <description></description>
     </item>
     
