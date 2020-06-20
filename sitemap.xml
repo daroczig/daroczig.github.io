@@ -19,11 +19,11 @@
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/erum2018/</loc>
+    <loc>https://daroczig.github.io/repos/pander/</loc>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/repos/pander/</loc>
+    <loc>https://daroczig.github.io/repos/satrday2016/</loc>
   </url>
   
   <url>
@@ -35,15 +35,15 @@
   </url>
   
   <url>
+    <loc>https://daroczig.github.io/repos/erum2018/</loc>
+  </url>
+  
+  <url>
     <loc>https://daroczig.github.io/repos/bkkcrypt/</loc>
   </url>
   
   <url>
     <loc>https://daroczig.github.io/repos/rapport/</loc>
-  </url>
-  
-  <url>
-    <loc>https://daroczig.github.io/repos/satrday2016/</loc>
   </url>
   
   <url>
@@ -107,12 +107,37 @@
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/talks/</loc>
-    <lastmod>2020-01-29T00:00:00+00:00</lastmod>
+    <loc>https://daroczig.github.io/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>https://daroczig.github.io/</loc>
+    <loc>https://daroczig.github.io/teaching/2019-ceu-dv3/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/teaching/</loc>
+    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/teaching/2019-ceu-mastering-r/</loc>
+    <lastmod>2020-04-15T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/teaching/2019-ceu-r-in-prod/</loc>
+    <lastmod>2020-03-09T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/teaching/2019-ceu-use-cases/</loc>
+    <lastmod>2020-02-17T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/talks/</loc>
     <lastmod>2020-01-29T00:00:00+00:00</lastmod>
   </url>
   
@@ -124,6 +149,16 @@
   <url>
     <loc>https://daroczig.github.io/talks/2020-01-rstudio-watchparty/</loc>
     <lastmod>2020-01-29T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/teaching/2019-ceu-dv2/</loc>
+    <lastmod>2020-01-08T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://daroczig.github.io/teaching/2019-bce/</loc>
+    <lastmod>2019-11-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -158,11 +193,6 @@
   
   <url>
     <loc>https://daroczig.github.io/teaching/2019-06-egis/</loc>
-    <lastmod>2019-06-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://daroczig.github.io/teaching/</loc>
     <lastmod>2019-06-13T00:00:00+00:00</lastmod>
   </url>
   
