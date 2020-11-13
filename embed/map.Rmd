@@ -1,0 +1,473 @@
+---
+output: html_document
+---
+
+<style>
+body {
+  background-color: transparent;
+}
+.map-content p {
+  margin-top: 5px !important;
+  margin-bottom: 0px !important;
+  text-align: justify;
+}
+.centered {
+  text-align: center !important;
+}
+</style>
+
+<p class="centered">
+  <b>My professional trips around the world at conferences, for work or in academia</b>
+  <!-- TODO although I've worked for a dozen of other companies remotely, but only listed those where I paid at least one phisycal visit in their HQ and where NDA does not forbid mentions -->
+</p>
+
+<div class="map-content">
+
+```{r echo=FALSE, warning=FALSE, message=FALSE}
+library(leaflet)
+library(data.table)
+library(tools)
+library(glue)
+
+conferences <- rbindlist(list(
+
+    data.frame(
+        lng = -1.8535926,
+        lat = 38.9803825,
+        type = 'Lighning Talk and a Poster',
+        icon = 'bullhorn',
+        title = 'useR! 2013',
+        date = 'July 10-12 2013',
+        location = 'University of Castilla-La Mancha, Albacete, Spain',
+        details = '<p class="centered">My first useR! conference -- a very lovely and memorable experience meeting many other R developers from all around the world! I arrived with a lighning talk on our <code>rapport</code> and <code>pander</code> packages, also a poster (that got the best student poster award!) to pitch my R-based startup idea at <a href="http://rapporter.net" target="_new">rapporter.net</a>, but left with a life-long enthusiasmsn in the R language and community. Find more details at the <a target="new" href="https://www.r-project.org/conferences/useR-2013">conference homepage</a></p>')
+
+  , data.frame(
+      lng = 19.0740442,
+      lat = 47.511171,
+      type = 'Talk',
+      icon = 'bullhorn',
+      title = 'MST Konferencia',
+      long_title = 'Magyar Statisztikai Társaság',
+      date = ' 2013. november 20–21',
+      location = 'Hotel Benczúr, Budapest, Hungary',
+      details = '<p class="centered">Demonstrating using R (and our R-based startup) in the cloud at the official yearly conference of the Hungarian Statistical Office in Hugarian language. Find more information in the <a target="new" href="http://www.mstnet.hu/naptar/program131120-21.pdf">detailed program</a>.</p>')
+
+  , data.frame(
+      lng = 26.0902774,
+      lat = 44.4297779,
+      type = 'Talk',
+      icon = 'bullhorn',
+      title = 'uRos 2014',
+      long_title = 'The Use of R in Official Statistics',
+      date = 'March 27, 2014',
+      location = 'National Institute of Statistics, Bucharest, Romania',
+      details = '<p class="centered">My first trip to Bucharest (took the train from Budapest) for the seconds workshop on using R in official statistics -- met some new friends and gave a talk on my <code>pander</code> package. Find more information on the <a target="new" href="http://r-project.ro/workshop2014.html">conference homepage</a>.</p>')
+
+  , data.frame(
+      lng = 19.0544879,
+      lat = 47.5058705,
+      type = 'Talk',
+      icon = 'meetup',
+      title = 'IT Security Meetup',
+      long_title = 'Budapest IT Security Meetup',
+      date = 'January 13, 2014',
+      location = 'Prezi HQ, Budapest, Hungary',
+      details = '<p class="centered">Talk in English on the "Potential risks in running R on the cloud". Find more detauls at the <a target="new" href="https://www.meetup.com/Budapest-IT-Security-Meetup/events/151953332/">meetup homepage</a>.</p>')
+
+  , data.frame(
+      lng = 19.0600257,
+      lat = 47.4726766,
+      type = 'Organizer',
+      icon = 'meetup',
+      title = 'R Meetup',
+      long_title = 'Budapest Users of R Network',
+      date = '2013-2020',
+      location = 'BME I. épület, Budapest, Hungary',
+      details = '<p class="centered">Started and have been running the <a target="new" href="https://www.meetup.com/Budapest-Users-of-R-Network">Hungarian R meetup</a> with 1500+ members and usually monthly meetings..</p>')
+
+    , data.frame(
+        lng = -118.4725731,
+        lat = 34.0281951,
+        type = 'Talk',
+        icon = 'meetup',
+        title = 'LA R users group',
+        date = 'November 17, 2015',
+        location = 'Cornerstone OnDemand, Los Angeles, USA',
+        details = '<p class="centered">An hour-long meetup talk split with Ajay Gopal on using R to optimize Facebook ads. Find more details at the <a target="new" href="https://www.meetup.com/Los-Angeles-R-Users-Group-Data-Science/events/226717454/" target="_new">meetup page</a></p>.')
+
+    , data.frame(
+        lng = -118.4734321,
+        lat = 34.0291702,
+        type = 'Talk',
+        icon = 'meetup',
+        title = 'LA R users group',
+        date = 'March 7, 2017',
+        location = 'Edmunds, Los Angeles, USA',
+        details = '<p class="centered">An hour-long meetup talk on using R for stream processing in AWS. Find more details at the <a target="new" href="https://www.meetup.com/Los-Angeles-R-Users-Group-Data-Science/events/237881792/" target="_new">meetup page</a></p>.')
+
+    , data.frame(
+        lng = -121.8890197,
+        lat = 37.329802,
+        type = 'Talk',
+        icon = 'meetup',
+        title = 'Bay Area useR Group',
+        date = 'March 14, 2017',
+        location = 'San Jose Convention Center',
+        details = '<p class="centered">A meetup talk on using R for stream processing in AWS. At the Bay Area useR Group! Find more details at the <a target="new" href="https://www.meetup.com/R-Users/events/237028419/" target="_new">meetup page</a></p>.')
+
+  , data.frame(
+      lng = 16.3663199,
+      lat = 48.2001164,
+      type = 'Talk',
+      icon = 'bullhorn',
+      title = 'IDC Data Hub',
+      date = 'June 5, 2014',
+      location = 'Novomatic Forum, Vienna, Austria',
+      details = '<p class="centered">One of my very first talks in English in front of a larger (and well dressed) audience in a foreign country ... which is really difficult to find on the Internet after so many years except for this short <a href="https://twitter.com/rapporters/status/474843367600578560" target="_new">short tweet</a> and the awesome <a href="https://web.archive.org/web/20140417191411/http://www.idcdatahub.com/" target="_new">Internet Wayback Machine</a>.</p>')
+
+  , data.frame(
+      lng = 11.1501103,
+      lat = 46.0674242,
+      type = 'Data Visualization contest',
+      icon = 'trophy',
+      title = 'Telecom Italia\'s Big Data Challenge',
+      date = 'April 3, 2014',
+      location = 'University of Trento, EIT ICT Labs',
+      details = '<p class="centered">1st place at the Data Visualization track of the Big Data Challenge. Further information: <a target="new" href="https://www.eitdigital.eu/newsroom/news/article/awarded-winners-of-the-telecom-italia-big-data-challenge">media content on the awards</a>.</p>')
+
+    , data.frame(
+        lng = -118.4653625,
+        lat = 34.0427691,
+        type = 'Director of Data Analytics',
+        icon = 'briefcase',
+        title = 'card.com',
+        date = '2015-2017',
+        location = 'Los Angeles, USA',
+        details = '<p class="centered">I was hired as a Research Data Scientist and Senior Statistical/R Programmer to standardize the data infrastructure of this fintech startup with 50 employes, and got promoted to Director of Analytics after a year -- while having a great time in a smart, agile and inspiring team.</p>')
+
+  , data.frame(
+        lng = -118.4680408,
+        lat = 33.9898991,
+        type = 'Senior Director of Data Operations',
+        icon = 'briefcase',
+        title = 'OpenMail -> system1.com',
+        date = '2017-2020',
+        location = 'Venice Beach, Los Angeles, USA',
+        details = '<p class="centered">Was hired remotely as the Senior Director of Data Operations at OpenMail -- the very best company I have ever worked for so far! Really smart team, very agile environment, great technical challenges, good opportunities for professional deveopment -- so providing everything I can dream of. See at <a href="https://system1.com" target="_new">system1.com</a> what we do.</p>')
+
+  , data.frame(
+        lng = -118.3886635,
+        lat = 34.0050137,
+        type = 'talk',
+        icon = 'bullhorn',
+        title = 'Big Data Day',
+        date = 'July 9th, 2016',
+        location = 'West Los Angeles College, Los Angeles, USA',
+        details = '<p class="centered">Gave a talk on how to use R to process big data in the means of an AWS Kinesis consumer written in R. Find more details at the <a href="https://www.dataconla.com/2016-big-data-day-la/" target="_new">conference homepage</a>.</p>')
+
+
+  , data.frame(
+        lng = -122.033174,
+        lat = 37.404568,
+        type = 'Having a great time',
+        icon = 'google',
+        title = 'GSoC Mentor Summit',
+        long_title = 'Google Summer of Code Mentor Summit',
+        date = '6-8 November, 2015',
+        location = 'Google Building TC6, Sunnyvale, USA',
+        details = '<p class="centered">A great time with great folks at a great location for a great purpose! Find more details at the <a href="https://sites.google.com/site/gsoc2015ms/home" target="_new">conference homepage</a>.</p>')
+
+    , data.frame(
+        lng = -118.2605828,
+        lat = 34.0501138,
+        type = 'Hacking',
+        icon = 'laptop',
+        title = 'rOpenSci unconference',
+        date = 'May 25 - 26 2017',
+        location = 'Cross Campus, Downtown LA, USA',
+        details = '<p class="centered">Happened to work on an R client to Minecraft! But more importantly: met a lot of really kind and smart people, and was great hacking in a small group for a couple of days. Find more details at the <a target="new" href="https://unconf17.ropensci.org/" target="_new">(un)conference homepage</a></p>')
+
+    , data.frame(
+        lng = 19.060182,
+        lat = 47.474053,
+        type = 'organizer',
+        icon = 'users',
+        title = 'satRdays 2016',
+        date = 'Sep 3, 2016',
+        location = 'Hungarian Academy of Sciences, Budapest, Hungary',
+        details = '<p class="centered">Got so excited about the satRday idea back in November .. that I decided to run the first one within a year. Was such a rewarding experiences -- running a low-budget, one-day conference for 200 registrants. Find more details at the <a target="new" href="https://budapest.satrdays.org/" target="_new">conference homepage</a></p>')
+
+
+    , data.frame(
+        lng = 19.0521031,
+        lat = 47.4983733,
+        type = 'organizer',
+        icon = 'users',
+        title = 'eRum 2018',
+        date = 'Sep 3, 2018',
+        location = 'Akvárium Klub, Budapest, Hungary',
+        details = '<p class="centered">500 R enthusiasts in a night club of Central Europe under a pool! Find more details at the <a target="new" href="http://2018.erum.io/" target="_new">conference homepage</a></p>')
+
+
+    , data.frame(
+        lng = -118.4521576,
+        lat = 34.0738975,
+        type = 'Talk and a Poster',
+        icon = 'bullhorn',
+        title = 'useR! 2014',
+        date = 'June 30 - July 3 2014',
+        location = 'UCLA, Los Angeles, USA',
+        details = '<p class="centered">My second useR! conference -- and my longest business trip I paid out of pocket with the expectations of demonstrating my R-based startup idea of <a href="http://rapporter.net" target="_new">rapporter.net</a> to some potential investors or partners, but ended with a job offer worth a couple months later from <a href="http://card.com" target="_new">card.com</a> that was worth giving up on my startup goals and move to Los Angeles. Find more details at the <a target="new" href="https://www.r-project.org/conferences/useR-2014/" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = -87.6488195,
+        lat = 41.8719064,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'R in Finance',
+        long_title = 'R/Finance 2015: Applied Finance with R',
+        date = 'May 29 & 30, 2015',
+        location = 'UIC, Chicago, USA',
+        details = '<p class="centered">My first US conference after moving abroad and a great experience at the unique atmosphere of R in Finance -- really spot-on, one-track conference to meet many smart people. I had the chance to give a talk on "Network analysi​s of the Hungarian interbank lending market", which I found rather stressfull in front of a very technical and finance-focused audience, as I had not much background in finance ... only a bit in R. Find more details at the <a target="new" href="https://www.rinfinance.com/archive/2015/" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = 9.9105342,
+        lat = 57.0435528,
+        type = 'Tutorial, Talk and a Poster',
+        icon = 'bullhorn',
+        title = 'useR! 2015',
+        date = 'June 30 - July 3 2015',
+        location = 'Aalborg Congress and Culture Centre, Aalborg, Denmark',
+        details = '<p class="centered">An awesome useR! conference -- where I overcommited a bit with speaker duties and run a workshop, a regular talk and presented a poster as well. Was a busy week! Find more details at the <a target="new" href="https://user2015.math.aau.dk/index.html" target="_new">conference homepage</a></p>')
+
+
+    , data.frame(
+        lng = -71.0833979,
+        lat = 42.3614295,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'EARL',
+        long_title = 'Effective Application of the R Language',
+        date = 'Nov 2 - 4, 2015',
+        location = 'Microsoft NERD Exhibition Center, Boston, USA',
+        details = '<p class="centered">My first EARL conference, which I enjoyed a lot! Really different from useR! with the business focus, but similarly lovely community and had a great time -- besides presenting on "Analyzing and managing Facebook ads from R". Find more details at the <a target="new" href="https://earlconf.com/2015/boston/" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = -0.075122,
+        lat = 51.506488,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'EARL',
+        long_title = 'Effective Application of the R Language',
+        date = 'September 15, 2016',
+        location = 'Tower Hotel, London, UK',
+        details = '<p class="centered">Find more details at the <a target="new" href="https://earlconf.com/2016/london/" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = -122.4241358,
+        lat = 37.7898121,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'EARL',
+        long_title = 'Effective Application of the R Language',
+        date = '5 - 7 June 2017',
+        location = 'Holiday Inn Golden Gateway, San Francisco, USA',
+        details = '<p class="centered">Find more details at the <a target="new" href="https://earlconf.com/2017/sanfrancisco/" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = -122.1646608,
+        lat = 37.4309354,
+        type = 'Lightning Talk',
+        icon = 'bullhorn',
+        title = 'useR! 2016',
+        date = 'June 27 - June 30 2016',
+        location = 'Stanford University, Stanford, USA',
+        details = '<p class="centered">The R community was growing so heavily that the tickets for this conference were gone in a few days, so I was luck to get in! Also to be able to do a lightning talk on the satRdays project idea. Find more details at the <a target="new" href="http://user2016.r-project.org/" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = 4.3190403,
+        lat = 50.8223224,
+        type = 'Lightning Talk',
+        icon = 'bullhorn',
+        title = 'useR! 2017',
+        date = 'July 4 - 7, 2017',
+        location = 'Wild Gallery, Brussels, Belgium',
+        details = '<p class="centered">Find more details at the <a target="new" href="https://user2017.brussels" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = 153.0155109,
+        lat = -27.4767875,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'useR! 2018',
+        date = 'July 10-13, 2018',
+        location = 'Brisbane, Australia',
+        details = '<p class="centered">The very first useR! conference where I could go with my family -- having a great time both at the conference and while getting there. Also gave talk on using databases from R. Find more details at the <a target="new" href="https://user2018.r-project.org/" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = 1.432394,
+        lat = 43.6115577,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'useR! 2019',
+        date = 'July 9-12, 2019',
+        location = 'Pierre Baudis congress centre, Toulouse, France',
+        details = '<p class="centered">Traveled again with my family -- now with car for ~2000 kilometers. Had a wonderful time with the kids, my wife and the many many R enthusiasts. Also chaired a sessions and was on a panel on the R communities. Find more details at the <a target="new" href="http://www.user2019.fr" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = -122.1748233,
+        lat = 37.4264065,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'DSC',
+        long_title = 'Directions in Statistical Computing',
+        date = 'Sep 18-19, 2019',
+        location = 'Earth Sciences Building, Stanford, USA',
+        details = '<p class="centered">It was a great honour to attend DSC with a handful of very talented hard-core R developers.</p>')
+
+    , data.frame(
+        lng = -122.413114,
+        lat = 37.7857402,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'RStudio::conf',
+        date = 'Jan 27-30, 2020',
+        location = 'Hilton Union Square, San Francisco, USA',
+        details = '<p class="centered">My very first RStudio conference -- that I enjoyed a lot! Also got the opportunity to talk about logging in R. Find more details at the <a target="new" href="https://rstudio.com/resources/rstudioconf-2020" target="_new">conference homepage</a></p>')
+
+    , data.frame(
+        lng = -118.445186,
+        lat = 34.070231,
+        type = 'Talk',
+        icon = 'bullhorn',
+        title = 'satRdays LA',
+        date = 'April 6, 2019',
+        location = 'UCLA, Los Angeles, USA',
+        details = '<p class="centered">Find more details at the <a target="new" href="https://losangeles2019.satrdays.org/" target="_new">conference homepage</a></p>')
+
+
+  , data.frame(
+        lng = -118.1882643,
+        lat = 33.7648913,
+        type = 'Attended',
+        icon = 'eye',
+        title = 'NIPS',
+        long_title = 'Conference on Neural Information Processing Systems',
+        date = 'Dec 4-9, 2017',
+        location = 'Long Beach Convention & Entertainment Center',
+        details = '<p class="centered">My first time at a 6000+ attendees conference dedicated to neural nets and deep learning! Still a bit over my head. Find more details at the <a href="https://nips.cc/Conferences/2017" target="_new">conference homepage</a>.</p>')
+
+  , data.frame(
+        lng = -118.3838044,
+        lat = 33.9461811,
+        type = 'Attended',
+        icon = 'eye',
+        title = 'SCALE 13x',
+        date = 'Feb 19-22, 2015',
+        location = 'Hilton Los Angeles Airport Hotel',
+        details = '<p class="centered">My first SCALE conference, which I enjoye a lot! Wsa great to meet so many open-source enthusiasts from all around the world, even from Hungary! Say to the kind BalaBit folks again :) Find more details at the <a href="https://www.socallinuxexpo.org/scale/13x" target="_new">conference homepage</a>.</p>')
+
+  , data.frame(
+        lng = -118.1467058,
+        lat = 34.1439113,
+        type = 'Attended',
+        icon = 'eye',
+        title = 'SCALE 14x',
+        date = 'March 2-5, 2017',
+        location = 'Pasadena Convention Center',
+        details = '<p class="centered">Find more details at the <a href="https://www.socallinuxexpo.org/scale/14x" target="_new">conference homepage</a>.</p>')
+
+  , data.frame(
+      lng = 19.0249509,
+      lat = 47.4988935,
+      type = 'Session Chair and Talks',
+      icon = 'bullhorn',
+      title = 'Budapest BI and Data Forum',
+      logo = NA,
+      date = '2013, 2014, 2016, 2017, 2018, 2019',
+      location = 'Mercure Hotel Budapest',
+      details = paste(
+          glue(
+              '<p>Helping out in the R track of the conferences, also gave talks on R and Data Engineering in most years. Find more details at the conference sites for ',
+              '<a target="new" href="https://budapestdata.hu">Budapest Data Forum</a> and ',
+              '<a target="new" href="https://budapestbiforum.hu">Budapest BI Forum</a>.</p>')))
+
+  , data.frame(
+        lng = 0.1203031,
+        lat = 52.2019233,
+        type = 'Learned',
+        icon = 'graduation-cap',
+        title = 'Data Carpentry',
+        date = 'Sep 19-20, 2016',
+        location = 'Craik-Marshall Building, Cambridge, UK',
+        details = '<p class="centered">Find more details at the <a href="https://swcarpentry.github.io/2016-09-19-ttt-cambridge/" target="_new">workshop homepage</a>.</p>')
+
+  , data.frame(
+        lng = -0.133812,
+        lat = 51.5253188,
+        type = 'Learned',
+        icon = 'graduation-cap',
+        title = 'UCL SSEES',
+        date = 'Jan - May, 2006',
+        location = 'Craik-Marshall Building, Cambridge, UK',
+        details = '<p class="centered">Spent a semester at UCL as part of the Erasmus program. Also walked the Pennine Way.</p>')
+
+    # TODO rapporter location
+    # TODO pazmany, corvinus, CEU
+    # TODO TE Connectivity (1 day + 15*2 hours)
+    # TODO Richter Gedeon Nyrt (4 days)
+    # TODO BalaBit
+    # TODO Sunbasket
+    # TODO Crunch workshop
+    # TODO Egis (1 day)
+    # TODO http://eco.u-szeged.hu/english/research/conferences-workshops/challanges-and-innovations-in-statistics-education/challanges-and-innovations-in-statistics-education
+    # TODO Keler KSZF June 11, 2014
+    # TODO Berlin
+    # R Ladies
+
+
+), fill = TRUE)
+
+conferences[is.na(long_title), long_title := title]
+conferences[, label := glue('{title}', .envir = .SD)]
+conferences[, popup := glue(
+    '<p class="centered"><b>{type}</b></p>',
+    '<p class="centered">at <b>{long_title}</b></p>',
+    '<p class="centered">on {date}</p>',
+    '<p class="centered">in {location}</p>',
+    '<hr>',
+    '{details}',
+    .envir = .SD
+)]
+
+icons <- awesomeIcons(
+    # https://fontawesome.com/v4.7.0/icons/
+    icon = conferences$icon,
+    # bullhorn cfor conference
+    # briefcase for work
+    # comments for meetups
+    # graduation-cap for teaching
+    # paperclip for posters
+    # eye for watching a conf
+    iconColor = 'black',
+    library = 'fa',
+    markerColor = 'blue'
+)
+
+
+leaflet(conferences, width = '100%') %>%
+    addProviderTiles(providers$CartoDB.Positron) %>%
+    addAwesomeMarkers(
+        popup = ~popup,
+        label = ~label,
+        labelOptions = labelOptions(
+            ## noHide = TRUE,
+            direction = 'bottom'),
+        icon = icons,
+        clusterOptions = markerClusterOptions())
+
+```
+
+</div>
+
+<p class="centered"><i>Hover the mouse over the markers to see the name of the location, and click on the marker for more details.</i></p>

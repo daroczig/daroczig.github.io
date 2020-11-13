@@ -6,10 +6,24 @@
     <description>Recent content in Conference talk slides and video recordings on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 29 Jan 2020 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 17 Nov 2020 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>A statisztika jövője a szoftverfejlesztők szemszögéből – Python, R</title>
+      <link>https://daroczig.github.io/talks/2020-mta/</link>
+      <pubDate>Tue, 17 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2020-mta/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://daroczig.github.io/talks/index.xml" rel="self" type="application/rss+xml" />
-    
+    <item>
+      <title>Integrating R in a Model-Informed Precision Dosing Web Application</title>
+      <link>https://daroczig.github.io/talks/2020-nhs-r/</link>
+      <pubDate>Wed, 11 Nov 2020 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2020-nhs-r/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Getting Things Logged</title>
