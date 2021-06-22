@@ -1,0 +1,167 @@
+---
+title: "Using R to Empower a Precision Dosing Web Application"
+subtitle: <a href="https://user2021.r-project.org/" title="useR! 2021 conference" target="_new"><img src="img/user-logo-with-margot.png" class="noborder" width="52%"/></a>
+author: Gergely Daróczi
+date: "@daroczig"
+output:
+  revealjs::revealjs_presentation:
+    theme: white
+    highlight: tango
+    transition: default
+    includes:
+      in_header: header.html
+    template: template.html
+    reveal_options:
+      slideNumber: true
+      previewLinks: false
+      width: 1244
+---
+
+## dummy slide
+
+<!-- https://www.conftool.org/user2021/index.php?page=browseSessions&form_session=24#paperID201 -->
+
+<!--javascript to remove dummy slide-->
+<script>
+document.getElementById("dummy-slide").remove();
+</script>
+
+<!--end dummy slide-->
+</section>
+
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>&#62; whoami()</h2>
+
+<img src="img/whoami-1.jpg" width="80%" />
+
+## > whoami() {data-transition="none"}
+
+<img src="img/whoami-2.jpg" width="80%" />
+
+## > whoami() {data-transition="none"}
+
+<img src="img/whoami-3.jpg" width="80%" />
+
+## > whoami() {data-transition="none"}
+
+<img src="img/whoami-4.jpg" width="80%" />
+
+## > whoami() {data-transition="none"}
+
+<img src="img/whoami-5.jpg" width="80%" />
+
+## > whoami() {data-transition="none"}
+
+<img src="img/whoami-6.jpg" width="80%" />
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1" >
+<h2>&#62; whoarewe()</h2>
+
+<a href="https://rx.studio" title="Rx Studio homepage" target="_new">
+  <img src="img/www.rx.studio.png" width="80%" />
+</a>
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-24.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-25.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-26.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-26_1.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-26_2.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-26_3.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-27.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-27_1.png" width="80%" />
+
+## > demo() {data-transition="none"}
+
+<img src="img/demo/2021-06-23_01-28.png" width="80%" />
+
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; Sys.setenv("env" = "prod")</h2>
+<img src="img/movie-cinemagraph-gifs-life-aquatic.gif" width="80%" />
+
+## > example(production)
+
+* 2006: <b>calling R scripts from PHP</b> (both reading from MySQL) to generate custom plots embedded in a homepage
+* 2008: <b>automated/batch R scripts</b> to generate thousands of pages of crosstables, ANOVA and plots from SPSS with `pdflatex`
+* 2011: Ruby on Rails <b>web application</b> calling `RApache` and `pandoc` to generate reports in plain English (NoSQL databases, vertical scaling, <b>security</b>, central error tracking etc)
+* 2012: plain RApache <b>web application</b> for NLP and network analysis
+* 2015: standardizing the data infrastructure of a fintech startup to use R both in bath jobs and <b>stream processing</b> (ETL, reporting, fraud detection, daily operations, customer communication etc)
+* 2017: redesign, monitor and scale the DS infrastructure of an adtech startup for <b>batch training and live scoring</b>
+
+## > production <<- list(...)
+
+Using in R in a non-interactive way:
+
+* R scripts are scheduled to run <b>without manual intervention</b> (eg CRON or upstream job trigger, API request)
+* need for a standard, eg <b>containerized environment</b> (eg R and package versions, OS packages, `.Rprofile` etc)
+* <b>security</b>! (safeguarded production environment, SQL injection, AppArmor, encrypted credentials etc)
+* the output of the jobs are recorded and <b>monitored</b> (eg `error` handler for ErrBit, CloudWatch logs or Splunk etc), alerts and notifications
+* if an error occurs, usually there is no other way to figure out what happened then looking at the recorded job output, so better <b>log</b> than sorry
+
+</section></section>
+<section>
+<section class="titleslide slide level1">
+  <h2>&#62; is.compliant()</h2>
+  <video width="60%" controls>
+    <source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
+  </video>
+  <img src="img/tweet bird footer.png" width="40%">
+
+## TODO
+
+</section></section>
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; Sys.setlocale('LC_ALL', 'hu_HU')</h2>
+
+<img src="http://i.imgur.com/9QpNv.gif" width="60%">
+
+Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took" target="_new">When my co-worker wants to simplify code ...</a>
+
+## TODO
+
+</section></section>
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+    <!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Fri%2520Jul%25209%252016%253A25%253A00%25202021%250A%250A%253E%2520follow%28%27%2540daroczig%27%29%250A%253E%2520visit%28%27https%253A%252F%252Frx.studio%27%29%250A%253E%2520register%28%27htts%253A%252F%252Fapp.rx.studio%27%29%250A%253E%2520email%28%27daroczig%2540rx.studio%27%29 -->
+  <img src="img/contact-1.png" width="80%" />
+</section>
+
+<section data-transition="none">
+  <section class="titleslide slide level1" data-transition="none">
+  <img src="img/contact-2.png" width="80%" />
+  </section>
+
+</section></section>
+
+
