@@ -79,3 +79,24 @@ code.sourceCode {
 p {
     text-align: left;
 }
+
+
+.reveal pre code {
+    max-height: 600px;
+}
+
+
+.cols {
+    display: flex;
+}
+.col {
+    flex: 1;
+}
+
+.reveal blockquote {
+    width: 90%;
+}
+
+.reveal ul {
+    width: 100%;
+}
