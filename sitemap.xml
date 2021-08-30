@@ -1,897 +1,520 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
   <url>
     <loc>https://daroczig.github.io/repos/ceu-r-lab/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/fbrads/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/logger/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/user-2014-tshirt/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/pander/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/satrday2016/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/botor/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/ceu-r-skills/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/erum2018/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/bkkcrypt/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/rapport/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/binancer/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/ceu-mastering/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/dbr/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/numguess/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/aws-kinesis/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/ceu-r-prod/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/singr/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/awr-snowflake/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/ceu-dv2/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/ceu-dv3/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/ceu-use-case-seminars/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/consular/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/grpc/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/kre/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/conflr/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/</loc>
-    <lastmod>2021-07-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-08-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://daroczig.github.io/</loc>
-    <lastmod>2021-07-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+    <lastmod>2021-08-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2021-r-in-medicine/</loc>
+    <lastmod>2021-08-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2021-user/</loc>
     <lastmod>2021-07-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2020-mta/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2020-nhs-r/</loc>
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2019-ceu-dv3/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2019-ceu-mastering-r/</loc>
     <lastmod>2020-04-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2019-ceu-r-in-prod/</loc>
     <lastmod>2020-03-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2019-ceu-use-cases/</loc>
     <lastmod>2020-02-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2020-01-rstudio-conf/</loc>
     <lastmod>2020-01-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2020-01-rstudio-watchparty/</loc>
     <lastmod>2020-01-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2019-ceu-dv2/</loc>
     <lastmod>2020-01-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2019-bce/</loc>
     <lastmod>2019-11-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-r-in-prod/</loc>
     <lastmod>2019-11-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-gbm-workshop-summary/</loc>
     <lastmod>2019-11-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-11-budapest_bi_forum-gbm/</loc>
     <lastmod>2019-11-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-09-dsc/</loc>
     <lastmod>2019-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-09-05_burn_user-retro/</loc>
     <lastmod>2019-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-07-user/</loc>
     <lastmod>2019-07-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2019-06-egis/</loc>
     <lastmod>2019-06-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-2-ceu-use-cases/</loc>
     <lastmod>2019-05-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-2-ceu-mastering-r/</loc>
     <lastmod>2019-04-29T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-04-06_satrday-la_productionizing-r-in-the-cloud/</loc>
     <lastmod>2019-04-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-2-ceu-r-prod/</loc>
     <lastmod>2019-03-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2019-02-18_r-ladies_r-markdown/</loc>
     <lastmod>2019-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-12-19_burn_christmas/</loc>
     <lastmod>2018-12-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-12-04_burn_renitent-rcoholics/</loc>
     <lastmod>2018-12-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-11-19_bce/</loc>
     <lastmod>2018-11-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-1-ceu-r-skills/</loc>
     <lastmod>2018-11-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-10-31-crunch-workshop/</loc>
     <lastmod>2018-10-31T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-09-18_bigdatabp_user-retro/</loc>
     <lastmod>2018-09-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-1-ceu-r/</loc>
     <lastmod>2018-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-07-12_user_dbr/</loc>
     <lastmod>2018-07-12T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-06-14_budapest-data-forum_analytics-databases-in-a-startup-environment-beyond-mysql-and-spark/</loc>
     <lastmod>2018-06-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-05-16_erum_closing-remarks/</loc>
     <lastmod>2018-05-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-05-15_erum_conference-opening/</loc>
     <lastmod>2018-05-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2018-05-14_erum_welcome/</loc>
     <lastmod>2018-05-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-04-03-te/</loc>
     <lastmod>2018-04-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2018-03-15-richter/</loc>
     <lastmod>2018-03-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2017-2-ceu-r-prod/</loc>
     <lastmod>2018-02-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2017-12-20_burn_christmas/</loc>
     <lastmod>2017-12-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2017-10-18_crunch_r-workshop/</loc>
     <lastmod>2017-10-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2017-10-02_bce/</loc>
     <lastmod>2017-10-02T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2017-1-ceu/</loc>
     <lastmod>2017-09-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2017-09-09_szeged_visual-methods/</loc>
     <lastmod>2017-09-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2017-09-05-te/</loc>
     <lastmod>2017-09-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2017-07-18_burn_user-retro/</loc>
     <lastmod>2017-07-18T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2017-07-05_user_kinesis/</loc>
     <lastmod>2017-07-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2017-06-06_earl_stream-processing-with-r-in-aws/</loc>
     <lastmod>2017-06-06T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2017-04-21_burn_stream-processing-with-r-and-amazon-kinesis/</loc>
     <lastmod>2017-04-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2017-04-14_barug_awr/</loc>
     <lastmod>2017-04-14T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2017-03-04_la-r-meetup_stream-processing-with-r-in-aws/</loc>
     <lastmod>2017-03-04T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2017-2-ceu/</loc>
     <lastmod>2017-01-28T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-12-19_burn_rrrretrospect-2016/</loc>
     <lastmod>2016-12-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2016-10-24_bce/</loc>
     <lastmod>2016-10-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2016-10-22_budapest-bi-forum_r-workshop/</loc>
     <lastmod>2016-10-22T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-09-15_earl_stream-processing-with-r-and-amazon-kinesis/</loc>
     <lastmod>2016-09-15T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-09-03_satrday_conference-opening/</loc>
     <lastmod>2016-09-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-08-03_burn_user_retro/</loc>
     <lastmod>2016-08-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-07-09_big-data-la_stream-processing-with-r-and-amazon-kinesis/</loc>
     <lastmod>2016-07-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-06-30_user_satday-lightning-talk/</loc>
     <lastmod>2016-06-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-06-16_budapest-data-forum_stream-processing-with-r-and-amazon-kinesis/</loc>
     <lastmod>2016-06-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2016-03-09_domino-webinar_managing-and-optimizing-facebook-ad-campaigns-with-r/</loc>
     <lastmod>2016-03-09T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2016-2-ceu/</loc>
     <lastmod>2016-01-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2015-11-17_la-r-meetup_analyzing-and-managing-facebook-ads-from-r/</loc>
     <lastmod>2015-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2015-11-03_earl_analyzing-and-managing-facebook-ads-from-r/</loc>
     <lastmod>2015-11-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2015-09-30_burn_fbrads/</loc>
     <lastmod>2015-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-10-29_bi_meetup-rapporter/</loc>
     <lastmod>2015-09-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2015-07-13_burn_user-retro/</loc>
     <lastmod>2015-07-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2015-07-01_user_fbrads/</loc>
     <lastmod>2015-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2015-07-01_user_r-users-all-around-the-world/</loc>
     <lastmod>2015-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2015-06-30_user_r-markdown-tutorial/</loc>
     <lastmod>2015-06-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2015-05-30_r-in-finance_network-analysis-of-the-hungarian-interbank-lending-market/</loc>
     <lastmod>2015-05-30T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2014-12-08-bce/</loc>
     <lastmod>2014-12-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-11-27_budapest_bi_forum-telecom-italia/</loc>
     <lastmod>2014-11-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-11-26_budapest-bi-forum_r-warmup/</loc>
     <lastmod>2014-11-26T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2014-11-25_budapest_bi_forum-r-workshop/</loc>
     <lastmod>2014-11-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2014-11-17_r-insights/</loc>
     <lastmod>2014-11-17T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2014-10-20_bce/</loc>
     <lastmod>2014-10-20T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2014-09-10-szakkoli/</loc>
     <lastmod>2014-09-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-07-24_clemclub/</loc>
     <lastmod>2014-07-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-07-03_user_rapport-a-report-templating-system-in-r/</loc>
     <lastmod>2014-07-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-07-01_user_r-users-all-around-the-world/</loc>
     <lastmod>2014-07-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-06-27_epc_migration/</loc>
     <lastmod>2014-06-27T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2014-06-11_keler/</loc>
     <lastmod>2014-06-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-06-05_idc_stats-history/</loc>
     <lastmod>2014-06-05T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-05-21_burn_terbeli-mobilitas/</loc>
     <lastmod>2014-05-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-05-08_big_data_meetup-telecom-italia/</loc>
     <lastmod>2014-05-08T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-04-13_burn_pander/</loc>
     <lastmod>2014-04-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-04-03_telecom-italia_big-data-challenge/</loc>
     <lastmod>2014-04-03T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-03-24_bucharest_pander/</loc>
     <lastmod>2014-03-24T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-02-19_burn_csomagkeszites/</loc>
     <lastmod>2014-02-19T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2014-01-13_it-security-meetup_potential-risks-in-running-r-on-the-cloud/</loc>
     <lastmod>2014-01-13T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2013-11-21_mst_rapporter/</loc>
     <lastmod>2013-11-21T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2013-11-07_budapest-bi-forum_dashboard/</loc>
     <lastmod>2013-11-07T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2013-07-11_user-2013_pander-lightning-talk/</loc>
     <lastmod>2013-07-11T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2013-07-10_user-2013_rapporter-poster/</loc>
     <lastmod>2013-07-10T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2012-2-matstat1/</loc>
     <lastmod>2013-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2012-2-matstat3/</loc>
     <lastmod>2013-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2012-2-bce/</loc>
     <lastmod>2013-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2012-1-gazdasagi-matek/</loc>
     <lastmod>2012-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2012-1-matstat2/</loc>
     <lastmod>2012-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-2-matsat2/</loc>
     <lastmod>2012-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-2-matstat1/</loc>
     <lastmod>2012-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-2-matstat3/</loc>
     <lastmod>2012-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-2-bce/</loc>
     <lastmod>2012-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-1-bce/</loc>
     <lastmod>2011-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-1-kutatotabor/</loc>
     <lastmod>2011-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-1-matstat/</loc>
     <lastmod>2011-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-1-matstat2/</loc>
     <lastmod>2011-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2011-1-matstat3/</loc>
     <lastmod>2011-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-2-matstat1/</loc>
     <lastmod>2011-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-2-matstat2/</loc>
     <lastmod>2011-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-2-bce/</loc>
     <lastmod>2011-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-2-statisztika/</loc>
     <lastmod>2011-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-1-matstat1/</loc>
     <lastmod>2010-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-1-matstat3szoc/</loc>
     <lastmod>2010-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-1-matstat1pol/</loc>
     <lastmod>2010-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2010-1-spss2/</loc>
     <lastmod>2010-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2009-2-civil/</loc>
     <lastmod>2010-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2009-2-kvanti/</loc>
     <lastmod>2010-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2009-2-matstat2/</loc>
     <lastmod>2010-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2009-1-matstat1/</loc>
     <lastmod>2009-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2009-1-matstat3/</loc>
     <lastmod>2009-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2009-1-r/</loc>
     <lastmod>2009-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2009-1-mozgalmak/</loc>
     <lastmod>2009-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2008-2009-2-info/</loc>
     <lastmod>2009-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2008-2009-2-spss/</loc>
     <lastmod>2009-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2008-2009-2-mozgalmak/</loc>
     <lastmod>2009-02-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2008-2009-info/</loc>
     <lastmod>2008-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/teaching/2008-2009-matstat4/</loc>
     <lastmod>2008-09-01T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/map/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2014-statszemle/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2012-pecs/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2014-ter-es-tarsadalom/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2016-statszemle/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/categories/api-integrations/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/categories/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2016-aac/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2015-aac/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2018-r-journal/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/categories/conferences/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/categories/education/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2014-bulletin-of-sociological-methodology/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/repos/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2013-statszemle/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/work/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/categories/fun-projects/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/about/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/contact/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2013-intro-tor-for-quants/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2013-suicide/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2020-einstein/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2015-mastering-r/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2015-mastering-r-for-quants/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2016-kozgazdasagi-szemle/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/categories/r-in-production/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/categories/reporting/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2014-romanian/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/tags/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2020-rockerverse/</loc>
-  </url>
-  
-  <url>
+  </url><url>
     <loc>https://daroczig.github.io/publications/2015-aramlasterkep/</loc>
   </url>
-  
 </urlset>
