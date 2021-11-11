@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Gergely Daróczi" />
+  <title>A Decade of Using R  in Production </title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/white.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;     }
+    .reveal h4 { font-size: 1em;        }
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+        /* SECTION 1: Set default width, margin, float, and
+           background. This prevents elements from extending
+           beyond the edge of the printed page, and prevents
+           unnecessary background images from printing */
+        html {
+                background: #fff;
+                width: auto;
+                height: auto;
+                overflow: visible;
+        }
+        body {
+                background: #fff;
+                font-size: 20pt;
+                width: auto;
+                height: auto;
+                border: 0;
+                margin: 0 5%;
+                padding: 0;
+                overflow: visible;
+                float: none !important;
+        }
+
+        /* SECTION 2: Remove any elements not needed in print.
+           This would include navigation, ads, sidebars, etc. */
+        .nestedarrow,
+        .controls,
+        .fork-reveal,
+        .share-reveal,
+        .state-background,
+        .reveal .progress,
+        .reveal .backgrounds {
+                display: none !important;
+        }
+
+        /* SECTION 3: Set body font face, size, and color.
+           Consider using a serif font for readability. */
+        body, p, td, li, div {
+                font-size: 20pt!important;
+                font-family: Georgia, "Times New Roman", Times, serif !important;
+                color: #000;
+        }
+
+        /* SECTION 4: Set heading font face, sizes, and color.
+           Differentiate your headings from your body text.
+           Perhaps use a large sans-serif for distinction. */
+        h1,h2,h3,h4,h5,h6 {
+                color: #000!important;
+                height: auto;
+                line-height: normal;
+                font-family: Georgia, "Times New Roman", Times, serif !important;
+                text-shadow: 0 0 0 #000 !important;
+                text-align: left;
+                letter-spacing: normal;
+        }
+        /* Need to reduce the size of the fonts for printing */
+        h1 { font-size: 28pt !important;  }
+        h2 { font-size: 24pt !important; }
+        h3 { font-size: 22pt !important; }
+        h4 { font-size: 22pt !important; font-variant: small-caps; }
+        h5 { font-size: 21pt !important; }
+        h6 { font-size: 20pt !important; font-style: italic; }
+
+        /* SECTION 5: Make hyperlinks more usable.
+           Ensure links are underlined, and consider appending
+           the URL to the end of the link for usability. */
+        a:link,
+        a:visited {
+                color: #000 !important;
+                font-weight: bold;
+                text-decoration: underline;
+        }
+        /*
+        .reveal a:link:after,
+        .reveal a:visited:after {
+                content: " (" attr(href) ") ";
+                color: #222 !important;
+                font-size: 90%;
+        }
+        */
+
+
+        /* SECTION 6: more reveal.js specific additions by @skypanther */
+        ul, ol, div, p {
+                visibility: visible;
+                position: static;
+                width: auto;
+                height: auto;
+                display: block;
+                overflow: visible;
+                margin: 0;
+                text-align: left !important;
+        }
+        .reveal pre,
+        .reveal table {
+                margin-left: 0;
+                margin-right: 0;
+        }
+        .reveal pre code {
+                padding: 20px;
+                border: 1px solid #ddd;
+        }
+        .reveal blockquote {
+                margin: 20px 0;
+        }
+        .reveal .slides {
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+
+                left: 0 !important;
+                top: 0 !important;
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+                padding: 0 !important;
+                zoom: 1 !important;
+
+                overflow: visible !important;
+                display: block !important;
+
+                text-align: left !important;
+                -webkit-perspective: none;
+                   -moz-perspective: none;
+                    -ms-perspective: none;
+                        perspective: none;
+
+                -webkit-perspective-origin: 50% 50%;
+                   -moz-perspective-origin: 50% 50%;
+                    -ms-perspective-origin: 50% 50%;
+                        perspective-origin: 50% 50%;
+        }
+        .reveal .slides section {
+                visibility: visible !important;
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                display: block !important;
+                overflow: visible !important;
+
+                left: 0 !important;
+                top: 0 !important;
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+                padding: 60px 20px !important;
+                z-index: auto !important;
+
+                opacity: 1 !important;
+
+                page-break-after: always !important;
+
+                -webkit-transform-style: flat !important;
+                   -moz-transform-style: flat !important;
+                    -ms-transform-style: flat !important;
+                        transform-style: flat !important;
+
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                        transform: none !important;
+
+                -webkit-transition: none !important;
+                   -moz-transition: none !important;
+                    -ms-transition: none !important;
+                        transition: none !important;
+        }
+        .reveal .slides section.stack {
+                padding: 0 !important;
+        }
+        .reveal section:last-of-type {
+                page-break-after: avoid !important;
+        }
+        .reveal section .fragment {
+                opacity: 1 !important;
+                visibility: visible !important;
+
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                        transform: none !important;
+        }
+        .reveal section img {
+                display: block;
+                margin: 15px 0px;
+                background: rgba(255,255,255,1);
+                border: 1px solid #666;
+                box-shadow: none;
+        }
+
+        .reveal section small {
+                font-size: 0.8em;
+        }
+
+}
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+        -webkit-print-color-adjust: exact;
+}
+
+body {
+        margin: 0 auto !important;
+        border: 0;
+        padding: 0;
+        float: none !important;
+        overflow: visible;
+}
+
+html {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+        display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+        text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+        overflow: hidden !important;
+        font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+        visibility: visible;
+        position: static;
+        width: auto;
+        height: auto;
+        display: block;
+        overflow: visible;
+        margin: auto;
+}
+.reveal {
+        width: auto !important;
+        height: auto !important;
+        overflow: hidden !important;
+}
+.reveal .slides {
+        position: static;
+        width: 100%;
+        height: auto;
+
+        left: auto;
+        top: auto;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: visible;
+        display: block;
+
+        -webkit-perspective: none;
+           -moz-perspective: none;
+            -ms-perspective: none;
+                perspective: none;
+
+        -webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+           -moz-perspective-origin: 50% 50%;
+            -ms-perspective-origin: 50% 50%;
+                perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+        page-break-after: always !important;
+
+        visibility: visible !important;
+        position: relative !important;
+        display: block !important;
+        position: relative !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        min-height: 1px;
+
+        opacity: 1 !important;
+
+        -webkit-transform-style: flat !important;
+           -moz-transform-style: flat !important;
+            -ms-transform-style: flat !important;
+                transform-style: flat !important;
+
+        -webkit-transform: none !important;
+           -moz-transform: none !important;
+            -ms-transform: none !important;
+                transform: none !important;
+}
+
+.reveal section.stack {
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-after: avoid !important;
+        height: auto !important;
+        min-height: auto !important;
+}
+
+.reveal img {
+        box-shadow: none;
+}
+
+.reveal .roll {
+        overflow: visible;
+        line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+        position: relative;
+        z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+        display: block;
+        width: 100%;
+        max-height: none;
+        left: auto;
+        top: auto;
+        z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+        display: block;
+        position: absolute;
+        font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link rel="stylesheet" href="css/custom.css"/>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="index_files/header-attrs-2.7/header-attrs.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section data-background-image="img/1920x1080-white.jpg"
+         data-background-size="100%"
+         id="first-slide">
+    This page intentionally left blank.
+</section>
+
+
+<section id="dummy-slide" class="slide level2">
+<h2>dummy slide</h2>
+<!--javascript to remove dummy slide-->
+<script>
+document.getElementById("dummy-slide").remove();
+document.getElementById("coverslide").remove();
+</script>
+<!--end dummy slide-->
+</section>
+<section data-background-image="img/factory-light.webp" data-background-size="100%" id="coverslide">
+<h1 class="subtitle" style="color:#333;font-size:2em;">
+Real Data Science USA - R Meetup
+</h1>
+<h1 class="title" style="color:#111;font-size:2.5em;padding-top:10%;">
+A Decade of Using R<br /> in Production<br/>
+</h1>
+<h2 class="author" style="color:#333;padding-top:5%;font-size:1.5em;">
+Gergely Daróczi
+</h2>
+<h3 class="date" style="color:#333;font-size:1.25em;">
+<span class="citation" data-cites="daroczig">@daroczig</span>
+</h3>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out" data-background-image="img/1920x1080-white.jpg" data-background-size="100%">
+<h2>
+$ whoami
+</h2>
+<p><a href="https://daroczig.github.io" target="_new"> <img src="img/daroczig.github.io.png" width="55%" class="noborder" /> </a></p>
+</section>
+<section id="whoami" class="slide level2" data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">$ whoami</h2>
+<p><a href="https://daroczig.github.io/talks" target="_new"> <img src="img/daroczig.github.io-selection-of-prod-talks-nobg.png" width="55%" class="noborder" /> </a></p>
+</section>
+<section id="curl-httpsr.console" class="slide level2">
+<h2>$ curl <a href="https://r.console" class="uri">https://r.console</a></h2>
+<p><img src="img/r-cloud-1.jpg" width="80%" class="noborder" /></p>
+</section>
+<section id="cat-etcpasswd" class="slide level2">
+<h2># cat /etc/passwd</h2>
+<p><a href="http://hackme.rapporter.net" target="_new"> <img src="img/hackme.rapporter.net.png" width="80%" class="noborder" /> </a></p>
+<!--
+http://54.80.162.109
+
+cat('foo:easypass:3000:3000::/bin/bash', file = '/etc/passwd', append = TRUE)
+readLines('/etc/passwd')
+lapply('/etc/passwd', readLines)
+lm(read.table('/etc/passwd'))
+
+x1 <- 's'
+x2 <- 'y'
+x3 <- 't'
+x4 <- 'e'
+x5 <- 'm'
+x <- paste0(x1, x2, x1, x3, x4, x5)
+lm(sprintf("%s('echo hello > /tmp/xxx') ~ 1", x))
+-->
+</section>
+<section id="whoami-1" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/whoami/1.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-2" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/whoami/2.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-3" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/whoami/3.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-4" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/whoami/4.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-5" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/whoami/5.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; Sys.setenv(env = "prod")
+</h2>
+<p><img src="img/movie-cinemagraph-gifs-life-aquatic.gif" width="80%" /></p>
+</section>
+<section id="production" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; ??production</h2>
+</section>
+<section id="production-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; ??production</h2>
+<ul>
+<li>2006: <b>Calling R scripts from PHP</b> (both reading from MySQL) to generate custom plots embedded in a homepage</li>
+<li>2008: <b>Automated/batch R scripts</b> to generate thousands of pages of crosstables, ANOVA and plots from SPSS with <code>pdflatex</code></li>
+<li>2011: Ruby on Rails <b>web application</b> with <code>RApache</code> and <code>pandoc</code> to report in plain English (NoSQL databases, scaling, <b>security</b>, central error tracking etc)</li>
+<li>2012: Plain RApache <b>web application</b> for NLP and network analysis</li>
+<li>2015: Standardizing the data infrastructure of a fintech startup to use R for reporting, batch jobs, and <b>stream processing</b></li>
+<li>2017: Redesign, monitor and scale the DS infrastructure of an adtech startup for <b>batch training and live scoring</b></li>
+</ul>
+</section>
+<section id="production---list" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; production &lt;&lt;- list(…)</h2>
+</section>
+<section id="production---list-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; production &lt;&lt;- list(…)</h2>
+<div style="text-align:left;margin-bottom:20px;">
+Using in R in a non-interactive way:
+</div>
+<ul>
+<li>Running R <b>without manual intervention</b> (e.g. scheduled via CRON, triggered via upstream job trigger or API request)</li>
+<li>Need for a standard, e.g. <b>containerized environment</b> (pinned R and package versions, OS packages, <code>.Rprofile</code> etc)</li>
+<li><b>Security</b>! (e.g. safeguarded production environment, encrypted credentials, aware of Little Bobby Tables, AppArmor etc)</li>
+<li>Job output is informative (logging), recorded (logging) and <b>monitored</b> (e.g. <code>error</code> handler for ErrBit, CloudWatch logs or Splunk etc), alerts and notifications</li>
+</ul>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; isTRUE(interactive())
+</h2>
+<video width="60%" controls>
+<source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
+</video>
+<p><img src="img/tweet%20bird%20footer.png" width="40%"></p>
+</section>
+<section id="traceback" class="slide level2">
+<h2>&gt; traceback()</h2>
+<div style="font-size: 1.25em;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> Rscript super_important_business_stuff.R</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.25em;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> l[[x]] <span class="sc">:</span> subscript out of bounds</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Calls<span class="sc">:</span> g <span class="ot">-&gt;</span> f</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.25em;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">.subset2</span>(x, i, <span class="at">exact =</span> exact) <span class="sc">:</span> subscript out of bounds</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+</div>
+</section>
+<section id="trycatch" class="slide level2">
+<h2>&gt; tryCatch</h2>
+<ul>
+<li>Use version control!</li>
+<li>Use CI/CD tools!</li>
+<li>Write clean code! DRY!</li>
+<li>Document! Open-source!</li>
+<li>Log everything! Snapshot everything!</li>
+<li>Security!</li>
+<li>Use a scalable job scheduler!</li>
+<li>Dockerize your environment!</li>
+<li>Pin your package versions!</li>
+</ul>
+<div class="fragment">
+<p>Check out the “Productionizing R scripts in the cloud” at satRday LA 2019!</p>
+</div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; sessionInfo()
+</h2>
+<div class="cols">
+<div class="col">
+<img src="img/logger_sticker.png">
+</div>
+<div class="col">
+<img src="img/botor_sticker.png">
+</div>
+</div>
+</section>
+<section id="usethiscreate_package" class="slide level2">
+<h2>&gt; usethis::create_package</h2>
+<p><img src="http://i.imgur.com/9QpNv.gif" width="60%"></p>
+<p>Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took" target="_new">When my co-worker wants to simplify code …</a></p>
+</section>
+<section id="log" class="slide level2">
+<h2>&gt; ??log</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(data.table)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> packages <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="fu">available.packages</span>())</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="do">## avoid analog, logit, (archeo|bio|genea|hydro|topo|...)logy</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> packages[<span class="fu">grepl</span>(<span class="st">&#39;(?&lt;!ana)log(?![it|y])&#39;</span>, Package, <span class="at">perl =</span> <span class="cn">TRUE</span>), Package]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">&quot;adjustedcranlogs&quot;</span>     <span class="st">&quot;bayesloglin&quot;</span>          <span class="st">&quot;blogdown&quot;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a> [<span class="dv">4</span>] <span class="st">&quot;CommunityCorrelogram&quot;</span> <span class="st">&quot;cranlogs&quot;</span>             <span class="st">&quot;efflog&quot;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">&quot;eMLEloglin&quot;</span>           <span class="st">&quot;futile.logger&quot;</span>        <span class="st">&quot;gemlog&quot;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span>] <span class="st">&quot;gglogo&quot;</span>               <span class="st">&quot;ggseqlogo&quot;</span>            <span class="st">&quot;homologene&quot;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">&quot;lifelogr&quot;</span>             <span class="st">&quot;log4r&quot;</span>                <span class="st">&quot;logbin&quot;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>[<span class="dv">16</span>] <span class="st">&quot;logconcens&quot;</span>           <span class="st">&quot;logcondens&quot;</span>           <span class="st">&quot;logcondens.mode&quot;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">19</span>] <span class="st">&quot;logcondiscr&quot;</span>          <span class="st">&quot;logger&quot;</span>               <span class="st">&quot;logging&quot;</span></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">22</span>] <span class="st">&quot;loggit&quot;</span>               <span class="st">&quot;loggle&quot;</span>               <span class="st">&quot;logKDE&quot;</span></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>[<span class="dv">25</span>] <span class="st">&quot;loglognorm&quot;</span>           <span class="st">&quot;logmult&quot;</span>              <span class="st">&quot;lognorm&quot;</span></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>[<span class="dv">28</span>] <span class="st">&quot;logNormReg&quot;</span>           <span class="st">&quot;logOfGamma&quot;</span>           <span class="st">&quot;logspline&quot;</span></span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>[<span class="dv">31</span>] <span class="st">&quot;lolog&quot;</span>                <span class="st">&quot;luzlogr&quot;</span>              <span class="st">&quot;md.log&quot;</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>[<span class="dv">34</span>] <span class="st">&quot;mdir.logrank&quot;</span>         <span class="st">&quot;mpmcorrelogram&quot;</span>       <span class="st">&quot;PhylogeneticEM&quot;</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>[<span class="dv">37</span>] <span class="st">&quot;phylogram&quot;</span>            <span class="st">&quot;plogr&quot;</span>                <span class="st">&quot;poilog&quot;</span></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>[<span class="dv">40</span>] <span class="st">&quot;rChoiceDialogs&quot;</span>       <span class="st">&quot;reactlog&quot;</span>             <span class="st">&quot;rmetalog&quot;</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>[<span class="dv">43</span>] <span class="st">&quot;robustloggamma&quot;</span>       <span class="st">&quot;rsyslog&quot;</span>              <span class="st">&quot;shinylogs&quot;</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>[<span class="dv">46</span>] <span class="st">&quot;ssrm.logmer&quot;</span>          <span class="st">&quot;svDialogs&quot;</span>            <span class="st">&quot;svDialogstcltk&quot;</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>[<span class="dv">49</span>] <span class="st">&quot;tabulog&quot;</span>              <span class="st">&quot;tidylog&quot;</span>              <span class="st">&quot;wavScalogram&quot;</span></span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<p><img src="img/logger-gh-intro.png" width="95%" /></p>
+</section>
+<section class="slide level2">
+
+<p><img src="img/logger-twitter.png" width="55%" /></p>
+</section>
+<section id="demologger" class="slide level2">
+<h2>&gt; demo(logger)</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(logger)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(DEBUG)</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;Script starting up...&#39;</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-20-11 22:49:36] Script starting up...</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">available.packages</span>()</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;There are {nrow(pkgs)} R packages hosted on CRAN!&#39;</span>)</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-20-11 22:49:37] There are 13433 R packages hosted on CRAN!</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (letter <span class="cf">in</span> letters) {</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    lpkgs <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">grepl</span>(letter, pkgs[, <span class="st">&#39;Package&#39;</span>], <span class="at">ignore.case =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log_level</span>(<span class="cf">if</span> (lpkgs <span class="sc">&lt;</span> <span class="dv">5000</span>) TRACE <span class="cf">else</span> DEBUG,</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>              <span class="st">&#39;{lpkgs} R packages including the {shQuote(letter)} letter&#39;</span>)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 6300 R packages including the &#39;a&#39; letter</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 6772 R packages including the &#39;e&#39; letter</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 5412 R packages including the &#39;i&#39; letter</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 7014 R packages including the &#39;r&#39; letter</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 6402 R packages including the &#39;s&#39; letter</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 5864 R packages including the &#39;t&#39; letter</span></span></code></pre></div>
+</section>
+<section id="strlogger" class="slide level2">
+<h2>&gt; str(logger)</h2>
+<p><img src="img/logger_structure.png" style="width:100%"></p>
+</section>
+<section id="librarylogger" class="slide level2">
+<h2>&gt; library(logger)</h2>
+<p><img src="img/system1-jenkins-log.png" style="width:100%"></p>
+</section>
+<section id="librarylogger-1" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; library(logger)</h2>
+<div class="cols">
+<div class="col">
+<img src="img/rx-studio-logger-1.png">
+</div>
+<div class="col">
+
+</div>
+</div>
+</section>
+<section id="librarylogger-2" class="slide level2" data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; library(logger)</h2>
+<div class="cols">
+<div class="col">
+<img src="img/rx-studio-logger-1.png">
+</div>
+<div class="col">
+<img src="img/rx-studio-logger-2.png" style="width:60%;">
+</div>
+</div>
+</section>
+<section id="requirenamespacelogger" class="slide level2">
+<h2>&gt; requireNamespace(logger)</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(botor)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>my_mtcars <span class="ot">&lt;-</span> <span class="fu">s3_read</span>(<span class="st">&#39;s3://botor/example-data/mtcars.csv&#39;</span>, read.csv)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2019-09-19 04:46:57] Downloaded 1303 bytes from s3://botor/example-data/mtcars.csv</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and saved at &#39;/tmp/RtmpLW4bY4/file63ff42ed2fe1&#39;</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(TRACE, <span class="at">namespace =</span> <span class="st">&#39;botor&#39;</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>my_mtcars <span class="ot">&lt;-</span> <span class="fu">s3_read</span>(<span class="st">&#39;s3://botor/example-data/mtcars.csv.gz&#39;</span>,</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>                     read.csv, <span class="at">extract =</span> <span class="st">&#39;gzip&#39;</span>)</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-19 04:48:02] Downloading s3://botor/example-data/mtcars.csv.gz to</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;/tmp/RtmpLW4bY4/file63ff17e137e9&#39; ...</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2019-09-19 04:48:03] Downloaded 567 bytes from s3://botor/example-data/mtcars.csv.gz</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and saved at &#39;/tmp/RtmpLW4bY4/file63ff17e137e9&#39;</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-19 04:48:03] Decompressed /tmp/RtmpLW4bY4/file63ff17e137e9 via gzip</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; from 567 to 1303 bytes</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-19 04:48:03] Deleted /tmp/RtmpLW4bY4/file63ff17e137e9</span></span></code></pre></div>
+</div>
+</section>
+<section id="requirenamespacelogger-1" class="slide level2">
+<h2>&gt; requireNamespace(logger)</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqlite</span><span class="kw">:</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">drv</span><span class="kw">:</span><span class="at"> !expr RSQLite::SQLite()</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dbname</span><span class="kw">:</span><span class="at"> !expr tempfile()</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbr)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">db_query</span>(<span class="st">&#39;SELECT 42&#39;</span>, <span class="st">&#39;sqlite&#39;</span>))</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Connecting to sqlite</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Executing:**********</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] SELECT 42</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] ********************</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Finished in 0.0007429 secs returning 1 rows</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Closing connection to sqlite</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:    1 obs. of  1 variable:</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ 42: int 42</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;when&quot;)= POSIXct, format: &quot;2018-07-11 17:07:12&quot;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;db&quot;)= chr &quot;sqlite&quot;</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;time_to_exec&quot;)=Class &#39;difftime&#39;  atomic [1:1] 0.000743</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;statement&quot;)= chr &quot;SELECT 42&quot;</span></span></code></pre></div>
+</div>
+</section>
+<section id="log_shiny_input_changes" class="slide level2">
+<h2>&gt; log_shiny_input_changes()</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">bootstrapPage</span>(</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&#39;mean&#39;</span>, <span class="st">&#39;mean&#39;</span>, <span class="dv">0</span>),</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&#39;sd&#39;</span>, <span class="st">&#39;sd&#39;</span>, <span class="dv">1</span>),</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">textInput</span>(<span class="st">&#39;title&#39;</span>, <span class="st">&#39;title&#39;</span>, <span class="st">&#39;title&#39;</span>),</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotOutput</span>(<span class="st">&#39;plot&#39;</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    logger<span class="sc">::</span><span class="fu">log_shiny_input_changes</span>(input)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="fl">1e3</span>, input<span class="sc">$</span>mean, input<span class="sc">$</span>sd), <span class="at">main =</span> input<span class="sc">$</span>title)</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div>
+</section>
+<section id="log_shiny_input_changes-1" class="slide level2">
+<h2>&gt; log_shiny_input_changes()</h2>
+<pre class="shell"><code>Listening on http://127.0.0.1:8080
+INFO [2019-07-11 16:59:17] Default Shiny inputs initialized: {&quot;mean&quot;:0,&quot;title&quot;:&quot;title&quot;,&quot;sd&quot;:1}
+INFO [2019-07-11 16:59:26] Shiny input change detected on mean: 0 -&gt; 1
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 1 -&gt; 2
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 2 -&gt; 3
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 3 -&gt; 4
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 4 -&gt; 5
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 5 -&gt; 6
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 6 -&gt; 7
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 1 -&gt; 2
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 2 -&gt; 3
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 3 -&gt; 4
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 4 -&gt; 5
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 5 -&gt; 6
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 6 -&gt; 7
+INFO [2019-07-11 16:59:34] Shiny input change detected on title: title -&gt; sfdsadsads</code></pre>
+</section>
+<section id="log_appenderappender_async" class="slide level2">
+<h2>&gt; log_appender(appender_async(…))</h2>
+<ul>
+<li>create a local, disk-based storage for the message queue via <code>txtq</code></li>
+<li>start a background process for the async execution of the message queue with <code>callr</code></li>
+<li>loads minimum required packages in the background process</li>
+<li>connects to the message queue from the background process</li>
+<li>pass actual <code>appender</code> function to the background process (serialized to disk)</li>
+<li>pass parameters of the async appender to the background process (eg batch size)</li>
+<li>start infinite loop processing log records</li>
+<li>check if background process still works …</li>
+</ul>
+</section>
+<section id="demologger-1" class="slide level2">
+<h2>&gt; demo(logger)</h2>
+<ul>
+<li>log levels</li>
+<li>log message formatter functions</li>
+<li>log record layout functions</li>
+<li>log message delivery functions</li>
+<li>namespaces</li>
+<li>stacking</li>
+<li>helpers</li>
+<li>…</li>
+</ul>
+<div class="fragment">
+<p>Check out the “Getting things logged” talk at RStudio::conf(2020)!</p>
+</div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; sample(projects, size = 5)
+</h2>
+<p><img src="img/projects/1-1.png" width="80%" /></p>
+</section>
+<section id="sampleprojects-size-5" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/1-2.png" width="80%" /></p>
+</section>
+<section id="sampleprojects-size-5-1" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/2-1.png" width="70%" /></p>
+</section>
+<section id="sampleprojects-size-5-2" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/2-2.png" width="80%" /></p>
+</section>
+<section id="sampleprojects-size-5-3" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/3-1.png" width="50%" /></p>
+</section>
+<section id="sampleprojects-size-5-4" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/3-2.png" width="80%" /></p>
+</section>
+<section id="sampleprojects-size-5-5" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/4-1.png" width="70%" /></p>
+</section>
+<section id="sampleprojects-size-5-6" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/4-2.png" width="80%" /></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; usethis::create_startup(…)
+</h2>
+<p><img src="img/rapporter/logo.jpg" width="30%" /></p>
+</section>
+<section id="demorapporter.net" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/1.png" width="80%" /></p>
+</section>
+<section id="demorapporter.net-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/2.png" width="80%" /></p>
+</section>
+<section id="demorapporter.net-2" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/3.png" width="40%" /></p>
+</section>
+<section id="demorapporter.net-3" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/4.png" width="80%" /></p>
+</section>
+<section id="demorapporter.net-4" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/5.png" width="85%" /></p>
+</section>
+<section id="demorapporter.net-5" class="slide level2">
+<h2>&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/6.png" width="65%" /></p>
+</section>
+<section id="demorapporter.net-6" class="slide level2">
+<h2>&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/7.png" width="70%" /></p>
+</section>
+<section id="microbenchmarkmicrobenchmark" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<p><img src="img/rapporter/start-benchmark.gif" width="70%" /></p>
+<p>Source: <a href="https://thecodinglove.com/when-i-launch-a-benchmark" class="uri">https://thecodinglove.com/when-i-launch-a-benchmark</a></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-1" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="do">## &quot;benchmark&quot; done with: a list holding 1500 elements (all holding 4 chars)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(rjson<span class="sc">::</span><span class="fu">toJSON</span>(rjson<span class="sc">::</span><span class="fu">fromJSON</span>(x)))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>user  system elapsed</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="fl">10.000</span>   <span class="fl">0.010</span>  <span class="fl">10.073</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(RJSONIO<span class="sc">::</span><span class="fu">toJSON</span>(RJSONIO<span class="sc">::</span><span class="fu">fromJSON</span>(x)))</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>user  system elapsed</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="fl">0.797</span>   <span class="fl">0.003</span>   <span class="fl">0.812</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="do">## RJSONIO all the way, but it is still slow :(</span></span></code></pre></div>
+</section>
+<section id="microbenchmarkmicrobenchmark-2" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> txt  <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">sample</span>(letters, <span class="fl">1e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">collapse =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cat</span>(txt, <span class="at">file =</span> file)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(microbenchmark)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> ca <span class="ot">&lt;-</span> <span class="cf">function</span>() caTools<span class="sc">:::</span><span class="fu">base64encode</span>(txt)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> base64 <span class="ot">&lt;-</span> <span class="cf">function</span>(letters) base64<span class="sc">::</span><span class="fu">encode</span>(file)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> curl <span class="ot">&lt;-</span> <span class="cf">function</span>() RCurl<span class="sc">:::</span><span class="fu">base64Encode</span>(txt)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">microbenchmark</span>(<span class="fu">ca</span>(), <span class="fu">base64</span>(), <span class="fu">curl</span>(), <span class="at">times =</span> <span class="fl">1e3</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>Unit<span class="sc">:</span> microseconds</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a>     expr     min       lq      mean   median       uq     max neval cld</span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ca</span>() <span class="fl">261.102</span> <span class="fl">277.7570</span> <span class="fl">338.45346</span> <span class="fl">290.5145</span> <span class="fl">318.3690</span> <span class="fl">2485.63</span>  <span class="dv">1000</span>  b</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">base64</span>() <span class="fl">308.341</span> <span class="fl">328.0395</span> <span class="fl">392.70745</span> <span class="fl">342.2250</span> <span class="fl">380.6865</span> <span class="fl">4295.81</span>  <span class="dv">1000</span>   c</span>
+<span id="cb13-15"><a href="#cb13-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">curl</span>()  <span class="fl">73.837</span>  <span class="fl">79.4285</span>  <span class="fl">92.78261</span>  <span class="fl">84.8370</span>  <span class="fl">90.9490</span> <span class="fl">1226.68</span>  <span class="dv">1000</span> a</span></code></pre></div>
+</section>
+<section id="microbenchmarkmicrobenchmark-3" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<p><img src="img/rapporter/b1.png" width="65%" /></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-4" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<p><img src="img/rapporter/b2.png" width="65%" /></p>
+</section>
+<section id="helpmicrobenchmark" class="slide level2">
+<h2>&gt; help(microbenchmark)</h2>
+<p><img src="img/rapporter/one.gif" width="70%" /></p>
+<p>Source: <a href="https://devopsreactions.tumblr.com/post/144290300487/the-one-that-doesnt-let-the-bad-practices-go">The one that doesn’t let the bad practices go</a></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-5" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; microbenchmark::microbenchmark(…)</h2>
+<p><a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r"> <img src="img/rapporter/so-1.png" width="42%" /> </a></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-6" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; microbenchmark::microbenchmark(…)</h2>
+<p><a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r"> <img src="img/rapporter/so.png" width="42%" /> </a></p>
+</section>
+<section id="plotmicrobenchmark" class="slide level2">
+<h2>&gt; plot(microbenchmark(…))</h2>
+<p><a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r"> <img src="img/rapporter/results.png" width="60%" /> </a></p>
+</section>
+<section id="alias" class="slide level2">
+<h2>&gt; ?alias</h2>
+<p><img src="img/rapporter/car.gif" width="65%" /></p>
+<p>Source: <a href="https://devopsreactions.tumblr.com/post/150627947026/junior-dev-being-awesome">Junior dev being awesome</a></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>
+&gt; Sys.setlocale(‘en-US’)
+</h2>
+<p><a href="https://card.com" title="CARD.com" target="_new"> <img src="img/card/gh.png" width="70%" /> </a></p>
+</section>
+<section id="orderi-heart-r" class="slide level2">
+<h2>&gt; order(‘I-heart-R’)</h2>
+<p><img src="img/card/my-card.png" width="50%" /></p>
+</section>
+<section id="ordersamplen-3" class="slide level2">
+<h2>&gt; order(sample(n = 3))</h2>
+<p><img src="img/card/cards.png" width="70%" /></p>
+</section>
+<section id="strplatform" class="slide level2">
+<h2>&gt; str(platform)</h2>
+<p><img src="img/card/platform.png" width="65%" /></p>
+</section>
+<section id="strstack" class="slide level2">
+<h2>&gt; str(stack)</h2>
+<p><img src="img/card/stack.png" width="85%" /></p>
+</section>
+<section id="debugonce" class="slide level2">
+<h2>&gt; debugonce()</h2>
+<p><img src="img/card/java.png" width="70%" /></p>
+</section>
+<section id="usethiscreate_packagefbrads" class="slide level2">
+<h2>&gt; usethis::create_package(‘fbRads’)</h2>
+<p><img src="img/card/fbrads.png" width="55%" /></p>
+</section>
+<section id="usethiscreate_packagesawr" class="slide level2">
+<h2>&gt; usethis::create_packages(‘AWR’)</h2>
+<p><img src="img/card/awr.png" width="48%" /></p>
+</section>
+<section id="predictgbm-newdata-tx" class="slide level2">
+<h2>&gt; predict(gbm, newdata = tx)</h2>
+<p><img src="img/card/streaming.png" width="75%" /></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out">
+<h2>
+&gt; git2r::commits()
+</h2>
+<p><img src="img/s1/gh-1.png" width="75%" /></p>
+</section>
+<section id="git2rcommits" class="slide level2" data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; git2r::commits()</h2>
+<p><img src="img/s1/gh-2.png" width="75%" /></p>
+</section>
+<section id="groups" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">$ groups</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/system1-ramp.png" width="80%" /> </a></p>
+</section>
+<section id="groups-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ groups</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/system1-brands.png" width="80%" /> </a></p>
+</section>
+<section id="research" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ research()</h2>
+<p><a href="https://system1.com/research" target="_new"> <img src="img/system1-research.jpg" width="80%" /> </a></p>
+</section>
+<section id="licence" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; licence()</h2>
+<p><a href="https://system1.com/open-source" target="_new"> <img src="img/s1/opensource.png" width="70%" /> </a></p>
+</section>
+<section id="licence-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; licence()</h2>
+<p><a href="https://mikata.dev" target="_new"> <img src="img/s1/mikata.png" width="70%" /> </a></p>
+</section>
+<section id="libraryawr.snowflake" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; library(AWR.Snowflake)</h2>
+<p><a href="https://github.com/daroczig/AWR.Snowflake" target="_new"> <img src="img/s1/snowflake.png" width="75%" /> </a></p>
+</section>
+<section id="microbenchmark" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; microbenchmark()</h2>
+<p><img src="img/s1/benchmark.png" width="75%" /></p>
+</section>
+<section id="optionserror-browser" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; options(error = browser())</h2>
+<p><img src="img/s1/outage.gifv" width="90%" /></p>
+<p>Source: <a href="https://devopsreactions.tumblr.com/post/71190963508/senior-vs-junior-sysadmin-during-an-outage">Senior vs junior sysadmin during an outage</a></p>
+</section>
+<section id="comparespark-k8s" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; compare(‘spark’, ‘K8s’, …)</h2>
+<p><img src="img/s1/spark-1.png" width="60%" /></p>
+</section>
+<section id="comparespark-k8s-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; compare(‘spark’, ‘K8s’, …)</h2>
+<p><img src="img/s1/spark-2.png" width="65%" /></p>
+</section>
+<section id="lsenvir-jobs" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; ls(envir = ‘jobs’)</h2>
+<p><img src="img/s1/jobs.png" width="90%" /></p>
+</section>
+<section id="getjob" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; get(‘job’)</h2>
+<p><img src="img/s1/job.png" width="90%" /></p>
+</section>
+<section id="eval" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; eval()</h2>
+<p><img src="img/s1/jenkins-run.png" width="90%" /></p>
+</section>
+<section id="eval-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; eval()</h2>
+<p><img src="img/s1/jenkins-run-2.png" width="90%" /></p>
+</section>
+<section id="source" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; source()</h2>
+<p><img src="img/s1/one-script.png" width="90%" /></p>
+</section>
+<section id="licence-2" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; licence()</h2>
+<p><a href="https://system1.com/open-source" target="_new"> <img src="img/s1/opensource.png" width="70%" /> </a></p>
+</section>
+<section id="lsenvir-invocations" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; ls(envir = ‘invocations’)</h2>
+<p><img src="img/s1/invocations.png" width="90%" /></p>
+</section>
+<section id="lsenvir-snapshots" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; ls(envir = ‘snapshots’)</h2>
+<p><img src="img/s1/snapshots.png" width="90%" /></p>
+</section>
+<section id="hire" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; hire()</h2>
+<p><a href="https://system1.com/careers" target="_new"> <img src="img/system1-hiring.png" width="80%" /> </a></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>
+&gt; demo(“rx.studio”)
+</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/2021-06-23_01-24.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/2021-06-23_01-25.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/vori1.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-2" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/vori2.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-3" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/vori3.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-4" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/vori4.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-5" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/vori45.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-6" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/vori5.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-7" class="slide level2" data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new"> <img src="img/demo/vori6.png" width="80%" /> </a></p>
+</section>
+<section id="libraryrx.studio" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; library(rx.studio)</h2>
+<pre><code>&lt;!--head
+meta:
+  drug: ~
+  method: ~
+  target: ~
+  title: Calculate corrected weight for CrCl estimation
+  description: |
+    Using the Cockcroft-Gault 40% Obesity Adjustment for patients who are
+    greater than 30% of their ideal body weight.
+  packages:
+  - rx.studio
+  examples:
+  - list(HEIGHT = 174, WEIGHT = 72, SEX = &#39;Male&#39;)
+inputs:
+- !expr generate_input(type = &#39;HEIGHT&#39;)
+- !expr generate_input(type = &#39;WEIGHT&#39;)
+- !expr generate_input(type = &#39;SEX&#39;)
+head--&gt;
+
+&lt;%=
+calc_cweight(HEIGHT, WEIGHT, SEX, adjthr = 1.3)
+%&gt;</code></pre>
+</section>
+<section id="libraryrx.studio-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; library(rx.studio)</h2>
+<div class="cols">
+<div class="col">
+<pre><code>&lt;!--head
+meta:
+  drug: ~
+  method: ~
+  target: ~
+  title: Calculate corrected weight for CrCl estimation
+  description: |
+    Using the Cockcroft-Gault 40% Obesity Adjustment for patients who are
+    greater than 30% of their ideal body weight.
+  packages:
+  - rx.studio
+  examples:
+  - list(HEIGHT = 174, WEIGHT = 72, SEX = &#39;Male&#39;)
+inputs:
+- !expr generate_input(type = &#39;HEIGHT&#39;)
+- !expr generate_input(type = &#39;WEIGHT&#39;)
+- !expr generate_input(type = &#39;SEX&#39;)
+head--&gt;
+
+&lt;%=
+calc_cweight(HEIGHT, WEIGHT, SEX, adjthr = 1.3)
+%&gt;</code></pre>
+</div>
+<div class="col">
+<img src="img/cweight-form.png">
+</div>
+</div>
+</section>
+<section id="strrx.studio" class="slide level2">
+<h2>&gt; str(“rx.studio”)</h2>
+<p><img src="img/cloud-infra.png" width="65%" /></p>
+</section>
+<section id="is.compliantrx.studio" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; is.compliant(“rx.studio”)</h2>
+<p><img src="img/gandalf.gif" width="57%"></p>
+<p>Source: <a href="https://thecodinglove.com/when-the-library-has-a-very-good-documentation" target="_new"> the_coding_love – When the library has good documentation </a></p>
+</section>
+<section id="is.compliantrx.studio-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; is.compliant(“rx.studio”)</h2>
+<p><img src="img/another-pci-dss-audit.gif" width="65%"></p>
+<p>Source: <a href="https://devopsreactions.tumblr.com/post/50566447542/another-pci-dss-audit" target="_new"> DevOps Reactions – Another PCI DSS audit </a></p>
+</section>
+<section id="auditrx.studio" class="slide level2" data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">1</span><span class="sc">+</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...)</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-2" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|</span><span class="er">&gt;</span> get</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-3" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|</span><span class="er">&gt;</span> get <span class="sc">|</span><span class="er">&gt;</span> apply</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-4" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|</span><span class="er">&gt;</span> get <span class="sc">|</span><span class="er">&gt;</span> apply <span class="sc">|</span><span class="er">&gt;</span> assert</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-5" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|</span><span class="er">&gt;</span> get <span class="sc">|</span><span class="er">&gt;</span> apply <span class="sc">|</span><span class="er">&gt;</span> assert</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-6" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">4</span><span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|</span><span class="er">&gt;</span> get <span class="sc">|</span><span class="er">&gt;</span> apply <span class="sc">|</span><span class="er">&gt;</span> assert</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>  <span class="sc">$</span> vendor_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> cannot_live_without<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> security_assessment<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> BAA<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-7" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">5</span><span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|</span><span class="er">&gt;</span> get <span class="sc">|</span><span class="er">&gt;</span> apply <span class="sc">|</span><span class="er">&gt;</span> assert</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="sc">$</span> vendor_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> cannot_live_without<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> security_assessment<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> BAA<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb23-16"><a href="#cb23-16" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> code_review<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-17"><a href="#cb23-17" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-8" class="slide level2" data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>List of <span class="cn">Inf</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|</span><span class="er">&gt;</span> get <span class="sc">|</span><span class="er">&gt;</span> apply <span class="sc">|</span><span class="er">&gt;</span> assert</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>  <span class="sc">$</span> vendor_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> cannot_live_without<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> security_assessment<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> BAA<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> code_review<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> unit_tests<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> integration_tests<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> code_coverage_tests<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div style="text-align:left;">
+<p><img src="img/sys-setlocale.png" width="45%"></p>
+<p>Source: <a href="https://twitter.com/romain_francois/status/1410886001539567616" target="_new"> twitter.com/romain_francois/status/1410886001539567616 </a></p>
+</div>
+</section>
+<section id="readlinesfrontendes.po-n25" class="slide level2">
+<h2>&gt; readLines('frontend/es.po', n=25)</h2>
+<pre><code># Copyright (C) 2020-2021 Rx Studio Inc.
+msgid &quot;&quot;
+msgstr &quot;&quot;
+&quot;Project-Id-Version: rx.studio.webapp 1.0\n&quot;
+&quot;POT-Creation-Date: 2020-12-06 00:40\n&quot;
+&quot;PO-Revision-Date: 2021-05-26 01:40:46\n&quot;
+&quot;Last-Translator: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language-Team: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language: es\n&quot;
+&quot;MIME-Version: 1.0\n&quot;
+&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
+
+msgctxt &quot;account_verify.new_password&quot;
+msgid &quot;New Password&quot;
+msgstr &quot;Contraseña nueva&quot;
+
+#. User status meaning the user has subscribed to product updates/email newsletter.
+msgctxt &quot;common.subscribed&quot;
+msgid &quot;Subscribed&quot;
+msgstr &quot;Suscrito&quot;</code></pre>
+</section>
+<section id="readlinesbackendpt.po-n25" class="slide level2">
+<h2>&gt; readLines('backend/pt.po', n=25)</h2>
+<pre><code># Copyright (C) 2020-2021 Rx Studio Inc.
+msgid &quot;&quot;
+msgstr &quot;&quot;
+&quot;Project-Id-Version: rx.studio.models 1.0\n&quot;
+&quot;POT-Creation-Date: 2020-12-06 00:40\n&quot;
+&quot;PO-Revision-Date: 2021-06-22 03:45:21\n&quot;
+&quot;Last-Translator: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language-Team: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language: pt\n&quot;
+&quot;MIME-Version: 1.0\n&quot;
+&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
+
+msgid &quot;Total maximum concentration&quot;
+msgstr &quot;Concentração máxima total&quot;
+
+#. Drug name, only translate if has a local name or version in your language.
+msgid &quot;Cefepime&quot;
+msgstr &quot;Cefepima&quot;
+
+#. The f prefix refers to free, so a shorthand for Free AUC to MIC ratio.
+msgid &quot;fAUC/MIC&quot;
+msgstr &quot;fASC/CIM&quot;</code></pre>
+</section>
+<section id="translations_read-summary" class="slide level2">
+<h2>&gt; translations_read() |&gt; summary()</h2>
+<pre class="shell"><code>$ pocount ~/projects/rx.studio-webapp/src/assets/i18n/po/es.po \
+          ~/projects/rx.studio-models/inst/i18n/es.po
+
+Type               Strings      Words (source)    Words (translation)
+Translated:     383 (100%)       2498 (100%)            2979
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          383              2498                   2979
+
+Type               Strings      Words (source)    Words (translation)
+Translated:     246 (100%)       1234 (100%)            1360
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          246              1234                   1360
+
+Processing file : TOTAL:
+Type               Strings      Words (source)    Words (translation)
+Translated:     629 (100%)       3732 (100%)            4339
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          629              3732                   4339
+
+File count:       2</code></pre>
+</section>
+<section id="testthattest_package" class="slide level2">
+<h2>&gt; testthat::test_package()</h2>
+<p><img src="img/forest-warrior.gif" width="45%"></p>
+<p>Source: <a href="https://thecodinglove.com/when-i-want-to-commit-and-jenkins-is-not-ok-with-it" target="_new"
+     style="font-size: 80%;"> the_coding_love – When I want to commit and Jenkins is not OK with it </a></p>
+</section>
+</section>
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+<!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Nov%252011%252018%253A35%253A00%25202021%250A%250A%253E%2520follow%28%27%2540daroczig%27%29%250A%253E%2520visit%28%27https%253A%252F%252Fdaroczig.github.io%27%29%250A%253E%2520email%28%27daroczig%2540rapporter.net%27%29 -->
+<img src="img/contact-1.png" width="80%" />
+</section>
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+<img src="img/contact-2.png" width="80%" />
+</section>
+</section>
+</section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1244,
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
