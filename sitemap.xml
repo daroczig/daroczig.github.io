@@ -54,13 +54,19 @@
   </url><url>
     <loc>https://daroczig.github.io/repos/conflr/</loc>
   </url><url>
+    <loc>https://daroczig.github.io/</loc>
+    <lastmod>2021-11-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/</loc>
+    <lastmod>2021-11-24T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/2021-ceu-use-cases/</loc>
+    <lastmod>2021-11-24T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2021-11-real-data-science-meetup/</loc>
     <lastmod>2021-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/talks/</loc>
-    <lastmod>2021-11-11T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://daroczig.github.io/</loc>
     <lastmod>2021-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/talks/2021-nhs-r/</loc>
@@ -72,6 +78,21 @@
     <loc>https://daroczig.github.io/talks/2021-user/</loc>
     <lastmod>2021-07-09T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://daroczig.github.io/teaching/2020-ceu-dv3/</loc>
+    <lastmod>2021-06-29T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/2020-ceu-mastering-r/</loc>
+    <lastmod>2021-05-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/2020-ceu-r-in-prod/</loc>
+    <lastmod>2021-03-23T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/2020-ceu-dv2/</loc>
+    <lastmod>2021-03-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/2020-ceu-use-cases/</loc>
+    <lastmod>2020-11-25T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2020-mta/</loc>
     <lastmod>2020-11-17T00:00:00+00:00</lastmod>
   </url><url>
@@ -79,9 +100,6 @@
     <lastmod>2020-11-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/teaching/2019-ceu-dv3/</loc>
-    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://daroczig.github.io/teaching/</loc>
     <lastmod>2020-05-25T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/teaching/2019-ceu-mastering-r/</loc>

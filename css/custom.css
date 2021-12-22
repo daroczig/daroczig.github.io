@@ -25,13 +25,13 @@ a:hover, a:focus {
 }
 
 
-img {
+img.rotating {
     -webkit-transition: -webkit-transform .8s ease-in-out;
     transition:         transform .8s ease-in-out;
     -webkit-transform: rotate(-6deg);
     transform: rotate(-6deg);
 }
-img:hover {
+img.rotating:hover {
     -webkit-transform: rotate(6deg);
     transform: rotate(6deg);
 }
