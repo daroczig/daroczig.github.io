@@ -1,0 +1,1740 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Gergely Daróczi" />
+  <title>R Coffee Break logger - A Modern Logging Utility </title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/white.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;     }
+    .reveal h4 { font-size: 1em;        }
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+        /* SECTION 1: Set default width, margin, float, and
+           background. This prevents elements from extending
+           beyond the edge of the printed page, and prevents
+           unnecessary background images from printing */
+        html {
+                background: #fff;
+                width: auto;
+                height: auto;
+                overflow: visible;
+        }
+        body {
+                background: #fff;
+                font-size: 20pt;
+                width: auto;
+                height: auto;
+                border: 0;
+                margin: 0 5%;
+                padding: 0;
+                overflow: visible;
+                float: none !important;
+        }
+
+        /* SECTION 2: Remove any elements not needed in print.
+           This would include navigation, ads, sidebars, etc. */
+        .nestedarrow,
+        .controls,
+        .fork-reveal,
+        .share-reveal,
+        .state-background,
+        .reveal .progress,
+        .reveal .backgrounds {
+                display: none !important;
+        }
+
+        /* SECTION 3: Set body font face, size, and color.
+           Consider using a serif font for readability. */
+        body, p, td, li, div {
+                font-size: 20pt!important;
+                font-family: Georgia, "Times New Roman", Times, serif !important;
+                color: #000;
+        }
+
+        /* SECTION 4: Set heading font face, sizes, and color.
+           Differentiate your headings from your body text.
+           Perhaps use a large sans-serif for distinction. */
+        h1,h2,h3,h4,h5,h6 {
+                color: #000!important;
+                height: auto;
+                line-height: normal;
+                font-family: Georgia, "Times New Roman", Times, serif !important;
+                text-shadow: 0 0 0 #000 !important;
+                text-align: left;
+                letter-spacing: normal;
+        }
+        /* Need to reduce the size of the fonts for printing */
+        h1 { font-size: 28pt !important;  }
+        h2 { font-size: 24pt !important; }
+        h3 { font-size: 22pt !important; }
+        h4 { font-size: 22pt !important; font-variant: small-caps; }
+        h5 { font-size: 21pt !important; }
+        h6 { font-size: 20pt !important; font-style: italic; }
+
+        /* SECTION 5: Make hyperlinks more usable.
+           Ensure links are underlined, and consider appending
+           the URL to the end of the link for usability. */
+        a:link,
+        a:visited {
+                color: #000 !important;
+                font-weight: bold;
+                text-decoration: underline;
+        }
+        /*
+        .reveal a:link:after,
+        .reveal a:visited:after {
+                content: " (" attr(href) ") ";
+                color: #222 !important;
+                font-size: 90%;
+        }
+        */
+
+
+        /* SECTION 6: more reveal.js specific additions by @skypanther */
+        ul, ol, div, p {
+                visibility: visible;
+                position: static;
+                width: auto;
+                height: auto;
+                display: block;
+                overflow: visible;
+                margin: 0;
+                text-align: left !important;
+        }
+        .reveal pre,
+        .reveal table {
+                margin-left: 0;
+                margin-right: 0;
+        }
+        .reveal pre code {
+                padding: 20px;
+                border: 1px solid #ddd;
+        }
+        .reveal blockquote {
+                margin: 20px 0;
+        }
+        .reveal .slides {
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+
+                left: 0 !important;
+                top: 0 !important;
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+                padding: 0 !important;
+                zoom: 1 !important;
+
+                overflow: visible !important;
+                display: block !important;
+
+                text-align: left !important;
+                -webkit-perspective: none;
+                   -moz-perspective: none;
+                    -ms-perspective: none;
+                        perspective: none;
+
+                -webkit-perspective-origin: 50% 50%;
+                   -moz-perspective-origin: 50% 50%;
+                    -ms-perspective-origin: 50% 50%;
+                        perspective-origin: 50% 50%;
+        }
+        .reveal .slides section {
+                visibility: visible !important;
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                display: block !important;
+                overflow: visible !important;
+
+                left: 0 !important;
+                top: 0 !important;
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+                padding: 60px 20px !important;
+                z-index: auto !important;
+
+                opacity: 1 !important;
+
+                page-break-after: always !important;
+
+                -webkit-transform-style: flat !important;
+                   -moz-transform-style: flat !important;
+                    -ms-transform-style: flat !important;
+                        transform-style: flat !important;
+
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                        transform: none !important;
+
+                -webkit-transition: none !important;
+                   -moz-transition: none !important;
+                    -ms-transition: none !important;
+                        transition: none !important;
+        }
+        .reveal .slides section.stack {
+                padding: 0 !important;
+        }
+        .reveal section:last-of-type {
+                page-break-after: avoid !important;
+        }
+        .reveal section .fragment {
+                opacity: 1 !important;
+                visibility: visible !important;
+
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                        transform: none !important;
+        }
+        .reveal section img {
+                display: block;
+                margin: 15px 0px;
+                background: rgba(255,255,255,1);
+                border: 1px solid #666;
+                box-shadow: none;
+        }
+
+        .reveal section small {
+                font-size: 0.8em;
+        }
+
+}
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+        -webkit-print-color-adjust: exact;
+}
+
+body {
+        margin: 0 auto !important;
+        border: 0;
+        padding: 0;
+        float: none !important;
+        overflow: visible;
+}
+
+html {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+        display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+        text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+        overflow: hidden !important;
+        font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+        visibility: visible;
+        position: static;
+        width: auto;
+        height: auto;
+        display: block;
+        overflow: visible;
+        margin: auto;
+}
+.reveal {
+        width: auto !important;
+        height: auto !important;
+        overflow: hidden !important;
+}
+.reveal .slides {
+        position: static;
+        width: 100%;
+        height: auto;
+
+        left: auto;
+        top: auto;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: visible;
+        display: block;
+
+        -webkit-perspective: none;
+           -moz-perspective: none;
+            -ms-perspective: none;
+                perspective: none;
+
+        -webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+           -moz-perspective-origin: 50% 50%;
+            -ms-perspective-origin: 50% 50%;
+                perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+        page-break-after: always !important;
+
+        visibility: visible !important;
+        position: relative !important;
+        display: block !important;
+        position: relative !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        min-height: 1px;
+
+        opacity: 1 !important;
+
+        -webkit-transform-style: flat !important;
+           -moz-transform-style: flat !important;
+            -ms-transform-style: flat !important;
+                transform-style: flat !important;
+
+        -webkit-transform: none !important;
+           -moz-transform: none !important;
+            -ms-transform: none !important;
+                transform: none !important;
+}
+
+.reveal section.stack {
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-after: avoid !important;
+        height: auto !important;
+        min-height: auto !important;
+}
+
+.reveal img {
+        box-shadow: none;
+}
+
+.reveal .roll {
+        overflow: visible;
+        line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+        position: relative;
+        z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+        display: block;
+        width: 100%;
+        max-height: none;
+        left: auto;
+        top: auto;
+        z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+        display: block;
+        position: absolute;
+        font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link rel="stylesheet" href="css/custom.css"/>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="index_files/header-attrs-2.11/header-attrs.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section data-background-image="img/1920x1080-white.jpg"
+         data-background-size="100%"
+         id="first-slide">
+    This page intentionally left blank.
+</section>
+
+
+<section id="dummy-slide" class="slide level2">
+<h2>dummy slide</h2>
+<!--javascript to remove dummy slide-->
+<script>
+document.getElementById("dummy-slide").remove();
+document.getElementById("coverslide").remove();
+</script>
+<!--end dummy slide-->
+</section>
+<section data-background-image="img/wiesbaden-r-meetup-transparent.jpeg" data-background-size="100%" id="coverslide">
+<h1 class="subtitle" style="color:#eee;font-size:2em;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: rgba(0, 0, 0, 1);">
+Wiesbaden R User Group
+</h1>
+<h1 class="title" style="color:#eee;font-size:2.25em;padding-top:10%;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: rgba(0, 0, 0, 1);">
+R Coffee Break:<br />logger - A Modern Logging Utility<br/>
+</h1>
+<h2 class="author" style="color:#eee;padding-top:7%;font-size:1.5em;margin-left: 35rem;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: rgba(0, 0, 0, 1);">
+Gergely Daróczi
+</h2>
+<h3 class="date" style="color:#eee;font-size:1.25em;margin-left: 35rem;-webkit-text-stroke-width: 1px;-webkit-text-stroke-color: rgba(0, 0, 0, 1);">
+<span class="citation" data-cites="daroczig">@daroczig</span>
+</h3>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out" data-background-image="img/1920x1080-white.jpg" data-background-size="100%">
+<h2>
+$ whoami
+</h2>
+<p><a href="https://daroczig.github.io" target="_new">
+<img src="img/daroczig.github.io.png" width="55%" class="noborder" />
+</a></p>
+<p><a href="https://daroczig.github.io">daroczig.github.io</a></p>
+</section>
+<section id="whoami" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/1.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/2.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-2" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/3.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-3" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/4.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-4" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/5.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; Sys.setenv(env = "prod")
+</h2>
+<p><img src="img/movie-cinemagraph-gifs-life-aquatic.gif" width="80%" /></p>
+</section>
+<section id="production" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; ??production</h2>
+</section>
+<section id="production-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; ??production</h2>
+<ul>
+<li>2006: <b>Calling R scripts from PHP</b> (both reading from MySQL) to
+generate custom plots embedded in a homepage</li>
+<li>2008: <b>Automated/batch R scripts</b> to generate thousands of
+pages of crosstables, ANOVA and plots from SPSS with
+<code>pdflatex</code></li>
+<li>2011: Ruby on Rails <b>web application</b> with <code>RApache</code>
+and <code>pandoc</code> to report in plain English (NoSQL databases,
+scaling, <b>security</b>, central error tracking etc)</li>
+<li>2012: Plain RApache <b>web application</b> for NLP and network
+analysis</li>
+<li>2015: Standardizing the data infrastructure of a fintech startup to
+use R for reporting, batch jobs, and <b>stream processing</b></li>
+<li>2017: Redesign, monitor and scale the DS infrastructure of an adtech
+startup for <b>batch training and live scoring</b></li>
+</ul>
+</section>
+<section id="production---list" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; production &lt;&lt;-
+list(…)</h2>
+</section>
+<section id="production---list-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; production &lt;&lt;- list(…)</h2>
+<div style="text-align:left;margin-bottom:20px;">
+Using in R in a non-interactive way:
+</div>
+<ul>
+<li>Running R <b>without manual intervention</b> (e.g. scheduled via
+CRON, triggered via upstream job trigger or API request)</li>
+<li>Need for a standard, e.g. <b>containerized environment</b> (pinned R
+and package versions, OS packages, <code>.Rprofile</code> etc)</li>
+<li><b>Security</b>! (e.g. safeguarded production environment, encrypted
+credentials, aware of Little Bobby Tables, AppArmor etc)</li>
+<li>Job output is informative (logging), recorded (logging) and
+<b>monitored</b> (e.g. <code>error</code> handler for ErrBit, CloudWatch
+logs or Splunk etc), alerts and notifications</li>
+</ul>
+</section>
+<section id="production---list-2" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; production &lt;&lt;- list(…)</h2>
+<div style="text-align:left;margin-bottom:20px;">
+Using in R in a non-interactive way:
+</div>
+<ul>
+<li>Running R without manual intervention (e.g. scheduled via CRON,
+triggered via upstream job trigger or API request)</li>
+<li>Need for a standard, e.g. containerized environment (pinned R and
+package versions, OS packages, <code>.Rprofile</code> etc)</li>
+<li>Security! (e.g. safeguarded production environment, encrypted
+credentials, aware of Little Bobby Tables, AppArmor etc)</li>
+<li>Job output is informative (<b>logging</b>), recorded
+(<b>logging</b>) and monitored (e.g. <code>error</code> handler for
+ErrBit, CloudWatch logs or Splunk etc), alerts and notifications</li>
+</ul>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; debug()
+</h2>
+<video width="60%" controls>
+<source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
+</video>
+<p><img src="img/tweet%20bird%20footer.png" width="40%"></p>
+</section>
+<section id="traceback" class="slide level2">
+<h2>&gt; traceback()</h2>
+<div style="font-size: 1.25em;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> Rscript super_important_business_stuff.R</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.25em;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> l[[x]] <span class="sc">:</span> subscript out of bounds</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Calls<span class="sc">:</span> g <span class="ot">-&gt;</span> f</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.25em;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">.subset2</span>(x, i, <span class="at">exact =</span> exact) <span class="sc">:</span> subscript out of bounds</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+</div>
+</section>
+<section id="for-var-in-seq-print" class="slide level2">
+<h2>&gt; for (var in seq) print</h2>
+<div style="font-size: 1.25em;">
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="do">## do something slow</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(i)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.25em;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="do">## do something slow</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Sys.time</span>(), <span class="st">&#39;|&#39;</span>,</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        i, <span class="st">&#39;out of&#39;</span>, N,</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&#39;=&#39;</span>, <span class="fu">round</span>(i <span class="sc">/</span> N <span class="sc">*</span> <span class="dv">100</span>), <span class="st">&#39;%&#39;</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">flush.console</span>()</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</section>
+<section id="for-var-in-seq-print-1" class="slide level2">
+<h2>&gt; for (var in seq) print</h2>
+<div style="font-size: 1.25em;">
+<div class="sourceCode" id="sh1"><pre
+class="sourceCode sh maxheight300"><code class="sourceCode bash"><span id="sh1-1"><a href="#sh1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:34 | 1 out of 42 = 2 %&quot;</span></span>
+<span id="sh1-2"><a href="#sh1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:35 | 2 out of 42 = 5 %&quot;</span></span>
+<span id="sh1-3"><a href="#sh1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:35 | 3 out of 42 = 7 %&quot;</span></span>
+<span id="sh1-4"><a href="#sh1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:36 | 4 out of 42 = 10 %&quot;</span></span>
+<span id="sh1-5"><a href="#sh1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:36 | 5 out of 42 = 12 %&quot;</span></span>
+<span id="sh1-6"><a href="#sh1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:37 | 6 out of 42 = 14 %&quot;</span></span>
+<span id="sh1-7"><a href="#sh1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:37 | 7 out of 42 = 17 %&quot;</span></span>
+<span id="sh1-8"><a href="#sh1-8" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:38 | 8 out of 42 = 19 %&quot;</span></span>
+<span id="sh1-9"><a href="#sh1-9" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:38 | 9 out of 42 = 21 %&quot;</span></span>
+<span id="sh1-10"><a href="#sh1-10" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:39 | 10 out of 42 = 24 %&quot;</span></span>
+<span id="sh1-11"><a href="#sh1-11" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:39 | 11 out of 42 = 26 %&quot;</span></span>
+<span id="sh1-12"><a href="#sh1-12" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:40 | 12 out of 42 = 29 %&quot;</span></span>
+<span id="sh1-13"><a href="#sh1-13" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:40 | 13 out of 42 = 31 %&quot;</span></span>
+<span id="sh1-14"><a href="#sh1-14" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:41 | 14 out of 42 = 33 %&quot;</span></span>
+<span id="sh1-15"><a href="#sh1-15" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:41 | 15 out of 42 = 36 %&quot;</span></span>
+<span id="sh1-16"><a href="#sh1-16" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:42 | 16 out of 42 = 38 %&quot;</span></span>
+<span id="sh1-17"><a href="#sh1-17" aria-hidden="true" tabindex="-1"></a><span class="ex">[1]</span> <span class="st">&quot;2019-09-15 00:05:42 | 17 out of 42 = 40 %&quot;</span></span>
+<span id="sh1-18"><a href="#sh1-18" aria-hidden="true" tabindex="-1"></a><span class="ex">Error</span> in .subset2<span class="er">(</span><span class="ex">x,</span> i, exact = exact<span class="kw">)</span> <span class="bu">:</span> subscript out of bounds</span>
+<span id="sh1-19"><a href="#sh1-19" aria-hidden="true" tabindex="-1"></a><span class="ex">Execution</span> halted</span></code></pre></div>
+</div>
+</section>
+<section id="for-var-in-seq-cat" class="slide level2">
+<h2>&gt; for (var in seq) cat</h2>
+<div style="font-size: 1.1em;">
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sink</span>(<span class="st">&#39;/var/log/foobar.log&#39;</span>, <span class="at">append =</span> <span class="cn">TRUE</span>, <span class="at">split =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>N <span class="ot">&lt;-</span> <span class="dv">42</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="do">## do something slow</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">print</span>(<span class="fu">paste</span>(<span class="fu">Sys.time</span>(), <span class="st">&#39;|&#39;</span>, i, <span class="st">&#39;out of&#39;</span>, N, <span class="st">&#39;=&#39;</span>, <span class="fu">round</span>(i <span class="sc">/</span> N <span class="sc">*</span> <span class="dv">100</span>), <span class="st">&#39;%&#39;</span>))</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.1em;">
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>logfile <span class="ot">&lt;-</span> <span class="st">&#39;/var/log/foobar.log&#39;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>N) {</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    <span class="do">## do something slow</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">paste</span>(<span class="fu">Sys.time</span>(), <span class="st">&#39;|&#39;</span>, i, <span class="st">&#39;out of&#39;</span>, N, <span class="st">&#39;=&#39;</span>, <span class="fu">round</span>(i <span class="sc">/</span> N <span class="sc">*</span> <span class="dv">100</span>), <span class="st">&#39;%&#39;</span>),</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>       <span class="at">file =</span> logfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.1em;">
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>log <span class="ot">&lt;-</span> <span class="cf">function</span>(message, <span class="at">logfile =</span> <span class="st">&#39;/var/log/foobar.log&#39;</span>) {</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">cat</span>(<span class="fu">paste</span>(<span class="fu">Sys.time</span>(), <span class="st">&#39;|&#39;</span>, message),</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">file =</span> logfile, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</div>
+</section>
+<section id="mclapplyseq-cat" class="slide level2">
+<h2>&gt; mclapply(seq, cat)</h2>
+<div style="font-size: 1.25em;">
+<div class="sourceCode" id="r1"><pre
+class="sourceCode r maxheight300"><code class="sourceCode r"><span id="r1-1"><a href="#r1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mclapply</span>(<span class="dv">1</span><span class="sc">:</span>N, <span class="cf">function</span>(n) {</span>
+<span id="r1-2"><a href="#r1-2" aria-hidden="true" tabindex="-1"></a>    <span class="do">## do something slow</span></span>
+<span id="r1-3"><a href="#r1-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log</span>(<span class="fu">paste</span>(i, <span class="st">&#39;out of&#39;</span>, N, <span class="st">&#39;=&#39;</span>, <span class="fu">round</span>(i <span class="sc">/</span> N <span class="sc">*</span> <span class="dv">100</span>), <span class="st">&#39;%&#39;</span>))</span>
+<span id="r1-4"><a href="#r1-4" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="r1-5"><a href="#r1-5" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:34 | 1 out of 42 = 2 %&quot;</span></span>
+<span id="r1-6"><a href="#r1-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:35 | 2 out of 42 = 5 %&quot;</span></span>
+<span id="r1-7"><a href="#r1-7" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:39 | 10 out of 42 = 24 %&quot;</span></span>
+<span id="r1-8"><a href="#r1-8" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:35 | 3 out of 42 = 7 %&quot;</span></span>
+<span id="r1-9"><a href="#r1-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:39 | 11 out of 42 = 26 %&quot;</span></span>
+<span id="r1-10"><a href="#r1-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:36 | 4 out of 42 = 10 %&quot;</span></span>
+<span id="r1-11"><a href="#r1-11" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:37 | 7 out of 42 = 17 %&quot;</span></span>
+<span id="r1-12"><a href="#r1-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:38 | 8 out of 42 = 19 %&quot;</span></span>
+<span id="r1-13"><a href="#r1-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:40 | 12 out of 42 = 29 %&quot;</span>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:36 | 5 out of 42 = 12 %&quot;</span></span>
+<span id="r1-14"><a href="#r1-14" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:37 | 16 out of 42 = 19 %&quot;</span></span>
+<span id="r1-15"><a href="#r1-15" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:38 | 13 out of 42 = 31 %&quot;</span></span>
+<span id="r1-16"><a href="#r1-16" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:37 | 19 out of 42 = 45 %&quot;</span></span>
+<span id="r1-17"><a href="#r1-17" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:38 | 22 out of 42 = 52 %&quot;</span></span>
+<span id="r1-18"><a href="#r1-18" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:37 | 28 out of 42 = 67 %&quot;</span></span>
+<span id="r1-19"><a href="#r1-19" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:38 | 21 out of 42 = 50 %&quot;</span></span>
+<span id="r1-20"><a href="#r1-20" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:37 | 26 out of 42 = 62 %&quot;</span></span>
+<span id="r1-21"><a href="#r1-21" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="st">&quot;2019-09-15 00:05:38 | 24 out of 42 = 57 %&quot;</span></span>
+<span id="r1-22"><a href="#r1-22" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">.subset2</span>(x, i, <span class="at">exact =</span> exact) <span class="sc">:</span> subscript out of bounds</span>
+<span id="r1-23"><a href="#r1-23" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+</div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; remotes::install()
+</h2>
+<p><img src="http://i.imgur.com/9QpNv.gif" width="60%"></p>
+<p>Source:
+<a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took" target="_new">When
+my co-worker wants to simplify code …</a></p>
+</section>
+<section id="log" class="slide level2">
+<h2>&gt; ??log</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(data.table)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> packages <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="fu">available.packages</span>())</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="do">## avoid analog, logit, (archeo|bio|genea|hydro|topo|...)logy</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="er">&gt;</span> packages[<span class="fu">grepl</span>(<span class="st">&#39;(?&lt;!ana)log(?![it|y])&#39;</span>, Package, <span class="at">perl =</span> <span class="cn">TRUE</span>), Package]</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a> [<span class="dv">1</span>] <span class="st">&quot;adjustedcranlogs&quot;</span>     <span class="st">&quot;bayesloglin&quot;</span>          <span class="st">&quot;blogdown&quot;</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a> [<span class="dv">4</span>] <span class="st">&quot;CommunityCorrelogram&quot;</span> <span class="st">&quot;cranlogs&quot;</span>             <span class="st">&quot;efflog&quot;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a> [<span class="dv">7</span>] <span class="st">&quot;eMLEloglin&quot;</span>           <span class="st">&quot;futile.logger&quot;</span>        <span class="st">&quot;gemlog&quot;</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>[<span class="dv">10</span>] <span class="st">&quot;gglogo&quot;</span>               <span class="st">&quot;ggseqlogo&quot;</span>            <span class="st">&quot;homologene&quot;</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>[<span class="dv">13</span>] <span class="st">&quot;lifelogr&quot;</span>             <span class="st">&quot;log4r&quot;</span>                <span class="st">&quot;logbin&quot;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>[<span class="dv">16</span>] <span class="st">&quot;logconcens&quot;</span>           <span class="st">&quot;logcondens&quot;</span>           <span class="st">&quot;logcondens.mode&quot;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>[<span class="dv">19</span>] <span class="st">&quot;logcondiscr&quot;</span>          <span class="st">&quot;logger&quot;</span>               <span class="st">&quot;logging&quot;</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>[<span class="dv">22</span>] <span class="st">&quot;loggit&quot;</span>               <span class="st">&quot;loggle&quot;</span>               <span class="st">&quot;logKDE&quot;</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>[<span class="dv">25</span>] <span class="st">&quot;loglognorm&quot;</span>           <span class="st">&quot;logmult&quot;</span>              <span class="st">&quot;lognorm&quot;</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>[<span class="dv">28</span>] <span class="st">&quot;logNormReg&quot;</span>           <span class="st">&quot;logOfGamma&quot;</span>           <span class="st">&quot;logspline&quot;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>[<span class="dv">31</span>] <span class="st">&quot;lolog&quot;</span>                <span class="st">&quot;luzlogr&quot;</span>              <span class="st">&quot;md.log&quot;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>[<span class="dv">34</span>] <span class="st">&quot;mdir.logrank&quot;</span>         <span class="st">&quot;mpmcorrelogram&quot;</span>       <span class="st">&quot;PhylogeneticEM&quot;</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>[<span class="dv">37</span>] <span class="st">&quot;phylogram&quot;</span>            <span class="st">&quot;plogr&quot;</span>                <span class="st">&quot;poilog&quot;</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>[<span class="dv">40</span>] <span class="st">&quot;rChoiceDialogs&quot;</span>       <span class="st">&quot;reactlog&quot;</span>             <span class="st">&quot;rmetalog&quot;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>[<span class="dv">43</span>] <span class="st">&quot;robustloggamma&quot;</span>       <span class="st">&quot;rsyslog&quot;</span>              <span class="st">&quot;shinylogs&quot;</span></span>
+<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>[<span class="dv">46</span>] <span class="st">&quot;ssrm.logmer&quot;</span>          <span class="st">&quot;svDialogs&quot;</span>            <span class="st">&quot;svDialogstcltk&quot;</span></span>
+<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>[<span class="dv">49</span>] <span class="st">&quot;tabulog&quot;</span>              <span class="st">&quot;tidylog&quot;</span>              <span class="st">&quot;wavScalogram&quot;</span></span></code></pre></div>
+</section>
+<section class="slide level2">
+
+<p><img src="img/logger-gh-intro.png" width="95%" /></p>
+</section>
+<section class="slide level2">
+
+<p><img src="img/logger-twitter.png" width="55%" /></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; demo(logger)
+</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(logger)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(DEBUG)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;Script starting up...&#39;</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-20-11 22:49:36] Script starting up...</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>pkgs <span class="ot">&lt;-</span> <span class="fu">available.packages</span>()</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;There are {nrow(pkgs)} R packages hosted on CRAN!&#39;</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-20-11 22:49:37] There are 13433 R packages hosted on CRAN!</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (letter <span class="cf">in</span> letters) {</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    lpkgs <span class="ot">&lt;-</span> <span class="fu">sum</span>(<span class="fu">grepl</span>(letter, pkgs[, <span class="st">&#39;Package&#39;</span>], <span class="at">ignore.case =</span> <span class="cn">TRUE</span>))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">log_level</span>(<span class="cf">if</span> (lpkgs <span class="sc">&lt;</span> <span class="dv">5000</span>) TRACE <span class="cf">else</span> DEBUG,</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>              <span class="st">&#39;{lpkgs} R packages including the {shQuote(letter)} letter&#39;</span>)</span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 6300 R packages including the &#39;a&#39; letter</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 6772 R packages including the &#39;e&#39; letter</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 5412 R packages including the &#39;i&#39; letter</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 7014 R packages including the &#39;r&#39; letter</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 6402 R packages including the &#39;s&#39; letter</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2018-20-11 22:49:38] 5864 R packages including the &#39;t&#39; letter</span></span></code></pre></div>
+</section>
+<section id="demohelpers" class="slide level2">
+<h2>&gt; demo(helpers)</h2>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(TRACE)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_eval</span>(<span class="fu">nrow</span>(mtcars), <span class="at">level =</span> TRACE)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-04-04 04:25:17] &#39;nrow(mtcars)&#39; =&gt; &#39;32L&#39;</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_warnings</span>()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chisq.test</span>(<span class="fu">table</span>(mtcars<span class="sc">$</span>gear, mtcars<span class="sc">$</span>am))</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN [2020-01-27 12:32:04] Chi-squared approximation may be incorrect</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  Pearson&#39;s Chi-squared test</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; data:  table(mtcars$gear, mtcars$am)</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; X-squared = 20.945, df = 2, p-value = 2.831e-05</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Warning message:</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; In chisq.test(table(mtcars$gear, mtcars$am)) :</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   Chi-squared approximation may be incorrect</span></span></code></pre></div>
+</div>
+</section>
+<section id="demorainbow" class="slide level2">
+<h2>&gt; demo(rainbow)</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(logger)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_layout</span>(layout_glue_colors)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(TRACE)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;Starting the script...&#39;</span>)</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">log_debug</span>(<span class="st">&#39;This is the second log line&#39;</span>)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">log_trace</span>(<span class="st">&#39;Note that the 2nd line is being placed right after the 1st one.&#39;</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log_success</span>(<span class="st">&#39;Doing pretty well so far!&#39;</span>)</span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a><span class="fu">log_warn</span>(<span class="st">&#39;But beware, as some errors might come :/&#39;</span>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log_error</span>(<span class="st">&#39;This is a problem&#39;</span>)</span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a><span class="fu">log_debug</span>(<span class="st">&#39;Note that getting an error is usually bad&#39;</span>)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a><span class="fu">log_error</span>(<span class="st">&#39;This is another problem&#39;</span>)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a><span class="fu">log_fatal</span>(<span class="st">&#39;The last problem&#39;</span>)</span></code></pre></div>
+<div class="fragment">
+<p><img src="https://github.com/daroczig/logger/raw/master/man/figures/colors.png" width="75%" /></p>
+</div>
+</section>
+<section id="demoproduction" class="slide level2">
+<h2>&gt; demo(production)</h2>
+<p><img src="img/system1-jenkins-log.png" style="width:100%"></p>
+</section>
+<section id="demoproduction-1" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; demo(production)</h2>
+<div class="cols">
+<div class="col">
+<img src="img/rx-studio-logger-1.png">
+</div>
+<div class="col">
+
+</div>
+</div>
+</section>
+<section id="demoproduction-2" class="slide level2"
+data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; demo(production)</h2>
+<div class="cols">
+<div class="col">
+<img src="img/rx-studio-logger-1.png">
+</div>
+<div class="col">
+<img src="img/rx-studio-logger-2.png" style="width:60%;">
+</div>
+</div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; str(logger)
+</h2>
+<p><img src="img/logger_structure.png" style="width:100%"></p>
+</section>
+<section id="onload" class="slide level2">
+<h2>&gt; .onLoad</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(logger)</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>.onLoad <span class="ot">&lt;-</span> <span class="cf">function</span>(libname, pkgname) {</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_threshold</span>(DEBUG)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_formatter</span>(formatter_glue)</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_layout</span>(layout_simple)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">log_appender</span>(appender_console)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>name <span class="ot">&lt;-</span> <span class="st">&#39;world&#39;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;Hello, {name}!&#39;</span>)</span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2020-01-27 17:45:26] Hello, world!</span></span></code></pre></div>
+</div>
+</section>
+<section id="log_level" class="slide level2">
+<h2>&gt; ?log_level</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>INFO</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 400</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;level&quot;)</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;INFO&quot;</span></span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;class&quot;)</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;loglevel&quot; &quot;integer&quot;</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>TRACE</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 600</span></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;level&quot;)</span></span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;TRACE&quot;</span></span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; attr(,&quot;class&quot;)</span></span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;loglevel&quot; &quot;integer&quot;</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>INFO <span class="sc">&lt;=</span> TRACE</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(INFO)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="fu">log_trace</span>(<span class="st">&#39;Hello, {name}!&#39;</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;Hello, {name}!&#39;</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-18 00:05:32] Hello, world!</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(ERROR)</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; log_info(&#39;Hello, {name}!&#39;)</span></span></code></pre></div>
+</div>
+</section>
+<section id="formatter" class="slide level2">
+<h2>&gt; ??formatter</h2>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="fu">formatter_glue</span>(<span class="st">&#39;Hello, {name}!&#39;</span>)</span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Hello, world!&quot;</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">formatter_sprintf</span>(<span class="st">&#39;Hello, %s!&#39;</span>, name)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;Hello, world!&quot;</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<ul>
+<li><code>formatter_paste</code></li>
+<li><code>formatter_sprintf</code></li>
+<li><code>formatter_glue</code></li>
+<li><code>formatter_glue_or_sprintf</code></li>
+<li><code>formatter_logging</code></li>
+<li><code>formatter_json</code></li>
+<li><code>formatter_pander</code></li>
+</ul>
+</div>
+</section>
+<section id="layout" class="slide level2">
+<h2>&gt; ??layout</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout_simple</span>(<span class="at">level =</span> INFO, <span class="at">msg =</span> <span class="st">&#39;Hello, world!&#39;</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;INFO [2019-09-18 00:16:34] Hello, world&quot;</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>example_layout <span class="ot">&lt;-</span> <span class="fu">layout_glue_generator</span>(</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">format =</span> <span class="st">&#39;{node}/{pid}/{ns}/{ans}/{topenv}/{fn} {time} {level}: {msg}&#39;</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">example_layout</span>(INFO, <span class="st">&#39;Hello, world!&#39;</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; nevermind/3601/NA/global/R_GlobalEnv/NULL 2019-09-18 00:18:11 INFO: Hello, world!</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>logger.tester<span class="sc">::</span><span class="fu">logger_info_tester_function</span>(<span class="st">&#39;Hello, world!&#39;</span>)</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; nevermind/3601/logger.tester/global/logger.tester/logger.tester::logger_info_tester_function 2019-09-18 00:25:15 INFO: Hello, world! 42</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">layout_json</span>()(<span class="at">level =</span> INFO, <span class="at">msg =</span> <span class="st">&#39;Hello, world!&#39;</span>)</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; {&quot;time&quot;:&quot;2019-09-18 00:19:34&quot;,&quot;level&quot;:&quot;INFO&quot;,&quot;ns&quot;:null,&quot;ans&quot;:&quot;global&quot;,</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &quot;topenv&quot;:&quot;R_GlobalEnv&quot;,&quot;fn&quot;:&quot;cat&quot;,&quot;node&quot;:&quot;nevermind&quot;,&quot;arch&quot;:&quot;x86_64&quot;,</span></span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &quot;os_name&quot;:&quot;Linux&quot;,&quot;os_release&quot;:&quot;4.15.0-20-generic&quot;,</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &quot;os_version&quot;:&quot;#21-Ubuntu SMP Tue Apr 24 06:16:15 UTC 2018&quot;,</span></span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  &quot;pid&quot;:3601,&quot;user&quot;:&quot;daroczig&quot;,&quot;msg&quot;:&quot;Hello, world!&quot;}</span></span></code></pre></div>
+</div>
+</section>
+<section id="appender" class="slide level2">
+<h2>&gt; ??appender</h2>
+<ul>
+<li><code>appender_console</code> / <code>appender_stderr</code></li>
+<li><code>appender_stdout</code></li>
+<li><code>appender_file</code> (with basic log rotating)</li>
+<li><code>appender_tee</code></li>
+</ul>
+<div class="fragment" style="text-align: left;padding-top: 20px;">
+<ul>
+<li><code>appender_slack</code></li>
+<li><code>appender_telegram</code></li>
+<li><code>appender_pushbullet</code></li>
+</ul>
+</div>
+<div class="fragment" style="text-align: left;padding-top: 20px;">
+<ul>
+<li><code>appender_syslog</code></li>
+<li><code>appender_kinesis</code></li>
+<li><code>appender_insert</code></li>
+</ul>
+</div>
+<div class="fragment" style="text-align: left;padding-top: 20px;">
+<ul>
+<li><code>appender_async</code></li>
+</ul>
+</div>
+</section>
+<section id="system.timeappender" class="slide level2">
+<h2>&gt; system.time(appender)</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>appender_file_slow <span class="ot">&lt;-</span> <span class="cf">function</span>(file) {</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">force</span>(file)</span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">function</span>(lines) {</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cat</span>(lines, <span class="at">sep =</span> <span class="st">&#39;</span><span class="sc">\n</span><span class="st">&#39;</span>, <span class="at">file =</span> file, <span class="at">append =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(<span class="fu">appender_file_slow</span>(<span class="fu">tempfile</span>()))</span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>) <span class="fu">log_info</span>(i))</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;    user  system elapsed</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.057   0.002  25.083</span></span></code></pre></div>
+</div>
+</section>
+<section id="appender_async" class="slide level2">
+<h2>&gt; ?appender_async</h2>
+<ul>
+<li>create a local, disk-based storage for the message queue via
+<code>txtq</code></li>
+<li>start a background process for the async execution of the message
+queue with <code>callr</code></li>
+<li>loads minimum required packages in the background process</li>
+<li>connects to the message queue from the background process</li>
+<li>pass actual <code>appender</code> function to the background process
+(serialized to disk)</li>
+<li>pass parameters of the async appender to the background process (eg
+batch size)</li>
+<li>start infinite loop processing log records</li>
+<li>check if background process still works …</li>
+</ul>
+</section>
+<section id="demoappender_async" class="slide level2">
+<h2>&gt; demo(appender_async)</h2>
+<p>Optionally log what’s happening in the background:</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(TRACE, <span class="at">namespace =</span> <span class="st">&#39;async_logger&#39;</span>)</span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(appender_console, <span class="at">namespace =</span> <span class="st">&#39;async_logger&#39;</span>)</span></code></pre></div>
+<p>Start the async appender in a background process:</p>
+<div class="fragment">
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>t <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;Logging in the background to {t}&#39;</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-18 02:57:11] Logging in the background to /tmp/RtmpLW4bY4/file63ff7f4617d4</span></span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>my_appender <span class="ot">&lt;-</span> <span class="fu">appender_async</span>(<span class="fu">appender_file_slow</span>(<span class="at">file =</span> t))</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-18 02:57:11] Async writer storage: /tmp/RtmpLW4bY4/file63ff6bf714c2</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-18 02:57:11] Async writer PID: 29378</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-18 02:57:11] Async appender cached at: /tmp/RtmpLW4bY4/file63ff7a2ebfc5</span></span></code></pre></div>
+</div>
+</section>
+<section id="exampleappender_async" class="slide level2">
+<h2>&gt; example(appender_async)</h2>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(my_appender)</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;Was this slow?&#39;</span>)</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="fu">system.time</span>(<span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">25</span>) <span class="fu">log_info</span>(i))</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   user  system elapsed</span></span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   0.02    0.00    0.02</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="dv">1</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(t)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;INFO [2019-09-18 02:57:12] Was this slow?&quot;</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="dv">5</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(t)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;INFO [2019-09-18 02:57:12] Was this slow?&quot;</span></span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [2] &quot;INFO [2019-09-18 02:57:12] 1&quot;</span></span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [3] &quot;INFO [2019-09-18 02:57:12] 2&quot;</span></span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [4] &quot;INFO [2019-09-18 02:57:12] 3&quot;</span></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [5] &quot;INFO [2019-09-18 02:57:12] 4&quot;</span></span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [6] &quot;INFO [2019-09-18 02:57:12] 5&quot;</span></span></code></pre></div>
+</div>
+</section>
+<section id="debugonceappender_async" class="slide level2">
+<h2>&gt; debugonce(appender_async)</h2>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(my_appender, <span class="st">&#39;async_writer_queue&#39;</span>)<span class="sc">$</span><span class="fu">count</span>()</span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 0</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(my_appender, <span class="st">&#39;async_writer_queue&#39;</span>)<span class="sc">$</span><span class="fu">log</span>()</span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;               title                                   message                                 time</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1  1568768232.15263 INFO [2019-09-18 02:57:12] Was this slow? 2019-09-18 02:57:12.152517 +0200 GMT</span></span>
+<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2  1568768232.22928              INFO [2019-09-18 02:57:12] 1 2019-09-18 02:57:12.229222 +0200 GMT</span></span>
+<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3  1568768232.23001              INFO [2019-09-18 02:57:12] 2 2019-09-18 02:57:12.229957 +0200 GMT</span></span>
+<span id="cb35-9"><a href="#cb35-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4   1568768232.2307              INFO [2019-09-18 02:57:12] 3 2019-09-18 02:57:12.230646 +0200 GMT</span></span>
+<span id="cb35-10"><a href="#cb35-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5  1568768232.23142              INFO [2019-09-18 02:57:12] 4 2019-09-18 02:57:12.231366 +0200 GMT</span></span>
+<span id="cb35-11"><a href="#cb35-11" aria-hidden="true" tabindex="-1"></a>...</span>
+<span id="cb35-12"><a href="#cb35-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-13"><a href="#cb35-13" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(my_appender, <span class="st">&#39;async_writer_process&#39;</span>)<span class="sc">$</span><span class="fu">get_pid</span>()</span>
+<span id="cb35-14"><a href="#cb35-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 29378</span></span>
+<span id="cb35-15"><a href="#cb35-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-16"><a href="#cb35-16" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(my_appender, <span class="st">&#39;async_writer_process&#39;</span>)<span class="sc">$</span><span class="fu">get_state</span>()</span>
+<span id="cb35-17"><a href="#cb35-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;busy&quot;</span></span>
+<span id="cb35-18"><a href="#cb35-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-19"><a href="#cb35-19" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(my_appender, <span class="st">&#39;async_writer_process&#39;</span>)<span class="sc">$</span><span class="fu">poll_process</span>(<span class="dv">1</span>)</span>
+<span id="cb35-20"><a href="#cb35-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;timeout&quot;</span></span>
+<span id="cb35-21"><a href="#cb35-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-22"><a href="#cb35-22" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(my_appender, <span class="st">&#39;async_writer_process&#39;</span>)<span class="sc">$</span><span class="fu">read</span>()</span>
+<span id="cb35-23"><a href="#cb35-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; NULL</span></span>
+<span id="cb35-24"><a href="#cb35-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb35-25"><a href="#cb35-25" aria-hidden="true" tabindex="-1"></a><span class="fu">attr</span>(my_appender, <span class="st">&#39;async_writer_process&#39;</span>)<span class="sc">$</span><span class="fu">is_alive</span>()</span>
+<span id="cb35-26"><a href="#cb35-26" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] TRUE</span></span></code></pre></div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>
+&gt; do.call(…, logger)
+</h2>
+<ul>
+<li>log threshold</li>
+<li>log message formatter</li>
+<li>log record layout</li>
+<li>log record destination(s)</li>
+</ul>
+</section>
+<section id="do.call-logger" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; do.call(…, logger)</h2>
+<ul>
+<li>log threshold(s)</li>
+<li>log message formatter(s)</li>
+<li>log record layout(s)</li>
+<li>log record destination(s)</li>
+</ul>
+</section>
+<section id="namespace" class="slide level2">
+<h2>?namespace</h2>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(appender_stderr)</span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(INFO)</span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>my_appender <span class="ot">&lt;-</span> <span class="fu">appender_async</span>(<span class="fu">appender_slack</span>(<span class="at">channel =</span> <span class="st">&#39;#foobar&#39;</span>, <span class="at">token =</span> <span class="st">&#39;...&#39;</span>))</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(my_appender, <span class="at">namespace =</span> <span class="st">&#39;slack&#39;</span>)</span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(WARN, <span class="at">namespace =</span> <span class="st">&#39;slack&#39;</span>)</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;foo&#39;</span>)</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 06:15:22] foo</span></span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log_error</span>(<span class="st">&#39;bar&#39;</span>, <span class="at">namespace =</span> <span class="st">&#39;slack&#39;</span>)</span></code></pre></div>
+<p><img src="img/logger-slack.png" width="40%" /></p>
+</div>
+</section>
+<section id="assigninmynamespace" class="slide level2">
+<h2>&gt; ?assignInMyNamespace</h2>
+<p>R packages using <code>logger</code> automatically gets their own
+namespace, so eg <code>dbr</code> using <code>logger</code> can be
+silenced by</p>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(FATAL, <span class="at">namespace =</span> <span class="st">&#39;dbr&#39;</span>)</span></code></pre></div>
+</section>
+<section id="namespace2" class="slide level2">
+<h2>&gt; namespace^2</h2>
+<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(appender_stderr)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(INFO)</span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(<span class="fu">appender_file</span>(<span class="at">file =</span> <span class="st">&#39;/var/log/myapp.log&#39;</span>), <span class="at">index =</span> <span class="dv">2</span>)</span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(TRACE, <span class="at">index =</span> <span class="dv">2</span>)</span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb39-7"><a href="#cb39-7" aria-hidden="true" tabindex="-1"></a>my_appender <span class="ot">&lt;-</span> <span class="fu">appender_async</span>(<span class="fu">appender_slack</span>(<span class="at">channel =</span> <span class="st">&#39;#foobar&#39;</span>, <span class="at">token =</span> <span class="st">&#39;...&#39;</span>))</span>
+<span id="cb39-8"><a href="#cb39-8" aria-hidden="true" tabindex="-1"></a><span class="fu">log_appender</span>(my_appender, <span class="at">index =</span> <span class="dv">3</span>)</span>
+<span id="cb39-9"><a href="#cb39-9" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(ERROR, <span class="at">index =</span> <span class="dv">3</span>)</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_info</span>(<span class="st">&#39;foo&#39;</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 06:15:22] foo</span></span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a><span class="fu">log_debug</span>(<span class="st">&#39;bar&#39;</span>)</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">readLines</span>(<span class="st">&#39;/var/log/yapp.log&#39;</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;INFO [2019-09-19 06:15:22] foo&quot;  &quot;DEBUG [2019-09-19 06:15:22] bar&quot;</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<p>Slack: 🙊</p>
+</div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>
+&gt; help(package = logger)
+</h2>
+<p><video width="75%" controls autoplay muted loop>
+<source src="https://ljdchost.com/039/Z7xskkR.webm" type="video/webm">
+</video></p>
+<p>Source:
+<a href="https://thecodinglove.com/when-we-ship-a-quickfix-in-a-hurry" target="_new">When
+we ship a quickfix in a hurry</a></p>
+</section>
+<section id="helppackage-logger" class="slide level2">
+<h2>&gt; help(package = logger)</h2>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> sqrt</span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>g <span class="ot">&lt;-</span> mean</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">31</span></span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log_eval</span>(<span class="fu">f</span>(<span class="fu">g</span>(x)), <span class="at">level =</span> INFO)</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 04:38:17] &#39;f(g(x))&#39; =&gt; &#39;4&#39;</span></span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] 4</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_failure</span>(<span class="st">&#39;foobar&#39;</span>)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; [1] &quot;foobar&quot;</span></span>
+<span id="cb43-3"><a href="#cb43-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb43-4"><a href="#cb43-4" aria-hidden="true" tabindex="-1"></a><span class="fu">log_failure</span>(foobar)</span>
+<span id="cb43-5"><a href="#cb43-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ERROR [2019-09-19 04:39:27] object &#39;foobar&#39; not found</span></span>
+<span id="cb43-6"><a href="#cb43-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error in doTryCatch(return(expr), name, parentenv, handler) :</span></span>
+<span id="cb43-7"><a href="#cb43-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   object &#39;foobar&#39; not found</span></span></code></pre></div>
+</div>
+</section>
+<section id="helppackage-logger-1" class="slide level2">
+<h2>&gt; help(package = logger)</h2>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_tictoc</span>(<span class="st">&#39;warming up&#39;</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 04:38:56] global timer tic 0 secs -- warming up</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="fl">1.2</span>)</span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_tictoc</span>(<span class="st">&#39;running&#39;</span>)</span>
+<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 04:38:57] global timer toc 1.21 secs -- running</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="fl">0.1</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_tictoc</span>(<span class="st">&#39;running&#39;</span>)</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 04:38:59] global timer toc 1.31 secs -- running</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Sys.sleep</span>(<span class="fu">runif</span>(<span class="dv">1</span>))</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">log_tictoc</span>(<span class="st">&#39;and running&#39;</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 04:39:00] global timer toc 1.43 secs -- and running</span></span></code></pre></div>
+</div>
+</section>
+<section id="helppackage-logger-2" class="slide level2">
+<h2>&gt; help(package = logger)</h2>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_messages</span>()</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a><span class="fu">message</span>(<span class="st">&#39;hi there&#39;</span>)</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; hi there</span></span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:41:29] hi there</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_warnings</span>()</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>) {</span>
+<span id="cb49-3"><a href="#cb49-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">Sys.sleep</span>(<span class="fu">runif</span>(<span class="dv">1</span>))</span>
+<span id="cb49-4"><a href="#cb49-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">suppressWarnings</span>(<span class="fu">warning</span>(i))</span>
+<span id="cb49-5"><a href="#cb49-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb49-6"><a href="#cb49-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN [2019-09-19 05:41:32] 1</span></span>
+<span id="cb49-7"><a href="#cb49-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN [2019-09-19 05:41:33] 2</span></span>
+<span id="cb49-8"><a href="#cb49-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN [2019-09-19 05:41:33] 3</span></span>
+<span id="cb49-9"><a href="#cb49-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN [2019-09-19 05:41:34] 4</span></span>
+<span id="cb49-10"><a href="#cb49-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; WARN [2019-09-19 05:41:34] 5</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_errors</span>()</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a><span class="fu">stop</span>(<span class="st">&#39;foobar&#39;</span>)</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; ERROR [2019-09-19 05:41:37] foobar</span></span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; Error: foobar</span></span></code></pre></div>
+</div>
+</section>
+<section id="helppackage-logger-3" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; help(package = logger)</h2>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(shiny)</span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>ui <span class="ot">&lt;-</span> <span class="fu">bootstrapPage</span>(</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&#39;mean&#39;</span>, <span class="st">&#39;mean&#39;</span>, <span class="dv">0</span>),</span>
+<span id="cb51-4"><a href="#cb51-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">numericInput</span>(<span class="st">&#39;sd&#39;</span>, <span class="st">&#39;sd&#39;</span>, <span class="dv">1</span>),</span>
+<span id="cb51-5"><a href="#cb51-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">textInput</span>(<span class="st">&#39;title&#39;</span>, <span class="st">&#39;title&#39;</span>, <span class="st">&#39;title&#39;</span>),</span>
+<span id="cb51-6"><a href="#cb51-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plotOutput</span>(<span class="st">&#39;plot&#39;</span>)</span>
+<span id="cb51-7"><a href="#cb51-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb51-8"><a href="#cb51-8" aria-hidden="true" tabindex="-1"></a>server <span class="ot">&lt;-</span> <span class="cf">function</span>(input, output) {</span>
+<span id="cb51-9"><a href="#cb51-9" aria-hidden="true" tabindex="-1"></a>    logger<span class="sc">::</span><span class="fu">log_shiny_input_changes</span>(input)</span>
+<span id="cb51-10"><a href="#cb51-10" aria-hidden="true" tabindex="-1"></a>    output<span class="sc">$</span>plot <span class="ot">&lt;-</span> <span class="fu">renderPlot</span>({</span>
+<span id="cb51-11"><a href="#cb51-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">hist</span>(<span class="fu">rnorm</span>(<span class="fl">1e3</span>, input<span class="sc">$</span>mean, input<span class="sc">$</span>sd), <span class="at">main =</span> input<span class="sc">$</span>title)</span>
+<span id="cb51-12"><a href="#cb51-12" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb51-13"><a href="#cb51-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb51-14"><a href="#cb51-14" aria-hidden="true" tabindex="-1"></a><span class="fu">shinyApp</span>(<span class="at">ui =</span> ui, <span class="at">server =</span> server)</span></code></pre></div>
+</section>
+<section id="helppackage-logger-4" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; help(package = logger)</h2>
+<pre class="shell"><code>Listening on http://127.0.0.1:8080
+INFO [2019-07-11 16:59:17] Default Shiny inputs initialized: {&quot;mean&quot;:0,&quot;title&quot;:&quot;title&quot;,&quot;sd&quot;:1}
+INFO [2019-07-11 16:59:26] Shiny input change detected on mean: 0 -&gt; 1
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 1 -&gt; 2
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 2 -&gt; 3
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 3 -&gt; 4
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 4 -&gt; 5
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 5 -&gt; 6
+INFO [2019-07-11 16:59:27] Shiny input change detected on mean: 6 -&gt; 7
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 1 -&gt; 2
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 2 -&gt; 3
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 3 -&gt; 4
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 4 -&gt; 5
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 5 -&gt; 6
+INFO [2019-07-11 16:59:29] Shiny input change detected on sd: 6 -&gt; 7
+INFO [2019-07-11 16:59:34] Shiny input change detected on title: title -&gt; sfdsadsads</code></pre>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; importFrom(logger, …)
+</h2>
+<p><img src="https://66.media.tumblr.com/2419c27b09d42f14cca55c8025dd501b/tumblr_nrujo8ew8p1s373hwo1_250.gifv"
+     width="50%" class="noborder" /></p>
+<p>Source:
+<a href="https://dbareactions.com/post/125020194064/when-a-client-calls-and-says-they-have-a" target="_new">DBA
+Reactions</a></p>
+<!-- <img src="https://media.giphy.com/media/xDQ3Oql1BN54c/giphy.gif" width="65%" class="noborder" /> -->
+</section>
+<section id="logger-namespace-botor" class="slide level2">
+<h2>&gt; logger(…, namespace = ‘botor’)</h2>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(botor)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>my_mtcars <span class="ot">&lt;-</span> <span class="fu">s3_read</span>(<span class="st">&#39;s3://botor/example-data/mtcars.csv&#39;</span>, read.csv)</span>
+<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2019-09-19 04:46:57] Downloaded 1303 bytes from s3://botor/example-data/mtcars.csv</span></span>
+<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and saved at &#39;/tmp/RtmpLW4bY4/file63ff42ed2fe1&#39;</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(TRACE, <span class="at">namespace =</span> <span class="st">&#39;botor&#39;</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>my_mtcars <span class="ot">&lt;-</span> <span class="fu">s3_read</span>(<span class="st">&#39;s3://botor/example-data/mtcars.csv.gz&#39;</span>,</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>                     read.csv, <span class="at">extract =</span> <span class="st">&#39;gzip&#39;</span>)</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-19 04:48:02] Downloading s3://botor/example-data/mtcars.csv.gz to</span></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;/tmp/RtmpLW4bY4/file63ff17e137e9&#39; ...</span></span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; DEBUG [2019-09-19 04:48:03] Downloaded 567 bytes from s3://botor/example-data/mtcars.csv.gz</span></span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; and saved at &#39;/tmp/RtmpLW4bY4/file63ff17e137e9&#39;</span></span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-19 04:48:03] Decompressed /tmp/RtmpLW4bY4/file63ff17e137e9 via gzip</span></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; from 567 to 1303 bytes</span></span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; TRACE [2019-09-19 04:48:03] Deleted /tmp/RtmpLW4bY4/file63ff17e137e9</span></span></code></pre></div>
+</div>
+</section>
+<section id="logger-namespace-botor-1" class="slide level2">
+<h2>&gt; !logger(…, namespace = ‘botor’)</h2>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="fu">log_threshold</span>(ERROR, <span class="at">namespace =</span> <span class="st">&#39;botor&#39;</span>)</span>
+<span id="cb55-2"><a href="#cb55-2" aria-hidden="true" tabindex="-1"></a>my_mtcars <span class="ot">&lt;-</span> <span class="fu">s3_read</span>(<span class="st">&#39;s3://botor/example-data/mtcars.csv.gz&#39;</span>,</span>
+<span id="cb55-3"><a href="#cb55-3" aria-hidden="true" tabindex="-1"></a>                     read.csv, <span class="at">extract =</span> <span class="st">&#39;gzip&#39;</span>)</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>my_mtcars <span class="ot">&lt;-</span> <span class="fu">with_log_threshold</span>(</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">expressions =</span> <span class="fu">s3_read</span>(<span class="st">&#39;s3://botor/example-data/mtcars.csv.gz&#39;</span>,</span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a>                          read.csv, <span class="at">extract =</span> <span class="st">&#39;gzip&#39;</span>),</span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">threshold =</span> ERROR,</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">namespace =</span> <span class="st">&#39;botor&#39;</span>)</span></code></pre></div>
+</div>
+</section>
+<section id="demodbr" class="slide level2">
+<h2>&gt; demo(dbr)</h2>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(DBI)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>con <span class="ot">&lt;-</span> <span class="fu">dbConnect</span>(</span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>    RMySQL<span class="sc">::</span><span class="fu">MySQL</span>(),</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">dbname =</span> <span class="st">&quot;shinydemo&quot;</span>,</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">host =</span> <span class="st">&quot;shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com&quot;</span>,</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">username =</span> <span class="st">&quot;guest&quot;</span>,</span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">password =</span> <span class="st">&quot;guest&quot;</span>)</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>query <span class="ot">&lt;-</span> <span class="fu">dbSendQuery</span>(</span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    con,</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;SELECT Continent, COUNT(DISTINCT(Region)) FROM Country GROUP BY Continent&quot;</span>)</span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>res <span class="ot">&lt;-</span> <span class="fu">dbFetch</span>(query)</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a><span class="fu">dbClearResult</span>(query)</span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a><span class="fu">dbDisconnect</span>(con)</span></code></pre></div>
+<p>Spot the issues in the above code block!</p>
+</section>
+<section id="demodbr-1" class="slide level2">
+<h2>&gt; demo(dbr)</h2>
+<blockquote cite="Andrew Hoffman">
+“When I woke up the next morning, I had four emails and a missed phone
+call from Amazon AWS – something about 140 servers running on my AWS
+account, mining Bitcoin.” – Andrew Hoffman
+</blockquote>
+<div class="fragment">
+<div class="sourceCode" id="cb58"><pre
+class="sourceCode sql"><code class="sourceCode sql"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="kw">SELECT</span></span>
+<span id="cb58-2"><a href="#cb58-2" aria-hidden="true" tabindex="-1"></a>  TO_HEX(CODE_POINTS_TO_BYTES([<span class="bn">0xac</span>, num2, num3, num4])) <span class="kw">AS</span> nonce</span>
+<span id="cb58-3"><a href="#cb58-3" aria-hidden="true" tabindex="-1"></a><span class="kw">FROM</span></span>
+<span id="cb58-4"><a href="#cb58-4" aria-hidden="true" tabindex="-1"></a>  UNNEST(GENERATE_ARRAY(<span class="dv">0</span>, <span class="dv">255</span>)) num2,</span>
+<span id="cb58-5"><a href="#cb58-5" aria-hidden="true" tabindex="-1"></a>  UNNEST(GENERATE_ARRAY(<span class="dv">0</span>, <span class="dv">255</span>)) num3,</span>
+<span id="cb58-6"><a href="#cb58-6" aria-hidden="true" tabindex="-1"></a>  UNNEST(GENERATE_ARRAY(<span class="dv">0</span>, <span class="dv">255</span>)) num4</span>
+<span id="cb58-7"><a href="#cb58-7" aria-hidden="true" tabindex="-1"></a><span class="kw">WHERE</span></span>
+<span id="cb58-8"><a href="#cb58-8" aria-hidden="true" tabindex="-1"></a>TO_HEX(<span class="kw">REVERSE</span>(SHA256(SHA256(<span class="fu">CONCAT</span>(FROM_HEX(</span>
+<span id="cb58-9"><a href="#cb58-9" aria-hidden="true" tabindex="-1"></a>  <span class="st">&#39;000000204a4ef98461ee26898076e6a2cfc7c764d02b5f8d670832000000000000000000f99f5c4d5025979fcb33d245536a55b628d4564c075c0210cbbc941ad79fdbc5e491b55a494a5117&#39;</span>), CODE_POINTS_TO_BYTES([<span class="bn">0xac</span>, num2, num3, num4]) ))))) <span class="kw">LIKE</span> <span class="st">&#39;000000000000000000%&#39;</span></span></code></pre></div>
+<p>Source: <a
+href="https://medium.com/@urish/thank-you-google-how-to-mine-bitcoin-on-googles-bigquery-1c8e17b04e62">How
+to mine Bitcoin on Google’s BigQuery</a></p>
+</div>
+</section>
+<section id="logger-namespace-dbr" class="slide level2">
+<h2>&gt; logger(…, namespace = ‘dbr’)</h2>
+<div class="sourceCode" id="cb59"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqlite</span><span class="kw">:</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">drv</span><span class="kw">:</span><span class="at"> !expr RSQLite::SQLite()</span></span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dbname</span><span class="kw">:</span><span class="at"> !expr tempfile()</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dbr)</span>
+<span id="cb60-2"><a href="#cb60-2" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(<span class="fu">db_query</span>(<span class="st">&#39;SELECT 42&#39;</span>, <span class="st">&#39;sqlite&#39;</span>))</span>
+<span id="cb60-3"><a href="#cb60-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-4"><a href="#cb60-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Connecting to sqlite</span></span>
+<span id="cb60-5"><a href="#cb60-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Executing:**********</span></span>
+<span id="cb60-6"><a href="#cb60-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] SELECT 42</span></span>
+<span id="cb60-7"><a href="#cb60-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] ********************</span></span>
+<span id="cb60-8"><a href="#cb60-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Finished in 0.0007429 secs returning 1 rows</span></span>
+<span id="cb60-9"><a href="#cb60-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2018-07-11 17:07:12] Closing connection to sqlite</span></span>
+<span id="cb60-10"><a href="#cb60-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb60-11"><a href="#cb60-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; &#39;data.frame&#39;:  1 obs. of  1 variable:</span></span>
+<span id="cb60-12"><a href="#cb60-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  $ 42: int 42</span></span>
+<span id="cb60-13"><a href="#cb60-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;when&quot;)= POSIXct, format: &quot;2018-07-11 17:07:12&quot;</span></span>
+<span id="cb60-14"><a href="#cb60-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;db&quot;)= chr &quot;sqlite&quot;</span></span>
+<span id="cb60-15"><a href="#cb60-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;time_to_exec&quot;)=Class &#39;difftime&#39;  atomic [1:1] 0.000743</span></span>
+<span id="cb60-16"><a href="#cb60-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;   .. ..- attr(*, &quot;units&quot;)= chr &quot;secs&quot;</span></span>
+<span id="cb60-17"><a href="#cb60-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;  - attr(*, &quot;statement&quot;)= chr &quot;SELECT 42&quot;</span></span></code></pre></div>
+</div>
+</section>
+<section id="logger-namespace-dbr-1" class="slide level2">
+<h2>&gt; logger(…, namespace = ‘dbr’)</h2>
+<div class="sourceCode" id="cb61"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a><span class="fu">default</span><span class="kw">:</span></span>
+<span id="cb61-2"><a href="#cb61-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">shinydemo</span><span class="kw">:</span></span>
+<span id="cb61-3"><a href="#cb61-3" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">drv</span><span class="kw">:</span><span class="at"> !expr RMySQL::MySQL()</span></span>
+<span id="cb61-4"><a href="#cb61-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">host</span><span class="kw">:</span><span class="at"> shiny-demo.csa7qlmguqrf.us-east-1.rds.amazonaws.com</span></span>
+<span id="cb61-5"><a href="#cb61-5" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">username</span><span class="kw">:</span><span class="at"> guest</span></span>
+<span id="cb61-6"><a href="#cb61-6" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">password</span><span class="kw">:</span><span class="at"> guest</span></span>
+<span id="cb61-7"><a href="#cb61-7" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">dbname</span><span class="kw">:</span><span class="at"> shinydemo</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb62"><pre
+class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">shinydemo</span><span class="kw">:</span></span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">drv</span><span class="kw">:</span><span class="at"> !expr RMySQL::MySQL()</span></span>
+<span id="cb62-3"><a href="#cb62-3" aria-hidden="true" tabindex="-1"></a><span class="fu">  host</span><span class="kw">: </span><span class="at">!kms </span><span class="ch">|</span></span>
+<span id="cb62-4"><a href="#cb62-4" aria-hidden="true" tabindex="-1"></a>    AQICAHiMkU2ZNbL+kRcQoM3wGpuLb8HbIKjM9VcEGt72rZV2SAEXX7aTXvtsf91BzgoiiIDh</span>
+<span id="cb62-5"><a href="#cb62-5" aria-hidden="true" tabindex="-1"></a>    AAAAlDCBkQYJKoZIhvcNAQcGoIGDMIGAAgEAMHsGCSqGSIb3DQEHATAeBglghkgBZQMEAS4w</span>
+<span id="cb62-6"><a href="#cb62-6" aria-hidden="true" tabindex="-1"></a>    EQQMgVoMPjgAi+S7i7cvAgEQgE5X4dnyt/Tl0+PiX/yjzdC2wYl+tWzvHnApAhIahQroK+VJ</span>
+<span id="cb62-7"><a href="#cb62-7" aria-hidden="true" tabindex="-1"></a>    8OQEQse/s/VE6n2gHPuXe4c/9lK9Od6e1aR8+YZCflyOA5F2sWFz6+hU5XI=</span>
+<span id="cb62-8"><a href="#cb62-8" aria-hidden="true" tabindex="-1"></a><span class="fu">  username</span><span class="kw">: </span><span class="at">!aws_parameter </span><span class="ch">|-</span></span>
+<span id="cb62-9"><a href="#cb62-9" aria-hidden="true" tabindex="-1"></a>    /prod/db/shinydemo/username</span>
+<span id="cb62-10"><a href="#cb62-10" aria-hidden="true" tabindex="-1"></a><span class="fu">  password</span><span class="kw">: </span><span class="at">!aws_secret </span><span class="ch">|-</span></span>
+<span id="cb62-11"><a href="#cb62-11" aria-hidden="true" tabindex="-1"></a>    prod/db/shinydemo/password</span>
+<span id="cb62-12"><a href="#cb62-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">dbname</span><span class="kw">:</span><span class="at"> shinydemo</span></span></code></pre></div>
+</div>
+</section>
+<section id="logger-namespace-dbr-2" class="slide level2">
+<h2>&gt; logger(…, namespace = ‘dbr’)</h2>
+<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a><span class="fu">db_query</span>(</span>
+<span id="cb63-2"><a href="#cb63-2" aria-hidden="true" tabindex="-1"></a>    <span class="at">sql =</span> <span class="st">&quot;SELECT Continent, COUNT(DISTINCT(Region)) FROM Country GROUP BY Continent&quot;</span>,</span>
+<span id="cb63-3"><a href="#cb63-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">db =</span> <span class="st">&#39;shinydemo&#39;</span>)</span>
+<span id="cb63-4"><a href="#cb63-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-5"><a href="#cb63-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:30] Looking up config for shinydemo</span></span>
+<span id="cb63-6"><a href="#cb63-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-7"><a href="#cb63-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:30] Decrypting string via KMS ...</span></span>
+<span id="cb63-8"><a href="#cb63-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:30] Decrypting string via KMS ...</span></span>
+<span id="cb63-9"><a href="#cb63-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:31] Decrypting string via KMS ...</span></span>
+<span id="cb63-10"><a href="#cb63-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb63-11"><a href="#cb63-11" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:31] Connecting to shinydemo</span></span>
+<span id="cb63-12"><a href="#cb63-12" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:32] Executing:**********</span></span>
+<span id="cb63-13"><a href="#cb63-13" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:32] SELECT Continent, COUNT(DISTINCT(Region)) FROM Country GROUP BY Continent</span></span>
+<span id="cb63-14"><a href="#cb63-14" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:32] ********************</span></span>
+<span id="cb63-15"><a href="#cb63-15" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:32] Finished in 0.2213 secs returning 7 rows</span></span>
+<span id="cb63-16"><a href="#cb63-16" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; INFO [2019-09-19 05:02:32] Closing connection to shinydemo</span></span>
+<span id="cb63-17"><a href="#cb63-17" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt;        Continent COUNT(DISTINCT(Region))</span></span>
+<span id="cb63-18"><a href="#cb63-18" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 1:          Asia                       4</span></span>
+<span id="cb63-19"><a href="#cb63-19" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 2:        Europe                       6</span></span>
+<span id="cb63-20"><a href="#cb63-20" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 3: North America                       3</span></span>
+<span id="cb63-21"><a href="#cb63-21" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 4:        Africa                       5</span></span>
+<span id="cb63-22"><a href="#cb63-22" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 5:       Oceania                       5</span></span>
+<span id="cb63-23"><a href="#cb63-23" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 6:    Antarctica                       1</span></span>
+<span id="cb63-24"><a href="#cb63-24" aria-hidden="true" tabindex="-1"></a><span class="co">#&gt; 7: South America                       1</span></span></code></pre></div>
+</section>
+<section id="mclapply-db_config" class="slide level2">
+<h2>&gt; mclapply(…, db_config)</h2>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(<span class="fu">db_config</span>(<span class="st">&#39;shinydemo&#39;</span>))</span>
+<span id="cb64-2"><a href="#cb64-2" aria-hidden="true" tabindex="-1"></a>   user  system elapsed</span>
+<span id="cb64-3"><a href="#cb64-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">3.359</span>   <span class="fl">0.092</span>   <span class="fl">5.236</span></span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(<span class="fu">db_config</span>(<span class="st">&#39;shinydemo&#39;</span>))</span>
+<span id="cb65-2"><a href="#cb65-2" aria-hidden="true" tabindex="-1"></a>   user  system elapsed</span>
+<span id="cb65-3"><a href="#cb65-3" aria-hidden="true" tabindex="-1"></a>  <span class="fl">0.001</span>   <span class="fl">0.000</span>   <span class="fl">0.001</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<p>It’s not caching the connection this time, only the credentials.</p>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">db_config_invalidate_cache</span>()</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">03</span><span class="sc">:</span><span class="dv">38</span>] Invalidating cache on already loaded DB <span class="fu">config</span>(s)</span></code></pre></div>
+</div>
+</section>
+<section id="mclapply-db_query" class="slide level2">
+<h2>&gt; mclapply(…, db_query)</h2>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> parallel<span class="sc">::</span><span class="fu">mclapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">16</span>, <span class="cf">function</span>(i) <span class="fu">db_query</span>(<span class="st">&quot;SELECT 42&quot;</span>, <span class="st">&quot;sqlite&quot;</span>), <span class="at">mc.cores =</span> <span class="dv">8</span>)</span>
+<span id="cb67-2"><a href="#cb67-2" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-3"><a href="#cb67-3" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-4"><a href="#cb67-4" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-5"><a href="#cb67-5" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-6"><a href="#cb67-6" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-7"><a href="#cb67-7" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-8"><a href="#cb67-8" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Finished <span class="cf">in</span> <span class="fl">0.001053</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-9"><a href="#cb67-9" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-10"><a href="#cb67-10" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Closing connection to sqlite</span>
+<span id="cb67-11"><a href="#cb67-11" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-12"><a href="#cb67-12" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-13"><a href="#cb67-13" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-14"><a href="#cb67-14" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-15"><a href="#cb67-15" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Finished <span class="cf">in</span> <span class="fl">0.005117</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-16"><a href="#cb67-16" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-17"><a href="#cb67-17" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Closing connection to sqlite</span>
+<span id="cb67-18"><a href="#cb67-18" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-19"><a href="#cb67-19" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-20"><a href="#cb67-20" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-21"><a href="#cb67-21" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-22"><a href="#cb67-22" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Finished <span class="cf">in</span> <span class="fl">0.003497</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-23"><a href="#cb67-23" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-24"><a href="#cb67-24" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-25"><a href="#cb67-25" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-26"><a href="#cb67-26" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-27"><a href="#cb67-27" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Closing connection to sqlite</span>
+<span id="cb67-28"><a href="#cb67-28" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-29"><a href="#cb67-29" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-30"><a href="#cb67-30" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-31"><a href="#cb67-31" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-32"><a href="#cb67-32" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-33"><a href="#cb67-33" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Finished <span class="cf">in</span> <span class="fl">0.0008972</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-34"><a href="#cb67-34" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-35"><a href="#cb67-35" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Finished <span class="cf">in</span> <span class="fl">0.00947</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-36"><a href="#cb67-36" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-37"><a href="#cb67-37" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-38"><a href="#cb67-38" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Finished <span class="cf">in</span> <span class="fl">0.001237</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-39"><a href="#cb67-39" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-40"><a href="#cb67-40" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Closing connection to sqlite</span>
+<span id="cb67-41"><a href="#cb67-41" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Finished <span class="cf">in</span> <span class="fl">0.001038</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-42"><a href="#cb67-42" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-43"><a href="#cb67-43" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Closing connection to sqlite</span>
+<span id="cb67-44"><a href="#cb67-44" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Closing connection to sqlite</span>
+<span id="cb67-45"><a href="#cb67-45" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-46"><a href="#cb67-46" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-47"><a href="#cb67-47" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Connecting to sqlite</span>
+<span id="cb67-48"><a href="#cb67-48" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">04</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-49"><a href="#cb67-49" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-50"><a href="#cb67-50" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-51"><a href="#cb67-51" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-52"><a href="#cb67-52" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-53"><a href="#cb67-53" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-54"><a href="#cb67-54" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-55"><a href="#cb67-55" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Connecting to sqlite</span>
+<span id="cb67-56"><a href="#cb67-56" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-57"><a href="#cb67-57" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-58"><a href="#cb67-58" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.0009949</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-59"><a href="#cb67-59" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-60"><a href="#cb67-60" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-61"><a href="#cb67-61" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-62"><a href="#cb67-62" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-63"><a href="#cb67-63" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-64"><a href="#cb67-64" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-65"><a href="#cb67-65" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-66"><a href="#cb67-66" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-67"><a href="#cb67-67" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.001511</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-68"><a href="#cb67-68" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-69"><a href="#cb67-69" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-70"><a href="#cb67-70" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-71"><a href="#cb67-71" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Connecting to sqlite</span>
+<span id="cb67-72"><a href="#cb67-72" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-73"><a href="#cb67-73" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.001259</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-74"><a href="#cb67-74" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-75"><a href="#cb67-75" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-76"><a href="#cb67-76" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-77"><a href="#cb67-77" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.001187</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-78"><a href="#cb67-78" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-79"><a href="#cb67-79" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.03187</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-80"><a href="#cb67-80" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.009078</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-81"><a href="#cb67-81" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.0009627</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-82"><a href="#cb67-82" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-83"><a href="#cb67-83" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-84"><a href="#cb67-84" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-85"><a href="#cb67-85" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Connecting to sqlite</span>
+<span id="cb67-86"><a href="#cb67-86" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-87"><a href="#cb67-87" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Connecting to sqlite</span>
+<span id="cb67-88"><a href="#cb67-88" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-89"><a href="#cb67-89" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Executing<span class="sc">:</span><span class="er">**********</span></span>
+<span id="cb67-90"><a href="#cb67-90" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-91"><a href="#cb67-91" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] SELECT <span class="dv">42</span></span>
+<span id="cb67-92"><a href="#cb67-92" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-93"><a href="#cb67-93" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] <span class="sc">**</span><span class="er">******************</span></span>
+<span id="cb67-94"><a href="#cb67-94" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.0007973</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-95"><a href="#cb67-95" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Finished <span class="cf">in</span> <span class="fl">0.0007989</span> secs returning <span class="dv">1</span> rows</span>
+<span id="cb67-96"><a href="#cb67-96" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span>
+<span id="cb67-97"><a href="#cb67-97" aria-hidden="true" tabindex="-1"></a>INFO [<span class="dv">2018-07-12</span> <span class="dv">03</span><span class="sc">:</span><span class="dv">05</span><span class="sc">:</span><span class="dv">05</span>] Closing connection to sqlite</span></code></pre></div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; citation(‘logger’)
+</h2>
+<p>Slides: <a href="https://daroczig.github.io"
+class="uri">https://daroczig.github.io</a></p>
+<div class="fragment">
+<p>Thanks to System1 for the support while working on these
+packages:</p>
+<ul>
+<li><a href="https://daroczig.github.io/logger"
+class="uri">https://daroczig.github.io/logger</a></li>
+<li><a href="https://daroczig.github.io/botor"
+class="uri">https://daroczig.github.io/botor</a></li>
+<li><a href="https://daroczig.github.io/dbr"
+class="uri">https://daroczig.github.io/dbr</a></li>
+</ul>
+<p><a href="https://system1.com/open-source" target="_new">
+<img src="img/system1-opensource.jpg" width="40%" /> </a></p>
+</div>
+</section>
+<section id="hire" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; hire()</h2>
+<p><a href="https://system1.com/careers" target="_new">
+<img src="img/system1-hiring.png" width="80%" /> </a></p>
+</section>
+</section>
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+<!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Nov%252011%252018%253A35%253A00%25202021%250A%250A%253E%2520follow%28%27%2540daroczig%27%29%250A%253E%2520visit%28%27https%253A%252F%252Fdaroczig.github.io%27%29%250A%253E%2520email%28%27daroczig%2540rapporter.net%27%29 -->
+<img src="img/contact-1.png" width="80%" />
+</section>
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+<img src="img/contact-2.png" width="80%" />
+</section>
+</section>
+</section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1244,
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>
