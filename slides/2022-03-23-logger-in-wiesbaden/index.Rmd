@@ -722,7 +722,7 @@ attr(my_appender, 'async_writer_process')$is_alive()
 * log record layout(s)
 * log record destination(s)
 
-## ?namespace
+## > ?namespace
 
 ```r
 log_appender(appender_stderr)
