@@ -6,7 +6,7 @@
     <description>Recent content on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 22 Jun 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 06 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>daroczig/CEU-R-lab</title>
       <link>https://daroczig.github.io/repos/ceu-r-lab/</link>
@@ -242,6 +242,33 @@
     </item>
     
     <item>
+      <title>Data Engineering 3: Using R in Production</title>
+      <link>https://daroczig.github.io/teaching/2022-ceu-r-in-prod/</link>
+      <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2022-ceu-r-in-prod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Visualization 2: Practical Data Visualization with R</title>
+      <link>https://daroczig.github.io/teaching/2022-ceu-dv2/</link>
+      <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2022-ceu-dv2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Calling Python from R to generate image captions</title>
+      <link>https://daroczig.github.io/talks/2022-06-29/</link>
+      <pubDate>Tue, 11 Oct 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2022-06-29/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Internationalization of R packages with r18r</title>
       <link>https://daroczig.github.io/talks/2022-06-22/</link>
       <pubDate>Wed, 22 Jun 2022 00:00:00 +0000</pubDate>
@@ -251,11 +278,38 @@
     </item>
     
     <item>
+      <title>Data Visualization 4: Data Visualization in Production with Shiny</title>
+      <link>https://daroczig.github.io/teaching/2021-ceu-dv3/</link>
+      <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2021-ceu-dv3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>R Coffee Break: logger - A Modern Logging Utility</title>
       <link>https://daroczig.github.io/talks/2022-03-23-wiesbaden/</link>
       <pubDate>Wed, 23 Mar 2022 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2022-03-23-wiesbaden/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Engineering 3: Using R in Production</title>
+      <link>https://daroczig.github.io/teaching/2021-ceu-r-in-prod/</link>
+      <pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2021-ceu-r-in-prod/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Visualization 2: Practical Data Visualization with R</title>
+      <link>https://daroczig.github.io/teaching/2021-ceu-dv2/</link>
+      <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2021-ceu-dv2/</guid>
       <description></description>
     </item>
     
@@ -1547,6 +1601,15 @@
     </item>
     
     <item>
+      <title>Áramlástérkép R-ben</title>
+      <link>https://daroczig.github.io/publications/2015-aramlasterkep/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/publications/2015-aramlasterkep/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Comparative Evaluation of the Predictive Performances of Three Different Structural Population Pharmacokinetic Models To Predict Future Voriconazole Concentrations</title>
       <link>https://daroczig.github.io/publications/2016-aac/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -1598,7 +1661,7 @@
       
       <guid>https://daroczig.github.io/work/</guid>
       <description>I&amp;rsquo;ve been working on various shorter and longer term projects in the past ~10 years focusing on a wide variety of data science / data engineering problems, and helping companies using R in production. Verticals and some high-level project details:
- Finance: 2+ years at a growth stage fintech startup providing pre-paid and credit cards to US customers (optimizing online marketing campaigns, churn analysis, risk scoring, reporting and dashboards, operations like charging fees and real-time notification of customers); clustering of ~1K bank branches and performance analytics; network analysis of the Hungarian interbank lending market Ad tech: 4+ years optimizing online ad campaign performance at growth stage startups, time-series forecasting, portfolio optimization, live scoring with ML models (R, Python, H2O), API integrations Education: 5 years full-time assistant professor at PPKE, 4 years visiting professor at CEU, 3 years quality assurance of a Hungarian university (survey design, tech infrastructure for OCR-based data entry, automated reporting); 2 years quality assurance of Australian high schools (programmatic access of automated individual and aggregated reports); various R training events and classes Product: 4 years full-time bootstrapping a SaaS startup at rapporter.</description>
+Finance: 2+ years at a growth stage fintech startup providing pre-paid and credit cards to US customers (optimizing online marketing campaigns, churn analysis, risk scoring, reporting and dashboards, operations like charging fees and real-time notification of customers); clustering of ~1K bank branches and performance analytics; network analysis of the Hungarian interbank lending market Ad tech: 4+ years optimizing online ad campaign performance at growth stage startups, time-series forecasting, portfolio optimization, live scoring with ML models (R, Python, H2O), API integrations Education: 5 years full-time assistant professor at PPKE, 4 years visiting professor at CEU, 3 years quality assurance of a Hungarian university (survey design, tech infrastructure for OCR-based data entry, automated reporting); 2 years quality assurance of Australian high schools (programmatic access of automated individual and aggregated reports); various R training events and classes Product: 4 years full-time bootstrapping a SaaS startup at rapporter.</description>
     </item>
     
     <item>
@@ -1617,8 +1680,7 @@
       
       <guid>https://daroczig.github.io/contact/</guid>
       <description>Please feel free to reach out on social media or by filling out the below form to send a direct message:
- Your name:   Your email:   Your message:   Send Message
- </description>
+Your name: Your email: Your message: Send Message</description>
     </item>
     
     <item>
@@ -1690,15 +1752,6 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/publications/2020-rockerverse/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Áramlástérkép R-ben</title>
-      <link>https://daroczig.github.io/publications/2015-aramlasterkep/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://daroczig.github.io/publications/2015-aramlasterkep/</guid>
       <description></description>
     </item>
     

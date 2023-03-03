@@ -261,3 +261,9 @@ footer p {
     -webkit-transform: none;
     transform: none;
 }
+
+div.about h1 a img.hearmyname {
+    height: 24px;
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
