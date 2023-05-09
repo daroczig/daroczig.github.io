@@ -6,7 +6,34 @@
     <description>Recent content in University classes and R training materials on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 06 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Mastering R Skills</title>
+      <link>https://daroczig.github.io/teaching/2022-ceu-mastering-r/</link>
+      <pubDate>Mon, 22 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2022-ceu-mastering-r/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Use-case Seminars</title>
+      <link>https://daroczig.github.io/teaching/2022-ceu-use-cases/</link>
+      <pubDate>Mon, 08 May 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2022-ceu-use-cases/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data Visualization 4: Data Visualization in Production with Shiny</title>
+      <link>https://daroczig.github.io/teaching/2022-ceu-dv3/</link>
+      <pubDate>Mon, 24 Apr 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2022-ceu-dv3/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Data Engineering 3: Using R in Production</title>
       <link>https://daroczig.github.io/teaching/2022-ceu-r-in-prod/</link>

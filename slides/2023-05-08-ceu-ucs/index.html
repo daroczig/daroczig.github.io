@@ -1,0 +1,1747 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="author" content="Gergely Daróczi" />
+  <title>A Decade (or Two) of Using R in Production </title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/reveal.css"/>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  background-color: #f8f8f8; }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #204a87; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #8f5902; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #204a87; font-weight: bold; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #ce5c00; font-weight: bold; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="index_files/reveal.js-3.3.0.1/css/theme/white.css" id="theme">
+
+
+  <!-- some tweaks to reveal css -->
+  <style type="text/css">
+    .reveal h1 { font-size: 2.0em; }
+    .reveal h2 { font-size: 1.5em;  }
+    .reveal h3 { font-size: 1.25em;     }
+    .reveal h4 { font-size: 1em;        }
+
+    .reveal .slides>section,
+    .reveal .slides>section>section {
+      padding: 0px 0px;
+    }
+
+
+
+    .reveal table {
+      border-width: 1px;
+      border-spacing: 2px;
+      border-style: dotted;
+      border-color: gray;
+      border-collapse: collapse;
+      font-size: 0.7em;
+    }
+
+    .reveal table th {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      font-weight: bold;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+    .reveal table td {
+      border-width: 1px;
+      padding-left: 10px;
+      padding-right: 25px;
+      border-style: dotted;
+      border-color: gray;
+    }
+
+
+  </style>
+
+    <style type="text/css">code{white-space: pre;}</style>
+
+
+<!-- Printing and PDF exports -->
+<script id="paper-css" type="application/dynamic-css">
+
+/* Default Print Stylesheet Template
+   by Rob Glazebrook of CSSnewbie.com
+   Last Updated: June 4, 2008
+
+   Feel free (nay, compelled) to edit, append, and
+   manipulate this file as you see fit. */
+
+
+@media print {
+
+        /* SECTION 1: Set default width, margin, float, and
+           background. This prevents elements from extending
+           beyond the edge of the printed page, and prevents
+           unnecessary background images from printing */
+        html {
+                background: #fff;
+                width: auto;
+                height: auto;
+                overflow: visible;
+        }
+        body {
+                background: #fff;
+                font-size: 20pt;
+                width: auto;
+                height: auto;
+                border: 0;
+                margin: 0 5%;
+                padding: 0;
+                overflow: visible;
+                float: none !important;
+        }
+
+        /* SECTION 2: Remove any elements not needed in print.
+           This would include navigation, ads, sidebars, etc. */
+        .nestedarrow,
+        .controls,
+        .fork-reveal,
+        .share-reveal,
+        .state-background,
+        .reveal .progress,
+        .reveal .backgrounds {
+                display: none !important;
+        }
+
+        /* SECTION 3: Set body font face, size, and color.
+           Consider using a serif font for readability. */
+        body, p, td, li, div {
+                font-size: 20pt!important;
+                font-family: Georgia, "Times New Roman", Times, serif !important;
+                color: #000;
+        }
+
+        /* SECTION 4: Set heading font face, sizes, and color.
+           Differentiate your headings from your body text.
+           Perhaps use a large sans-serif for distinction. */
+        h1,h2,h3,h4,h5,h6 {
+                color: #000!important;
+                height: auto;
+                line-height: normal;
+                font-family: Georgia, "Times New Roman", Times, serif !important;
+                text-shadow: 0 0 0 #000 !important;
+                text-align: left;
+                letter-spacing: normal;
+        }
+        /* Need to reduce the size of the fonts for printing */
+        h1 { font-size: 28pt !important;  }
+        h2 { font-size: 24pt !important; }
+        h3 { font-size: 22pt !important; }
+        h4 { font-size: 22pt !important; font-variant: small-caps; }
+        h5 { font-size: 21pt !important; }
+        h6 { font-size: 20pt !important; font-style: italic; }
+
+        /* SECTION 5: Make hyperlinks more usable.
+           Ensure links are underlined, and consider appending
+           the URL to the end of the link for usability. */
+        a:link,
+        a:visited {
+                color: #000 !important;
+                font-weight: bold;
+                text-decoration: underline;
+        }
+        /*
+        .reveal a:link:after,
+        .reveal a:visited:after {
+                content: " (" attr(href) ") ";
+                color: #222 !important;
+                font-size: 90%;
+        }
+        */
+
+
+        /* SECTION 6: more reveal.js specific additions by @skypanther */
+        ul, ol, div, p {
+                visibility: visible;
+                position: static;
+                width: auto;
+                height: auto;
+                display: block;
+                overflow: visible;
+                margin: 0;
+                text-align: left !important;
+        }
+        .reveal pre,
+        .reveal table {
+                margin-left: 0;
+                margin-right: 0;
+        }
+        .reveal pre code {
+                padding: 20px;
+                border: 1px solid #ddd;
+        }
+        .reveal blockquote {
+                margin: 20px 0;
+        }
+        .reveal .slides {
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+
+                left: 0 !important;
+                top: 0 !important;
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+                padding: 0 !important;
+                zoom: 1 !important;
+
+                overflow: visible !important;
+                display: block !important;
+
+                text-align: left !important;
+                -webkit-perspective: none;
+                   -moz-perspective: none;
+                    -ms-perspective: none;
+                        perspective: none;
+
+                -webkit-perspective-origin: 50% 50%;
+                   -moz-perspective-origin: 50% 50%;
+                    -ms-perspective-origin: 50% 50%;
+                        perspective-origin: 50% 50%;
+        }
+        .reveal .slides section {
+                visibility: visible !important;
+                position: static !important;
+                width: auto !important;
+                height: auto !important;
+                display: block !important;
+                overflow: visible !important;
+
+                left: 0 !important;
+                top: 0 !important;
+                margin-left: 0 !important;
+                margin-top: 0 !important;
+                padding: 60px 20px !important;
+                z-index: auto !important;
+
+                opacity: 1 !important;
+
+                page-break-after: always !important;
+
+                -webkit-transform-style: flat !important;
+                   -moz-transform-style: flat !important;
+                    -ms-transform-style: flat !important;
+                        transform-style: flat !important;
+
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                        transform: none !important;
+
+                -webkit-transition: none !important;
+                   -moz-transition: none !important;
+                    -ms-transition: none !important;
+                        transition: none !important;
+        }
+        .reveal .slides section.stack {
+                padding: 0 !important;
+        }
+        .reveal section:last-of-type {
+                page-break-after: avoid !important;
+        }
+        .reveal section .fragment {
+                opacity: 1 !important;
+                visibility: visible !important;
+
+                -webkit-transform: none !important;
+                   -moz-transform: none !important;
+                    -ms-transform: none !important;
+                        transform: none !important;
+        }
+        .reveal section img {
+                display: block;
+                margin: 15px 0px;
+                background: rgba(255,255,255,1);
+                border: 1px solid #666;
+                box-shadow: none;
+        }
+
+        .reveal section small {
+                font-size: 0.8em;
+        }
+
+}
+</script>
+
+
+<script id="pdf-css" type="application/dynamic-css">
+
+/**
+ * This stylesheet is used to print reveal.js
+ * presentations to PDF.
+ *
+ * https://github.com/hakimel/reveal.js#pdf-export
+ */
+
+* {
+        -webkit-print-color-adjust: exact;
+}
+
+body {
+        margin: 0 auto !important;
+        border: 0;
+        padding: 0;
+        float: none !important;
+        overflow: visible;
+}
+
+html {
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+}
+
+/* Remove any elements not needed in print. */
+.nestedarrow,
+.reveal .controls,
+.reveal .progress,
+.reveal .playback,
+.reveal.overview,
+.fork-reveal,
+.share-reveal,
+.state-background {
+        display: none !important;
+}
+
+h1, h2, h3, h4, h5, h6 {
+        text-shadow: 0 0 0 #000 !important;
+}
+
+.reveal pre code {
+        overflow: hidden !important;
+        font-family: Courier, 'Courier New', monospace !important;
+}
+
+ul, ol, div, p {
+        visibility: visible;
+        position: static;
+        width: auto;
+        height: auto;
+        display: block;
+        overflow: visible;
+        margin: auto;
+}
+.reveal {
+        width: auto !important;
+        height: auto !important;
+        overflow: hidden !important;
+}
+.reveal .slides {
+        position: static;
+        width: 100%;
+        height: auto;
+
+        left: auto;
+        top: auto;
+        margin: 0 !important;
+        padding: 0 !important;
+
+        overflow: visible;
+        display: block;
+
+        -webkit-perspective: none;
+           -moz-perspective: none;
+            -ms-perspective: none;
+                perspective: none;
+
+        -webkit-perspective-origin: 50% 50%; /* there isn't a none/auto value but 50-50 is the default */
+           -moz-perspective-origin: 50% 50%;
+            -ms-perspective-origin: 50% 50%;
+                perspective-origin: 50% 50%;
+}
+
+.reveal .slides section {
+        page-break-after: always !important;
+
+        visibility: visible !important;
+        position: relative !important;
+        display: block !important;
+        position: relative !important;
+
+        margin: 0 !important;
+        padding: 0 !important;
+        box-sizing: border-box !important;
+        min-height: 1px;
+
+        opacity: 1 !important;
+
+        -webkit-transform-style: flat !important;
+           -moz-transform-style: flat !important;
+            -ms-transform-style: flat !important;
+                transform-style: flat !important;
+
+        -webkit-transform: none !important;
+           -moz-transform: none !important;
+            -ms-transform: none !important;
+                transform: none !important;
+}
+
+.reveal section.stack {
+        margin: 0 !important;
+        padding: 0 !important;
+        page-break-after: avoid !important;
+        height: auto !important;
+        min-height: auto !important;
+}
+
+.reveal img {
+        box-shadow: none;
+}
+
+.reveal .roll {
+        overflow: visible;
+        line-height: 1em;
+}
+
+/* Slide backgrounds are placed inside of their slide when exporting to PDF */
+.reveal section .slide-background {
+        display: block !important;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: -1;
+}
+
+/* All elements should be above the slide-background */
+.reveal section>* {
+        position: relative;
+        z-index: 1;
+}
+
+/* Display slide speaker notes when 'showNotes' is enabled */
+.reveal .speaker-notes-pdf {
+        display: block;
+        width: 100%;
+        max-height: none;
+        left: auto;
+        top: auto;
+        z-index: 100;
+}
+
+/* Display slide numbers when 'slideNumber' is enabled */
+.reveal .slide-number-pdf {
+        display: block;
+        position: absolute;
+        font-size: 14px;
+}
+
+</script>
+
+
+<script>
+var style = document.createElement( 'style' );
+style.type = 'text/css';
+var style_script_id = window.location.search.match( /print-pdf/gi ) ? 'pdf-css' : 'paper-css';
+var style_script = document.getElementById(style_script_id).text;
+style.innerHTML = style_script;
+document.getElementsByTagName('head')[0].appendChild(style);
+</script>
+
+    <link rel="stylesheet" href="css/custom.css"/>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script src="index_files/header-attrs-2.19/header-attrs.js"></script>
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+<section data-background-image="img/1920x1080-white.jpg"
+         data-background-size="100%"
+         id="first-slide">
+    This page intentionally left blank.
+</section>
+
+
+<section id="dummy-slide" class="slide level2">
+<h2>dummy slide</h2>
+<!--javascript to remove dummy slide-->
+<script>
+document.getElementById("dummy-slide").remove();
+document.getElementById("coverslide").remove();
+</script>
+<!--end dummy slide-->
+</section>
+<section data-background-image="img/ceu-in-vienna-transparent.jpg" data-background-size="100%" id="coverslide">
+<h1 class="subtitle" style="color:#333;font-size:2em;">
+CEU BA: Use Case Seminars series
+</h1>
+<h1 class="title" style="color:#111;font-size:2.5em;padding-top:10%;">
+A Decade (or Two) of<br />Using R in Production<br/>
+</h1>
+<h2 class="author" style="color:#333;padding-top:5%;font-size:1.5em;">
+Gergely Daróczi
+</h2>
+<h3 class="date" style="color:#333;font-size:1.25em;">
+<span class="citation" data-cites="daroczig">@daroczig</span>
+</h3>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out" data-background-image="img/1920x1080-white.jpg" data-background-size="100%">
+<h2>
+$ whoami
+</h2>
+<p><a href="https://daroczig.github.io" target="_new">
+<img src="img/daroczig.github.io.png" width="55%" class="noborder" />
+</a></p>
+<p><a href="https://daroczig.github.io">daroczig.github.io</a></p>
+</section>
+<section id="whoami" class="slide level2"
+data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">$ whoami</h2>
+<p><a href="https://daroczig.github.io/talks" target="_new">
+<img src="img/daroczig.github.io-selection-of-prod-talks-nobg.png" width="55%" class="noborder" />
+</a></p>
+</section>
+<section id="whereami" class="slide level2">
+<h2>$ whereami</h2>
+<iframe src="https://daroczig.github.io/embed/map.html" style="display: block; border: none; height: 100vh; width: 100vw;" width="100%" height="80%">
+</iframe>
+</section>
+<section id="whoami-1" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/1.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-2" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/2.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-3" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/3.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-4" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/4.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+<section id="whoami-5" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ whoami</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/whoami/5.jpg" width="80%" class="noborder" /> </a></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; Sys.setenv(env = "prod")
+</h2>
+<p><img src="img/movie-cinemagraph-gifs-life-aquatic.gif" width="80%" /></p>
+</section>
+<section id="production" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; ??production</h2>
+</section>
+<section id="production-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; ??production</h2>
+<ul>
+<li>2006: <b>Calling R scripts from PHP</b> (both reading from MySQL) to
+generate custom plots embedded in a homepage</li>
+<li>2008: <b>Automated/batch R scripts</b> to generate thousands of
+pages of crosstables, ANOVA and plots from SPSS with
+<code>pdflatex</code></li>
+<li>2011: Ruby on Rails <b>web application</b> with <code>RApache</code>
+and <code>pandoc</code> to report in plain English (NoSQL databases,
+scaling, <b>security</b>, central error tracking etc)</li>
+<li>2012: Plain RApache <b>web application</b> for NLP and network
+analysis</li>
+<li>2015: Standardizing the data infrastructure of a fintech startup to
+use R for reporting, batch jobs, and <b>stream processing</b></li>
+<li>2017: Redesign, monitor and scale the DS infrastructure of an adtech
+startup for <b>batch training and live scoring</b></li>
+</ul>
+</section>
+<section id="production---list" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; production &lt;&lt;-
+list(…)</h2>
+</section>
+<section id="production---list-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; production &lt;&lt;- list(…)</h2>
+<div style="text-align:left;margin-bottom:20px;">
+Using in R in a non-interactive way:
+</div>
+<ul>
+<li>Running R <b>without manual intervention</b> (e.g. scheduled via
+CRON, triggered via upstream job trigger or API request)</li>
+<li>Need for a standard, e.g. <b>containerized environment</b> (pinned R
+and package versions, OS packages, <code>.Rprofile</code> etc)</li>
+<li><b>Security</b>! (e.g. safeguarded production environment, encrypted
+credentials, aware of Little Bobby Tables, AppArmor etc)</li>
+<li>Job output is informative (logging), recorded (logging) and
+<b>monitored</b> (e.g. <code>error</code> handler for ErrBit, CloudWatch
+logs or Splunk etc), alerts and notifications</li>
+</ul>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; isTRUE(interactive())
+</h2>
+<video width="60%" controls>
+<source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
+</video>
+<p><img src="img/tweet%20bird%20footer.png" width="40%"></p>
+</section>
+<section id="traceback" class="slide level2">
+<h2>&gt; traceback()</h2>
+<div style="font-size: 1.25em;">
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="sc">$</span> Rscript super_important_business_stuff.R</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.25em;">
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> l[[x]] <span class="sc">:</span> subscript out of bounds</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Calls<span class="sc">:</span> g <span class="ot">-&gt;</span> f</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+</div>
+<div class="fragment" style="font-size: 1.25em;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Error <span class="cf">in</span> <span class="fu">.subset2</span>(x, i, <span class="at">exact =</span> exact) <span class="sc">:</span> subscript out of bounds</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Execution halted</span></code></pre></div>
+</div>
+</section>
+<section id="trycatch" class="slide level2">
+<h2>&gt; tryCatch</h2>
+<ul>
+<li>Use version control!</li>
+<li>Use CI/CD tools!</li>
+<li>Write clean code! DRY!</li>
+<li>Document! Open-source!</li>
+<li>Log everything! Snapshot everything!</li>
+<li>Security!</li>
+<li>Use a scalable job scheduler!</li>
+<li>Dockerize your environment!</li>
+<li>Pin your package versions!</li>
+</ul>
+<div class="fragment">
+<p>Check out the “Productionizing R scripts in the cloud” at satRday LA
+2019!</p>
+</div>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; sample(projects, size = 5)
+</h2>
+<p><img src="img/projects/1-1.png" width="80%" /></p>
+</section>
+<section id="sampleprojects-size-5" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/1-2.png" width="65%" /></p>
+</section>
+<section id="sampleprojects-size-5-1" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(data.table)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> df <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;http://bit.ly/CEU-R-numbers-set&#39;</span>)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> df[, <span class="fu">as.list</span>(<span class="fu">summary</span>(y)), by <span class="ot">=</span> x]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    x          Min.       1st Qu.    Median      Mean   3rd Qu.     Max.</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span><span class="sc">:</span> <span class="dv">1</span>  <span class="fl">3.833572e-27</span>  <span class="fl">0.0005978607</span> <span class="fl">0.5433367</span> <span class="fl">0.5032928</span> <span class="fl">0.9991696</span> <span class="fl">1.000000</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">:</span> <span class="dv">2</span> <span class="sc">-</span><span class="fl">1.652259e+00</span>  <span class="fl">0.0037709585</span> <span class="fl">0.4794517</span> <span class="fl">0.4760225</span> <span class="fl">0.9829756</span> <span class="fl">2.449500</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="dv">3</span><span class="sc">:</span> <span class="dv">3</span> <span class="sc">-</span><span class="fl">4.994680e-01</span> <span class="sc">-</span><span class="fl">0.0047454468</span> <span class="fl">0.5122843</span> <span class="fl">0.5020751</span> <span class="fl">0.9959998</span> <span class="fl">1.496901</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="dv">4</span><span class="sc">:</span> <span class="dv">4</span> <span class="sc">-</span><span class="fl">1.825615e+00</span>  <span class="fl">0.0094876339</span> <span class="fl">0.5095499</span> <span class="fl">0.5113978</span> <span class="fl">0.9895393</span> <span class="fl">3.436646</span></span></code></pre></div>
+</section>
+<section id="sampleprojects-size-5-2" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ggplot2)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ggplot</span>(df, <span class="fu">aes</span>(y, <span class="at">fill =</span> <span class="fu">factor</span>(x))) <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="sc">+</span>   <span class="fu">geom_density</span>(<span class="at">alpha =</span> <span class="fl">0.25</span>) <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+<p><img src="img/projects/CEU-R-numbers-set-ggplot.png" width="65%" /></p>
+</section>
+<section id="sampleprojects-size-5-3" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(ExtDist)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">plot</span>(<span class="fu">eBeta</span>(df[x <span class="sc">==</span> <span class="dv">1</span>, y]))</span></code></pre></div>
+<p><img src="img/projects/CEU-R-numbers-set-eBeta.png" width="70%" /></p>
+</section>
+<section id="sampleprojects-size-5-4" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/2-1.png" width="70%" /></p>
+</section>
+<section id="sampleprojects-size-5-5" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/2-2.png" width="80%" /></p>
+</section>
+<section id="sampleprojects-size-5-6" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/3-1.png" width="50%" /></p>
+</section>
+<section id="sampleprojects-size-5-7" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/3-2.png" width="80%" /></p>
+</section>
+<section id="sampleprojects-size-5-8" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/4-1.png" width="70%" /></p>
+</section>
+<section id="sampleprojects-size-5-9" class="slide level2">
+<h2>&gt; sample(projects, size = 5)</h2>
+<p><img src="img/projects/4-2.png" width="80%" /></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; usethis::create_startup(…)
+</h2>
+<p><img src="img/rapporter/logo.jpg" width="30%" /></p>
+</section>
+<section id="demorapporter.net" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/1.png" width="80%" /></p>
+</section>
+<section id="demorapporter.net-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/2.png" width="80%" /></p>
+</section>
+<section id="demorapporter.net-2" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/3.png" width="40%" /></p>
+</section>
+<section id="demorapporter.net-3" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/4.png" width="80%" /></p>
+</section>
+<section id="demorapporter.net-4" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/5.png" width="85%" /></p>
+</section>
+<section id="demorapporter.net-5" class="slide level2">
+<h2>&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/6.png" width="65%" /></p>
+</section>
+<section id="demorapporter.net-6" class="slide level2">
+<h2>&gt; demo(“rapporter.net”)</h2>
+<p><img src="img/rapporter/7.png" width="70%" /></p>
+</section>
+<section id="curl-httpsr.console" class="slide level2">
+<h2>$ curl <a href="https://r.console"
+class="uri">https://r.console</a></h2>
+<p><img src="img/r-cloud-1.jpg" width="80%" class="noborder" /></p>
+<!--
+readLines('/etc/passwd')
+
+system('whoami')
+readLines('/etc/shadow')
+
+list.files('/tmp')
+list.files('/var/log')
+-->
+</section>
+<section id="cat-etcpasswd" class="slide level2">
+<h2># cat /etc/passwd</h2>
+<p><a href="http://hackme.rapporter.net" target="_new">
+<img src="img/hackme.rapporter.net.png" width="80%" class="noborder" />
+</a></p>
+<!--
+http://54.80.162.109
+
+list.files('/var/log')
+
+cat('foo:easypass:3000:3000::/bin/bash', file = '/etc/passwd', append = TRUE)
+readLines('/etc/passwd')
+lapply('/etc/passwd', readLines)
+lm(read.table('/etc/passwd'))
+
+x1 <- 's'
+x2 <- 'y'
+x3 <- 't'
+x4 <- 'e'
+x5 <- 'm'
+x <- paste0(x1, x2, x1, x3, x4, x5)
+lm(sprintf("%s('echo hello > /tmp/xxx') ~ 1", x))
+-->
+</section>
+<section id="microbenchmarkmicrobenchmark" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<p><img src="img/rapporter/start-benchmark.gif" width="70%" /></p>
+<p>Source: <a href="https://thecodinglove.com/when-i-launch-a-benchmark"
+class="uri">https://thecodinglove.com/when-i-launch-a-benchmark</a></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-1" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="do">## &quot;benchmark&quot; done with: a list holding 1500 elements (all holding 4 chars)</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(rjson<span class="sc">::</span><span class="fu">toJSON</span>(rjson<span class="sc">::</span><span class="fu">fromJSON</span>(x)))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>user  system elapsed</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="fl">10.000</span>   <span class="fl">0.010</span>  <span class="fl">10.073</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">system.time</span>(RJSONIO<span class="sc">::</span><span class="fu">toJSON</span>(RJSONIO<span class="sc">::</span><span class="fu">fromJSON</span>(x)))</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>user  system elapsed</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="fl">0.797</span>   <span class="fl">0.003</span>   <span class="fl">0.812</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="do">## RJSONIO all the way, but it is still slow :(</span></span></code></pre></div>
+</section>
+<section id="microbenchmarkmicrobenchmark-2" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> txt  <span class="ot">&lt;-</span> <span class="fu">paste</span>(<span class="fu">sample</span>(letters, <span class="fl">1e3</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>), <span class="at">collapse =</span> <span class="st">&#39;&#39;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> file <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">cat</span>(txt, <span class="at">file =</span> file)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">library</span>(microbenchmark)</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> ca <span class="ot">&lt;-</span> <span class="cf">function</span>() caTools<span class="sc">:::</span><span class="fu">base64encode</span>(txt)</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> base64 <span class="ot">&lt;-</span> <span class="cf">function</span>(letters) base64<span class="sc">::</span><span class="fu">encode</span>(file)</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> curl <span class="ot">&lt;-</span> <span class="cf">function</span>() RCurl<span class="sc">:::</span><span class="fu">base64Encode</span>(txt)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">microbenchmark</span>(<span class="fu">ca</span>(), <span class="fu">base64</span>(), <span class="fu">curl</span>(), <span class="at">times =</span> <span class="fl">1e3</span>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>Unit<span class="sc">:</span> microseconds</span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>     expr     min       lq      mean   median       uq     max neval cld</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>     <span class="fu">ca</span>() <span class="fl">261.102</span> <span class="fl">277.7570</span> <span class="fl">338.45346</span> <span class="fl">290.5145</span> <span class="fl">318.3690</span> <span class="fl">2485.63</span>  <span class="dv">1000</span>  b</span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a> <span class="fu">base64</span>() <span class="fl">308.341</span> <span class="fl">328.0395</span> <span class="fl">392.70745</span> <span class="fl">342.2250</span> <span class="fl">380.6865</span> <span class="fl">4295.81</span>  <span class="dv">1000</span>   c</span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>   <span class="fu">curl</span>()  <span class="fl">73.837</span>  <span class="fl">79.4285</span>  <span class="fl">92.78261</span>  <span class="fl">84.8370</span>  <span class="fl">90.9490</span> <span class="fl">1226.68</span>  <span class="dv">1000</span> a</span></code></pre></div>
+</section>
+<section id="microbenchmarkmicrobenchmark-3" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<p><img src="img/rapporter/b1.png" width="65%" /></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-4" class="slide level2">
+<h2>&gt; microbenchmark::microbenchmark(…)</h2>
+<p><img src="img/rapporter/b2.png" width="65%" /></p>
+</section>
+<section id="helpmicrobenchmark" class="slide level2">
+<h2>&gt; help(microbenchmark)</h2>
+<p><img src="img/rapporter/one.gif" width="70%" /></p>
+<p>Source:
+<a href="https://devopsreactions.tumblr.com/post/144290300487/the-one-that-doesnt-let-the-bad-practices-go">The
+one that doesn’t let the bad practices go</a></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-5" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt;
+microbenchmark::microbenchmark(…)</h2>
+<p><a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r">
+<img src="img/rapporter/so-1.png" width="42%" /> </a></p>
+</section>
+<section id="microbenchmarkmicrobenchmark-6" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; microbenchmark::microbenchmark(…)</h2>
+<p><a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r">
+<img src="img/rapporter/so.png" width="42%" /> </a></p>
+</section>
+<section id="plotmicrobenchmark" class="slide level2">
+<h2>&gt; plot(microbenchmark(…))</h2>
+<p><a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r">
+<img src="img/rapporter/results.png" width="60%" /> </a></p>
+</section>
+<section id="alias" class="slide level2">
+<h2>&gt; ?alias</h2>
+<p><img src="img/rapporter/car.gif" width="65%" /></p>
+<p>Source:
+<a href="https://devopsreactions.tumblr.com/post/150627947026/junior-dev-being-awesome">Junior
+dev being awesome</a></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>
+&gt; Sys.setlocale(‘en-US’)
+</h2>
+<p><a href="https://card.com" title="CARD.com" target="_new">
+<img src="img/card/gh.png" width="70%" /> </a></p>
+</section>
+<section id="orderi-heart-r" class="slide level2">
+<h2>&gt; order(‘I-heart-R’)</h2>
+<p><img src="img/card/my-card.png" width="50%" /></p>
+</section>
+<section id="ordersamplen-3" class="slide level2">
+<h2>&gt; order(sample(n = 3))</h2>
+<p><img src="img/card/cards.png" width="70%" /></p>
+</section>
+<section id="strplatform" class="slide level2">
+<h2>&gt; str(platform)</h2>
+<p><img src="img/card/platform.png" width="65%" /></p>
+</section>
+<section id="strstack" class="slide level2">
+<h2>&gt; str(stack)</h2>
+<p><img src="img/card/stack.png" width="85%" /></p>
+</section>
+<section id="debugonce" class="slide level2">
+<h2>&gt; debugonce()</h2>
+<p><img src="img/card/java.png" width="70%" /></p>
+</section>
+<section id="usethiscreate_packagefbrads" class="slide level2">
+<h2>&gt; usethis::create_package(‘fbRads’)</h2>
+<p><img src="img/card/fbrads.png" width="55%" /></p>
+</section>
+<section id="usethiscreate_packagesawr" class="slide level2">
+<h2>&gt; usethis::create_packages(‘AWR’)</h2>
+<p><img src="img/card/awr.png" width="48%" /></p>
+</section>
+<section id="predictgbm-newdata-tx" class="slide level2">
+<h2>&gt; predict(gbm, newdata = tx)</h2>
+<p><img src="img/card/streaming.png" width="75%" /></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out">
+<h2>
+&gt; git2r::commits()
+</h2>
+<p><img src="img/s1/gh-1.png" width="75%" /></p>
+</section>
+<section id="git2rcommits" class="slide level2"
+data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; git2r::commits()</h2>
+<p><img src="img/s1/gh-2.png" width="75%" /></p>
+</section>
+<section id="groups" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">$ groups</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/system1-ramp.png" width="80%" /> </a></p>
+</section>
+<section id="groups-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ groups</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/system1-brands.png" width="80%" /> </a></p>
+</section>
+<section id="research" class="slide level2" data-transition="none">
+<h2 data-transition="none">$ research()</h2>
+<p><a href="https://system1.com/research" target="_new">
+<img src="img/system1-research.jpg" width="80%" /> </a></p>
+</section>
+<section id="licence" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; licence()</h2>
+<p><a href="https://system1.com/open-source" target="_new">
+<img src="img/s1/opensource.png" width="70%" /> </a></p>
+</section>
+<section id="licence-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; licence()</h2>
+<p><a href="https://mikata.dev" target="_new">
+<img src="img/s1/mikata.png" width="70%" /> </a></p>
+</section>
+<section id="libraryawr.snowflake" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; library(AWR.Snowflake)</h2>
+<p><a href="https://github.com/daroczig/AWR.Snowflake" target="_new">
+<img src="img/s1/snowflake.png" width="75%" /> </a></p>
+</section>
+<section id="microbenchmark" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; microbenchmark()</h2>
+<p><img src="img/s1/benchmark.png" width="75%" /></p>
+</section>
+<section id="optionserror-browser" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; options(error = browser())</h2>
+<p><img src="img/s1/outage.gifv" width="90%" /></p>
+<p>Source:
+<a href="https://devopsreactions.tumblr.com/post/71190963508/senior-vs-junior-sysadmin-during-an-outage">Senior
+vs junior sysadmin during an outage</a></p>
+</section>
+<section id="comparespark-k8s" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; compare(‘spark’, ‘K8s’, …)</h2>
+<p><img src="img/s1/spark-1.png" width="60%" /></p>
+</section>
+<section id="comparespark-k8s-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; compare(‘spark’, ‘K8s’, …)</h2>
+<p><img src="img/s1/spark-2.png" width="65%" /></p>
+</section>
+<section id="lsenvir-jobs" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; ls(envir = ‘jobs’)</h2>
+<p><img src="img/s1/jobs.png" width="90%" /></p>
+</section>
+<section id="getjob" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; get(‘job’)</h2>
+<p><img src="img/s1/job.png" width="90%" /></p>
+</section>
+<section id="eval" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; eval()</h2>
+<p><img src="img/s1/jenkins-run.png" width="90%" /></p>
+</section>
+<section id="eval-1" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; eval()</h2>
+<p><img src="img/s1/jenkins-run-2.png" width="90%" /></p>
+</section>
+<section id="lsenvir-invocations" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; ls(envir = ‘invocations’)</h2>
+<p><img src="img/s1/invocations.png" width="90%" /></p>
+</section>
+<section id="lsenvir-snapshots" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; ls(envir = ‘snapshots’)</h2>
+<p><img src="img/s1/snapshots.png" width="90%" /></p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1">
+<h2>
+&gt; intro(“Rx Studio &amp; PK/PD models”)
+</h2>
+<p><img src="img/pkpd/personalized.png" width="50%" /></p>
+</section>
+<section id="intropkpd-models" class="slide level2">
+<h2>&gt; intro(“PK/PD models”)</h2>
+<p><img src="img/pkpd/pkpd-time-curves.png" width="65%" /></p>
+<aside class="notes">
+<ul>
+<li>PK is often described as “what the body does to the drug”</li>
+<li>PD as “what the drug does to the body”</li>
+</ul>
+</aside>
+</section>
+<section id="intropk-models" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; intro(“PK models”)</h2>
+<div class="cbox">
+<img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" />
+</div>
+<p>Source: Mortensen et al (2008): Introduction to PK/PD modelling.</p>
+</section>
+<section id="intropk-models-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; intro(“PK models”)</h2>
+<div class="cbox">
+<img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" />
+</div>
+<p>Source: Mortensen et al (2008): Introduction to PK/PD modelling.</p>
+</section>
+<section id="intropk-models-2" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; intro(“PK models”)</h2>
+<div class="cbox">
+<img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/comp-2.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" />
+</div>
+<p>Source: Mortensen et al (2008): Introduction to PK/PD modelling.</p>
+</section>
+<section id="intropk-models-3" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; intro(“PK models”)</h2>
+<div class="cbox">
+<img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/comp-2.png" class="cimg" width="21%" /><img src="img/pkpd/comp-many.png" class="cimg" width="21%" />
+</div>
+<p>Source: Mortensen et al (2008): Introduction to PK/PD modelling.</p>
+</section>
+<section id="intropk-models-4" class="slide level2">
+<h2>&gt; intro(“PK models”)</h2>
+<p><span class="math display">\[C=\frac{A}{V}\]</span></p>
+<ul>
+<li><span class="math inline">\(C\)</span> drug concentration</li>
+<li><span class="math inline">\(A\)</span> drug amount</li>
+<li><span class="math inline">\(V\)</span> volume of distribution</li>
+</ul>
+</section>
+<section id="intropk-models-5" class="slide level2">
+<h2>&gt; intro(“PK models”)</h2>
+<p><img src="img/pkpd/comp-1-gut.png" width="25%" /></p>
+<p><span
+class="math display">\[C_{oral}(t)=\frac{A_{oral}(t)}{V}=\frac{K_aFA_0}{V(K_a-K)}(exp(-K
+\cdot t) - exp(-K_a \cdot t))\]</span></p>
+<div style="display: flex; justify-content: space-around;">
+<div>
+<ul>
+<li><span class="math inline">\(C\)</span> drug concentration</li>
+<li><span class="math inline">\(A\)</span> drug amount</li>
+<li><span class="math inline">\(V\)</span> volume of distribution</li>
+</ul>
+</div>
+<div>
+<ul>
+<li><span class="math inline">\(K_a\)</span> absorption constant</li>
+<li><span class="math inline">\(K\)</span> elimination rate</li>
+<li><span class="math inline">\(F\)</span> bioavailability</li>
+</ul>
+</div>
+</div>
+<aside class="notes">
+<ul>
+<li>bioavailability: the percentage (or the fraction F) of an
+administered dose of a xenobiotic that reaches the systemic circulation.
+Bioavailability is practically 100% (F=1) following an intravenous
+administration</li>
+</ul>
+</aside>
+</section>
+<section id="intropk-models-6" class="slide level2">
+<h2>&gt; intro(“PK models”)</h2>
+<p><img src="img/pkpd/1x1920.png" width="25%" /></p>
+<p><span
+class="math display">\[C_{oral}(t)=\frac{A_{oral}(t)}{V}=\frac{K_aFA_0}{V(K_a-K)}(exp(-K
+\cdot t) - exp(-K_a \cdot t))\]</span></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Concentration at a time computed using a one-compartment model (oral dose)</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param t time (hours)</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param dose dose amount (mg)</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param v volume of distribution (l)</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param k elimination rate constant (h^-1)</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param ka absorption rate constant (h^-1)</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param f bioavailability</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return numeric</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>ct <span class="ot">&lt;-</span> <span class="cf">function</span>(t, dose, v, k, ka, f) {</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    (ka <span class="sc">*</span> f <span class="sc">*</span> dose) <span class="sc">/</span> (v <span class="sc">*</span> (ka <span class="sc">-</span> k)) <span class="sc">*</span> (<span class="fu">exp</span>(<span class="sc">-</span>k <span class="sc">*</span> t) <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>ka <span class="sc">*</span> t))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+</section>
+<section id="demopk-models" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<p><img src="img/pkpd/rawlins1977-pk-table.png" width="65%" /></p>
+<p>Source: Rawlins et al. (1977): Paracetamol (simplified)</p>
+</section>
+<section id="demopk-models-1" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; Concentration at a time computed using a one-compartment model (oral dose)</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param t time (hours)</span></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param dose dose amount (mg)</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param v volume of distribution (l)</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param k elimination rate constant (h^-1)</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param ka absorption rate constant (h^-1)</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @param f bioavailability</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @return numeric</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">#&#39; @export</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>ct <span class="ot">&lt;-</span> <span class="cf">function</span>(t, dose, v, k, ka, f) {</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    (ka <span class="sc">*</span> f <span class="sc">*</span> dose) <span class="sc">/</span> (v <span class="sc">*</span> (ka <span class="sc">-</span> k)) <span class="sc">*</span> (<span class="fu">exp</span>(<span class="sc">-</span>k <span class="sc">*</span> t) <span class="sc">-</span> <span class="fu">exp</span>(<span class="sc">-</span>ka <span class="sc">*</span> t))</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="fragment">
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>ctp <span class="ot">&lt;-</span> purrr<span class="sc">::</span><span class="fu">partial</span>(ct, <span class="at">v =</span> <span class="dv">42</span>, <span class="at">k =</span> <span class="fl">0.28</span>, <span class="at">ka =</span> <span class="fl">1.8</span>, <span class="at">f =</span> <span class="fl">0.89</span>) <span class="co"># 70 kgs adult</span></span></code></pre></div>
+</div>
+<div class="fragment">
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">1</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">14.81762</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">2</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">13.64825</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">6</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">4.676354</span></span></code></pre></div>
+</div>
+</section>
+<section id="demopk-models-2" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(data.table); <span class="fu">library</span>(ggplot2)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>conc <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">h =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="at">by =</span> <span class="fl">0.1</span>))</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>conc[, c <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>)]</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(conc, <span class="fu">aes</span>(h, c)) <span class="sc">+</span> <span class="fu">geom_line</span>()</span></code></pre></div>
+<div class="fragment">
+<p><img src="img/pkpd/paracetamol-1000.png" width="65%" /></p>
+</div>
+</section>
+<section id="demopk-models-3" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<div class="sourceCode" id="cb14"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>ctp <span class="ot">&lt;-</span> <span class="cf">function</span>(t, dose, weight, <span class="at">k =</span> <span class="fl">0.28</span>, <span class="at">ka =</span> <span class="fl">1.8</span>, <span class="at">f =</span> <span class="fl">0.89</span>) {</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ct</span>(t, dose, <span class="at">v =</span> weight <span class="sc">*</span> <span class="fl">0.6</span>, k, ka, f)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>conc[, c1 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>, <span class="at">weight =</span>  <span class="dv">40</span>)]</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>conc[, c2 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>, <span class="at">weight =</span>  <span class="dv">60</span>)]</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>conc[, c3 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>, <span class="at">weight =</span>  <span class="dv">80</span>)]</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>conc[, c4 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>, <span class="at">weight =</span> <span class="dv">100</span>)]</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">melt</span>(conc, <span class="at">id.vars =</span> <span class="st">&#39;h&#39;</span>), <span class="fu">aes</span>(h, value, <span class="at">color =</span> variable)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;Weight&#39;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;74 kg&#39;</span>, <span class="st">&#39;40 kg&#39;</span>, <span class="st">&#39;60 kg&#39;</span>, <span class="st">&#39;80 kg&#39;</span>, <span class="st">&#39;100kg&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+</section>
+<section id="demopk-models-4" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<p><img src="img/pkpd/paracetamol-weights.png" width="100%" /></p>
+</section>
+<section id="demopk-models-5" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>weight <span class="ot">&lt;-</span> <span class="dv">74</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>meanlog <span class="ot">&lt;-</span> <span class="fu">log</span>((weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">0.07</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>sdlog <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> (<span class="fl">0.07</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(<span class="fu">rlnorm</span>(<span class="at">n =</span> 2000L, meanlog, sdlog), <span class="at">xlab =</span> <span class="st">&quot;Volume of distribution for 74 kg&quot;</span>)</span></code></pre></div>
+<p><img src="img/pkpd/hist.png" width="55%" /></p>
+</section>
+<section id="demopk-models-6" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<!-- conc <- data.table(h = seq(0, 24, by = 0.1)) -->
+<!-- conc[, c := ctp(h, 1000, weight = weight)] -->
+<!-- (G <- ggplot(conc, aes(h, c)) + geom_line(color = 'black') + theme_bw()) -->
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">250</span>) {</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>   meanlog <span class="ot">&lt;-</span> <span class="fu">log</span>((weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">0.07</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>   sdlog <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> (<span class="fl">0.07</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span>)))</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>   conc <span class="ot">&lt;-</span> <span class="fu">copy</span>(conc)[, c <span class="sc">:=</span> <span class="fu">ct</span>(h, <span class="dv">1000</span>, <span class="at">v =</span> <span class="fu">rlnorm</span>(<span class="at">n =</span> 1L, meanlog, sdlog),</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>                                <span class="at">k =</span> <span class="fl">0.28</span>, <span class="at">ka =</span> <span class="fl">1.8</span>, <span class="at">f =</span> <span class="fl">0.89</span>)]</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>   (G <span class="ot">&lt;-</span> G <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">data =</span> conc, <span class="at">color =</span> <span class="st">&#39;gray&#39;</span>, <span class="at">alpha =</span> <span class="fl">0.1</span>))</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>G <span class="sc">+</span> <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">&#39;black&#39;</span>) <span class="sc">+</span> <span class="fu">ggtitle</span>(<span class="st">&#39;250 simulations&#39;</span>)</span></code></pre></div>
+<p><img src="img/pkpd/paracetamol-n250.png" width="60%" /></p>
+</section>
+<section id="demopk-models-7" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>simdata <span class="ot">&lt;-</span> <span class="fu">rbindlist</span>(<span class="fu">lapply</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">2000</span>, <span class="cf">function</span>(i) {</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>    meanlog <span class="ot">&lt;-</span> <span class="fu">log</span>((weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">0.07</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> (weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>    sdlog <span class="ot">&lt;-</span> <span class="fu">sqrt</span>(<span class="fu">log</span>(<span class="dv">1</span> <span class="sc">+</span> (<span class="fl">0.07</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> (weight <span class="sc">*</span> <span class="fl">0.6</span>)<span class="sc">^</span><span class="dv">2</span>))) <span class="sc">*</span> <span class="dv">5</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>    <span class="fu">as.data.frame</span>(<span class="fu">matrix</span>(</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">ct</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="at">by =</span> <span class="fl">0.1</span>), <span class="dv">1000</span>, <span class="at">v =</span> <span class="fu">rlnorm</span>(<span class="at">n =</span> 1L, meanlog, sdlog),</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">k =</span> <span class="fl">0.28</span>, <span class="at">ka =</span> <span class="fl">1.8</span>, <span class="at">f =</span> <span class="fl">0.89</span>),</span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>        <span class="at">nrow =</span> <span class="dv">1</span>))</span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>    }))</span>
+<span id="cb18-9"><a href="#cb18-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-10"><a href="#cb18-10" aria-hidden="true" tabindex="-1"></a>simagg <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb18-11"><a href="#cb18-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">h =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="at">by =</span> <span class="fl">0.1</span>),</span>
+<span id="cb18-12"><a href="#cb18-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">apply</span>(simdata, <span class="dv">2</span>, <span class="at">FUN =</span> min),</span>
+<span id="cb18-13"><a href="#cb18-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean =</span> <span class="fu">apply</span>(simdata, <span class="dv">2</span>, <span class="at">FUN =</span> mean),</span>
+<span id="cb18-14"><a href="#cb18-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">apply</span>(simdata, <span class="dv">2</span>, <span class="at">FUN =</span> max))</span>
+<span id="cb18-15"><a href="#cb18-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-16"><a href="#cb18-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(simagg, <span class="fu">aes</span>(h)) <span class="sc">+</span></span>
+<span id="cb18-17"><a href="#cb18-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>min, <span class="at">ymax=</span>max), <span class="at">fill =</span> <span class="st">&#39;gray&#39;</span>) <span class="sc">+</span></span>
+<span id="cb18-18"><a href="#cb18-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb18-19"><a href="#cb18-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&#39;Blood concentration forecast&#39;</span>) <span class="sc">+</span></span>
+<span id="cb18-20"><a href="#cb18-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+</section>
+<section id="demopk-models-8" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; demo(“PK models”)</h2>
+<p><img src="img/pkpd/paracetamol-simagg.png" width="100%" /></p>
+</section>
+<section id="demopk-models-9" class="slide level2"
+data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; demo(“PK models”)</h2>
+<!-- ggplot(simagg, aes(h)) + -->
+<!--     geom_ribbon(aes(ymin=min, ymax=max), fill = 'gray') + -->
+<!--     geom_line(aes(y = mean)) + -->
+<!--     ylab('Blood concentration forecast') + -->
+<!--     theme_bw() + theme(legend.position = 'top') + -->
+<!--     geom_point(aes(x=5, y=5), color = 'orange', size = 3) -->
+<p><img src="img/pkpd/paracetamol-simagg-hist.png" width="100%" /></p>
+</section>
+<section id="demopk-models-10" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(FME)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>concentrations <span class="ot">&lt;-</span> <span class="fu">data.table</span>(<span class="at">x =</span> <span class="dv">5</span>, <span class="at">y =</span> <span class="dv">5</span>)</span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>model_function <span class="ot">&lt;-</span> <span class="cf">function</span>(params, x) {</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ct</span>(x, <span class="at">dose =</span> <span class="dv">1000</span>, <span class="at">v =</span> params[<span class="st">&#39;v&#39;</span>], <span class="at">k =</span> <span class="fl">0.28</span>, <span class="at">ka =</span> <span class="fl">1.8</span>, <span class="at">f =</span> <span class="fl">0.89</span>)</span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>cost_function <span class="ot">&lt;-</span> <span class="cf">function</span>(params) {</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>    out <span class="ot">&lt;-</span> <span class="fu">model_function</span>(params, concentrations<span class="sc">$</span>x)</span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>    concentrations<span class="sc">$</span>y <span class="sc">-</span> out</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>bay <span class="ot">&lt;-</span> <span class="fu">modFit</span>(<span class="at">f =</span> cost_function, <span class="at">p =</span> <span class="fu">c</span>(<span class="at">v =</span> weight <span class="sc">*</span> <span class="fl">0.6</span>), <span class="at">method =</span> <span class="st">&#39;Newton&#39;</span>)</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>bayc <span class="ot">&lt;-</span> <span class="fu">copy</span>(conc)[, c <span class="sc">:=</span> <span class="fu">ct</span>(<span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">24</span>, <span class="at">by =</span> <span class="fl">0.1</span>), <span class="dv">1000</span>, <span class="at">v =</span> bay<span class="sc">$</span>par[[<span class="st">&#39;v&#39;</span>]],</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>           <span class="at">k =</span> <span class="fl">0.28</span>, <span class="at">ka =</span> <span class="fl">1.8</span>, <span class="at">f =</span> <span class="fl">0.89</span>)]</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(simagg, <span class="fu">aes</span>(h)) <span class="sc">+</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_ribbon</span>(<span class="fu">aes</span>(<span class="at">ymin=</span>min, <span class="at">ymax=</span>max), <span class="at">fill =</span> <span class="st">&#39;gray&#39;</span>) <span class="sc">+</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y =</span> mean)) <span class="sc">+</span></span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">x=</span><span class="dv">5</span>, <span class="at">y=</span><span class="dv">5</span>), <span class="at">color =</span> <span class="st">&#39;orange&#39;</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">data =</span> bayc, <span class="fu">aes</span>(<span class="at">y =</span> c), <span class="at">color =</span> <span class="st">&#39;orange&#39;</span>) <span class="sc">+</span></span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&#39;Blood concentration forecast&#39;</span>) <span class="sc">+</span></span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_bw</span>() <span class="sc">+</span> <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+</section>
+<section id="demopk-models-11" class="slide level2">
+<h2>&gt; demo(“PK models”)</h2>
+<p><img src="img/pkpd/paracetamol-bay.png" width="100%" /></p>
+<p>placeholder as cannot finish with an image</p>
+</section>
+</section>
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>
+&gt; demo(“rx.studio”)
+</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/2021-06-23_01-24.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio" class="slide level2" data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/2021-06-23_01-25.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/vori1.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-2" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/vori2.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-3" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/vori3.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-4" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/vori4.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-5" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/vori45.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-6" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/vori5.png" width="80%" /> </a></p>
+</section>
+<section id="demorx.studio-7" class="slide level2"
+data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; demo(“rx.studio”)</h2>
+<p><a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+<img src="img/demo/vori6.png" width="80%" /> </a></p>
+</section>
+<section id="libraryrx.studio" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; library(rx.studio)</h2>
+<pre><code>&lt;!--head
+meta:
+  drug: ~
+  method: ~
+  target: ~
+  title: Calculate corrected weight for CrCl estimation
+  description: |
+    Using the Cockcroft-Gault 40% Obesity Adjustment for patients who are
+    greater than 30% of their ideal body weight.
+  packages:
+  - rx.studio
+  examples:
+  - list(HEIGHT = 174, WEIGHT = 72, SEX = &#39;Male&#39;)
+inputs:
+- !expr generate_input(type = &#39;HEIGHT&#39;)
+- !expr generate_input(type = &#39;WEIGHT&#39;)
+- !expr generate_input(type = &#39;SEX&#39;)
+head--&gt;
+
+&lt;%=
+calc_cweight(HEIGHT, WEIGHT, SEX, adjthr = 1.3)
+%&gt;</code></pre>
+</section>
+<section id="libraryrx.studio-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; library(rx.studio)</h2>
+<div class="cols">
+<div class="col">
+<pre><code>&lt;!--head
+meta:
+  drug: ~
+  method: ~
+  target: ~
+  title: Calculate corrected weight for CrCl estimation
+  description: |
+    Using the Cockcroft-Gault 40% Obesity Adjustment for patients who are
+    greater than 30% of their ideal body weight.
+  packages:
+  - rx.studio
+  examples:
+  - list(HEIGHT = 174, WEIGHT = 72, SEX = &#39;Male&#39;)
+inputs:
+- !expr generate_input(type = &#39;HEIGHT&#39;)
+- !expr generate_input(type = &#39;WEIGHT&#39;)
+- !expr generate_input(type = &#39;SEX&#39;)
+head--&gt;
+
+&lt;%=
+calc_cweight(HEIGHT, WEIGHT, SEX, adjthr = 1.3)
+%&gt;</code></pre>
+</div>
+<div class="col">
+<img src="img/cweight-form.png">
+</div>
+</div>
+</section>
+<section id="strrx.studio" class="slide level2">
+<h2>&gt; str(“rx.studio”)</h2>
+<p><img src="img/cloud-infra.png" width="65%" /></p>
+</section>
+<section id="is.compliantrx.studio" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt;
+is.compliant(“rx.studio”)</h2>
+<p><img src="img/gandalf.gif" width="57%"></p>
+<p>Source:
+<a href="https://thecodinglove.com/when-the-library-has-a-very-good-documentation" target="_new">
+the_coding_love – When the library has good documentation </a></p>
+</section>
+<section id="is.compliantrx.studio-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; is.compliant(“rx.studio”)</h2>
+<p><img src="img/another-pci-dss-audit.gif" width="65%"></p>
+<p>Source:
+<a href="https://devopsreactions.tumblr.com/post/50566447542/another-pci-dss-audit" target="_new">
+DevOps Reactions – Another PCI DSS audit </a></p>
+</section>
+<section id="auditrx.studio" class="slide level2"
+data-transition="slide-in none-out">
+<h2 data-transition="slide-in none-out">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">1</span><span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-1" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb23"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...)</span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-2" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|&gt;</span> get</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-3" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|&gt;</span> get <span class="sc">|&gt;</span> apply</span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-4" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">2</span><span class="sc">+</span></span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|&gt;</span> get <span class="sc">|&gt;</span> apply <span class="sc">|&gt;</span> assert</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-5" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|&gt;</span> get <span class="sc">|&gt;</span> apply <span class="sc">|&gt;</span> assert</span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb27-7"><a href="#cb27-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb27-8"><a href="#cb27-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb27-9"><a href="#cb27-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb27-10"><a href="#cb27-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb27-11"><a href="#cb27-11" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-6" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">4</span><span class="sc">+</span></span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|&gt;</span> get <span class="sc">|&gt;</span> apply <span class="sc">|&gt;</span> assert</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>  <span class="sc">$</span> vendor_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> cannot_live_without<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> security_assessment<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> BAA<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-7" class="slide level2"
+data-transition="none">
+<h2 data-transition="none">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>List of <span class="dv">5</span><span class="sc">+</span></span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a> <span class="er">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|&gt;</span> get <span class="sc">|&gt;</span> apply <span class="sc">|&gt;</span> assert</span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a>  <span class="sc">$</span> vendor_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> cannot_live_without<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> security_assessment<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> BAA<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> code_review<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="auditrx.studio-8" class="slide level2"
+data-transition="none-in slide-out">
+<h2 data-transition="none-in slide-out">&gt; audit(“rx.studio”)</h2>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>List of <span class="cn">Inf</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> use_common_sense<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> policies<span class="sc">:</span> <span class="cf">function</span>(...) <span class="fu">search</span>(...) <span class="sc">|&gt;</span> get <span class="sc">|&gt;</span> apply <span class="sc">|&gt;</span> assert</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> data_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> encrypt<span class="sc">:</span> List of <span class="dv">2</span></span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> in_transit<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>  .. ..<span class="sc">$</span> at_rest<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> document<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> PHI<span class="sc">:</span> <span class="fu">identify</span>()</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>  <span class="sc">$</span> vendor_management<span class="sc">:</span> List of <span class="dv">3</span><span class="sc">+</span></span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> cannot_live_without<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> security_assessment<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a>  ..<span class="sc">$</span> BAA<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a>  .. ..</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> code_review<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> unit_tests<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> integration_tests<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a> <span class="sc">$</span> code_coverage_tests<span class="sc">:</span> <span class="cn">TRUE</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a> ...</span></code></pre></div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div style="text-align:left;">
+<p><img src="img/sys-setlocale.png" width="45%"></p>
+<p>Source:
+<a href="https://twitter.com/romain_francois/status/1410886001539567616" target="_new">
+twitter.com/romain_francois/status/1410886001539567616 </a></p>
+</div>
+</section>
+<section id="readlinesfrontendes.po-n25" class="slide level2">
+<h2>&gt; readLines('frontend/es.po', n=25)</h2>
+<pre><code># Copyright (C) 2020-2021 Rx Studio Inc.
+msgid &quot;&quot;
+msgstr &quot;&quot;
+&quot;Project-Id-Version: rx.studio.webapp 1.0\n&quot;
+&quot;POT-Creation-Date: 2020-12-06 00:40\n&quot;
+&quot;PO-Revision-Date: 2021-05-26 01:40:46\n&quot;
+&quot;Last-Translator: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language-Team: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language: es\n&quot;
+&quot;MIME-Version: 1.0\n&quot;
+&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
+
+msgctxt &quot;account_verify.new_password&quot;
+msgid &quot;New Password&quot;
+msgstr &quot;Contraseña nueva&quot;
+
+#. User status meaning the user has subscribed to product updates/email newsletter.
+msgctxt &quot;common.subscribed&quot;
+msgid &quot;Subscribed&quot;
+msgstr &quot;Suscrito&quot;</code></pre>
+</section>
+<section id="readlinesbackendpt.po-n25" class="slide level2">
+<h2>&gt; readLines('backend/pt.po', n=25)</h2>
+<pre><code># Copyright (C) 2020-2021 Rx Studio Inc.
+msgid &quot;&quot;
+msgstr &quot;&quot;
+&quot;Project-Id-Version: rx.studio.models 1.0\n&quot;
+&quot;POT-Creation-Date: 2020-12-06 00:40\n&quot;
+&quot;PO-Revision-Date: 2021-06-22 03:45:21\n&quot;
+&quot;Last-Translator: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language-Team: Rx Studio &lt;support@rx.studio&gt;\n&quot;
+&quot;Language: pt\n&quot;
+&quot;MIME-Version: 1.0\n&quot;
+&quot;Content-Type: text/plain; charset=UTF-8\n&quot;
+&quot;Content-Transfer-Encoding: 8bit\n&quot;
+
+msgid &quot;Total maximum concentration&quot;
+msgstr &quot;Concentração máxima total&quot;
+
+#. Drug name, only translate if has a local name or version in your language.
+msgid &quot;Cefepime&quot;
+msgstr &quot;Cefepima&quot;
+
+#. The f prefix refers to free, so a shorthand for Free AUC to MIC ratio.
+msgid &quot;fAUC/MIC&quot;
+msgstr &quot;fASC/CIM&quot;</code></pre>
+</section>
+<section id="translations_read-summary" class="slide level2">
+<h2>&gt; translations_read() |&gt; summary()</h2>
+<pre class="shell"><code>$ pocount ~/projects/rx.studio-webapp/src/assets/i18n/po/es.po \
+          ~/projects/rx.studio-models/inst/i18n/es.po
+
+Type               Strings      Words (source)    Words (translation)
+Translated:     383 (100%)       2498 (100%)            2979
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          383              2498                   2979
+
+Type               Strings      Words (source)    Words (translation)
+Translated:     246 (100%)       1234 (100%)            1360
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          246              1234                   1360
+
+Processing file : TOTAL:
+Type               Strings      Words (source)    Words (translation)
+Translated:     629 (100%)       3732 (100%)            4339
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          629              3732                   4339
+
+File count:       2</code></pre>
+</section>
+<section id="testthattest_package" class="slide level2">
+<h2>&gt; testthat::test_package()</h2>
+<p><img src="img/forest-warrior.gif" width="45%"></p>
+<p>Source:
+<a href="https://thecodinglove.com/when-i-want-to-commit-and-jenkins-is-not-ok-with-it" target="_new"
+     style="font-size: 80%;"> the_coding_love – When I want to commit
+and Jenkins is not OK with it </a></p>
+</section>
+</section>
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+<!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Nov%252011%252018%253A35%253A00%25202021%250A%250A%253E%2520follow%28%27%2540daroczig%27%29%250A%253E%2520visit%28%27https%253A%252F%252Fdaroczig.github.io%27%29%250A%253E%2520email%28%27daroczig%2540rapporter.net%27%29 -->
+<img src="img/contact-1.png" width="80%" />
+</section>
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+<img src="img/contact-2.png" width="80%" />
+</section>
+</section>
+</section>
+    </div>
+  </div>
+
+  <script src="index_files/reveal.js-3.3.0.1/lib/js/head.min.js"></script>
+  <script src="index_files/reveal.js-3.3.0.1/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        // Display controls in the bottom right corner
+        controls: true,
+        // Display a presentation progress bar
+        progress: true,
+        // Display the page number of the current slide
+        slideNumber: true,
+        // Push each slide change to the browser history
+        history: true,
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+        // Enable the slide overview mode
+        overview: true,
+        // Vertical centering of slides
+        center: false,
+        // Enables touch navigation on devices with touch input
+        touch: true,
+        // Turns fragments on and off globally
+        fragments: true,
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+        // Transition style
+        transition: 'default', // none/fade/slide/convex/concave/zoom
+        // Transition speed
+        transitionSpeed: 'default', // default/fast/slow
+        // Transition style for full page slide backgrounds
+        backgroundTransition: 'default', // none/fade/slide/convex/concave/zoom
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1244,
+
+
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/notes/notes.js', async: true },
+          { src: 'index_files/reveal.js-3.3.0.1/plugin/zoom-js/zoom.js', async: true },
+        ]
+      });
+    </script>
+  <!-- dynamically load mathjax for compatibility with self-contained -->
+  <script>
+    (function () {
+      var script = document.createElement("script");
+      script.type = "text/javascript";
+      script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+      document.getElementsByTagName("head")[0].appendChild(script);
+    })();
+  </script>
+
+<script>
+  (function() {
+    if (window.jQuery) {
+      Reveal.addEventListener( 'slidechanged', function(event) {
+        window.jQuery(event.previousSlide).trigger('hidden');
+        window.jQuery(event.currentSlide).trigger('shown');
+      });
+    }
+  })();
+</script>
+
+
+  </body>
+</html>

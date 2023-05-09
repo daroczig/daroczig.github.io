@@ -1,0 +1,1189 @@
+---
+title: "A Decade (or Two) of<br />Using R in Production<br/>"
+subtitle: "CEU BA: Use Case Seminars series"
+author: Gergely Daróczi
+date: "@daroczig"
+output:
+  revealjs::revealjs_presentation:
+    theme: white
+    highlight: tango
+    transition: default
+    includes:
+      in_header: header.html
+    template: template.html
+    reveal_options:
+      slideNumber: true
+      previewLinks: false
+      width: 1244
+    self_contained: false
+    reveal_plugins: ["notes", "zoom"]
+---
+
+## dummy slide
+
+<!--javascript to remove dummy slide-->
+<script>
+document.getElementById("dummy-slide").remove();
+document.getElementById("coverslide").remove();
+</script>
+
+<!--end dummy slide-->
+</section>
+
+<section data-background-image="img/ceu-in-vienna-transparent.jpg"
+         data-background-size="100%"
+         id="coverslide">
+
+<h1 class="subtitle" style="color:#333;font-size:2em;">
+  CEU BA: Use Case Seminars series
+</h1>
+
+<h1 class="title" style="color:#111;font-size:2.5em;padding-top:10%;">
+  A Decade (or Two) of<br />Using R in Production<br/>
+</h1>
+
+<h2 class="author" style="color:#333;padding-top:5%;font-size:1.5em;">
+  Gergely Daróczi
+</h2>
+
+<h3 class="date" style="color:#333;font-size:1.25em;">
+  @daroczig
+</h3>
+
+</section>
+
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out" data-background-image="img/1920x1080-white.jpg" data-background-size="100%">
+<h2>$ whoami</h2>
+
+<a href="https://daroczig.github.io" target="_new">
+ <img src="img/daroczig.github.io.png" width="55%" class="noborder" />
+</a>
+
+<a href="https://daroczig.github.io">daroczig.github.io</a>
+
+## $ whoami {data-transition="none-in slide-out"}
+<a href="https://daroczig.github.io/talks" target="_new">
+  <img src="img/daroczig.github.io-selection-of-prod-talks-nobg.png" width="55%" class="noborder" />
+</a>
+
+## $ whereami
+
+<iframe src="https://daroczig.github.io/embed/map.html"
+  style="display: block; border: none; height: 100vh; width: 100vw;"
+  width="100%" height="80%">
+</iframe>
+
+## $ whoami {data-transition="slide-in none-out"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/whoami/1.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/whoami/2.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/whoami/3.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/whoami/4.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/whoami/5.jpg" width="80%" class="noborder" />
+</a>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; Sys.setenv(env = \"prod\")</h2>
+<img src="img/movie-cinemagraph-gifs-life-aquatic.gif" width="80%" />
+
+## > ??production {data-transition="slide-in none-out"}
+
+## > ??production {data-transition="none"}
+
+* 2006: <b>Calling R scripts from PHP</b> (both reading from MySQL) to generate custom plots embedded in a homepage
+* 2008: <b>Automated/batch R scripts</b> to generate thousands of pages of crosstables, ANOVA and plots from SPSS with `pdflatex`
+* 2011: Ruby on Rails <b>web application</b> with `RApache` and `pandoc` to report in plain English (NoSQL databases, scaling, <b>security</b>, central error tracking etc)
+* 2012: Plain RApache <b>web application</b> for NLP and network analysis
+* 2015: Standardizing the data infrastructure of a fintech startup to use R for reporting, batch jobs, and <b>stream processing</b>
+* 2017: Redesign, monitor and scale the DS infrastructure of an adtech startup for <b>batch training and live scoring</b>
+
+## > production <<- list(...) {data-transition="slide-in none-out"}
+
+## > production <<- list(...) {data-transition="none"}
+
+<div style="text-align:left;margin-bottom:20px;">Using in R in a non-interactive way:</div>
+
+* Running R <b>without manual intervention</b> (e.g. scheduled via CRON, triggered via upstream job trigger or API request)
+* Need for a standard, e.g. <b>containerized environment</b> (pinned R and package versions, OS packages, `.Rprofile` etc)
+* <b>Security</b>! (e.g. safeguarded production environment, encrypted credentials, aware of Little Bobby Tables, AppArmor etc)
+* Job output is informative (logging), recorded (logging) and <b>monitored</b> (e.g. `error` handler for ErrBit, CloudWatch logs or Splunk etc), alerts and notifications
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+  <h2>&#62; isTRUE(interactive())</h2>
+  <video width="60%" controls>
+    <source src="https://video.twimg.com/tweet_video/CXSk_PVUEAAQQg9.mp4" type="video/mp4">
+  </video>
+  <img src="img/tweet bird footer.png" width="40%">
+
+## > traceback()
+
+<div style="font-size: 1.25em;">
+```r
+$ Rscript super_important_business_stuff.R
+```
+</div>
+
+<div class="fragment" style="font-size: 1.25em;">
+```r
+Error in l[[x]] : subscript out of bounds
+Calls: g -> f
+Execution halted
+```
+</div>
+
+<div class="fragment" style="font-size: 1.25em;">
+```r
+Error in .subset2(x, i, exact = exact) : subscript out of bounds
+Execution halted
+```
+</div>
+
+## > tryCatch
+
+* Use version control!
+* Use CI/CD tools!
+* Write clean code! DRY!
+* Document! Open-source!
+* Log everything! Snapshot everything!
+* Security!
+* Use a scalable job scheduler!
+* Dockerize your environment!
+* Pin your package versions!
+
+<div class="fragment">
+  Check out the "Productionizing R scripts in the cloud" at satRday LA 2019!
+</div>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; sample(projects, size = 5)</h2>
+
+<img src="img/projects/1-1.png" width="80%" />
+
+## > sample(projects, size = 5)
+
+<img src="img/projects/1-2.png" width="65%" />
+
+## > sample(projects, size = 5)
+
+```r
+> library(data.table)
+> df <- fread('http://bit.ly/CEU-R-numbers-set')
+> df[, as.list(summary(y)), by = x]
+
+    x          Min.       1st Qu.    Median      Mean   3rd Qu.     Max.
+1: 1  3.833572e-27  0.0005978607 0.5433367 0.5032928 0.9991696 1.000000
+2: 2 -1.652259e+00  0.0037709585 0.4794517 0.4760225 0.9829756 2.449500
+3: 3 -4.994680e-01 -0.0047454468 0.5122843 0.5020751 0.9959998 1.496901
+4: 4 -1.825615e+00  0.0094876339 0.5095499 0.5113978 0.9895393 3.436646
+```
+
+## > sample(projects, size = 5)
+
+```r
+> library(ggplot2)
+> ggplot(df, aes(y, fill = factor(x))) +
++   geom_density(alpha = 0.25) + theme(legend.position = 'top')
+```
+
+<img src="img/projects/CEU-R-numbers-set-ggplot.png" width="65%" />
+
+## > sample(projects, size = 5)
+
+```r
+> library(ExtDist)
+> plot(eBeta(df[x == 1, y]))
+```
+
+<img src="img/projects/CEU-R-numbers-set-eBeta.png" width="70%" />
+
+## > sample(projects, size = 5)
+
+<img src="img/projects/2-1.png" width="70%" />
+
+## > sample(projects, size = 5)
+
+<img src="img/projects/2-2.png" width="80%" />
+
+## > sample(projects, size = 5)
+
+<img src="img/projects/3-1.png" width="50%" />
+
+## > sample(projects, size = 5)
+
+<img src="img/projects/3-2.png" width="80%" />
+
+## > sample(projects, size = 5)
+
+<img src="img/projects/4-1.png" width="70%" />
+
+## > sample(projects, size = 5)
+
+<img src="img/projects/4-2.png" width="80%" />
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; usethis::create_startup(...)</h2>
+
+<img src="img/rapporter/logo.jpg" width="30%" />
+
+## > demo("rapporter.net") {data-transition="slide-in none-out"}
+
+<img src="img/rapporter/1.png" width="80%" />
+
+## > demo("rapporter.net") {data-transition="none"}
+
+<img src="img/rapporter/2.png" width="80%" />
+
+## > demo("rapporter.net") {data-transition="none"}
+
+<img src="img/rapporter/3.png" width="40%" />
+
+## > demo("rapporter.net") {data-transition="none"}
+
+<img src="img/rapporter/4.png" width="80%" />
+
+## > demo("rapporter.net") {data-transition="none"}
+
+<img src="img/rapporter/5.png" width="85%" />
+
+## > demo("rapporter.net")
+
+<img src="img/rapporter/6.png" width="65%" />
+
+## > demo("rapporter.net")
+
+<img src="img/rapporter/7.png" width="70%" />
+
+## $ curl https://r.console
+
+<img src="img/r-cloud-1.jpg" width="80%" class="noborder" />
+
+<!--
+readLines('/etc/passwd')
+
+system('whoami')
+readLines('/etc/shadow')
+
+list.files('/tmp')
+list.files('/var/log')
+-->
+
+## # cat /etc/passwd
+
+<a href="http://hackme.rapporter.net" target="_new">
+    <img src="img/hackme.rapporter.net.png" width="80%" class="noborder" />
+</a>
+
+<!--
+http://54.80.162.109
+
+list.files('/var/log')
+
+cat('foo:easypass:3000:3000::/bin/bash', file = '/etc/passwd', append = TRUE)
+readLines('/etc/passwd')
+lapply('/etc/passwd', readLines)
+lm(read.table('/etc/passwd'))
+
+x1 <- 's'
+x2 <- 'y'
+x3 <- 't'
+x4 <- 'e'
+x5 <- 'm'
+x <- paste0(x1, x2, x1, x3, x4, x5)
+lm(sprintf("%s('echo hello > /tmp/xxx') ~ 1", x))
+-->
+
+## > microbenchmark::microbenchmark(...)
+
+<img src="img/rapporter/start-benchmark.gif" width="70%" />
+
+Source: https://thecodinglove.com/when-i-launch-a-benchmark
+
+## > microbenchmark::microbenchmark(...)
+
+```r
+## "benchmark" done with: a list holding 1500 elements (all holding 4 chars)
+> system.time(rjson::toJSON(rjson::fromJSON(x)))
+user  system elapsed
+10.000   0.010  10.073
+
+> system.time(RJSONIO::toJSON(RJSONIO::fromJSON(x)))
+user  system elapsed
+0.797   0.003   0.812
+
+## RJSONIO all the way, but it is still slow :(
+```
+
+## > microbenchmark::microbenchmark(...)
+
+```r
+> txt  <- paste(sample(letters, 1e3, replace = TRUE), collapse = '')
+> file <- tempfile()
+> cat(txt, file = file)
+
+> library(microbenchmark)
+> ca <- function() caTools:::base64encode(txt)
+> base64 <- function(letters) base64::encode(file)
+> curl <- function() RCurl:::base64Encode(txt)
+> microbenchmark(ca(), base64(), curl(), times = 1e3)
+
+Unit: microseconds
+     expr     min       lq      mean   median       uq     max neval cld
+     ca() 261.102 277.7570 338.45346 290.5145 318.3690 2485.63  1000  b
+ base64() 308.341 328.0395 392.70745 342.2250 380.6865 4295.81  1000   c
+   curl()  73.837  79.4285  92.78261  84.8370  90.9490 1226.68  1000 a
+```
+
+## > microbenchmark::microbenchmark(...)
+
+<img src="img/rapporter/b1.png" width="65%" />
+
+## > microbenchmark::microbenchmark(...)
+
+<img src="img/rapporter/b2.png" width="65%" />
+
+## > help(microbenchmark)
+
+<img src="img/rapporter/one.gif" width="70%" />
+
+Source: <a href="https://devopsreactions.tumblr.com/post/144290300487/the-one-that-doesnt-let-the-bad-practices-go">The one that doesn’t let the bad practices go</a>
+
+## > microbenchmark::microbenchmark(...) {data-transition="slide-in none-out"}
+
+<a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r">
+  <img src="img/rapporter/so-1.png" width="42%" />
+</a>
+
+## > microbenchmark::microbenchmark(...) {data-transition="none"}
+
+<a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r">
+  <img src="img/rapporter/so.png" width="42%" />
+</a>
+
+## > plot(microbenchmark(...))
+
+<a href="https://stackoverflow.com/questions/4756989/how-to-load-data-quickly-into-r">
+  <img src="img/rapporter/results.png" width="60%" />
+</a>
+
+## > ?alias
+
+<img src="img/rapporter/car.gif" width="65%" />
+
+Source: <a href="https://devopsreactions.tumblr.com/post/150627947026/junior-dev-being-awesome">Junior dev being awesome</a>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>&#62; Sys.setlocale('en-US')</h2>
+
+<a href="https://card.com" title="CARD.com" target="_new">
+  <img src="img/card/gh.png" width="70%" />
+</a>
+
+## > order('I-heart-R')
+
+  <img src="img/card/my-card.png" width="50%" />
+
+## > order(sample(n = 3))
+
+  <img src="img/card/cards.png" width="70%" />
+
+## > str(platform)
+
+  <img src="img/card/platform.png" width="65%" />
+
+## > str(stack)
+
+  <img src="img/card/stack.png" width="85%" />
+
+## > debugonce()
+
+  <img src="img/card/java.png" width="70%" />
+
+## > usethis::create_package('fbRads')
+
+  <img src="img/card/fbrads.png" width="55%" />
+
+## > usethis::create_packages('AWR')
+
+  <img src="img/card/awr.png" width="48%" />
+
+## > predict(gbm, newdata = tx)
+
+  <img src="img/card/streaming.png" width="75%" />
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out">
+<h2>&#62; git2r::commits()</h2>
+
+<img src="img/s1/gh-1.png" width="75%" />
+
+## > git2r::commits() {data-transition="none-in slide-out"}
+
+<img src="img/s1/gh-2.png" width="75%" />
+
+## $ groups {data-transition="slide-in none-out"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/system1-ramp.png" width="80%" />
+</a>
+
+## $ groups {data-transition="none"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/system1-brands.png" width="80%" />
+</a>
+
+## $ research() {data-transition="none"}
+<a href="https://system1.com/research" target="_new">
+  <img src="img/system1-research.jpg" width="80%" />
+</a>
+
+## > licence() {data-transition="none"}
+<a href="https://system1.com/open-source" target="_new">
+ <img src="img/s1/opensource.png" width="70%" />
+</a>
+
+## > licence() {data-transition="none"}
+<a href="https://mikata.dev" target="_new">
+ <img src="img/s1/mikata.png" width="70%" />
+</a>
+
+## > library(AWR.Snowflake) {data-transition="none"}
+
+<a href="https://github.com/daroczig/AWR.Snowflake" target="_new">
+ <img src="img/s1/snowflake.png" width="75%" />
+</a>
+
+## > microbenchmark() {data-transition="none"}
+
+<img src="img/s1/benchmark.png" width="75%" />
+
+## > options(error = browser()) {data-transition="none"}
+
+<img src="img/s1/outage.gifv" width="90%" />
+
+Source: <a href="https://devopsreactions.tumblr.com/post/71190963508/senior-vs-junior-sysadmin-during-an-outage">Senior vs junior sysadmin during an outage</a>
+
+## > compare('spark', 'K8s', ...) {data-transition="none"}
+
+<img src="img/s1/spark-1.png" width="60%" />
+
+## > compare('spark', 'K8s', ...) {data-transition="none"}
+
+<img src="img/s1/spark-2.png" width="65%" />
+
+## > ls(envir = 'jobs') {data-transition="none"}
+
+<img src="img/s1/jobs.png" width="90%" />
+
+## > get('job') {data-transition="none"}
+
+<img src="img/s1/job.png" width="90%" />
+
+## > eval() {data-transition="none"}
+
+<img src="img/s1/jenkins-run.png" width="90%" />
+
+## > eval() {data-transition="none"}
+
+<img src="img/s1/jenkins-run-2.png" width="90%" />
+
+## > ls(envir = 'invocations') {data-transition="none"}
+
+<img src="img/s1/invocations.png" width="90%" />
+
+## > ls(envir = 'snapshots') {data-transition="none"}
+
+<img src="img/s1/snapshots.png" width="90%" />
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; intro("Rx Studio & PK/PD models")</h2>
+
+<img src="img/pkpd/personalized.png" width="50%" />
+
+## > intro("PK/PD models")
+
+<img src="img/pkpd/pkpd-time-curves.png" width="65%" />
+
+<aside class="notes">
+* PK is often described as “what the body does to the drug”
+* PD as “what the drug does to the body”
+</aside>
+
+## > intro("PK models") {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > intro("PK models") {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > intro("PK models") {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/comp-2.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > intro("PK models") {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/comp-2.png" class="cimg" width="21%" /><img src="img/pkpd/comp-many.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > intro("PK models")
+
+$$C=\frac{A}{V}$$
+
+* $C$ drug concentration
+* $A$ drug amount
+* $V$ volume of distribution
+
+## > intro("PK models")
+
+<img src="img/pkpd/comp-1-gut.png" width="25%" />
+
+$$C_{oral}(t)=\frac{A_{oral}(t)}{V}=\frac{K_aFA_0}{V(K_a-K)}(exp(-K \cdot t) - exp(-K_a \cdot t))$$
+
+<div style="display: flex; justify-content: space-around;">
+<div>
+* $C$ drug concentration
+* $A$ drug amount
+* $V$ volume of distribution
+</div>
+<div>
+* $K_a$ absorption constant
+* $K$ elimination rate
+* $F$ bioavailability
+</div>
+</div>
+
+<aside class="notes">
+* bioavailability: the percentage (or the fraction F) of an administered dose of a xenobiotic that reaches the systemic circulation. Bioavailability is practically 100% (F=1) following an intravenous administration
+</aside>
+
+## > intro("PK models")
+
+<img src="img/pkpd/1x1920.png" width="25%" />
+
+$$C_{oral}(t)=\frac{A_{oral}(t)}{V}=\frac{K_aFA_0}{V(K_a-K)}(exp(-K \cdot t) - exp(-K_a \cdot t))$$
+
+```r
+#' Concentration at a time computed using a one-compartment model (oral dose)
+#' @param t time (hours)
+#' @param dose dose amount (mg)
+#' @param v volume of distribution (l)
+#' @param k elimination rate constant (h^-1)
+#' @param ka absorption rate constant (h^-1)
+#' @param f bioavailability
+#' @return numeric
+#' @export
+ct <- function(t, dose, v, k, ka, f) {
+    (ka * f * dose) / (v * (ka - k)) * (exp(-k * t) - exp(-ka * t))
+}
+```
+
+## > demo("PK models")
+
+<img src="img/pkpd/rawlins1977-pk-table.png" width="65%" />
+
+Source: Rawlins et al. (1977): Paracetamol (simplified)
+
+## > demo("PK models")
+
+```r
+#' Concentration at a time computed using a one-compartment model (oral dose)
+#' @param t time (hours)
+#' @param dose dose amount (mg)
+#' @param v volume of distribution (l)
+#' @param k elimination rate constant (h^-1)
+#' @param ka absorption rate constant (h^-1)
+#' @param f bioavailability
+#' @return numeric
+#' @export
+ct <- function(t, dose, v, k, ka, f) {
+    (ka * f * dose) / (v * (ka - k)) * (exp(-k * t) - exp(-ka * t))
+}
+```
+
+. . .
+
+```r
+ctp <- purrr::partial(ct, v = 42, k = 0.28, ka = 1.8, f = 0.89) # 70 kgs adult
+```
+
+. . .
+
+```r
+> ctp(t = 1, dose = 1000)
+[1] 14.81762
+> ctp(t = 2, dose = 1000)
+[1] 13.64825
+> ctp(t = 6, dose = 1000)
+[1] 4.676354
+```
+
+## > demo("PK models")
+
+```r
+library(data.table); library(ggplot2)
+conc <- data.table(h = seq(0, 24, by = 0.1))
+conc[, c := ctp(h, 1000)]
+ggplot(conc, aes(h, c)) + geom_line()
+```
+
+. . .
+
+<img src="img/pkpd/paracetamol-1000.png" width="65%" />
+
+## > demo("PK models")
+
+```r
+ctp <- function(t, dose, weight, k = 0.28, ka = 1.8, f = 0.89) {
+    ct(t, dose, v = weight * 0.6, k, ka, f)
+}
+```
+
+```r
+conc[, c1 := ctp(h, 1000, weight =  40)]
+conc[, c2 := ctp(h, 1000, weight =  60)]
+conc[, c3 := ctp(h, 1000, weight =  80)]
+conc[, c4 := ctp(h, 1000, weight = 100)]
+ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) + geom_line() +
+    scale_color_discrete(name = 'Weight', labels = c('74 kg', '40 kg', '60 kg', '80 kg', '100kg')) +
+    theme(legend.position = 'top')
+```
+
+## > demo("PK models")
+
+<img src="img/pkpd/paracetamol-weights.png" width="100%" />
+
+## > demo("PK models")
+
+```r
+weight <- 74
+meanlog <- log((weight * 0.6)^2 / sqrt(0.07^2 + (weight * 0.6)^2))
+sdlog <- sqrt(log(1 + (0.07^2 / (weight * 0.6)^2)))
+hist(rlnorm(n = 2000L, meanlog, sdlog), xlab = "Volume of distribution for 74 kg")
+```
+
+<img src="img/pkpd/hist.png" width="55%" />
+
+## > demo("PK models")
+
+<!-- conc <- data.table(h = seq(0, 24, by = 0.1)) -->
+<!-- conc[, c := ctp(h, 1000, weight = weight)] -->
+<!-- (G <- ggplot(conc, aes(h, c)) + geom_line(color = 'black') + theme_bw()) -->
+
+ ```r
+for (i in 1:250) {
+    meanlog <- log((weight * 0.6)^2 / sqrt(0.07^2 + (weight * 0.6)^2))
+    sdlog <- sqrt(log(1 + (0.07^2 / (weight * 0.6)^2)))
+    conc <- copy(conc)[, c := ct(h, 1000, v = rlnorm(n = 1L, meanlog, sdlog),
+                                 k = 0.28, ka = 1.8, f = 0.89)]
+    (G <- G + geom_line(data = conc, color = 'gray', alpha = 0.1))
+}
+G + geom_line(color = 'black') + ggtitle('250 simulations')
+```
+
+<img src="img/pkpd/paracetamol-n250.png" width="60%" />
+
+## > demo("PK models")
+
+```r
+simdata <- rbindlist(lapply(1:2000, function(i) {
+    meanlog <- log((weight * 0.6)^2 / sqrt(0.07^2 + (weight * 0.6)^2))
+    sdlog <- sqrt(log(1 + (0.07^2 / (weight * 0.6)^2))) * 5
+    as.data.frame(matrix(
+        ct(seq(0, 24, by = 0.1), 1000, v = rlnorm(n = 1L, meanlog, sdlog),
+           k = 0.28, ka = 1.8, f = 0.89),
+        nrow = 1))
+    }))
+
+simagg <- data.frame(
+    h = seq(0, 24, by = 0.1),
+    min = apply(simdata, 2, FUN = min),
+    mean = apply(simdata, 2, FUN = mean),
+    max = apply(simdata, 2, FUN = max))
+
+ggplot(simagg, aes(h)) +
+    geom_ribbon(aes(ymin=min, ymax=max), fill = 'gray') +
+    geom_line(aes(y = mean)) +
+    ylab('Blood concentration forecast') +
+    theme_bw() + theme(legend.position = 'top')
+```
+
+## > demo("PK models") {data-transition="slide-in none-out"}
+
+<img src="img/pkpd/paracetamol-simagg.png" width="100%" />
+
+## > demo("PK models") {data-transition="none-in slide-out"}
+
+<!-- ggplot(simagg, aes(h)) + -->
+<!--     geom_ribbon(aes(ymin=min, ymax=max), fill = 'gray') + -->
+<!--     geom_line(aes(y = mean)) + -->
+<!--     ylab('Blood concentration forecast') + -->
+<!--     theme_bw() + theme(legend.position = 'top') + -->
+<!--     geom_point(aes(x=5, y=5), color = 'orange', size = 3) -->
+
+<img src="img/pkpd/paracetamol-simagg-hist.png" width="100%" />
+
+## > demo("PK models")
+
+```r
+library(FME)
+
+concentrations <- data.table(x = 5, y = 5)
+model_function <- function(params, x) {
+    ct(x, dose = 1000, v = params['v'], k = 0.28, ka = 1.8, f = 0.89)
+}
+cost_function <- function(params) {
+    out <- model_function(params, concentrations$x)
+    concentrations$y - out
+}
+
+bay <- modFit(f = cost_function, p = c(v = weight * 0.6), method = 'Newton')
+bayc <- copy(conc)[, c := ct(seq(0, 24, by = 0.1), 1000, v = bay$par[['v']],
+           k = 0.28, ka = 1.8, f = 0.89)]
+
+ggplot(simagg, aes(h)) +
+    geom_ribbon(aes(ymin=min, ymax=max), fill = 'gray') +
+    geom_line(aes(y = mean)) +
+    geom_point(aes(x=5, y=5), color = 'orange', size = 3) +
+    geom_line(data = bayc, aes(y = c), color = 'orange') +
+    ylab('Blood concentration forecast') +
+    theme_bw() + theme(legend.position = 'top')
+
+```
+
+## > demo("PK models")
+
+<img src="img/pkpd/paracetamol-bay.png" width="100%" />
+
+
+placeholder as cannot finish with an image
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1" data-transition="none">
+<h2>&#62; demo("rx.studio")</h2>
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/2021-06-23_01-24.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/2021-06-23_01-25.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/vori1.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/vori2.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/vori3.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/vori4.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/vori45.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/vori5.png" width="80%" />
+</a>
+
+## > demo("rx.studio") {data-transition="none-in slide-out"}
+
+<a href="https://app.rx.studio" title="Rx Studio application" target="_new">
+  <img src="img/demo/vori6.png" width="80%" />
+</a>
+
+## > library(rx.studio) {data-transition="slide-in none-out"}
+
+```
+<!--head
+meta:
+  drug: ~
+  method: ~
+  target: ~
+  title: Calculate corrected weight for CrCl estimation
+  description: |
+    Using the Cockcroft-Gault 40% Obesity Adjustment for patients who are
+    greater than 30% of their ideal body weight.
+  packages:
+  - rx.studio
+  examples:
+  - list(HEIGHT = 174, WEIGHT = 72, SEX = 'Male')
+inputs:
+- !expr generate_input(type = 'HEIGHT')
+- !expr generate_input(type = 'WEIGHT')
+- !expr generate_input(type = 'SEX')
+head-->
+
+<%=
+calc_cweight(HEIGHT, WEIGHT, SEX, adjthr = 1.3)
+%>
+```
+
+## > library(rx.studio) {data-transition="none"}
+
+<div class="cols">
+  <div class="col">
+```
+<!--head
+meta:
+  drug: ~
+  method: ~
+  target: ~
+  title: Calculate corrected weight for CrCl estimation
+  description: |
+    Using the Cockcroft-Gault 40% Obesity Adjustment for patients who are
+    greater than 30% of their ideal body weight.
+  packages:
+  - rx.studio
+  examples:
+  - list(HEIGHT = 174, WEIGHT = 72, SEX = 'Male')
+inputs:
+- !expr generate_input(type = 'HEIGHT')
+- !expr generate_input(type = 'WEIGHT')
+- !expr generate_input(type = 'SEX')
+head-->
+
+<%=
+calc_cweight(HEIGHT, WEIGHT, SEX, adjthr = 1.3)
+%>
+```
+</div>
+
+<div class="col"><img src="img/cweight-form.png"></div>
+</div>
+
+## > str("rx.studio")
+
+<img src="img/cloud-infra.png" width="65%" />
+
+## > is.compliant("rx.studio") {data-transition="slide-in none-out"}
+
+  <img src="img/gandalf.gif" width="57%">
+
+  Source:
+  <a href="https://thecodinglove.com/when-the-library-has-a-very-good-documentation" target="_new">
+    the_coding_love -- When the library has good documentation
+  </a>
+
+## > is.compliant("rx.studio") {data-transition="none"}
+
+  <img src="img/another-pci-dss-audit.gif" width="65%">
+
+  Source:
+  <a href="https://devopsreactions.tumblr.com/post/50566447542/another-pci-dss-audit" target="_new">
+    DevOps Reactions -- Another PCI DSS audit
+  </a>
+
+## > audit("rx.studio") {data-transition="slide-in none-out"}
+
+```r
+List of 1+
+ $ use_common_sense: TRUE
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none"}
+
+```r
+List of 2+
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...)
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none"}
+
+```r
+List of 2+
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...) |> get
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none"}
+
+```r
+List of 2+
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...) |> get |> apply
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none"}
+
+```r
+List of 2+
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...) |> get |> apply |> assert
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none"}
+
+```r
+List of 3+
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...) |> get |> apply |> assert
+ $ data_management: List of 3+
+  ..$ encrypt: List of 2
+  .. ..$ in_transit: TRUE
+  .. ..$ at_rest: TRUE
+  ..$ document: TRUE
+  ..$ PHI: identify()
+  .. ..
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none"}
+
+```r
+List of 4+
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...) |> get |> apply |> assert
+ $ data_management: List of 3+
+  ..$ encrypt: List of 2
+  .. ..$ in_transit: TRUE
+  .. ..$ at_rest: TRUE
+  ..$ document: TRUE
+  ..$ PHI: identify()
+  .. ..
+  $ vendor_management: List of 3+
+  ..$ cannot_live_without: TRUE
+  ..$ security_assessment: TRUE
+  ..$ BAA: TRUE
+  .. ..
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none"}
+
+```r
+List of 5+
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...) |> get |> apply |> assert
+ $ data_management: List of 3+
+  ..$ encrypt: List of 2
+  .. ..$ in_transit: TRUE
+  .. ..$ at_rest: TRUE
+  ..$ document: TRUE
+  ..$ PHI: identify()
+  .. ..
+  $ vendor_management: List of 3+
+  ..$ cannot_live_without: TRUE
+  ..$ security_assessment: TRUE
+  ..$ BAA: TRUE
+  .. ..
+ $ code_review: TRUE
+ ...
+```
+
+## > audit("rx.studio") {data-transition="none-in slide-out"}
+
+```r
+List of Inf
+ $ use_common_sense: TRUE
+ $ policies: function(...) search(...) |> get |> apply |> assert
+ $ data_management: List of 3+
+  ..$ encrypt: List of 2
+  .. ..$ in_transit: TRUE
+  .. ..$ at_rest: TRUE
+  ..$ document: TRUE
+  ..$ PHI: identify()
+  .. ..
+  $ vendor_management: List of 3+
+  ..$ cannot_live_without: TRUE
+  ..$ security_assessment: TRUE
+  ..$ BAA: TRUE
+  .. ..
+ $ code_review: TRUE
+ $ unit_tests: TRUE
+ $ integration_tests: TRUE
+ $ code_coverage_tests: TRUE
+ ...
+```
+
+##
+
+<div style="text-align:left;">
+  <img src="img/sys-setlocale.png" width="45%">
+
+  Source:
+  <a href="https://twitter.com/romain_francois/status/1410886001539567616" target="_new">
+    twitter.com/romain_francois/status/1410886001539567616
+  </a>
+</div>
+## > readLines(\'frontend/es.po\', n=25)
+
+```
+# Copyright (C) 2020-2021 Rx Studio Inc.
+msgid ""
+msgstr ""
+"Project-Id-Version: rx.studio.webapp 1.0\n"
+"POT-Creation-Date: 2020-12-06 00:40\n"
+"PO-Revision-Date: 2021-05-26 01:40:46\n"
+"Last-Translator: Rx Studio <support@rx.studio>\n"
+"Language-Team: Rx Studio <support@rx.studio>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgctxt "account_verify.new_password"
+msgid "New Password"
+msgstr "Contraseña nueva"
+
+#. User status meaning the user has subscribed to product updates/email newsletter.
+msgctxt "common.subscribed"
+msgid "Subscribed"
+msgstr "Suscrito"
+```
+
+## > readLines(\'backend/pt.po\', n=25)
+
+```
+# Copyright (C) 2020-2021 Rx Studio Inc.
+msgid ""
+msgstr ""
+"Project-Id-Version: rx.studio.models 1.0\n"
+"POT-Creation-Date: 2020-12-06 00:40\n"
+"PO-Revision-Date: 2021-06-22 03:45:21\n"
+"Last-Translator: Rx Studio <support@rx.studio>\n"
+"Language-Team: Rx Studio <support@rx.studio>\n"
+"Language: pt\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+msgid "Total maximum concentration"
+msgstr "Concentração máxima total"
+
+#. Drug name, only translate if has a local name or version in your language.
+msgid "Cefepime"
+msgstr "Cefepima"
+
+#. The f prefix refers to free, so a shorthand for Free AUC to MIC ratio.
+msgid "fAUC/MIC"
+msgstr "fASC/CIM"
+```
+
+## > translations_read() |> summary()
+
+```shell
+$ pocount ~/projects/rx.studio-webapp/src/assets/i18n/po/es.po \
+          ~/projects/rx.studio-models/inst/i18n/es.po
+
+Type               Strings      Words (source)    Words (translation)
+Translated:     383 (100%)       2498 (100%)            2979
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          383              2498                   2979
+
+Type               Strings      Words (source)    Words (translation)
+Translated:     246 (100%)       1234 (100%)            1360
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          246              1234                   1360
+
+Processing file : TOTAL:
+Type               Strings      Words (source)    Words (translation)
+Translated:     629 (100%)       3732 (100%)            4339
+Untranslated:     0 (  0%)          0 (  0%)             n/a
+Total:          629              3732                   4339
+
+File count:       2
+```
+
+## > testthat::test_package()
+
+  <img src="img/forest-warrior.gif" width="45%">
+
+  Source:
+  <a href="https://thecodinglove.com/when-i-want-to-commit-and-jenkins-is-not-ok-with-it" target="_new"
+     style="font-size: 80%;">
+    the_coding_love -- When I want to commit and Jenkins is not OK with it
+  </a>
+
+
+
+</section></section>
+
+
+
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+    <!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Nov%252011%252018%253A35%253A00%25202021%250A%250A%253E%2520follow%28%27%2540daroczig%27%29%250A%253E%2520visit%28%27https%253A%252F%252Fdaroczig.github.io%27%29%250A%253E%2520email%28%27daroczig%2540rapporter.net%27%29 -->
+   <img src="img/contact-1.png" width="80%" />
+</section>
+
+<section data-transition="none">
+  <section class="titleslide slide level1" data-transition="none">
+  <img src="img/contact-2.png" width="80%" />
+</section>
+
+</section>
+
+
