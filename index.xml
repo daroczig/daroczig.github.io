@@ -305,6 +305,15 @@
     </item>
     
     <item>
+      <title>Vállalati Pénzügyi Információs Rendszerek: Többdimenziós eljárások R-ben</title>
+      <link>https://daroczig.github.io/teaching/2022-bce/</link>
+      <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/teaching/2022-bce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Calling Python from R to generate image captions</title>
       <link>https://daroczig.github.io/talks/2022-06-29/</link>
       <pubDate>Tue, 11 Oct 2022 00:00:00 +0000</pubDate>
@@ -1705,8 +1714,8 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/work/</guid>
-      <description>I&amp;rsquo;ve been working on various shorter and longer term projects in the past ~10 years focusing on a wide variety of data science / data engineering problems, and helping companies using R in production. Verticals and some high-level project details:
-Finance: 2+ years at a growth stage fintech startup providing pre-paid and credit cards to US customers (optimizing online marketing campaigns, churn analysis, risk scoring, reporting and dashboards, operations like charging fees and real-time notification of customers); clustering of ~1K bank branches and performance analytics; network analysis of the Hungarian interbank lending market Ad tech: 4+ years optimizing online ad campaign performance at growth stage startups, time-series forecasting, portfolio optimization, live scoring with ML models (R, Python, H2O), API integrations Education: 5 years full-time assistant professor at PPKE, 4 years visiting professor at CEU, 3 years quality assurance of a Hungarian university (survey design, tech infrastructure for OCR-based data entry, automated reporting); 2 years quality assurance of Australian high schools (programmatic access of automated individual and aggregated reports); various R training events and classes Product: 4 years full-time bootstrapping a SaaS startup at rapporter.</description>
+      <description>I&amp;rsquo;ve been working on various shorter and longer term projects in the past ~15 years focusing on a wide variety of data science / data engineering problems, and helping companies using R in production. Verticals and some high-level project details:
+Finance: 2+ years at a growth stage fintech startup providing pre-paid and credit cards to US customers (optimizing online marketing campaigns, churn analysis, risk scoring, reporting and dashboards, operations like charging fees and real-time notification of customers); clustering of ~1K bank branches and performance analytics; network analysis of the Hungarian interbank lending market Ad tech: 5+ years optimizing online ad campaign performance at growth stage startups, time-series forecasting, portfolio optimization, live scoring with ML models (R, Python, H2O), API integrations Education: 5 years full-time assistant professor at PPKE; 6 years visiting professor then part-time (faculty) lecturer at CEU; 3 years quality assurance of a Hungarian university (survey design, OCR of 50k pages, automated reporting); 2 years quality assurance of Australian high schools (programmatic access of automated individual and aggregated reports); various R training events and classes Product: 4 years full-time bootstrapping a SaaS startup at rapporter.</description>
     </item>
     
     <item>
@@ -1715,7 +1724,7 @@ Finance: 2+ years at a growth stage fintech startup providing pre-paid and credi
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/about/</guid>
-      <description>Former assistant professor and occasional lecturer in R, statistics and data analysis, recovering social scientist with Philosophy background &amp;ndash; PhD in Sociology but more of a sysadmin/devops, a friend of AWS and a fan of automation, author and maintainer of a dozen of R packages and a book, passionate R developer and advocate, founder of the Hungarian R User Group and a reporting SaaS at rapporter.net, organized the first satRday and the second eRum conferences, casual data science and R freelancer/consultant, managing data operations and doing a bit of data science and engineering formerly at CARD.</description>
+      <description>Former assistant professor and occasional lecturer in R, statistics and data analysis; recovering social scientist with an unfinished Philosophy MA; PhD in Sociology but more of a sysadmin/devops; a friend of AWS and a fan of automation; author and maintainer of a dozen of R packages, scientific journal articles and a book; passionate R developer and advocate; founder of the Hungarian R User Group and a reporting SaaS at rapporter.net; organized the first satRday and the second eRum conferences; casual data science and R freelancer/consultant; previously managed data operations for data science at CARD.</description>
     </item>
     
     <item>
