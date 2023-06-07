@@ -544,6 +544,12 @@ Gergely Daróczi
 <h3 class="author" style="color:#333;padding-top:5%;font-size:1.1em;text-align: right !important; margin-right: -5%;padding-top: 0px;font-weight: normal;">
 Co-founder, CTO<br /> Rx Studio Inc.
 </h3>
+<aside class="notes">
+<p>precision dosing application, heavily building on R in a HIPAA
+compliant environment, and I will try to share an introduction to the
+related models and some R code as well, so that interested parties can
+get involved</p>
+</aside>
 </section>
 <section>
 <section class="titleslide slide level1" data-transition="slide-in none-out" data-background-image="img/1920x1080-white.jpg" data-background-size="100%">
@@ -605,23 +611,35 @@ understand</a></p>
 </section>
 </section>
 <section>
-<section class="titleslide slide level1">
+<section class="titleslide slide level1" data-transition="fade-in fade-out">
 <h2>
 &gt; Sys.getenv(country = ‘USA’)
 </h2>
 <p><img src="img/rx-business/drug-use-2022-usa.png" width="100%" class="noborder" /></p>
 <p>Source: The Use of Medicines in the U.S. 2023 (IQVIA)</p>
 <aside class="notes">
-<p>another area where I don’t feel home … but important to understand
-the business impact</p>
-<p>30% in clinic (so not retail) use … of which around 10% is inpatient,
-so overall 200M prescriptions were dispensed in hospitals .. with around
-7% risk for adverse reactions, each costing around $15k on average …
-this is a serious problem costing hundreds of millions per year .. not
-even counting the human and social costs.</p>
+<p>before we get to the actual life science and modeling part, I also
+wanted to highlight the importance of this topic for the business folks
+in the audience: well, there are a quite a few and increasing numbers on
+this slide, which always proves a point … but let’s just focus on one
+here:</p>
 </aside>
 </section>
 <section id="sys.getenvcountry-usa" class="slide level2"
+data-transition="fade-in none-out">
+<h2 data-transition="fade-in none-out">&gt; Sys.getenv(country =
+‘USA’)</h2>
+<p><img src="img/rx-business/drug-use-2022-usa-zoomin.png" width="70%" class="noborder" /></p>
+<aside class="notes">
+<p>there are more than 6 BILLION prescriptions per year in ht US …
+although 2/3 is in retail, and only around 3% are dispensed in hospitals
+with the highest risks for adverse reactions, there’s is a very sizeable
+risk for each of these prescriptions in the range of a few hundred to
+thousands of dollars .. overall adding up hundreds of millions per year
+.. not even counting the human and social costs.</p>
+</aside>
+</section>
+<section id="sys.getenvcountry-usa-1" class="slide level2"
 data-transition="slide-in none-out">
 <h2 data-transition="slide-in none-out">&gt; Sys.getenv(country =
 ‘USA’)</h2>
@@ -641,7 +659,7 @@ adherence etc</p>
 there is $100 - $1000 risk per prescription.</p>
 </aside>
 </section>
-<section id="sys.getenvcountry-usa-1" class="slide level2"
+<section id="sys.getenvcountry-usa-2" class="slide level2"
 data-transition="none-in slide-out">
 <h2 data-transition="none-in slide-out">&gt; Sys.getenv(country =
 ‘USA’)</h2>
@@ -662,7 +680,28 @@ data-transition="fade-in slide-out">
 <p><img src="img/rx-business/ecosystem.png" width="85%" class="noborder" /></p>
 <aside class="notes">
 <p>borrowed from a previous version of a fundraising deck from my
-cofounder -&gt; tech-enabled services</p>
+cofounder</p>
+<p>we are doing tech-enabled services to help with the related problems
+at multiple levels</p>
+<p>first: when a drug is released to the market after a series of
+clinical trials including a couple hundreds of patients data, there’s
+just not enough coverage to see how the drug will work in the remaining
+7B people’s body. this can be solved by collecting real-world evidence
+and data, to build better dosing models – what clinicians and
+researchers have been doing for decades now, and publishing their
+results</p>
+<p>we also build custom models for local or special populations as
+needed, and make all these available in our platform in the means of
+various APIs</p>
+<p>these are then used to power our primary and secondary products,
+e.g. the standalone and EHR applications for precision dosing, which
+means that clinicians are using our apps to find the optimal dose for a
+patient,</p>
+<p>but our models, data and services can also help pharma, payors with
+clinical trials and reduce cost/time-to-market, or help with the
+adherence problem and nudge/monitor patients taking drugs in the means
+of customer-facing applicaitons</p>
+<p>let me show you a quick demo to explain this better</p>
 </aside>
 </section>
 </section>
@@ -722,13 +761,19 @@ data-transition="none">
 </div>
 <p>Source: Mortensen et al (2008): Introduction to PK/PD modelling.</p>
 </section>
-<section id="vignettetopic-pkpd-models-4" class="slide level2"
+<section id="vignettetopic-pkpd-models-4" class="slide level2">
+<h2>&gt; vignette(topic = ‘PK/PD models’)</h2>
+<p><img src="img/pkpd/spherical-cow.gif" width="40%" /></p>
+<p>Source:
+<a href="https://en.wikipedia.org/wiki/Spherical_cow" target="_new">Spherical
+cow</a></p>
+</section>
+<section id="vignettetopic-pkpd-models-5" class="slide level2"
 data-transition="slide-in fade-out">
 <h2 data-transition="slide-in fade-out">&gt; vignette(topic = ‘PK/PD
 models’)</h2>
 <div class="colcontainer">
 <div class="col">
-<p><br/></p>
 <p><img src="img/pkpd/comp-1-no-k.png" width="50%" /></p>
 </div>
 <div class="col">
@@ -736,17 +781,16 @@ models’)</h2>
 </div>
 </div>
 </section>
-<section id="vignettetopic-pkpd-models-5" class="slide level2"
+<section id="vignettetopic-pkpd-models-6" class="slide level2"
 data-transition="fade-in slide-out">
 <h2 data-transition="fade-in slide-out">&gt; vignette(topic = ‘PK/PD
 models’)</h2>
 <div class="colcontainer">
 <div class="col">
-<p><br/></p>
 <p><img src="img/pkpd/comp-1-no-k.png" width="50%" /></p>
 </div>
 <div class="col">
-<p><br/><br/></p>
+<p><br/></p>
 <p><span class="math display">\[C=\frac{A}{V}\]</span></p>
 <ul>
 <li><span class="math inline">\(C\)</span> drug concentration</li>
@@ -755,14 +799,24 @@ models’)</h2>
 </ul>
 </div>
 </div>
+<div class="fragment">
+<p>Example: 500 mg Panadol (<span class="math inline">\(Vd =
+0.9L/kg\)</span>) administered for a 70 kg patient</p>
+<p><span class="math display">\[C=\frac{500mg}{70kg *
+0.9L/kg}=\frac{500mg}{63L}=7.9 mg/L\]</span></p>
+<aside class="notes">
+<p>paracetamol distributes rapidly and evenly throughout most tissues
+and fluids and has a volume of distribution of approximately 0.9L/kg</p>
+</aside>
+</div>
 </section>
-<section id="vignettetopic-pkpd-models-6" class="slide level2"
+<section id="vignettetopic-pkpd-models-7" class="slide level2"
 data-transition="slide-in fade-out">
 <h2 data-transition="slide-in fade-out">&gt; vignette(topic = ‘PK/PD
 models’)</h2>
 <p><img src="img/pkpd/comp-1-gut.png" width="25%" /></p>
 </section>
-<section id="vignettetopic-pkpd-models-7" class="slide level2"
+<section id="vignettetopic-pkpd-models-8" class="slide level2"
 data-transition="fade-in slide-out">
 <h2 data-transition="fade-in slide-out">&gt; vignette(topic = ‘PK/PD
 models’)</h2>
@@ -796,7 +850,7 @@ administration</li>
 </ul>
 </aside>
 </section>
-<section id="vignettetopic-pkpd-models-8" class="slide level2">
+<section id="vignettetopic-pkpd-models-9" class="slide level2">
 <h2>&gt; vignette(topic = ‘PK/PD models’)</h2>
 <p><img src="img/pkpd/1x1920.png" width="25%" /></p>
 <p><span
@@ -888,7 +942,7 @@ data-transition="fade-in fade-out">
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">14.81762</span></span></code></pre></div>
 </div>
 <div class="col">
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">1</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">2</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">13.64825</span></span></code></pre></div>
 </div>
 <div class="col">
@@ -919,11 +973,11 @@ data-transition="fade-in slide-out">
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">14.81762</span></span></code></pre></div>
 </div>
 <div class="col">
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">1</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">2</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">13.64825</span></span></code></pre></div>
 </div>
 <div class="col">
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">1</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fu">ctp</span>(<span class="at">t =</span> <span class="dv">6</span>, <span class="at">dose =</span> <span class="dv">1000</span>)</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">4.676354</span></span></code></pre></div>
 </div>
 </div>
@@ -947,13 +1001,25 @@ data-transition="fade-in slide-out">
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>conc[, c2 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>, <span class="at">weight =</span>  <span class="dv">60</span>)]</span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>conc[, c3 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>, <span class="at">weight =</span>  <span class="dv">80</span>)]</span>
 <span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>conc[, c4 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">1000</span>, <span class="at">weight =</span> <span class="dv">100</span>)]</span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">melt</span>(conc, <span class="at">id.vars =</span> <span class="st">&#39;h&#39;</span>), <span class="fu">aes</span>(h, value, <span class="at">color =</span> variable)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;Weight&#39;</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;74 kg&#39;</span>, <span class="st">&#39;40 kg&#39;</span>, <span class="st">&#39;60 kg&#39;</span>, <span class="st">&#39;80 kg&#39;</span>, <span class="st">&#39;100kg&#39;</span>)) <span class="sc">+</span></span>
-<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>)</span></code></pre></div>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">melt</span>(conc, <span class="at">id.vars =</span> <span class="st">&#39;h&#39;</span>), <span class="fu">aes</span>(h, value, <span class="at">color =</span> variable)) <span class="sc">+</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_color_discrete</span>(<span class="at">name =</span> <span class="st">&#39;Weight&#39;</span>,</span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a>                         <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&#39;40 kg&#39;</span>, <span class="st">&#39;60 kg&#39;</span>, <span class="st">&#39;80 kg&#39;</span>, <span class="st">&#39;100kg&#39;</span>)) <span class="sc">+</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a>    <span class="fu">ylab</span>(<span class="st">&#39;Blood concentration forecast&#39;</span>) <span class="sc">+</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">&#39;top&#39;</span>) <span class="sc">+</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">10</span>, <span class="at">color =</span> <span class="st">&#39;black&#39;</span>, <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="fl">1.25</span>) <span class="sc">+</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_hline</span>(<span class="at">yintercept =</span> <span class="dv">20</span>, <span class="at">color =</span> <span class="st">&#39;black&#39;</span>, <span class="at">linetype =</span> <span class="dv">2</span>, <span class="at">size =</span> <span class="fl">1.25</span>)</span></code></pre></div>
+<!-- ggsave(file = '/home/daroczig/projects/snowl.net/static/slides/budapestml2023-personalized-drug-doses-via-rx-studio/img/pkpd/paracetamol-weights.png', width = 8, height = 4) -->
 </section>
 <section id="do.callctp-weights-1" class="slide level2">
 <h2>&gt; do.call(ctp, weights)</h2>
 <p><img src="img/pkpd/paracetamol-weights.png" width="100%" /></p>
+<aside class="notes">
+<p>so far, we have been administering the same dose to very different
+patients, which doesn’t make a lot of sense (other than running
+simulations) .. so let’s take a look at a real-life example with actual
+body weights and drug doses</p>
+</aside>
 </section>
 <section id="do.callctp-family" class="slide level2">
 <h2>&gt; do.call(ctp, family)</h2>
@@ -965,7 +1031,7 @@ data-transition="fade-in slide-out">
 <li>HD (64 kg female): 1 pill of Panadol (500 mg)</li>
 <li>BD (41 kg male): 1 pill of Panadol (500 mg)</li>
 <li>BD (23 kg female): half pill of Panadol (250 mg)</li>
-<li>BD (13 kg female): <del>7-8</del>5ml Panadol bady (120 mg)</li>
+<li>BD (13 kg female): <del>7-8</del>5ml Panadol baby (120 mg)</li>
 </ul>
 <div class="fragment">
 <div style="text-align:left;">
@@ -980,9 +1046,9 @@ data-transition="fade-in slide-out">
 </section>
 <section id="do.callctp-family-1" class="slide level2">
 <h2>&gt; do.call(ctp, family)</h2>
-<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>conc[, c1 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">500</span>, <span class="at">weight =</span>  <span class="dv">96</span>)]</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>conc[, c2 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">500</span>, <span class="at">weight =</span>  <span class="dv">64</span>)]</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>conc[, c3 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">500</span>, <span class="at">weight =</span>  <span class="dv">41</span>)]</span>
+<div class="sourceCode" id="cb17"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>conc[, c1 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">500</span>, <span class="at">weight =</span> <span class="dv">96</span>)]</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>conc[, c2 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">500</span>, <span class="at">weight =</span> <span class="dv">64</span>)]</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>conc[, c3 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">500</span>, <span class="at">weight =</span> <span class="dv">41</span>)]</span>
 <span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>conc[, c4 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">250</span>, <span class="at">weight =</span> <span class="dv">23</span>)]</span>
 <span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>conc[, c5 <span class="sc">:=</span> <span class="fu">ctp</span>(h, <span class="dv">120</span>, <span class="at">weight =</span> <span class="dv">13</span>)]</span>
 <span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">melt</span>(conc, <span class="at">id.vars =</span> <span class="st">&#39;h&#39;</span>), <span class="fu">aes</span>(h, value, <span class="at">color =</span> variable)) <span class="sc">+</span> <span class="fu">geom_line</span>() <span class="sc">+</span></span>
@@ -1143,11 +1209,67 @@ rlnorm(2000)))</h2>
 </section>
 <section id="fitctp-data.frameconc-5-1" class="slide level2">
 <h2>&gt; fit(ctp, data.frame(conc = 5))</h2>
-<p><img src="img/pkpd/paracetamol-bay.png" width="100%" /></p>
+<div class="colcontainer">
+<div class="col">
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> <span class="fl">0.60</span> <span class="sc">*</span> <span class="dv">70</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="dv">42</span></span></code></pre></div>
+</div>
+<div class="col">
+<div class="sourceCode" id="cb25"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="sc">&gt;</span> bay<span class="sc">$</span>par[[<span class="st">&#39;v&#39;</span>]]</span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>[<span class="dv">1</span>] <span class="fl">51.954</span></span></code></pre></div>
+</div>
+</div>
+<div class="fragment">
+<p><img src="img/pkpd/paracetamol-bay.png" width="80%" style="margin-top:-25px;" /></p>
+</div>
 </section>
 <section id="fitctp-data.frameconc-5-2" class="slide level2">
 <h2>&gt; fit(ctp, data.frame(conc = 5))</h2>
+<p><img src="img/rx-examples/pk-table-popup.png" width="60%" /></p>
+</section>
+<section id="fitctp-data.frameconc-5-3" class="slide level2">
+<h2>&gt; fit(ctp, data.frame(conc = 5))</h2>
 <p><img src="img/rx-examples/chinese.png" width="100%" /></p>
+</section>
+</section>
+<section data-transition="none" data-transition="fade">
+<section class="titleslide slide level1" data-transition="none">
+<h2>
+&gt; library(chatgpt)
+</h2>
+</section>
+<section id="librarychatgpt" class="slide level2"
+data-transition="fade-in slide-out">
+<h2 data-transition="fade-in slide-out">&gt; library(chatgpt)</h2>
+<p><img src="img/ai/google-distance-from-nuclear-explosion-tw.jpg" width="55%" /></p>
+<aside class="notes">
+<p>ready.gov is a site of the U.S. Department of Homeland Security</p>
+</aside>
+</section>
+<section id="librarychatgpt-1" class="slide level2"
+data-transition="slide-in fade-out">
+<h2 data-transition="slide-in fade-out">&gt; library(chatgpt)</h2>
+<p><img src="img/ai/chatgpt-distance-from-nuclear-explosion.png" width="95%" /></p>
+</section>
+<section id="librarychatgpt-2" class="slide level2"
+data-transition="fade-in slide-out">
+<h2 data-transition="fade-in slide-out">&gt; library(chatgpt)</h2>
+<p><img src="img/ai/chatgpt-distance-from-nuclear-explosion-highlight.png" width="95%" /></p>
+</section>
+<section id="librarychatgpt-3" class="slide level2"
+data-transition="fade-in slide-out">
+<h2 data-transition="fade-in slide-out">&gt; library(chatgpt)</h2>
+<p><img src="img/ai/chatgpt-plugin.png" width="94%" /></p>
+</section>
+<section id="librarychatgpt-4" class="slide level2"
+data-transition="fade-in slide-out">
+<h2 data-transition="fade-in slide-out">&gt; library(chatgpt)</h2>
+<p><img src="img/ai/chatgpt-dosing.png" width="94%" /></p>
+</section>
+<section id="librarychatgpt-5" class="slide level2"
+data-transition="fade-in slide-out">
+<h2 data-transition="fade-in slide-out">&gt; library(chatgpt)</h2>
+<p><img src="img/ai/chatgpt-extract-highlighted.png" width="50%" /></p>
 <p>placeholder as cannot finish with an image</p>
 </section>
 </section>

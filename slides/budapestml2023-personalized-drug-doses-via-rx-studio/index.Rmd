@@ -53,6 +53,10 @@ document.getElementById("coverslide").remove();
   Rx Studio Inc.
 </h3>
 
+<div class="notes">
+precision dosing application, heavily building on R in a HIPAA compliant environment, and I will try to share an introduction to the related models and some R code as well, so that interested parties can get involved
+</div>
+
 </section>
 
 <section>
@@ -110,7 +114,7 @@ Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-c
 </section></section>
 
 <section>
-<section class="titleslide slide level1">
+<section class="titleslide slide level1" data-transition="fade-in fade-out">
 <h2>&#62; Sys.getenv(country = 'USA')</h2>
 
 <img src="img/rx-business/drug-use-2022-usa.png" width="100%" class="noborder" />
@@ -118,9 +122,15 @@ Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-c
 Source: The Use of Medicines in the U.S. 2023 (IQVIA)
 
 <div class="notes">
-another area where I don't feel home ... but important to understand the business impact
+before we get to the actual life science and modeling part, I also wanted to highlight the importance of this topic for the business folks in the audience: well, there are a quite a few and increasing numbers on this slide, which always proves a point ... but let's just focus on one here:
+</div>
 
-30% in clinic (so not retail) use ... of which around 10% is inpatient, so overall 200M prescriptions were dispensed in hospitals .. with around 7% risk for adverse reactions, each costing around $15k on average ... this is a serious problem costing hundreds of millions per year .. not even counting the human and social costs.
+## > Sys.getenv(country = 'USA') {data-transition="fade-in none-out"}
+
+<img src="img/rx-business/drug-use-2022-usa-zoomin.png" width="70%" class="noborder" />
+
+<div class="notes">
+there are more than 6 BILLION prescriptions per year in ht US ... although 2/3 is in retail, and only around 3% are dispensed in hospitals with the highest risks for adverse reactions, there's is a very sizeable risk for each of these prescriptions in the range of a few hundred to thousands of dollars .. overall adding up hundreds of millions per year .. not even counting the human and social costs.
 </div>
 
 ## > Sys.getenv(country = 'USA') {data-transition="slide-in none-out"}
@@ -147,10 +157,21 @@ again doing the basic math keeping in mind the ~6-7B prescriptions: there is $10
 
 <img src="img/rx-business/ecosystem.png" width="85%" class="noborder" />
 
-
 <div class="notes">
 borrowed from a previous version of a fundraising deck from my cofounder
--> tech-enabled services
+
+we are doing tech-enabled services to help with the related problems at multiple levels
+
+first: when a drug is released to the market after a series of clinical trials including a couple hundreds of patients data, there's just not enough coverage to see how the drug will work in the remaining 7B people's body. this can be solved by collecting real-world evidence and data, to build better dosing models -- what clinicians and researchers have been doing for decades now, and publishing their results
+
+we also build custom models for local or special populations as needed, and make all these available in our platform in the means of various APIs
+
+these are then used to power our primary and secondary products, e.g. the standalone and EHR applications for precision dosing, which means that clinicians are using our apps to find the optimal dose for a patient,
+
+but our models, data and services can also help pharma, payors with clinical trials and reduce cost/time-to-market, or help with the adherence problem and nudge/monitor patients taking drugs in the means of customer-facing applicaitons
+
+let me show you a quick demo to explain this better
+
 </div>
 
 </section></section>
@@ -201,12 +222,16 @@ Source: Mortensen et al (2008): Introduction to PK/PD modelling.
 
 Source: Mortensen et al (2008): Introduction to PK/PD modelling.
 
+## > vignette(topic = 'PK/PD models')
+
+<img src="img/pkpd/spherical-cow.gif" width="40%" />
+
+Source: <a href="https://en.wikipedia.org/wiki/Spherical_cow" target="_new">Spherical cow</a>
+
 ## > vignette(topic = 'PK/PD models') {data-transition="slide-in fade-out"}
 
 ::: {.colcontainer}
 :::: {.col}
-
-<br/>
 
 <img src="img/pkpd/comp-1-no-k.png" width="50%" />
 
@@ -221,14 +246,12 @@ Source: Mortensen et al (2008): Introduction to PK/PD modelling.
 ::: {.colcontainer}
 :::: {.col}
 
-<br/>
-
 <img src="img/pkpd/comp-1-no-k.png" width="50%" />
 
 ::::
 :::: {.col}
 
-<br/><br/>
+<br/>
 
 $$C=\frac{A}{V}$$
 
@@ -238,6 +261,16 @@ $$C=\frac{A}{V}$$
 
 ::::
 :::
+
+. . .
+
+Example: 500 mg Panadol ($Vd = 0.9L/kg$) administered for a 70 kg patient
+
+$$C=\frac{500mg}{70kg * 0.9L/kg}=\frac{500mg}{63L}=7.9 mg/L$$
+
+<div class="notes">
+paracetamol distributes rapidly and evenly throughout most tissues and fluids and has a volume of distribution of approximately 0.9L/kg
+</div>
 
 ## > vignette(topic = 'PK/PD models') {data-transition="slide-in fade-out"}
 
@@ -382,7 +415,7 @@ ctp <- purrr::partial(ct, v = 42, k = 0.28, ka = 1.8, f = 0.89) # 70 kgs adult
 :::: {.col}
 
 ```r
-> ctp(t = 1, dose = 1000)
+> ctp(t = 2, dose = 1000)
 [1] 13.64825
 ```
 
@@ -426,7 +459,7 @@ ctp <- purrr::partial(ct, v = 42, k = 0.28, ka = 1.8, f = 0.89) # 70 kgs adult
 :::: {.col}
 
 ```r
-> ctp(t = 1, dose = 1000)
+> ctp(t = 2, dose = 1000)
 [1] 13.64825
 ```
 
@@ -434,7 +467,7 @@ ctp <- purrr::partial(ct, v = 42, k = 0.28, ka = 1.8, f = 0.89) # 70 kgs adult
 :::: {.col}
 
 ```r
-> ctp(t = 1, dose = 1000)
+> ctp(t = 6, dose = 1000)
 [1] 4.676354
 ```
 
@@ -468,14 +501,25 @@ conc[, c1 := ctp(h, 1000, weight =  40)]
 conc[, c2 := ctp(h, 1000, weight =  60)]
 conc[, c3 := ctp(h, 1000, weight =  80)]
 conc[, c4 := ctp(h, 1000, weight = 100)]
-ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) + geom_line() +
-    scale_color_discrete(name = 'Weight', labels = c('74 kg', '40 kg', '60 kg', '80 kg', '100kg')) +
-    theme(legend.position = 'top')
+ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) +
+    geom_line() +
+    scale_color_discrete(name = 'Weight',
+                         labels = c('40 kg', '60 kg', '80 kg', '100kg')) +
+    ylab('Blood concentration forecast') +
+    theme(legend.position = 'top') +
+    geom_hline(yintercept = 10, color = 'black', linetype = 2, size = 1.25) +
+    geom_hline(yintercept = 20, color = 'black', linetype = 2, size = 1.25)
 ```
+
+<!-- ggsave(file = '/home/daroczig/projects/snowl.net/static/slides/budapestml2023-personalized-drug-doses-via-rx-studio/img/pkpd/paracetamol-weights.png', width = 8, height = 4) -->
 
 ## > do.call(ctp, weights)
 
 <img src="img/pkpd/paracetamol-weights.png" width="100%" />
+
+<div class="notes">
+so far, we have been administering the same dose to very different patients, which doesn't make a lot of sense (other than running simulations) .. so let's take a look at a real-life example with actual body weights and drug doses
+</div>
 
 ## > do.call(ctp, family)
 
@@ -487,7 +531,7 @@ ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) + geom_line()
 * HD (64 kg female): 1 pill of Panadol (500 mg)
 * BD (41 kg male): 1 pill of Panadol (500 mg)
 * BD (23 kg female): half pill of Panadol (250 mg)
-* BD (13 kg female): ~~7-8~~5ml Panadol bady (120 mg)
+* BD (13 kg female): ~~7-8~~5ml Panadol baby (120 mg)
 
 . . .
 
@@ -502,9 +546,9 @@ ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) + geom_line()
 ## > do.call(ctp, family)
 
 ```r
-conc[, c1 := ctp(h, 500, weight =  96)]
-conc[, c2 := ctp(h, 500, weight =  64)]
-conc[, c3 := ctp(h, 500, weight =  41)]
+conc[, c1 := ctp(h, 500, weight = 96)]
+conc[, c2 := ctp(h, 500, weight = 64)]
+conc[, c3 := ctp(h, 500, weight = 41)]
 conc[, c4 := ctp(h, 250, weight = 23)]
 conc[, c5 := ctp(h, 120, weight = 13)]
 ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) + geom_line() +
@@ -683,18 +727,77 @@ ggplot(simagg, aes(h)) +
 
 ## > fit(ctp, data.frame(conc = 5))
 
-<img src="img/pkpd/paracetamol-bay.png" width="100%" />
+::: {.colcontainer}
+:::: {.col}
+
+```r
+> 0.60 * 70
+[1] 42
+```
+
+::::
+:::: {.col}
+
+```r
+> bay$par[['v']]
+[1] 51.954
+```
+
+::::
+:::
+
+. . .
+
+<img src="img/pkpd/paracetamol-bay.png" width="80%" style="margin-top:-25px;" />
+
+## > fit(ctp, data.frame(conc = 5))
+
+<img src="img/rx-examples/pk-table-popup.png" width="60%" />
 
 ## > fit(ctp, data.frame(conc = 5))
 
 <img src="img/rx-examples/chinese.png" width="100%" />
 
-placeholder as cannot finish with an image
-
-
 </section></section>
 
+<section data-transition="none" data-transition="fade">
+<section class="titleslide slide level1" data-transition="none">
 
+<h2>&#62; library(chatgpt)</h2>
+
+## > library(chatgpt) {data-transition="fade-in slide-out"}
+
+<img src="img/ai/google-distance-from-nuclear-explosion-tw.jpg" width="55%" />
+
+<div class="notes">
+ready.gov is a site of the U.S. Department of Homeland Security
+</div>
+
+## > library(chatgpt) {data-transition="slide-in fade-out"}
+
+<img src="img/ai/chatgpt-distance-from-nuclear-explosion.png" width="95%" />
+
+## > library(chatgpt) {data-transition="fade-in slide-out"}
+
+<img src="img/ai/chatgpt-distance-from-nuclear-explosion-highlight.png" width="95%" />
+
+## > library(chatgpt) {data-transition="fade-in slide-out"}
+
+<img src="img/ai/chatgpt-plugin.png" width="94%" />
+
+## > library(chatgpt) {data-transition="fade-in slide-out"}
+
+<img src="img/ai/chatgpt-dosing.png" width="94%" />
+
+## > library(chatgpt) {data-transition="fade-in slide-out"}
+
+<img src="img/ai/chatgpt-extract-highlighted.png" width="50%" />
+
+
+
+placeholder as cannot finish with an image
+
+</section></section>
 
 <section data-transition="none">
 <section class="titleslide slide level1" data-transition="none">
