@@ -1,0 +1,712 @@
+---
+title: "Personalizing drug doses<br />in the cloud using R<br/>"
+#subtitle: "Budapest ML Forum"
+author: Gergely Daróczi
+date: "@daroczig"
+output:
+  revealjs::revealjs_presentation:
+    theme: white
+    highlight: tango
+    transition: default
+    includes:
+      in_header: header.html
+    template: template.html
+    reveal_options:
+      slideNumber: true
+      previewLinks: false
+      width: 1244
+    self_contained: false
+    reveal_plugins: ["notes", "zoom"]
+---
+
+## dummy slide
+
+<!--javascript to remove dummy slide-->
+<script>
+document.getElementById("dummy-slide").remove();
+document.getElementById("coverslide").remove();
+</script>
+
+<!--end dummy slide-->
+</section>
+
+<section data-background-image="img/budapestml-bg.jpg"
+         data-background-size="auto 100%"
+         data-background-position="left center"
+         id="coverslide">
+
+<div style="text-align: right; margin-right: -5%; margin-top: -4%;">
+  <img src="img/budapestml2023-logo.png" style="width:42%;" />
+</div>
+
+<h1 class="subtitle" style="color:#333;font-size:1.75em;text-align: right; margin-right: -5%;margin-top:7%;">
+  Personalizing drug doses<br />
+  in the cloud using R<br/>
+</h1>
+
+<h2 class="author" style="color:#333;padding-top:9%;font-size:1.25em;text-align: right !important; margin-right: -5%;">
+  Gergely Daróczi
+</h2>
+
+<h3 class="author" style="color:#333;padding-top:5%;font-size:1.1em;text-align: right !important; margin-right: -5%;padding-top: 0px;font-weight: normal;">
+  Co-founder, CTO<br />
+  Rx Studio Inc.
+</h3>
+
+</section>
+
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out" data-background-image="img/1920x1080-white.jpg" data-background-size="100%">
+<h2>$ whoami</h2>
+
+<a href="https://daroczig.github.io" target="_new">
+ <img src="img/daroczig.github.io.png" width="55%" class="noborder" />
+</a>
+
+<a href="https://daroczig.github.io">daroczig.github.io</a>
+
+## $ whoami {data-transition="slide-in none-out"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/1.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/2.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/3.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/4.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none-in slide-out"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/5.jpg" width="80%" class="noborder" />
+</a>
+
+## $ pwd
+<a href="https://rx.studio" target="_new">
+  <img src="img/rx-studio.png" width="100%" class="noborder" />
+</a>
+
+## $ lsb_release {data-transition="slide-in none-out"}
+
+<img src="img/animgifs/when-the-senior-developer-takes-a-look-at-my-code.gif" width="70%" class="noborder" />
+
+Source: <a href="https://thecodinglove.com/when-the-senior-developer-takes-a-look-at-my-code" target="_new">When the senior developer takes a look at my code</a>
+
+## $ lsb_release {data-transition="none"}
+
+<img src="img/animgifs/when-my-co-worker-wants-to-simplify-code-that-took.gif" width="60%" class="noborder" />
+
+Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took" target="_new">When my co-worker wants to simplify code<br/>that took two days to understand</a>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; Sys.getenv(country = 'USA')</h2>
+
+<img src="img/rx-business/drug-use-2022-usa.png" width="100%" class="noborder" />
+
+Source: The Use of Medicines in the U.S. 2023 (IQVIA)
+
+<div class="notes">
+another area where I don't feel home ... but important to understand the business impact
+
+30% in clinic (so not retail) use ... of which around 10% is inpatient, so overall 200M prescriptions were dispensed in hospitals .. with around 7% risk for adverse reactions, each costing around $15k on average ... this is a serious problem costing hundreds of millions per year .. not even counting the human and social costs.
+</div>
+
+## > Sys.getenv(country = 'USA') {data-transition="slide-in none-out"}
+
+> The estimated annual cost of prescription drug–related morbidity and mortality resulting from nonoptimized medication therapy was $528.4 billion in 2016 US dollars. <span>Watanabe et al, 2018 (doi.org/10.1177/10600280187651)</span>
+
+<img src="img/rx-business/hirsch-table.png" width="90%" class="noborder" />
+
+<div class="notes">
+To be more precise, looking at the here referenced journal article on the "Cost of Prescription Drug–Related Morbidity and Mortality", there is an estimated $500B total cost each year due to suboptimal dosing, adherence etc
+
+again doing the basic math keeping in mind the ~6-7B prescriptions: there is $100 - $1000 risk per prescription.
+</div>
+
+## > Sys.getenv(country = 'USA') {data-transition="none-in slide-out"}
+
+<img src="img/rx-business/hirsch-table.png" width="90%" class="noborder" />
+
+> If medications were prescribed, monitored and taken properly,<br/>we wouldn’t face this cost, and patients would be healthier. <span>Watanabe et al, 2018 (doi.org/10.1177/10600280187651)</span>
+
+## > ??properly {data-transition="slide-in fade-out"}
+
+## > ??properly {data-transition="fade-in slide-out"}
+
+<img src="img/rx-business/ecosystem.png" width="85%" class="noborder" />
+
+
+<div class="notes">
+borrowed from a previous version of a fundraising deck from my cofounder
+-> tech-enabled services
+</div>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+  <h2>&#62; demo('rx.studio')</h2>
+
+<a href="https://youtu.be/MZUrMFbd9TA" target="_new">
+  <img style="margin-bottom:-25px;" src="img/rx-business/demo.png" width="90%" class="noborder" />
+</a>
+
+<a style="margin-top:-25px" href="https://youtu.be/MZUrMFbd9TA" target="_new">youtu.be/MZUrMFbd9TA</a>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+  <h2>&#62; vignette(topic = 'PK/PD models')</h2>
+  <img src="img/pkpd/pkpd-time-curves.png" width="60%" />
+
+<aside class="notes">
+* PK is often described as “what the body does to the drug”
+* PD as “what the drug does to the body”
+</aside>
+
+## > vignette(topic = 'PK/PD models') {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > vignette(topic = 'PK/PD models') {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > vignette(topic = 'PK/PD models') {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/comp-2.png" class="cimg" width="21%" /><img src="img/pkpd/1x1920.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > vignette(topic = 'PK/PD models') {data-transition="none"}
+
+<div class="cbox"><img src="img/pkpd/comp-1.png" class="cimg" width="21%" /><img src="img/pkpd/comp-1-gut.png" class="cimg" width="21%" /><img src="img/pkpd/comp-2.png" class="cimg" width="21%" /><img src="img/pkpd/comp-many.png" class="cimg" width="21%" /></div>
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+## > vignette(topic = 'PK/PD models') {data-transition="slide-in fade-out"}
+
+::: {.colcontainer}
+:::: {.col}
+
+<br/>
+
+<img src="img/pkpd/comp-1-no-k.png" width="50%" />
+
+::::
+:::: {.col}
+
+::::
+:::
+
+## > vignette(topic = 'PK/PD models') {data-transition="fade-in slide-out"}
+
+::: {.colcontainer}
+:::: {.col}
+
+<br/>
+
+<img src="img/pkpd/comp-1-no-k.png" width="50%" />
+
+::::
+:::: {.col}
+
+<br/><br/>
+
+$$C=\frac{A}{V}$$
+
+* $C$ drug concentration
+* $A$ drug amount
+* $V$ volume of distribution
+
+::::
+:::
+
+## > vignette(topic = 'PK/PD models') {data-transition="slide-in fade-out"}
+
+<img src="img/pkpd/comp-1-gut.png" width="25%" />
+
+## > vignette(topic = 'PK/PD models') {data-transition="fade-in slide-out"}
+
+<img src="img/pkpd/comp-1-gut.png" width="25%" />
+
+$$C_{oral}(t)=\frac{A_{oral}(t)}{V}=\frac{K_aFA_0}{V(K_a-K)}(exp(-K \cdot t) - exp(-K_a \cdot t))$$
+
+<div style="display: flex; justify-content: space-around;">
+<div>
+* $C$ drug concentration
+* $A$ drug amount
+* $V$ volume of distribution
+</div>
+<div>
+* $K_a$ absorption constant
+* $K$ elimination rate
+* $F$ bioavailability
+</div>
+</div>
+
+<aside class="notes">
+
+CAV - familiar from the previous model, new items:
+
+* bioavailability: the percentage (or the fraction F) of an administered dose of a xenobiotic that reaches the systemic circulation. Bioavailability is practically 100% (F=1) following an intravenous administration
+</aside>
+
+## > vignette(topic = 'PK/PD models')
+
+<img src="img/pkpd/1x1920.png" width="25%" />
+
+$$C_{oral}(t)=\frac{A_{oral}(t)}{V}=\frac{K_aFA_0}{V(K_a-K)}(exp(-K \cdot t) - exp(-K_a \cdot t))$$
+
+```r
+#' Concentration at a time computed using a one-compartment model (oral dose)
+#' @param t time (hours)
+#' @param dose dose amount (mg)
+#' @param v volume of distribution (l)
+#' @param k elimination rate constant (h^-1)
+#' @param ka absorption rate constant (h^-1)
+#' @param f bioavailability
+#' @return numeric
+#' @export
+ct <- function(t, dose, v, k, ka, f) {
+    (ka * f * dose) / (v * (ka - k)) * (exp(-k * t) - exp(-ka * t))
+}
+```
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1" data-transition="slide-in fade-out">
+  <h2>&#62; example(topic = 'paracetamol')</h2>
+
+<img src="img/pkpd/rawlins1977-pk-table.png" width="65%" />
+
+Source: Rawlins et al. (1977): Paracetamol (simplified)
+
+## > example(topic = 'paracetamol') {data-transition="fade-in fade-out"}
+
+<img src="img/pkpd/rawlins1977-pk-table-annotated.png" width="65%" />
+
+Source: Rawlins et al. (1977): Paracetamol (simplified)
+
+## > example(topic = 'paracetamol') {data-transition="slide-in fade-out"}
+
+```r
+#' Concentration at a time computed using a one-compartment model (oral dose)
+#' @param t time (hours)
+#' @param dose dose amount (mg)
+#' @param v volume of distribution (l)
+#' @param k elimination rate constant (h^-1)
+#' @param ka absorption rate constant (h^-1)
+#' @param f bioavailability
+#' @return numeric
+#' @export
+ct <- function(t, dose, v, k, ka, f) {
+    (ka * f * dose) / (v * (ka - k)) * (exp(-k * t) - exp(-ka * t))
+}
+```
+
+. . .
+
+```r
+ctp <- purrr::partial(ct, v = 42, k = 0.28, ka = 1.8, f = 0.89) # 70 kgs adult
+```
+
+. . .
+
+::: {.colcontainer}
+:::: {.col}
+
+```r
+> ctp(t = 1, dose = 1000)
+[1] 14.81762
+```
+
+::::
+:::: {.col}
+
+
+::::
+:::: {.col}
+
+::::
+:::
+
+## > example(topic = 'paracetamol') {data-transition="fade-in fade-out"}
+
+```r
+#' Concentration at a time computed using a one-compartment model (oral dose)
+#' @param t time (hours)
+#' @param dose dose amount (mg)
+#' @param v volume of distribution (l)
+#' @param k elimination rate constant (h^-1)
+#' @param ka absorption rate constant (h^-1)
+#' @param f bioavailability
+#' @return numeric
+#' @export
+ct <- function(t, dose, v, k, ka, f) {
+    (ka * f * dose) / (v * (ka - k)) * (exp(-k * t) - exp(-ka * t))
+}
+```
+
+```r
+ctp <- purrr::partial(ct, v = 42, k = 0.28, ka = 1.8, f = 0.89) # 70 kgs adult
+```
+
+::: {.colcontainer}
+:::: {.col}
+
+```r
+> ctp(t = 1, dose = 1000)
+[1] 14.81762
+```
+
+::::
+:::: {.col}
+
+```r
+> ctp(t = 1, dose = 1000)
+[1] 13.64825
+```
+
+::::
+:::: {.col}
+
+::::
+:::
+
+
+## > example(topic = 'paracetamol') {data-transition="fade-in slide-out"}
+
+```r
+#' Concentration at a time computed using a one-compartment model (oral dose)
+#' @param t time (hours)
+#' @param dose dose amount (mg)
+#' @param v volume of distribution (l)
+#' @param k elimination rate constant (h^-1)
+#' @param ka absorption rate constant (h^-1)
+#' @param f bioavailability
+#' @return numeric
+#' @export
+ct <- function(t, dose, v, k, ka, f) {
+    (ka * f * dose) / (v * (ka - k)) * (exp(-k * t) - exp(-ka * t))
+}
+```
+
+```r
+ctp <- purrr::partial(ct, v = 42, k = 0.28, ka = 1.8, f = 0.89) # 70 kgs adult
+```
+
+::: {.colcontainer}
+:::: {.col}
+
+```r
+> ctp(t = 1, dose = 1000)
+[1] 14.81762
+```
+
+::::
+:::: {.col}
+
+```r
+> ctp(t = 1, dose = 1000)
+[1] 13.64825
+```
+
+::::
+:::: {.col}
+
+```r
+> ctp(t = 1, dose = 1000)
+[1] 4.676354
+```
+
+::::
+:::
+
+
+## > example(topic = 'paracetamol')
+
+```r
+library(data.table); library(ggplot2)
+conc <- data.table(h = seq(0, 24, by = 0.1))
+conc[, c := ctp(h, 1000)]
+ggplot(conc, aes(h, c)) + geom_line()
+```
+
+. . .
+
+<img src="img/pkpd/paracetamol-1000.png" width="65%" />
+
+## > do.call(ctp, weights)
+
+```r
+ctp <- function(t, dose, weight, k = 0.28, ka = 1.8, f = 0.89) {
+    ct(t, dose, v = weight * 0.6, k, ka, f)
+}
+```
+
+```r
+conc[, c1 := ctp(h, 1000, weight =  40)]
+conc[, c2 := ctp(h, 1000, weight =  60)]
+conc[, c3 := ctp(h, 1000, weight =  80)]
+conc[, c4 := ctp(h, 1000, weight = 100)]
+ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) + geom_line() +
+    scale_color_discrete(name = 'Weight', labels = c('74 kg', '40 kg', '60 kg', '80 kg', '100kg')) +
+    theme(legend.position = 'top')
+```
+
+## > do.call(ctp, weights)
+
+<img src="img/pkpd/paracetamol-weights.png" width="100%" />
+
+## > do.call(ctp, family)
+
+<div style="text-align:left;">
+**An anonymized family:**
+</div>
+
+* GD (96 kg male): 1 pill of Panadol (500 mg)
+* HD (64 kg female): 1 pill of Panadol (500 mg)
+* BD (41 kg male): 1 pill of Panadol (500 mg)
+* BD (23 kg female): half pill of Panadol (250 mg)
+* BD (13 kg female): ~~7-8~~5ml Panadol bady (120 mg)
+
+. . .
+
+<div style="text-align:left;">
+**Therapeutic goals for paracetamol:**
+</div>
+
+* sub-therapeutic range: < 10 mg/L concentrations
+* therapeutic range: ≥ 10 and ≤ 20 mg/L concentrations
+* toxic: > 75 mg/L concentrations
+
+## > do.call(ctp, family)
+
+```r
+conc[, c1 := ctp(h, 500, weight =  96)]
+conc[, c2 := ctp(h, 500, weight =  64)]
+conc[, c3 := ctp(h, 500, weight =  41)]
+conc[, c4 := ctp(h, 250, weight = 23)]
+conc[, c5 := ctp(h, 120, weight = 13)]
+ggplot(melt(conc, id.vars = 'h'), aes(h, value, color = variable)) + geom_line() +
+    scale_color_discrete(name = 'Weight', labels = c('DG', 'DH', 'DB', 'DB', 'DB')) +
+    theme(legend.position = 'top') +
+    geom_hline(yintercept = 10, color = 'black', linetype = 2, size = 1.25)
+```
+
+<!--
+ggsave(file = '/home/daroczig/projects/snowl.net/static/slides/budapestml2023-personalized-drug-doses-via-rx-studio/img/pkpd/daroczi.png', width = 8, height = 4)
+-->
+
+## > do.call(ctp, family)
+
+<img src="img/pkpd/daroczi.png" width="100%" />
+
+## > do.call(ctp, family, ndoses = 4)
+
+$$C_{MD}(t)=\sum_{n=0}^{N-1} C_{oral}(t-nτ)$$
+
+* $N$ number of doses
+* $τ$ dosing interval
+
+Source: Mortensen et al (2008): Introduction to PK/PD modelling.
+
+. . .
+
+```r
+ctpm <- function(t, doses, interval, dose, weight) {
+    sum(sapply(0:(doses-1), function(n) ctp(t - n*interval, dose, weight)))
+}
+```
+
+## > do.call(ctp, family, ndoses = 4)
+
+```r
+ctpm <- function(t, doses, interval, dose, weight) {
+    sum(sapply(0:(doses-1), function(n) ctp(t - n*interval, dose, weight)))
+}
+
+conc <- data.table(h = seq(0, 24, by = 0.1))
+conc[, doses := pmin(h %/% 4, 3) + 1]
+conc[, c1 := ctpm(h, doses, 4, 500, weight =  96), by = .(h, doses)]
+conc[, c2 := ctpm(h, doses, 4, 500, weight =  64), by = .(h, doses)]
+conc[, c3 := ctpm(h, doses, 4, 500, weight =  41), by = .(h, doses)]
+conc[, c4 := ctpm(h, doses, 4, 250, weight =  23), by = .(h, doses)]
+conc[, c5 := ctpm(h, doses, 4, 120, weight =  13), by = .(h, doses)]
+
+ggplot(melt(conc[, -'doses'], id.vars = 'h'), aes(h, value, color = variable)) +
+    geom_line() +
+    scale_color_discrete(name = 'Weight', labels = c('DG', 'DH', 'DB', 'DB', 'DB')) +
+    theme(legend.position = 'top') +
+    geom_hline(yintercept = 10, color = 'black', linetype = 2, size = 1.25) +
+    geom_hline(yintercept = 20, color = 'black', linetype = 2, size = 1.25)
+```
+
+## > do.call(ctp, family, ndoses = 4)
+
+<img src="img/pkpd/daroczi-md.png" width="100%" />
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+<h2>&#62; sd(do.call(ctp, rlnorm(2000)))</h2>
+
+<img src="img/pkpd/rawlins1977-pk-table-annotated.png" width="65%" />
+
+Source: Rawlins et al. (1977): Paracetamol (simplified)
+
+## > sd(do.call(ctp, rlnorm(2000)))
+
+```r
+weight <- 70
+meanlog <- log((weight * 0.6)^2 / sqrt(0.07^2 + (weight * 0.6)^2))
+sdlog <- sqrt(log(1 + (0.07^2 / (weight * 0.6)^2)))
+ggplot(data.frame(x = rlnorm(n = 2000L, meanlog, sdlog))) +
+    geom_histogram(aes(x)) +
+    ggtitle('Volume of distribution for 70 kg') + xlab('')
+```
+
+. . .
+
+<img src="img/pkpd/hist-ggplot.png" width="65%" />
+
+## > sd(do.call(ctp, rlnorm(2000)))
+
+<!-- conc <- data.table(h = seq(0, 24, by = 0.1)) -->
+<!-- conc[, c := ctp(h, 1000, weight = weight)] -->
+<!-- (G <- ggplot(conc, aes(h, c)) + geom_line(color = 'black') + theme_bw()) -->
+
+ ```r
+for (i in 1:250) {
+    meanlog <- log((weight * 0.6)^2 / sqrt(0.07^2 + (weight * 0.6)^2))
+    sdlog <- sqrt(log(1 + (0.07^2 / (weight * 0.6)^2)))
+    conc <- copy(conc)[, c := ct(h, 1000, v = rlnorm(n = 1L, meanlog, sdlog),
+                                 k = 0.28, ka = 1.8, f = 0.89)]
+    (G <- G + geom_line(data = conc, color = 'gray', alpha = 0.1))
+}
+G + geom_line(color = 'black') + ggtitle('250 simulations')
+```
+
+<img src="img/pkpd/paracetamol-n250.png" width="60%" />
+
+## > sd(do.call(ctp, rlnorm(2000)))
+
+```r
+simdata <- rbindlist(lapply(1:2000, function(i) {
+    meanlog <- log((weight * 0.6)^2 / sqrt(0.07^2 + (weight * 0.6)^2))
+    sdlog <- sqrt(log(1 + (0.07^2 / (weight * 0.6)^2))) * 5
+    as.data.frame(matrix(
+        ct(seq(0, 24, by = 0.1), 1000, v = rlnorm(n = 1L, meanlog, sdlog),
+           k = 0.28, ka = 1.8, f = 0.89),
+        nrow = 1))
+    }))
+
+simagg <- data.frame(
+    h = seq(0, 24, by = 0.1),
+    min = apply(simdata, 2, FUN = min),
+    mean = apply(simdata, 2, FUN = mean),
+    max = apply(simdata, 2, FUN = max))
+
+ggplot(simagg, aes(h)) +
+    geom_ribbon(aes(ymin=min, ymax=max), fill = 'gray') +
+    geom_line(aes(y = mean)) +
+    ylab('Blood concentration forecast') +
+    theme_bw() + theme(legend.position = 'top')
+```
+
+## > sd(do.call(ctp, rlnorm(2000))) {data-transition="slide-in none-out"}
+
+<img src="img/pkpd/paracetamol-simagg.png" width="100%" />
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1" data-transition="none-in slide-out">
+<h2>&#62; fit(ctp, data.frame(conc = 5))</h2>
+
+<!-- ggplot(simagg, aes(h)) + -->
+<!--     geom_ribbon(aes(ymin=min, ymax=max), fill = 'gray') + -->
+<!--     geom_line(aes(y = mean)) + -->
+<!--     ylab('Blood concentration forecast') + -->
+<!--     theme_bw() + theme(legend.position = 'top') + -->
+<!--     geom_point(aes(x=5, y=5), color = 'orange', size = 3) -->
+
+<img src="img/pkpd/paracetamol-simagg-hist.png" width="100%" />
+
+## > fit(ctp, data.frame(conc = 5))
+
+```r
+library(FME)
+
+concentrations <- data.table(x = 5, y = 5)
+model_function <- function(params, x) {
+    ct(x, dose = 1000, v = params['v'], k = 0.28, ka = 1.8, f = 0.89)
+}
+cost_function <- function(params) {
+    out <- model_function(params, concentrations$x)
+    concentrations$y - out
+}
+
+bay <- modFit(f = cost_function, p = c(v = weight * 0.6), method = 'Newton')
+bayc <- copy(conc)[, c := ct(seq(0, 24, by = 0.1), 1000, v = bay$par[['v']],
+           k = 0.28, ka = 1.8, f = 0.89)]
+
+ggplot(simagg, aes(h)) +
+    geom_ribbon(aes(ymin=min, ymax=max), fill = 'gray') +
+    geom_line(aes(y = mean)) +
+    geom_point(aes(x=5, y=5), color = 'orange', size = 3) +
+    geom_line(data = bayc, aes(y = c), color = 'orange') +
+    ylab('Blood concentration forecast') +
+    theme_bw() + theme(legend.position = 'top')
+
+```
+
+## > fit(ctp, data.frame(conc = 5))
+
+<img src="img/pkpd/paracetamol-bay.png" width="100%" />
+
+## > fit(ctp, data.frame(conc = 5))
+
+<img src="img/rx-examples/chinese.png" width="100%" />
+
+placeholder as cannot finish with an image
+
+
+</section></section>
+
+
+
+<section data-transition="none">
+<section class="titleslide slide level1" data-transition="none">
+    <!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Jun%25208%252011%253A50%253A00%25202023%250A%250A%253E%2520visit%28%27https%253A%252F%252Frx.studio%27%29%250A%253E%2520email%28%27daroczig%2540rx.studio%27%29%250A%253E%2520follow%28%27%2540daroczig%27%29 -->
+   <img src="img/contact-1.png" width="80%" />
+</section>
+
+<section data-transition="none">
+  <section class="titleslide slide level1" data-transition="none">
+  <img src="img/contact-2.png" width="80%" />
+</section>
+
+</section>
+
+
