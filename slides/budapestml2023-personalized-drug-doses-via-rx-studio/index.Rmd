@@ -811,7 +811,3 @@ placeholder as cannot finish with an image
 </section>
 
 </section>
-
-
-
-Thank you very much for that qustion, Csaba! And yes, we do have related plans, and I hope I can share more about these soon, but in short: besides relying on CGMs, which already has a pretty good industry coverage, we are looking into other drugs as well, e.g. reducing the titration time of hypertension drugs by monitoring patients at home via mobile applications, and also nudging the users to adhere with the medication plan.
