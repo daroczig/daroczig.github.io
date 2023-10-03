@@ -635,26 +635,13 @@ ggplot(simagg, aes(h)) +
 
 <section>
 <section class="titleslide slide level1">
-  <h2>&#62; demo('webR')</h2>
+  <h2>&#62; demo('shiny')</h2>
 
- <div>
-  <pre><code id="out">Loading webR, please wait...</code></pre>
-  <input spellcheck="false" autocomplete="off" id="input" type="text">
-  <button onclick="globalThis.sendInput()" id="run">Run</button>
- </div>
+  <img src="img/tdmx-demo.png" width="85%" />
 
- <script type="module">
-   import { WebR } from './webr.mjs';
-   const webR = new WebR();
-   await webR.init();
-   document.getElementById('out').innerHTML = 'webR loaded';
+## > demo('webR')
 
-   /* Send input on Enter key */
-   input.addEventListener(
-     "keydown",
-     (evt) => {if(evt.keyCode === 13) globalThis.sendInput()}
-   );
-  </script>
+<img src="img/webr-demo.png" width="75%" />
 
 </section></section>
 </section></section>
@@ -671,54 +658,10 @@ ggplot(simagg, aes(h)) +
 
 </section></section>
 
-<section data-transition="none" data-transition="fade">
-<section class="titleslide slide level1" data-transition="none">
-
-<h2>&#62; library(chatgpt)</h2>
-
-## > library(chatgpt) {data-transition="fade-in slide-out"}
-
-<img src="img/ai/google-distance-from-nuclear-explosion-tw.jpg" width="55%" />
-
-<div class="notes">
-ready.gov is a site of the U.S. Department of Homeland Security
-</div>
-
-## > library(chatgpt) {data-transition="slide-in fade-out"}
-
-<img src="img/ai/chatgpt-distance-from-nuclear-explosion.png" width="95%" />
-
-## > library(chatgpt) {data-transition="fade-in slide-out"}
-
-<img src="img/ai/chatgpt-distance-from-nuclear-explosion-highlight.png" width="95%" />
-
-## > library(chatgpt) {data-transition="fade-in slide-out"}
-
-<img src="img/ai/chatgpt-plugin.png" width="94%" />
-
-## > library(chatgpt) {data-transition="fade-in slide-out"}
-
-<img src="img/ai/chatgpt-dosing.png" width="94%" />
-
-## > library(chatgpt) {data-transition="fade-in slide-out"}
-
-<img src="img/ai/chatgpt-extract-highlighted.png" width="50%" />
-
-
-
-placeholder as cannot finish with an image
-
-</section></section>
-
-<section data-transition="none">
-<section class="titleslide slide level1" data-transition="none">
-    <!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Jun%25208%252011%253A50%253A00%25202023%250A%250A%253E%2520visit%28%27https%253A%252F%252Frx.studio%27%29%250A%253E%2520email%28%27daroczig%2540rx.studio%27%29%250A%253E%2520follow%28%27%2540daroczig%27%29 -->
-   <img src="img/contact-1.png" width="80%" />
-</section>
-
-<section data-transition="none">
-  <section class="titleslide slide level1" data-transition="none">
-  <img src="img/contact-2.png" width="80%" />
+<section>
+<section class="titleslide slide level1">
+    <!-- https://carbon.now.sh/?bg=rgba%28255%2C255%2C255%2C1%29&t=nord&wt=none&l=r&width=680&ds=false&dsyoff=20px&dsblur=68px&wc=true&wa=true&pv=56px&ph=56px&ln=false&fl=1&fm=Hack&fs=18px&lh=161%25&si=false&es=2x&wm=false&code=%253E%2520q%28save%2520%253D%2520%27ask%27%29%250AProcess%2520R%2520finished%2520at%2520Oct%25203%252019%253A15%253A00%25202023%250A%250A%253E%2520visit%28%27https%253A%252F%252Frx.studio%27%29%250A%253E%2520email%28%27daroczig%2540rx.studio%27%29%250A%253E%2520follow%28%27%2540daroczig%27%29 -->
+   <img src="img/contact.png" width="80%" />
 </section>
 
 </section>
