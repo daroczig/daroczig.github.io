@@ -53,6 +53,11 @@ document.getElementById("coverslide").remove();
   Rx Studio Inc.
 </h3>
 
+<h3 class="author shaded" style="color:#eee;padding-top:0%;font-size:1.1em;text-align: center !important; padding-top: 20px;font-weight: normal;">
+  Slides: <a href="https://daroczig.github.io/talks/" target="_blank"
+             style="text-decoration: underline; color: white;">daroczig.github.io</a>
+</h3>
+
 <div class="notes">
 precision dosing application, heavily building on R in a HIPAA compliant environment, and I will try to share an introduction to the related models and some R code as well, so that interested parties can get involved
 </div>
