@@ -646,6 +646,8 @@ ggplot(simagg, aes(h)) +
  <script type="module">
    import { WebR } from './webr.mjs';
    const webR = new WebR();
+   await webR.init();
+   document.getElementById('out').innerHTML = 'webR loaded';
 
    /* Send input on Enter key */
    input.addEventListener(
