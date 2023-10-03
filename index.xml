@@ -6,7 +6,7 @@
     <description>Recent content on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Thu, 08 Jun 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 03 Oct 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>daroczig/CEU-R-lab</title>
       <link>https://daroczig.github.io/repos/ceu-r-lab/</link>
@@ -242,6 +242,15 @@
     </item>
     
     <item>
+      <title>Beyond Shiny: an R-based Precision Dosing Web Application</title>
+      <link>https://daroczig.github.io/talks/2023-10-03/</link>
+      <pubDate>Tue, 03 Oct 2023 00:00:00 +0000</pubDate>
+      
+      <guid>https://daroczig.github.io/talks/2023-10-03/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Personalizing drug doses in the cloud using R</title>
       <link>https://daroczig.github.io/talks/202306-budapestml/</link>
       <pubDate>Thu, 08 Jun 2023 00:00:00 +0000</pubDate>
@@ -316,7 +325,7 @@
     <item>
       <title>Calling Python from R to generate image captions</title>
       <link>https://daroczig.github.io/talks/2022-06-29/</link>
-      <pubDate>Tue, 11 Oct 2022 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 29 Jun 2022 00:00:00 +0000</pubDate>
       
       <guid>https://daroczig.github.io/talks/2022-06-29/</guid>
       <description></description>
