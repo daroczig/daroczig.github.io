@@ -702,5 +702,24 @@ ggplot(simagg, aes(h)) +
 ::::
 :::
 
+. . .
+
+::: {.colcontainer}
+:::: {.col}
+
+<img src="https://cultofthepartyparrot.com/parrots/hd/wfhparrot.gif" height=64 />
+
+::::
+:::: {.col}
+
+<img src="https://cultofthepartyparrot.com/parrots/pizzaparrot.gif" height=64 >
+
+::::
+:::: {.col}
+
+<img src="https://cultofthepartyparrot.com/parrots/hd/wineparrot.gif" height=64 />
+::::
+:::
+
 </section>
 </section>
