@@ -1,0 +1,128 @@
+<section>
+<section class="titleslide slide level1" data-transition="slide-in none-out" data-background-image="img/1920x1080-white.jpg" data-background-size="100%">
+<h2>$ whoami</h2>
+
+<a href="https://daroczig.github.io" target="_new">
+ <img src="img/daroczig.github.io.png" width="55%" class="noborder" />
+</a>
+
+<a href="https://daroczig.github.io">daroczig.github.io</a>
+
+## $ whoami {data-transition="slide-in none-out"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/1.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/2.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/3.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/4.jpg" width="80%" class="noborder" />
+</a>
+
+## $ whoami {data-transition="none-in slide-out"}
+<a href="https://daroczig.github.io" target="_new">
+  <img src="img/whoami/5.jpg" width="80%" class="noborder" />
+</a>
+
+## $ pwd
+<a href="https://rx.studio" target="_new">
+  <img src="img/rx-studio.png" width="100%" class="noborder" />
+</a>
+
+## $ lsb_release {data-transition="slide-in none-out"}
+
+<img src="img/animgifs/when-the-senior-developer-takes-a-look-at-my-code.gif" width="70%" class="noborder" />
+
+Source: <a href="https://thecodinglove.com/when-the-senior-developer-takes-a-look-at-my-code" target="_new">When the senior developer takes a look at my code</a>
+
+## $ lsb_release {data-transition="none"}
+
+<img src="img/animgifs/when-my-co-worker-wants-to-simplify-code-that-took.gif" width="60%" class="noborder" />
+
+Source: <a href="https://thecodinglove.com/when-my-co-worker-wants-to-simplify-code-that-took" target="_new">When my co-worker wants to simplify code<br/>that took two days to understand</a>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1" data-transition="fade-in fade-out">
+<h2>&#62; Sys.getenv(country = 'USA')</h2>
+
+<img src="img/rx-business/drug-use-2022-usa.png" width="100%" class="noborder" />
+
+Source: The Use of Medicines in the U.S. 2023 (IQVIA)
+
+<div class="notes">
+before we get to the actual life science and modeling part, I also wanted to highlight the importance of this topic for the business folks in the audience: well, there are a quite a few and increasing numbers on this slide, which always proves a point ... but let's just focus on one here:
+</div>
+
+## > Sys.getenv(country = 'USA') {data-transition="fade-in none-out"}
+
+<img src="img/rx-business/drug-use-2022-usa-zoomin.png" width="70%" class="noborder" />
+
+<div class="notes">
+there are more than 6 BILLION prescriptions per year in ht US ... although 2/3 is in retail, and only around 3% are dispensed in hospitals with the highest risks for adverse reactions, there's is a very sizeable risk for each of these prescriptions in the range of a few hundred to thousands of dollars .. overall adding up hundreds of millions per year .. not even counting the human and social costs.
+</div>
+
+## > Sys.getenv(country = 'USA') {data-transition="slide-in none-out"}
+
+> The estimated annual cost of prescription drug–related morbidity and mortality resulting from nonoptimized medication therapy was $528.4 billion in 2016 US dollars. <span>Watanabe et al, 2018 (doi.org/10.1177/10600280187651)</span>
+
+<img src="img/rx-business/hirsch-table.png" width="90%" class="noborder" />
+
+<div class="notes">
+To be more precise, looking at the here referenced journal article on the "Cost of Prescription Drug–Related Morbidity and Mortality", there is an estimated $500B total cost each year due to suboptimal dosing, adherence etc
+
+again doing the basic math keeping in mind the ~6-7B prescriptions: there is $100 - $1000 risk per prescription.
+</div>
+
+## > Sys.getenv(country = 'USA') {data-transition="none-in slide-out"}
+
+<img src="img/rx-business/hirsch-table.png" width="90%" class="noborder" />
+
+> If medications were prescribed, monitored and taken properly,<br/>we wouldn’t face this cost, and patients would be healthier. <span>Watanabe et al, 2018 (doi.org/10.1177/10600280187651)</span>
+
+## > ??properly {data-transition="slide-in fade-out"}
+
+## > ??properly {data-transition="fade-in slide-out"}
+
+<img src="img/rx-business/ecosystem.png" width="85%" class="noborder" />
+
+<div class="notes">
+borrowed from a previous version of a fundraising deck from my cofounder
+
+we are doing tech-enabled services to help with the related problems at multiple levels
+
+first: when a drug is released to the market after a series of clinical trials including a couple hundreds of patients data, there's just not enough coverage to see how the drug will work in the remaining 7B people's body. this can be solved by collecting real-world evidence and data, to build better dosing models -- what clinicians and researchers have been doing for decades now, and publishing their results
+
+we also build custom models for local or special populations as needed, and make all these available in our platform in the means of various APIs
+
+these are then used to power our primary and secondary products, e.g. the standalone and EHR applications for precision dosing, which means that clinicians are using our apps to find the optimal dose for a patient,
+
+but our models, data and services can also help pharma, payors with clinical trials and reduce cost/time-to-market, or help with the adherence problem and nudge/monitor patients taking drugs in the means of customer-facing applicaitons
+
+let me show you a quick demo to explain this better
+
+</div>
+
+</section></section>
+
+<section>
+<section class="titleslide slide level1">
+  <h2>&#62; demo('rx.studio')</h2>
+
+<a href="https://youtu.be/MZUrMFbd9TA" target="_new">
+  <img style="margin-bottom:-25px;" src="img/rx-business/demo.png" width="90%" class="noborder" />
+</a>
+
+<a style="margin-top:-25px" href="https://youtu.be/MZUrMFbd9TA" target="_new">youtu.be/MZUrMFbd9TA</a>
+
+</section></section>
