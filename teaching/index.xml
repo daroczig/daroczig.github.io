@@ -6,744 +6,581 @@
     <description>Recent content in University classes and R training materials on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate><atom:link href="https://daroczig.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://daroczig.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Mastering R Skills</title>
       <link>https://daroczig.github.io/teaching/2022-ceu-mastering-r/</link>
       <pubDate>Mon, 22 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2022-ceu-mastering-r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Use-case Seminars</title>
       <link>https://daroczig.github.io/teaching/2022-ceu-use-cases/</link>
       <pubDate>Mon, 08 May 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2022-ceu-use-cases/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 4: Data Visualization in Production with Shiny</title>
       <link>https://daroczig.github.io/teaching/2022-ceu-dv3/</link>
       <pubDate>Mon, 24 Apr 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2022-ceu-dv3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Engineering 3: Using R in Production</title>
       <link>https://daroczig.github.io/teaching/2022-ceu-r-in-prod/</link>
       <pubDate>Mon, 06 Mar 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2022-ceu-r-in-prod/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 2: Practical Data Visualization with R</title>
       <link>https://daroczig.github.io/teaching/2022-ceu-dv2/</link>
       <pubDate>Mon, 09 Jan 2023 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2022-ceu-dv2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Vállalati Pénzügyi Információs Rendszerek: Többdimenziós eljárások R-ben</title>
       <link>https://daroczig.github.io/teaching/2022-bce/</link>
       <pubDate>Mon, 05 Dec 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2022-bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 4: Data Visualization in Production with Shiny</title>
       <link>https://daroczig.github.io/teaching/2021-ceu-dv3/</link>
       <pubDate>Wed, 20 Apr 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2021-ceu-dv3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Engineering 3: Using R in Production</title>
       <link>https://daroczig.github.io/teaching/2021-ceu-r-in-prod/</link>
       <pubDate>Mon, 21 Feb 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2021-ceu-r-in-prod/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 2: Practical Data Visualization with R</title>
       <link>https://daroczig.github.io/teaching/2021-ceu-dv2/</link>
       <pubDate>Wed, 12 Jan 2022 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2021-ceu-dv2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Use-case Seminars</title>
       <link>https://daroczig.github.io/teaching/2021-ceu-use-cases/</link>
       <pubDate>Wed, 24 Nov 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2021-ceu-use-cases/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 4: Data Visualization in Production with Shiny</title>
       <link>https://daroczig.github.io/teaching/2020-ceu-dv3/</link>
       <pubDate>Tue, 29 Jun 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2020-ceu-dv3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mastering R Skills</title>
       <link>https://daroczig.github.io/teaching/2020-ceu-mastering-r/</link>
       <pubDate>Wed, 05 May 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2020-ceu-mastering-r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Engineering 4: Using R in Production</title>
       <link>https://daroczig.github.io/teaching/2020-ceu-r-in-prod/</link>
       <pubDate>Tue, 23 Mar 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2020-ceu-r-in-prod/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 2: Practical Data Visualization with R</title>
       <link>https://daroczig.github.io/teaching/2020-ceu-dv2/</link>
       <pubDate>Wed, 10 Mar 2021 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2020-ceu-dv2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Use-case Seminars</title>
       <link>https://daroczig.github.io/teaching/2020-ceu-use-cases/</link>
       <pubDate>Wed, 25 Nov 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2020-ceu-use-cases/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 3: Data Visualization in Production with Shiny</title>
       <link>https://daroczig.github.io/teaching/2019-ceu-dv3/</link>
       <pubDate>Mon, 25 May 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2019-ceu-dv3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mastering R Skills</title>
       <link>https://daroczig.github.io/teaching/2019-ceu-mastering-r/</link>
       <pubDate>Wed, 15 Apr 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2019-ceu-mastering-r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Engineering 4: Using R in Production</title>
       <link>https://daroczig.github.io/teaching/2019-ceu-r-in-prod/</link>
       <pubDate>Mon, 09 Mar 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2019-ceu-r-in-prod/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Use-case Seminars</title>
       <link>https://daroczig.github.io/teaching/2019-ceu-use-cases/</link>
       <pubDate>Mon, 17 Feb 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2019-ceu-use-cases/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Visualization 2: Practical Data Visualization with R</title>
       <link>https://daroczig.github.io/teaching/2019-ceu-dv2/</link>
       <pubDate>Wed, 08 Jan 2020 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2019-ceu-dv2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Vállalati Pénzügyi Információs Rendszerek: Többdimenziós eljárások R-ben</title>
       <link>https://daroczig.github.io/teaching/2019-bce/</link>
       <pubDate>Mon, 18 Nov 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2019-bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Advanced Analytics: haladó R oktatás</title>
       <link>https://daroczig.github.io/teaching/2019-06-egis/</link>
       <pubDate>Thu, 13 Jun 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2019-06-egis/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Use-case Seminars</title>
       <link>https://daroczig.github.io/teaching/2018-2-ceu-use-cases/</link>
       <pubDate>Wed, 08 May 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-2-ceu-use-cases/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mastering R</title>
       <link>https://daroczig.github.io/teaching/2018-2-ceu-mastering-r/</link>
       <pubDate>Mon, 29 Apr 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-2-ceu-mastering-r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Engineering 3: Infrastructure Applications</title>
       <link>https://daroczig.github.io/teaching/2018-2-ceu-r-prod/</link>
       <pubDate>Wed, 20 Mar 2019 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-2-ceu-r-prod/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Vállalati Pénzügyi Információs Rendszerek: Többdimenziós eljárások R-ben</title>
       <link>https://daroczig.github.io/teaching/2018-11-19_bce/</link>
       <pubDate>Mon, 19 Nov 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-11-19_bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>R Skills</title>
       <link>https://daroczig.github.io/teaching/2018-1-ceu-r-skills/</link>
       <pubDate>Fri, 02 Nov 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-1-ceu-r-skills/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>A Practical Introduction to Data Science and Engineering with R</title>
       <link>https://daroczig.github.io/teaching/2018-10-31-crunch-workshop/</link>
       <pubDate>Wed, 31 Oct 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-10-31-crunch-workshop/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Analysis 1a: Exploration</title>
       <link>https://daroczig.github.io/teaching/2018-1-ceu-r/</link>
       <pubDate>Mon, 17 Sep 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-1-ceu-r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Adatbányász alapozó tanfolyam</title>
       <link>https://daroczig.github.io/teaching/2018-04-03-te/</link>
       <pubDate>Tue, 03 Apr 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-04-03-te/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Bevezetés az R statisztikai programozási nyelvbe</title>
       <link>https://daroczig.github.io/teaching/2018-03-15-richter/</link>
       <pubDate>Thu, 15 Mar 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2018-03-15-richter/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Engineering 3: Data Infrastructure in Production</title>
       <link>https://daroczig.github.io/teaching/2017-2-ceu-r-prod/</link>
       <pubDate>Sun, 18 Feb 2018 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2017-2-ceu-r-prod/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>A Practical Introduction to Data Science and Engineering with R</title>
       <link>https://daroczig.github.io/teaching/2017-10-18_crunch_r-workshop/</link>
       <pubDate>Wed, 18 Oct 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2017-10-18_crunch_r-workshop/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Vállalati Pénzügyi Információs Rendszerek: Többdimenziós eljárások R-ben</title>
       <link>https://daroczig.github.io/teaching/2017-10-02_bce/</link>
       <pubDate>Mon, 02 Oct 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2017-10-02_bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Data Analysis 1a: Foundation of Data management in R</title>
       <link>https://daroczig.github.io/teaching/2017-1-ceu/</link>
       <pubDate>Sun, 17 Sep 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2017-1-ceu/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Visual Methods to Teach Multivariate Statistics with R</title>
       <link>https://daroczig.github.io/teaching/2017-09-09_szeged_visual-methods/</link>
       <pubDate>Sat, 09 Sep 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2017-09-09_szeged_visual-methods/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>R nyelv tanfolyam</title>
       <link>https://daroczig.github.io/teaching/2017-09-05-te/</link>
       <pubDate>Tue, 05 Sep 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2017-09-05-te/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Tools for Analytics Lab - R-track</title>
       <link>https://daroczig.github.io/teaching/2017-2-ceu/</link>
       <pubDate>Sat, 28 Jan 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2017-2-ceu/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Vállalati Pénzügyi Információs Rendszerek: Többdimenziós eljárások R-ben</title>
       <link>https://daroczig.github.io/teaching/2016-10-24_bce/</link>
       <pubDate>Mon, 24 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2016-10-24_bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Introduction to R</title>
       <link>https://daroczig.github.io/teaching/2016-10-22_budapest-bi-forum_r-workshop/</link>
       <pubDate>Sat, 22 Oct 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2016-10-22_budapest-bi-forum_r-workshop/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Tools for Analytics Lab - R-track</title>
       <link>https://daroczig.github.io/teaching/2016-2-ceu/</link>
       <pubDate>Mon, 25 Jan 2016 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2016-2-ceu/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>R markdown</title>
       <link>https://daroczig.github.io/teaching/2015-06-30_user_r-markdown-tutorial/</link>
       <pubDate>Tue, 30 Jun 2015 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2015-06-30_user_r-markdown-tutorial/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Többdimenziós adatelemzés R-ben</title>
       <link>https://daroczig.github.io/teaching/2014-12-08-bce/</link>
       <pubDate>Mon, 08 Dec 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2014-12-08-bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Introduction to R</title>
       <link>https://daroczig.github.io/teaching/2014-11-25_budapest_bi_forum-r-workshop/</link>
       <pubDate>Tue, 25 Nov 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2014-11-25_budapest_bi_forum-r-workshop/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Machine learning with R</title>
       <link>https://daroczig.github.io/teaching/2014-11-17_r-insights/</link>
       <pubDate>Mon, 17 Nov 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2014-11-17_r-insights/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Vállalati Pénzügyi Információs Rendszerek: R</title>
       <link>https://daroczig.github.io/teaching/2014-10-20_bce/</link>
       <pubDate>Mon, 20 Oct 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2014-10-20_bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Concepts of R: Intro, Graphics and Tables</title>
       <link>https://daroczig.github.io/teaching/2014-09-10-szakkoli/</link>
       <pubDate>Wed, 10 Sep 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2014-09-10-szakkoli/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Bevezetés az R nyelvbe</title>
       <link>https://daroczig.github.io/teaching/2014-06-11_keler/</link>
       <pubDate>Wed, 11 Jun 2014 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2014-06-11_keler/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 1.</title>
       <link>https://daroczig.github.io/teaching/2012-2-matstat1/</link>
       <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2012-2-matstat1/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 3.</title>
       <link>https://daroczig.github.io/teaching/2012-2-matstat3/</link>
       <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2012-2-matstat3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Quantitative methods</title>
       <link>https://daroczig.github.io/teaching/2012-2-bce/</link>
       <pubDate>Fri, 01 Feb 2013 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2012-2-bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Gazdasági matematika</title>
       <link>https://daroczig.github.io/teaching/2012-1-gazdasagi-matek/</link>
       <pubDate>Sat, 01 Sep 2012 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2012-1-gazdasagi-matek/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 2.</title>
       <link>https://daroczig.github.io/teaching/2012-1-matstat2/</link>
       <pubDate>Sat, 01 Sep 2012 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2012-1-matstat2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika</title>
       <link>https://daroczig.github.io/teaching/2011-2-matsat2/</link>
       <pubDate>Wed, 01 Feb 2012 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-2-matsat2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 1.</title>
       <link>https://daroczig.github.io/teaching/2011-2-matstat1/</link>
       <pubDate>Wed, 01 Feb 2012 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-2-matstat1/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 3.</title>
       <link>https://daroczig.github.io/teaching/2011-2-matstat3/</link>
       <pubDate>Wed, 01 Feb 2012 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-2-matstat3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Quantitative methods</title>
       <link>https://daroczig.github.io/teaching/2011-2-bce/</link>
       <pubDate>Wed, 01 Feb 2012 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-2-bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>A társadalomkutatás módszerei I.</title>
       <link>https://daroczig.github.io/teaching/2011-1-bce/</link>
       <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-1-bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Kutatótábor</title>
       <link>https://daroczig.github.io/teaching/2011-1-kutatotabor/</link>
       <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-1-kutatotabor/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika</title>
       <link>https://daroczig.github.io/teaching/2011-1-matstat/</link>
       <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-1-matstat/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 2.</title>
       <link>https://daroczig.github.io/teaching/2011-1-matstat2/</link>
       <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-1-matstat2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 3.</title>
       <link>https://daroczig.github.io/teaching/2011-1-matstat3/</link>
       <pubDate>Thu, 01 Sep 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2011-1-matstat3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 1.</title>
       <link>https://daroczig.github.io/teaching/2010-2-matstat1/</link>
       <pubDate>Tue, 01 Feb 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-2-matstat1/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 2.</title>
       <link>https://daroczig.github.io/teaching/2010-2-matstat2/</link>
       <pubDate>Tue, 01 Feb 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-2-matstat2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Quantitative methods</title>
       <link>https://daroczig.github.io/teaching/2010-2-bce/</link>
       <pubDate>Tue, 01 Feb 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-2-bce/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Statisztika</title>
       <link>https://daroczig.github.io/teaching/2010-2-statisztika/</link>
       <pubDate>Tue, 01 Feb 2011 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-2-statisztika/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 1.</title>
       <link>https://daroczig.github.io/teaching/2010-1-matstat1/</link>
       <pubDate>Wed, 01 Sep 2010 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-1-matstat1/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 3.</title>
       <link>https://daroczig.github.io/teaching/2010-1-matstat3szoc/</link>
       <pubDate>Wed, 01 Sep 2010 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-1-matstat3szoc/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 3. (Politológia)</title>
       <link>https://daroczig.github.io/teaching/2010-1-matstat1pol/</link>
       <pubDate>Wed, 01 Sep 2010 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-1-matstat1pol/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SPSS 2.</title>
       <link>https://daroczig.github.io/teaching/2010-1-spss2/</link>
       <pubDate>Wed, 01 Sep 2010 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2010-1-spss2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Civil társadalom</title>
       <link>https://daroczig.github.io/teaching/2009-2-civil/</link>
       <pubDate>Mon, 01 Feb 2010 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2009-2-civil/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Kvantitatív módszerek 2.</title>
       <link>https://daroczig.github.io/teaching/2009-2-kvanti/</link>
       <pubDate>Mon, 01 Feb 2010 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2009-2-kvanti/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 2.</title>
       <link>https://daroczig.github.io/teaching/2009-2-matstat2/</link>
       <pubDate>Mon, 01 Feb 2010 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2009-2-matstat2/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 1.</title>
       <link>https://daroczig.github.io/teaching/2009-1-matstat1/</link>
       <pubDate>Tue, 01 Sep 2009 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2009-1-matstat1/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 3.</title>
       <link>https://daroczig.github.io/teaching/2009-1-matstat3/</link>
       <pubDate>Tue, 01 Sep 2009 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2009-1-matstat3/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>R programozás</title>
       <link>https://daroczig.github.io/teaching/2009-1-r/</link>
       <pubDate>Tue, 01 Sep 2009 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2009-1-r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Társadalmi mozgalmak</title>
       <link>https://daroczig.github.io/teaching/2009-1-mozgalmak/</link>
       <pubDate>Tue, 01 Sep 2009 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2009-1-mozgalmak/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Bevezetés az informatikába</title>
       <link>https://daroczig.github.io/teaching/2008-2009-2-info/</link>
       <pubDate>Sun, 01 Feb 2009 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2008-2009-2-info/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>SPSS 1.</title>
       <link>https://daroczig.github.io/teaching/2008-2009-2-spss/</link>
       <pubDate>Sun, 01 Feb 2009 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2008-2009-2-spss/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Társadalmi mozgalmak</title>
       <link>https://daroczig.github.io/teaching/2008-2009-2-mozgalmak/</link>
       <pubDate>Sun, 01 Feb 2009 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2008-2009-2-mozgalmak/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Bevezetés az informatikába</title>
       <link>https://daroczig.github.io/teaching/2008-2009-info/</link>
       <pubDate>Mon, 01 Sep 2008 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2008-2009-info/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Matematikai statisztika 4.</title>
       <link>https://daroczig.github.io/teaching/2008-2009-matstat4/</link>
       <pubDate>Mon, 01 Sep 2008 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/teaching/2008-2009-matstat4/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

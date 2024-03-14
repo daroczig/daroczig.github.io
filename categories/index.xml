@@ -5,60 +5,49 @@
     <link>https://daroczig.github.io/categories/</link>
     <description>Recent content in Categories on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://daroczig.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="https://daroczig.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>API Integrations</title>
       <link>https://daroczig.github.io/categories/api-integrations/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/categories/api-integrations/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Conferences</title>
       <link>https://daroczig.github.io/categories/conferences/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/categories/conferences/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Education</title>
       <link>https://daroczig.github.io/categories/education/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/categories/education/</guid>
       <description></description>
     </item>
-    
     <item>
-      <title>Fun projects</title>
+      <title>Fun Projects</title>
       <link>https://daroczig.github.io/categories/fun-projects/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/categories/fun-projects/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>R in Production</title>
       <link>https://daroczig.github.io/categories/r-in-production/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/categories/r-in-production/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Reporting</title>
       <link>https://daroczig.github.io/categories/reporting/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/categories/reporting/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>

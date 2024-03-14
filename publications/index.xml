@@ -5,168 +5,133 @@
     <link>https://daroczig.github.io/publications/</link>
     <description>Recent content in Featured publications on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="https://daroczig.github.io/publications/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <atom:link href="https://daroczig.github.io/publications/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>A belső vándorlások fókuszáltsága Magyarországon, 1980–2011</title>
       <link>https://daroczig.github.io/publications/2014-statszemle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2014-statszemle/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>A Pécsről történő elvándorlás térbeli-időbeli mintázatai</title>
       <link>https://daroczig.github.io/publications/2012-pecs/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2012-pecs/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>A választói viselkedés térbeli modellje – empirikus kísérlet budapesti adatok alapján</title>
       <link>https://daroczig.github.io/publications/2014-ter-es-tarsadalom/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2014-ter-es-tarsadalom/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Alkalmazott statisztika? R!</title>
       <link>https://daroczig.github.io/publications/2016-statszemle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2016-statszemle/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Áramlástérkép R-ben</title>
       <link>https://daroczig.github.io/publications/2015-aramlasterkep/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2015-aramlasterkep/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Comparative Evaluation of the Predictive Performances of Three Different Structural Population Pharmacokinetic Models To Predict Future Voriconazole Concentrations</title>
       <link>https://daroczig.github.io/publications/2016-aac/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2016-aac/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Comparison of the accuracy and precision of pharmacokinetic equations to predict free meropenem concentrations in critically ill patients</title>
       <link>https://daroczig.github.io/publications/2015-aac/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2015-aac/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Conference Report: eRum 2018</title>
       <link>https://daroczig.github.io/publications/2018-r-journal/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2018-r-journal/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Estimating the number of homeless people living in Hungary between 1999 and 2011</title>
       <link>https://daroczig.github.io/publications/2014-bulletin-of-sociological-methodology/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2014-bulletin-of-sociological-methodology/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Felhőtlen statisztika a felhőben</title>
       <link>https://daroczig.github.io/publications/2013-statszemle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2013-statszemle/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Introduction to R for Qantitative Finance</title>
       <link>https://daroczig.github.io/publications/2013-intro-tor-for-quants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2013-intro-tor-for-quants/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Investigation of the marked and long-standing spatial inhomogeneity of the Hungarian suicide rate: A spatial regression approach</title>
       <link>https://daroczig.github.io/publications/2013-suicide/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2013-suicide/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Linguistic and cultural adaptation to the Portuguese language of antimicrobial dose adjustment software</title>
       <link>https://daroczig.github.io/publications/2020-einstein/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2020-einstein/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mastering Data Analysis with R</title>
       <link>https://daroczig.github.io/publications/2015-mastering-r/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2015-mastering-r/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Mastering R for Qantitative Finance</title>
       <link>https://daroczig.github.io/publications/2015-mastering-r-for-quants/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2015-mastering-r-for-quants/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Pénzügyi hálózatok mag-periféria szerkezete</title>
       <link>https://daroczig.github.io/publications/2016-kozgazdasagi-szemle/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2016-kozgazdasagi-szemle/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>Statistical reports in the past, present and future</title>
       <link>https://daroczig.github.io/publications/2014-romanian/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2014-romanian/</guid>
       <description></description>
     </item>
-    
     <item>
       <title>The Rockerverse: Packages and Applications for Containerization with R</title>
       <link>https://daroczig.github.io/publications/2020-rockerverse/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
       <guid>https://daroczig.github.io/publications/2020-rockerverse/</guid>
       <description></description>
     </item>
-    
   </channel>
 </rss>
