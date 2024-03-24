@@ -267,3 +267,35 @@ div.about h1 a img.hearmyname {
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
 }
+
+
+.strike { position:relative; }
+.strike::after {
+  content:' ';
+  position:absolute;
+  top:50%; left:-3%;
+  width:0; height:10px;
+  opacity:80%;
+  transform:translateY(-50%);
+  background:repeat-x url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB0AAAAKAQMAAAByjsdvAAAABlBMVEUAAADdMzNrjRuKAAAAAXRSTlMAQObYZgAAADdJREFUCNdj+MMABP8ZGCQY/h9g+MHw/AHzDwbGD+w/GBhq6h8wMNj/b2BgkP8HVMMPUsn+gQEAsTkQNRVnI4cAAAAASUVORK5CYII=);
+  animation: strike 2s linear .3s 1 forwards;
+}
+@keyframes strike { to { width: 106%; } }
+
+.unstrike {
+  white-space: nowrap;
+  overflow: hidden;
+  animation: unstrike 2s linear forwards;
+}
+@keyframes unstrike {
+  0% {
+    width: 0px;
+  }
+  100% {
+    width: 100%;
+  }
+}
+.unstrike code {
+  color: #E35B5B;
+  font-size: 2.4rem;
+}
