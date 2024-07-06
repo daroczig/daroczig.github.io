@@ -4,10 +4,38 @@
     <title>Conference talk slides and video recordings on daroczig@127.0.0.1</title>
     <link>https://daroczig.github.io/talks/</link>
     <description>Recent content in Conference talk slides and video recordings on daroczig@127.0.0.1</description>
-    <generator>Hugo -- gohugo.io</generator>
+    <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 03 Oct 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://daroczig.github.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Spare Cores: Harnessing Unutilized Cloud Compute Resources</title>
+      <link>https://daroczig.github.io/talks/2024-user/</link>
+      <pubDate>Tue, 09 Jul 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2024-user/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Harnessing Spare Cores to Breeze Through Cloud-Based Batch Jobs</title>
+      <link>https://daroczig.github.io/talks/2024-budapest-data-ml/</link>
+      <pubDate>Thu, 13 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2024-budapest-data-ml/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Harnessing Spare Cores to Breeze Through Cloud Compute</title>
+      <link>https://daroczig.github.io/talks/2024-berlin-buzzwords/</link>
+      <pubDate>Wed, 12 Jun 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2024-berlin-buzzwords/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM for dosing suggestions?</title>
+      <link>https://daroczig.github.io/talks/2024-04-16/</link>
+      <pubDate>Tue, 16 Apr 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2024-04-16/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Beyond Shiny: an R-based Precision Dosing Web Application</title>
       <link>https://daroczig.github.io/talks/2023-10-03/</link>
