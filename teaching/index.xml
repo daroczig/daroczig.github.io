@@ -6,8 +6,43 @@
     <description>Recent content in University classes and R training materials on daroczig@127.0.0.1</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 22 May 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 31 May 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://daroczig.github.io/teaching/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Use-case Seminars</title>
+      <link>https://daroczig.github.io/teaching/2023-ceu-use-cases/</link>
+      <pubDate>Fri, 31 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/teaching/2023-ceu-use-cases/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Visualization 4: Building Dashboards</title>
+      <link>https://daroczig.github.io/teaching/2023-ceu-dv3/</link>
+      <pubDate>Wed, 08 May 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/teaching/2023-ceu-dv3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Engineering 3: Batch Jobs and APIs</title>
+      <link>https://daroczig.github.io/teaching/2023-ceu-r-in-prod/</link>
+      <pubDate>Wed, 20 Mar 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/teaching/2023-ceu-r-in-prod/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Data Visualization 3: Practical Data Visualization with R</title>
+      <link>https://daroczig.github.io/teaching/2023-ceu-dv2/</link>
+      <pubDate>Wed, 24 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/teaching/2023-ceu-dv2/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Coding 3: Introduction to R</title>
+      <link>https://daroczig.github.io/teaching/2023-ceu-intro-r/</link>
+      <pubDate>Wed, 10 Jan 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/teaching/2023-ceu-intro-r/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Mastering R Skills</title>
       <link>https://daroczig.github.io/teaching/2022-ceu-mastering-r/</link>
