@@ -4,9 +4,9 @@
     <title>daroczig@127.0.0.1</title>
     <link>https://daroczig.github.io/</link>
     <description>Recent content on daroczig@127.0.0.1</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Tue, 09 Jul 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 04 Dec 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://daroczig.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>daroczig/CEU-R-lab</title>
@@ -188,6 +188,20 @@
       <link>https://daroczig.github.io/repos/conflr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://daroczig.github.io/repos/conflr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Vendor-independent cloud computing hardware information and benchmarking</title>
+      <link>https://daroczig.github.io/talks/2024-osxp/</link>
+      <pubDate>Wed, 04 Dec 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2024-osxp/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Optimizing Cloud Compute Resources with Spare Cores</title>
+      <link>https://daroczig.github.io/talks/2024-sfscon/</link>
+      <pubDate>Fri, 08 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2024-sfscon/</guid>
       <description></description>
     </item>
     <item>
