@@ -55,18 +55,57 @@
     <loc>https://daroczig.github.io/repos/conflr/</loc>
   </url><url>
     <loc>https://daroczig.github.io/talks/</loc>
-    <lastmod>2025-04-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2025-ceu-data-jamboree/</loc>
+    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/</loc>
-    <lastmod>2025-04-23T00:00:00+00:00</lastmod>
+    <lastmod>2025-12-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2025-pydata-amsterdam/</loc>
+    <lastmod>2025-09-30T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2025-outerbounds-office-hours/</loc>
+    <lastmod>2025-09-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2025-pydata-berlin/</loc>
+    <lastmod>2025-09-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2025-user/</loc>
+    <lastmod>2025-08-10T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2025-budapest-data/</loc>
+    <lastmod>2025-06-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/</loc>
+    <lastmod>2025-04-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/2024-ceu-use-cases/</loc>
+    <lastmod>2025-04-28T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/talks/2025-kcd-budapest/</loc>
     <lastmod>2025-04-23T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>https://daroczig.github.io/teaching/2024-ceu-r-in-prod/</loc>
+    <lastmod>2025-03-20T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/todo/2025-ceu-r-in-prod/</loc>
+    <lastmod>2025-03-20T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>https://daroczig.github.io/talks/2025-ngi-search-standup/</loc>
     <lastmod>2025-01-30T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://daroczig.github.io/talks/2025-ceu-data-jamboree/</loc>
+    <loc>https://daroczig.github.io/teaching/2024-ceu-dv2/</loc>
+    <lastmod>2025-01-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/2024-ceu-intro-r/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/teaching/todo/2025-ceu-intro-r/</loc>
+    <lastmod>2025-01-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://daroczig.github.io/talks/2024-ceu-data-jamboree/</loc>
     <lastmod>2025-01-10T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/talks/2024-ow2-webinar/</loc>
@@ -89,9 +128,6 @@
   </url><url>
     <loc>https://daroczig.github.io/talks/2024-berlin-buzzwords/</loc>
     <lastmod>2024-06-12T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://daroczig.github.io/teaching/</loc>
-    <lastmod>2024-05-31T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://daroczig.github.io/teaching/2023-ceu-use-cases/</loc>
     <lastmod>2024-05-31T00:00:00+00:00</lastmod>

@@ -6,8 +6,50 @@
     <description>Recent content in Conference talk slides and video recordings on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 23 Apr 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 05 Dec 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://daroczig.github.io/talks/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cost-efficient and Scalable Dashboards in the Cloud</title>
+      <link>https://daroczig.github.io/talks/2025-ceu-data-jamboree/</link>
+      <pubDate>Fri, 05 Dec 2025 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2025-ceu-data-jamboree/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Resource Monitoring and Optimization with Metaflow</title>
+      <link>https://daroczig.github.io/talks/2025-pydata-amsterdam/</link>
+      <pubDate>Tue, 30 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2025-pydata-amsterdam/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Magically Right Size the Compute Resources to Your AI/ML Workloads</title>
+      <link>https://daroczig.github.io/talks/2025-outerbounds-office-hours/</link>
+      <pubDate>Tue, 02 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2025-outerbounds-office-hours/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Benchmarking 2000&#43; Cloud Servers for GBM and LLM Inference Speed</title>
+      <link>https://daroczig.github.io/talks/2025-pydata-berlin/</link>
+      <pubDate>Mon, 01 Sep 2025 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2025-pydata-berlin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Getting Things Logged</title>
+      <link>https://daroczig.github.io/talks/2025-user/</link>
+      <pubDate>Sun, 10 Aug 2025 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2025-user/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Resource Monitoring and Optimization for Data Science Tasks with Metaflow</title>
+      <link>https://daroczig.github.io/talks/2025-budapest-data/</link>
+      <pubDate>Wed, 18 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/talks/2025-budapest-data/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Starting 2000 Cloud Servers for Benchmarking LLM Inference Speed</title>
       <link>https://daroczig.github.io/talks/2025-kcd-budapest/</link>
@@ -24,9 +66,9 @@
     </item>
     <item>
       <title>From idea to product: creating Spare Cores</title>
-      <link>https://daroczig.github.io/talks/2025-ceu-data-jamboree/</link>
+      <link>https://daroczig.github.io/talks/2024-ceu-data-jamboree/</link>
       <pubDate>Fri, 10 Jan 2025 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/talks/2025-ceu-data-jamboree/</guid>
+      <guid>https://daroczig.github.io/talks/2024-ceu-data-jamboree/</guid>
       <description></description>
     </item>
     <item>
