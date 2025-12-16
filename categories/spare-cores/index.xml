@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Spare Cores on daroczig@127.0.0.1</title>
+    <link>https://daroczig.github.io/categories/spare-cores/</link>
+    <description>Recent content in Spare Cores on daroczig@127.0.0.1</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <atom:link href="https://daroczig.github.io/categories/spare-cores/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>sparecores/sc-crawler</title>
+      <link>https://daroczig.github.io/repos/sc-crawler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-crawler/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-data</title>
+      <link>https://daroczig.github.io/repos/sc-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-keeper</title>
+      <link>https://daroczig.github.io/repos/sc-keeper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-keeper/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-runner</title>
+      <link>https://daroczig.github.io/repos/sc-runner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-runner/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-inspector</title>
+      <link>https://daroczig.github.io/repos/sc-inspector/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-inspector/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-inspector-data</title>
+      <link>https://daroczig.github.io/repos/sc-inspector-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-inspector-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-www</title>
+      <link>https://daroczig.github.io/repos/sc-www/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-www/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

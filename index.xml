@@ -51,6 +51,13 @@
       <description></description>
     </item>
     <item>
+      <title>sparecores/sc-crawler</title>
+      <link>https://daroczig.github.io/repos/sc-crawler/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-crawler/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>daroczig/botor</title>
       <link>https://daroczig.github.io/repos/botor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -86,6 +93,13 @@
       <description></description>
     </item>
     <item>
+      <title>sparecores/sc-data</title>
+      <link>https://daroczig.github.io/repos/sc-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-data/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>daroczig/binancer</title>
       <link>https://daroczig.github.io/repos/binancer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -114,6 +128,13 @@
       <description></description>
     </item>
     <item>
+      <title>sparecores/sc-keeper</title>
+      <link>https://daroczig.github.io/repos/sc-keeper/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-keeper/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>daroczig/AWR.Kinesis</title>
       <link>https://daroczig.github.io/repos/aws-kinesis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -132,6 +153,13 @@
       <link>https://daroczig.github.io/repos/singr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://daroczig.github.io/repos/singr/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-runner</title>
+      <link>https://daroczig.github.io/repos/sc-runner/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-runner/</guid>
       <description></description>
     </item>
     <item>
@@ -156,6 +184,13 @@
       <description></description>
     </item>
     <item>
+      <title>sparecores/sc-inspector</title>
+      <link>https://daroczig.github.io/repos/sc-inspector/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-inspector/</guid>
+      <description></description>
+    </item>
+    <item>
       <title>daroczig/CEU-use-case-seminars</title>
       <link>https://daroczig.github.io/repos/ceu-use-case-seminars/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
@@ -167,6 +202,20 @@
       <link>https://daroczig.github.io/repos/consular/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>https://daroczig.github.io/repos/consular/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-inspector-data</title>
+      <link>https://daroczig.github.io/repos/sc-inspector-data/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-inspector-data/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>sparecores/sc-www</title>
+      <link>https://daroczig.github.io/repos/sc-www/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>https://daroczig.github.io/repos/sc-www/</guid>
       <description></description>
     </item>
     <item>
