@@ -2,240 +2,240 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Featured GitHub repositories on daroczig@127.0.0.1</title>
-    <link>https://daroczig.github.io/repos/</link>
+    <link>http://localhost:1313/repos/</link>
     <description>Recent content in Featured GitHub repositories on daroczig@127.0.0.1</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <atom:link href="https://daroczig.github.io/repos/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/repos/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>daroczig/CEU-R-lab</title>
-      <link>https://daroczig.github.io/repos/ceu-r-lab/</link>
+      <link>http://localhost:1313/repos/ceu-r-lab/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/ceu-r-lab/</guid>
+      <guid>http://localhost:1313/repos/ceu-r-lab/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/fbRads</title>
-      <link>https://daroczig.github.io/repos/fbrads/</link>
+      <link>http://localhost:1313/repos/fbrads/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/fbrads/</guid>
+      <guid>http://localhost:1313/repos/fbrads/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/logger</title>
-      <link>https://daroczig.github.io/repos/logger/</link>
+      <link>http://localhost:1313/repos/logger/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/logger/</guid>
+      <guid>http://localhost:1313/repos/logger/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/t-shirt</title>
-      <link>https://daroczig.github.io/repos/user-2014-tshirt/</link>
+      <link>http://localhost:1313/repos/user-2014-tshirt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/user-2014-tshirt/</guid>
+      <guid>http://localhost:1313/repos/user-2014-tshirt/</guid>
       <description></description>
     </item>
     <item>
       <title>Rapporter/pander</title>
-      <link>https://daroczig.github.io/repos/pander/</link>
+      <link>http://localhost:1313/repos/pander/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/pander/</guid>
+      <guid>http://localhost:1313/repos/pander/</guid>
       <description></description>
     </item>
     <item>
       <title>satRdays/budapest2016</title>
-      <link>https://daroczig.github.io/repos/satrday2016/</link>
+      <link>http://localhost:1313/repos/satrday2016/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/satrday2016/</guid>
+      <guid>http://localhost:1313/repos/satrday2016/</guid>
       <description></description>
     </item>
     <item>
       <title>sparecores/sc-crawler</title>
-      <link>https://daroczig.github.io/repos/sc-crawler/</link>
+      <link>http://localhost:1313/repos/sc-crawler/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/sc-crawler/</guid>
+      <guid>http://localhost:1313/repos/sc-crawler/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/botor</title>
-      <link>https://daroczig.github.io/repos/botor/</link>
+      <link>http://localhost:1313/repos/botor/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/botor/</guid>
+      <guid>http://localhost:1313/repos/botor/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/CEU-R-skills</title>
-      <link>https://daroczig.github.io/repos/ceu-r-skills/</link>
+      <link>http://localhost:1313/repos/ceu-r-skills/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/ceu-r-skills/</guid>
+      <guid>http://localhost:1313/repos/ceu-r-skills/</guid>
       <description></description>
     </item>
     <item>
       <title>eRum2018/2018.erum.io</title>
-      <link>https://daroczig.github.io/repos/erum2018/</link>
+      <link>http://localhost:1313/repos/erum2018/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/erum2018/</guid>
+      <guid>http://localhost:1313/repos/erum2018/</guid>
       <description></description>
     </item>
     <item>
       <title>moszinet/BKKCrypt</title>
-      <link>https://daroczig.github.io/repos/bkkcrypt/</link>
+      <link>http://localhost:1313/repos/bkkcrypt/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/bkkcrypt/</guid>
+      <guid>http://localhost:1313/repos/bkkcrypt/</guid>
       <description></description>
     </item>
     <item>
       <title>Rapporter/rapport</title>
-      <link>https://daroczig.github.io/repos/rapport/</link>
+      <link>http://localhost:1313/repos/rapport/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/rapport/</guid>
+      <guid>http://localhost:1313/repos/rapport/</guid>
       <description></description>
     </item>
     <item>
       <title>sparecores/sc-data</title>
-      <link>https://daroczig.github.io/repos/sc-data/</link>
+      <link>http://localhost:1313/repos/sc-data/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/sc-data/</guid>
+      <guid>http://localhost:1313/repos/sc-data/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/binancer</title>
-      <link>https://daroczig.github.io/repos/binancer/</link>
+      <link>http://localhost:1313/repos/binancer/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/binancer/</guid>
+      <guid>http://localhost:1313/repos/binancer/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/CEU-R-mastering</title>
-      <link>https://daroczig.github.io/repos/ceu-mastering/</link>
+      <link>http://localhost:1313/repos/ceu-mastering/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/ceu-mastering/</guid>
+      <guid>http://localhost:1313/repos/ceu-mastering/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/dbr</title>
-      <link>https://daroczig.github.io/repos/dbr/</link>
+      <link>http://localhost:1313/repos/dbr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/dbr/</guid>
+      <guid>http://localhost:1313/repos/dbr/</guid>
       <description></description>
     </item>
     <item>
       <title>DarthJDG/NumGuess</title>
-      <link>https://daroczig.github.io/repos/numguess/</link>
+      <link>http://localhost:1313/repos/numguess/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/numguess/</guid>
+      <guid>http://localhost:1313/repos/numguess/</guid>
       <description></description>
     </item>
     <item>
       <title>sparecores/sc-keeper</title>
-      <link>https://daroczig.github.io/repos/sc-keeper/</link>
+      <link>http://localhost:1313/repos/sc-keeper/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/sc-keeper/</guid>
+      <guid>http://localhost:1313/repos/sc-keeper/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/AWR.Kinesis</title>
-      <link>https://daroczig.github.io/repos/aws-kinesis/</link>
+      <link>http://localhost:1313/repos/aws-kinesis/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/aws-kinesis/</guid>
+      <guid>http://localhost:1313/repos/aws-kinesis/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/CEU-R-prod</title>
-      <link>https://daroczig.github.io/repos/ceu-r-prod/</link>
+      <link>http://localhost:1313/repos/ceu-r-prod/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/ceu-r-prod/</guid>
+      <guid>http://localhost:1313/repos/ceu-r-prod/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/singR</title>
-      <link>https://daroczig.github.io/repos/singr/</link>
+      <link>http://localhost:1313/repos/singr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/singr/</guid>
+      <guid>http://localhost:1313/repos/singr/</guid>
       <description></description>
     </item>
     <item>
       <title>sparecores/sc-runner</title>
-      <link>https://daroczig.github.io/repos/sc-runner/</link>
+      <link>http://localhost:1313/repos/sc-runner/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/sc-runner/</guid>
+      <guid>http://localhost:1313/repos/sc-runner/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/AWR.Snowflake</title>
-      <link>https://daroczig.github.io/repos/awr-snowflake/</link>
+      <link>http://localhost:1313/repos/awr-snowflake/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/awr-snowflake/</guid>
+      <guid>http://localhost:1313/repos/awr-snowflake/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/CEU-DV2</title>
-      <link>https://daroczig.github.io/repos/ceu-dv2/</link>
+      <link>http://localhost:1313/repos/ceu-dv2/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/ceu-dv2/</guid>
+      <guid>http://localhost:1313/repos/ceu-dv2/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/CEU-DV3</title>
-      <link>https://daroczig.github.io/repos/ceu-dv3/</link>
+      <link>http://localhost:1313/repos/ceu-dv3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/ceu-dv3/</guid>
+      <guid>http://localhost:1313/repos/ceu-dv3/</guid>
       <description></description>
     </item>
     <item>
       <title>sparecores/sc-inspector</title>
-      <link>https://daroczig.github.io/repos/sc-inspector/</link>
+      <link>http://localhost:1313/repos/sc-inspector/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/sc-inspector/</guid>
+      <guid>http://localhost:1313/repos/sc-inspector/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/CEU-use-case-seminars</title>
-      <link>https://daroczig.github.io/repos/ceu-use-case-seminars/</link>
+      <link>http://localhost:1313/repos/ceu-use-case-seminars/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/ceu-use-case-seminars/</guid>
+      <guid>http://localhost:1313/repos/ceu-use-case-seminars/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/consular</title>
-      <link>https://daroczig.github.io/repos/consular/</link>
+      <link>http://localhost:1313/repos/consular/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/consular/</guid>
+      <guid>http://localhost:1313/repos/consular/</guid>
       <description></description>
     </item>
     <item>
       <title>sparecores/sc-inspector-data</title>
-      <link>https://daroczig.github.io/repos/sc-inspector-data/</link>
+      <link>http://localhost:1313/repos/sc-inspector-data/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/sc-inspector-data/</guid>
+      <guid>http://localhost:1313/repos/sc-inspector-data/</guid>
       <description></description>
     </item>
     <item>
       <title>sparecores/sc-www</title>
-      <link>https://daroczig.github.io/repos/sc-www/</link>
+      <link>http://localhost:1313/repos/sc-www/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/sc-www/</guid>
+      <guid>http://localhost:1313/repos/sc-www/</guid>
       <description></description>
     </item>
     <item>
       <title>nfultz/grpc</title>
-      <link>https://daroczig.github.io/repos/grpc/</link>
+      <link>http://localhost:1313/repos/grpc/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/grpc/</guid>
+      <guid>http://localhost:1313/repos/grpc/</guid>
       <description></description>
     </item>
     <item>
       <title>daroczig/KRE-stat-prog-3</title>
-      <link>https://daroczig.github.io/repos/kre/</link>
+      <link>http://localhost:1313/repos/kre/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/kre/</guid>
+      <guid>http://localhost:1313/repos/kre/</guid>
       <description></description>
     </item>
     <item>
       <title>line/conflr</title>
-      <link>https://daroczig.github.io/repos/conflr/</link>
+      <link>http://localhost:1313/repos/conflr/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://daroczig.github.io/repos/conflr/</guid>
+      <guid>http://localhost:1313/repos/conflr/</guid>
       <description></description>
     </item>
   </channel>
